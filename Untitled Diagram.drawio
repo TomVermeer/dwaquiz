@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-12T08:40:21.885Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="3eXti2mg7oACgEpcMQIQ" version="13.7.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-12T08:55:18.646Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="xLwiF0nmNf5bGmE0WS8o" version="13.7.9" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="2031" dy="1134" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="2370" dy="1323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -218,13 +218,10 @@
           <mxGeometry x="545" y="2320" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-137" value="Beëindig quiznight" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="370" y="2710" width="110" height="30" as="geometry" />
+          <mxGeometry x="177.5" y="2470" width="132.5" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-138" value="Volgende ronde" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="490" y="2710" width="90" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-139" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="2400" width="480" height="260" as="geometry" />
+          <mxGeometry x="360" y="2470" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-146" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="50" y="2760" width="590" height="440" as="geometry" />
@@ -247,9 +244,6 @@
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-153" value="Home" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="490" y="3160" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-161" value="Tussenstand" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="2380" width="80" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-162" value="Eindscore" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="110" y="2930" width="80" height="20" as="geometry" />
         </mxCell>
@@ -269,142 +263,91 @@
           <mxGeometry x="1020" y="2090" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-177" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Vraag 1/12&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1198.75" y="1880" width="132.5" height="20" as="geometry" />
+          <mxGeometry x="1198.75" y="1860" width="132.5" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-178" value="Quizronde 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="1880" width="75" height="20" as="geometry" />
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-178" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Quizronde 1&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1203.75" y="1890" width="142.5" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-179" value="564125" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1465" y="1860" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-180" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="970" y="2320" width="590" height="440" as="geometry" />
+          <mxGeometry x="970" y="2830" width="590" height="440" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-181" value="scoreboard" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="970" y="2320" width="70" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-182" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Einde quizronde&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1172.5" y="2350" width="185" height="40" as="geometry" />
+          <mxGeometry x="970" y="2830" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-183" value="Vraag 12/12" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2370" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="2880" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-184" value="Quizronde 4" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2350" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="2860" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-185" value="564125" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2330" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="2840" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-188" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="2410" width="480" height="260" as="geometry" />
+          <mxGeometry x="1020" y="2920" width="480" height="260" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-189" value="Team 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2450" width="110" height="20" as="geometry" />
+          <mxGeometry x="1030" y="2960" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-190" value="14" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1290" y="2450" width="110" height="20" as="geometry" />
+          <mxGeometry x="1290" y="2960" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-191" value="Team 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2470" width="110" height="20" as="geometry" />
+          <mxGeometry x="1030" y="2980" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-192" value="11" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1290" y="2470" width="110" height="20" as="geometry" />
+          <mxGeometry x="1290" y="2980" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-193" value="Team 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2490" width="110" height="20" as="geometry" />
+          <mxGeometry x="1030" y="3000" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-194" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1290" y="2490" width="110" height="20" as="geometry" />
+          <mxGeometry x="1290" y="3000" width="110" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-195" value="Tussenstand" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="2390" width="80" height="20" as="geometry" />
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-195" value="&lt;font style=&quot;font-size: 36px&quot;&gt;Tussenstand&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1217.5" y="2860" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-196" value="Wat is de hoofdstad van Frankrijk?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="395" y="1930" width="230" height="20" as="geometry" />
+          <mxGeometry x="395" y="1940" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-197" value="Topografie" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="1930" width="70" height="20" as="geometry" />
+          <mxGeometry x="90" y="1940" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-198" value="Parijs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="560" y="1960" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-199" value="&lt;font style=&quot;font-size: 36px&quot;&gt;Wat is de hoofdstad van Frankrijk?&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="970" y="1960" width="590" height="100" as="geometry" />
+          <mxGeometry x="970" y="1950" width="590" height="60" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-200" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Topografie&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="980" y="1930" width="70" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-201" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="2070" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-202" value="9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="2090" width="40" height="20" as="geometry" />
+          <mxGeometry x="990" y="1930" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-203" value="Team2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1020" y="2110" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-204" value="8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="2110" width="40" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-205" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1180" y="2450" width="40" height="20" as="geometry" />
+          <mxGeometry x="1180" y="2960" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-206" value="9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1180" y="2470" width="40" height="20" as="geometry" />
+          <mxGeometry x="1180" y="2980" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-207" value="8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1180" y="2490" width="40" height="20" as="geometry" />
+          <mxGeometry x="1180" y="3000" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-209" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="2410" width="480" height="20" as="geometry" />
+          <mxGeometry x="1020" y="2920" width="480" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-210" value="Team" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1065" y="2410" width="40" height="20" as="geometry" />
+          <mxGeometry x="1065" y="2920" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-211" value="Goede antwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="2410" width="110" height="20" as="geometry" />
+          <mxGeometry x="1140" y="2920" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-212" value="Rondepunten" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1297.5" y="2410" width="95" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-213" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="2400" width="480" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-214" value="Team" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="150" y="2400" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-215" value="Goede antwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="225" y="2400" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-216" value="Rondepunten" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="382.5" y="2400" width="95" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-217" value="Team 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="2430" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-218" value="14" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="380" y="2430" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-219" value="Team 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="2450" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-220" value="11" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="380" y="2450" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-221" value="Team 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="2470" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-222" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="380" y="2470" width="110" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-223" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="2430" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-224" value="9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="2450" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="tzb5yaRrSsXEz6ic2CVl-225" value="8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="2470" width="40" height="20" as="geometry" />
+          <mxGeometry x="1297.5" y="2920" width="95" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-240" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="110" y="2950" width="480" height="160" as="geometry" />
@@ -554,73 +497,73 @@
           <mxGeometry x="272.5" y="2840" width="145" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-296" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="970" y="2780" width="590" height="440" as="geometry" />
+          <mxGeometry x="970" y="3290" width="590" height="440" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-297" value="scoreboard" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="970" y="2780" width="70" height="20" as="geometry" />
+          <mxGeometry x="970" y="3290" width="70" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-298" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Einde quiznight&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1172.5" y="2810" width="185" height="40" as="geometry" />
+          <mxGeometry x="1172.5" y="3320" width="185" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-299" value="Vraag 12/12" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2830" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="3340" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-300" value="Quizronde 4" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2810" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="3320" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-301" value="564125" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1465" y="2790" width="75" height="20" as="geometry" />
+          <mxGeometry x="1465" y="3300" width="75" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-303" value="Eindscore" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2950" width="80" height="20" as="geometry" />
+          <mxGeometry x="1030" y="3460" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-304" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2970" width="480" height="160" as="geometry" />
+          <mxGeometry x="1030" y="3480" width="480" height="160" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-305" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="2970" width="480" height="20" as="geometry" />
+          <mxGeometry x="1030" y="3480" width="480" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-306" value="Team" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1081.25" y="2970" width="40" height="20" as="geometry" />
+          <mxGeometry x="1081.25" y="3480" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-307" value="Goede antwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1156.25" y="2970" width="110" height="20" as="geometry" />
+          <mxGeometry x="1156.25" y="3480" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-308" value="Rondepunten" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1313.75" y="2970" width="95" height="20" as="geometry" />
+          <mxGeometry x="1313.75" y="3480" width="95" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-309" value="Team 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="3000" width="110" height="20" as="geometry" />
+          <mxGeometry x="1050" y="3510" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-310" value="14" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1310" y="3000" width="110" height="20" as="geometry" />
+          <mxGeometry x="1310" y="3510" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-311" value="Team 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="3020" width="110" height="20" as="geometry" />
+          <mxGeometry x="1050" y="3530" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-312" value="11" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1310" y="3020" width="110" height="20" as="geometry" />
+          <mxGeometry x="1310" y="3530" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-313" value="Team 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="3040" width="110" height="20" as="geometry" />
+          <mxGeometry x="1050" y="3550" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-314" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1310" y="3040" width="110" height="20" as="geometry" />
+          <mxGeometry x="1310" y="3550" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-315" value="10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="3000" width="40" height="20" as="geometry" />
+          <mxGeometry x="1200" y="3510" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-316" value="9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="3020" width="40" height="20" as="geometry" />
+          <mxGeometry x="1200" y="3530" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-317" value="8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="3040" width="40" height="20" as="geometry" />
+          <mxGeometry x="1200" y="3550" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-318" value="&lt;span&gt;11 goede antwoorden&lt;/span&gt;&lt;br&gt;&lt;span&gt;15 rondepunten&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="2860" width="140" height="80" as="geometry" />
+          <mxGeometry x="1200" y="3370" width="140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-319" value="&lt;font style=&quot;font-size: 16px&quot;&gt;Super cool team&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1192.5" y="2860" width="145" height="20" as="geometry" />
+          <mxGeometry x="1192.5" y="3370" width="145" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-320" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1680" y="1870" width="590" height="440" as="geometry" />
@@ -654,6 +597,57 @@
             <mxPoint x="740" y="2280" as="sourcePoint" />
             <mxPoint x="790" y="2230" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-356" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="2320" width="590" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-357" value="scoreboard" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="970" y="2320" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-358" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2540" width="530" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-359" value="Team1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2540" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-360" value="Team3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2560" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-361" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Vraag 1/12&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1198.75" y="2330" width="132.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-362" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Quizronde 1&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1203.75" y="2360" width="142.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-363" value="564125" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="2330" width="75" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-364" value="&lt;font style=&quot;font-size: 36px&quot;&gt;Wat is de hoofdstad van Frankrijk?&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="970" y="2420" width="590" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-365" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Topografie&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="2400" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-366" value="Team2" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2580" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-367" value="Antwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2490" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-368" value="Parijs" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="2540" width="435" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-369" value="Parijs" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="2560" width="435" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-370" value="Trois-Ponts" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="2580" width="430" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-371" value="Team1" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2540" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-372" value="Team3" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="2560" width="100" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

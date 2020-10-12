@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-12T08:55:18.646Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="xLwiF0nmNf5bGmE0WS8o" version="13.7.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-12T10:57:54.982Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="cFdAbAns4G-HAJ7AmxWm" version="13.7.9" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="2370" dy="1323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1673" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -648,6 +648,21 @@
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-372" value="Team3" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1010" y="2560" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-373" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="1350" width="590" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-374" value="scoreboard" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="970" y="1350" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-375" value="&lt;font style=&quot;font-size: 32px&quot;&gt;Quizzer&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1172.5" y="1420" width="185" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-377" value="Quiznightpin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1205" y="1510" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tzb5yaRrSsXEz6ic2CVl-378" value="Starten" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1215" y="1555" width="90" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

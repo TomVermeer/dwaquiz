@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-12T13:28:25.274Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="Tm-fC2swX49aV31Zstrs" version="13.7.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-12T14:11:32.083Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="UNSQDKA2RDmKnJuXDyNc" version="13.7.9" type="github">
   <diagram id="r_QWfCS0-fJkpJQczVmZ" name="Page-1">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -222,6 +222,15 @@
         </mxCell>
         <mxCell id="SeN86KywqC2dADdFLRv4-89" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
           <mxGeometry x="394" y="310" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="SeN86KywqC2dADdFLRv4-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SeN86KywqC2dADdFLRv4-90" target="SeN86KywqC2dADdFLRv4-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SeN86KywqC2dADdFLRv4-90" value="ScoreBoard" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="263" width="160" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="SeN86KywqC2dADdFLRv4-92" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="SeN86KywqC2dADdFLRv4-90">
+          <mxGeometry y="26" width="160" height="8" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

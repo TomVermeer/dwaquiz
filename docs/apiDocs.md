@@ -2,7 +2,8 @@
 
 # Introduction
 
-This markdown file is an overview of all available REST-routes for the Quizzer application.
+This markdown file is an overview of all available REST-routes for the Quizzer api v1. All routes assume a root of `/api/v1/`.
+
 Each route has the following information:
 - Route
 - Method
@@ -228,6 +229,24 @@ ___
 ___
 ##/quiz-nights/:quizPin/rounds/:round/questionings
 **@method:** POST
+**@descripion:** Starts the asking of a question and informs the participation teams and scoreboard.
+
+```puml
+@startuml
+
+Master -> Server : POST /quiz-nights/:quizPin/rounds/:round/questionings
+Server -> Server : answer = findAnswer(question)
+Server --> ScoreBoard : onQuestion
+
+loop Team : TeamsInQuizNight
+    Server --> Team : onQuestion
+end
+
+Master <- Server : answer
+
+@enduml
+```
+
 **@body:**
 ```js
 {
@@ -235,7 +254,7 @@ ___
 }
 ```
 ####@response:
-#####@200:
+#####200:
 **@body:**
 ```js
 {

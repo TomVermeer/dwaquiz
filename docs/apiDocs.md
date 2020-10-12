@@ -1,5 +1,48 @@
 #REST-API routes
 
+# Introduction
+
+This markdown file is an overview of all available REST-routes for the Quizzer application.
+Each route has the following information:
+- Route
+- Method
+- Body
+- Optionally a description
+- Possible responses
+  - Status code
+    - In case of an error, what caused the error
+  - Body
+
+# Overview
+The following diagram shows all available routes with their supported methods.
+```puml
+@startmindmap
+* /
+ * /quiz-nights
+  *_ POST
+  * /:quizPin
+   *_ DELETE
+   *_ PATCH
+   * /teams
+    *_ POST
+   * /rounds
+    *_ POST
+    * /:round
+     *_ GET
+     * /questionings
+      *_ POST
+    * /:question
+     *_ PATCH
+     * /grade
+      *_ POST
+ * /categories
+  *_ GET
+ * /scoreboards
+  * /:quizPin
+   *_ POST
+@endmindmap
+```
+
 #Master routes
 
 ##/quiz-nights

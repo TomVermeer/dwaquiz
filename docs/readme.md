@@ -93,6 +93,8 @@ ___
 
 ## General Overview
 
+The following diagram shows folders which already have been identified in the Quizzer.
+
 ```puml
 @startmindmap
 * /

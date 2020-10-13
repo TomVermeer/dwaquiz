@@ -16,6 +16,7 @@ ___
 Wireframes were made using draw.io and illustrate the different screens of our applications.
 They also serve to identify routes,resources and events.
 
+Components are only marked onces, once a component has been identified it cluters the wireframes when it is marked again. Due to an issue with layers not all marking is done in the same way, some components are colored and annotated with text, while some others have an extra dotted border around them.
 [Wireframes](wireframes.drawio)
 ___
 

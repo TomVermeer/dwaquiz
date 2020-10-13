@@ -43,7 +43,9 @@ ___
 ## Mongoose-schema's
 
 We have chosen to model 5 different schema's in for our application, altough we intend to only use 2 collections.
-We decided to make the "questioningsSchema", "teamSchema" and "roundSchema" schemes to more easily handle our data in the frontend. These schema's however will not become their own collections but rather be embedded in the "quizNightSchema".
+We decided to make the "questioningsSchema", "teamSchema" and "roundSchema" schemes to make the schema;s more readable. These schema's however will not become their own collections but rather be embedded in the "quizNightSchema". Who chose to embed because the is not a compelling reason to link, we dont think that we need to access teams or questionings that much on their own and we can get away with a projection in the case we have to. We dont expect that 12 questions per round with not much more than 8 teams will hit the 16 MB limit with any reasonable amount of rounds.
+
+questionSchema is a seperate schema because it needs to be accessed by the quizmaster without the need of additional information about a quiznight.
 
 ```js
 

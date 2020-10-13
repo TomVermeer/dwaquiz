@@ -26,11 +26,17 @@ The following diagram shows all available routes with their supported methods.
   *_ POST
   * /:quizPin
    *_ DELETE
+   * team-applications
+    *_ POST
    * /suggestedQuestions
     *_ GET
    *_ PATCH
    * /teams
     *_ POST
+    * /:team
+     * answers
+      *_ POST
+      *_ PUT
    * /rounds
     *_ POST
     * /:round

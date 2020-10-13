@@ -1,10 +1,11 @@
-#REST-API routes
+# REST-API routes
 
 # Introduction
 
 This markdown file is an overview of all available REST-routes for the Quizzer api v1. All routes assume a root of `/api/v1/`.
 
 Each route has the following information:
+
 - Route
 - Method
 - Body
@@ -15,7 +16,9 @@ Each route has the following information:
   - Body
 
 # Overview
+
 The following diagram shows all available routes with their supported methods.
+
 ```puml
 @startmindmap
 * /
@@ -45,41 +48,52 @@ The following diagram shows all available routes with their supported methods.
 @endmindmap
 ```
 
-#Master routes
+# Master routes
 
-##/quiz-nights
+## /quiz-nights
+
 **@method:** POST
 **@body:**
 none
 
-####@response:
-#####200:
+#### @response
+
+##### 200
 
 ```js
 {
   quizPin: 103441;
 }
 ```
+
 ___
 
-##/quiz-nights/:quizPin
-**@method:** DELETE
-**@body:** *None* 
+## /quiz-nights/:quizPin
 
-####@response:
-#####200:
+**@method:** DELETE
+**@body:** *None*
+
+#### @response
+
+##### 200
+
 **@body:** *none*
-#####404:
+
+##### 404
+
 **@description:** when quizPin does not exist.
 **@body:**
+
 ```js
 {
     error: "Quiz-night does not exist"
 }
 ```
+
 ___
 
-##/quiz-nights/:quizPin
+## /quiz-nights/:quizPin
+
 **@method:** PATCH
 **@body:**
 
@@ -89,17 +103,21 @@ ___
 }
 ```
 
-####@response
-#####200:
+#### @response
+
+##### 200
+
 **@body:** _none_
-#####404:
+
+##### 404
+
 **@description:** When quizPin does not exist.
 **@body** _none_
 
 ___
 
+## /quiz-nights/:quizPin/teams/
 
-##/quiz-nights/:quizPin/teams/
 **@method:** POST
 **@body:**
 
@@ -109,55 +127,72 @@ ___
 }
 ```
 
-####@response:
-#####200:
+#### @response
+
+##### 200
 
 **@body:** _none_
 
-#####409:
+##### 409
+
 **@description:** When teamName already exists in quiz.
 
-#####404:
+##### 404
+
 **@description:** When quizPin does not exist.
 ___
 
-##/quiz-Nights/:quizpin/team-applications
+## /quiz-Nights/:quizpin/team-applications
+
 **@method:** POST
 **@body:**
+
 ```js
 {
     teamName: "de billy Butchers"
 }
 
 ```
-####@response:
+
+#### @response
+
 ___
-##/quiz-nights/:quizPin/team-applications/:teamName
+
+## /quiz-nights/:quizPin/team-applications/:teamName
+
 **@method:** DELETE
 
-####@response:
-#####200:
+#### @response
+
+##### 200
+
 **@body:** _none_
 ___
 
-##/categories
+## /categories
+
 **@method:** GET
 
-####@response:
-#####200:
+#### @response
+
+##### 200
+
 **@body:**
 
 ```js
  [
-        "sport", 
-        "kunst" 
+        "sport",
+        "kunst"
  ]
 ```
+
 ___
 
-##/quiz-nights/:quizPin/round
+## /quiz-nights/:quizPin/round
+
 **@method:** POST
 **@body**
+
 ```js
 [
     "sport",
@@ -166,10 +201,13 @@ ___
 ]
 ```
 
-####@response:
-#####200:
+#### @response
+
+##### 200
+
 **@description:** server bepaalt aan de hand van hoogste roundNumber wat het nieuwe roundNumber wordt.
-**@body:** 
+**@body:**
+
 ```js
 {
     roundNumber: 1,
@@ -190,22 +228,28 @@ ___
         ]
 }
 ```
-#####400:
+
+##### 400
+
 **@description:** When less or more than 3 categories are posted.
 **@body:**
+
 ```js
 {
     error: "A round must have exactly 3 categories."
 }
 ```
 
-#####404:
+##### 404
+
 **@description:** when quizPin does not exist.
 ___
 
-##/quiz-nights/:quizPin/suggestedQuestions/?:offset&:limit
+## /quiz-nights/:quizPin/suggestedQuestions/?:offset&:limit
+
 **@method:** GET
-**@body:** 
+**@body:**
+
 ```js
 [
     "sport",
@@ -213,8 +257,11 @@ ___
     "topografie"
 ]
 ```
-#####200:
-**@body:** 
+
+##### 200
+
+**@body:**
+
 ```js
 [
     {
@@ -231,16 +278,22 @@ ___
     }
 ]
 ```
-#####400:
+
+##### 400
+
 **@description:** When less or more than 3 categories are posted.
 **@body:**
+
 ```js
 {
     error: "A round must have exactly 3 categories."
 }
 ```
+
 ___
-##/quiz-nights/:quizPin/rounds/:round/questionings
+
+## /quiz-nights/:quizPin/rounds/:round/questionings
+
 **@method:** POST
 **@descripion:** Starts the asking of a question and informs the participation teams and scoreboard.
 
@@ -261,92 +314,119 @@ Master <- Server : answer
 ```
 
 **@body:**
+
 ```js
 {
     question: "vraag1"
 }
 ```
-####@response:
-#####200:
+
+#### @response
+
+##### 200
+
 **@body:**
+
 ```js
 {
     answer: "antwoord voor vraag 1"
 }
 ```
+
 ___
-##/quiz-nights/:quizPin/rounds/:round/questionings/:question/grade
+
+## /quiz-nights/:quizPin/rounds/:round/questionings/:question/grade
+
 **@method:** POST
 **@description:** if last question in round, score is also calculated and saved.
 **@body:**
+
 ```js
 [
     {
         teamName: "super-cool-team",
         grade: true
-    }, 
+    },
     {
         teamName: "de billy butchers",
         grade: false
     }
 ]
 ```
-####@response:
 
-#####200:
-**@body:** *None.* 
+#### @response
+
+##### 200
+
+**@body:** *None.*
 
 **@TODO:** Error situaties
 ___
-##/quiz-nights/:quizPin/rounds/:round/questionings/:question
+
+## /quiz-nights/:quizPin/rounds/:round/questionings/:question
+
 **@method** PATCH
-**@body:** 
+**@body:**
+
 ```js
 {
     active: true
 }
 ```
-####@response:
-#####200:
+
+#### @response
+
+##### 200
+
 **@body:** *None*
-#####404: 
+
+##### 404
+
 **@description:** When question is not found.
-**@body:** 
+**@body:**
+
 ```js
 {
     error: "Question not found"
 }
 ```
+
 ___
 
-#Scoreboard Routes
+# Scoreboard Routes
 
-##scoreboards/:quizPin
+## scoreboards/:quizPin
+
 **@method:** POST
 **@Description:** Post quizPin to server to prepare Session for websocket connection.
 **@body:** *None*
 
-####@response:
-#####200:
-**@body:** *None* 
+#### @response
 
-#####404:
+##### 200
+
+**@body:** *None*
+
+##### 404
+
 **@description:** when quizpin does not exist.
 **@body:**
+
 ```js
 {
-    error: "No quiz-night with this pin was found." 
+    error: "No quiz-night with this pin was found."
 }
 ```
+
 ___
 
-#TeamApp
+# TeamApp
 
+## /quiz-Nights/:quizPin/teams/:teamName/answers
 
-
-##/quiz-Nights/:quizPin/teams/:teamName/answers
 **@method:** POST
 **@body:**
+
 ```js
 {
     roundNumber:1,
@@ -354,12 +434,18 @@ ___
     answer: "answer to silly question"
 }
 ```
-####@response:
-#####200:
+
+#### @response
+
+##### 200
+
 **@body** *None*
-#####404:
-**@description:** can occur when either the round number or question number is not found. 
+
+##### 404
+
+**@description:** can occur when either the round number or question number is not found.
 **@body:**
+
 ```js
 {
     error: "Round or question not found"
@@ -368,9 +454,11 @@ ___
 
 ___
 
-##/quiz-Nights/:quizPin/teams/:teamName/answers
+## /quiz-Nights/:quizPin/teams/:teamName/answers
+
 **@method:** PUT
 **@body:**
+
 ```js
 {
     roundNumber:1,
@@ -379,15 +467,20 @@ ___
 }
 
 ```
-####@response:
-#####200:
+
+#### @response
+
+##### 200
+
 **@body** *None*
-#####404:
-**@description:** can occur when either the round number or question number is not found. 
+
+##### 404
+
+**@description:** can occur when either the round number or question number is not found.
 **@body:**
+
 ```js
 {
     error: "Round or question not found"
 }
 ```
-

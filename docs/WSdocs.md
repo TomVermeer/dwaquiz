@@ -1,42 +1,38 @@
 
+# WS
 
-
-#WS
 All websocket communications must have a messageType and payload.
-All messagetypes are based on events/actions that occur within the different applications. 
+All messagetypes are based on events/actions that occur within the different applications.
 
+## messageType onTeamApply
 
-##messageType onTeamApply:
 **@payload:**
+
 ```js
 {
     teamName: "de billy butchers"
 }
 ```
+
 ___
 
-##messageType: onAnswer
+## messageType: onAnswer
+
 **@payload:**
+
 ```js
 {
     teamName: "de billy Butchers",
     answer: "answer to silly question"
 }
 ```
+
 ___
 
-##messageType: onAnswer
-**@payload:**
-```js
-{
-    teamName: "super-coole-team-naam",
-    answer: "answer 1"
-}
-```
-___
+## messageType: onQuestion
 
-##messageType: onQuestion
 **@payload:**
+
 ```js
 {
     category: "sport",
@@ -48,10 +44,12 @@ ___
 
 ___
 
-##messageType: onQuestionClose
+## messageType: onQuestionClose
+
 **@payload:**
+
 ```js
- [ 
+ [
     {
         teamName:"de billy butchers",
         answer: "parijs",
@@ -64,10 +62,13 @@ ___
     }
 ]
 ```
+
 ___
 
-##messageType: onRoundEnd
+## messageType: onRoundEnd
+
 **@payload:**
+
 ```js
 
 [
@@ -75,7 +76,7 @@ ___
         teamName: "de billy butchers",
         correctQuestions: 1,
         roundPoints: 4
-    }, 
+    },
     {
         teamName: "super-coole-teamnaam".
         correctQuestions: 0,
@@ -84,17 +85,20 @@ ___
 ]
 
 ```
+
 ___
 
-##messageType: onQuizNightEnd
+## messageType: onQuizNightEnd
+
 **@payload:**
+
 ```js
 [
     {
         teamName: "de billy butchers",
         correctQuestions: 1,
         roundPoints: 4
-    }, 
+    },
     {
         teamName: "super-coole-teamnaam".
         correctQuestions: 0,
@@ -102,16 +106,16 @@ ___
     }
 ]
 ```
+
 ___
 
-##messageType: onTeamApprovel
+## messageType: onTeamApprovel
+
 **@description:** Returns true or false depending on if team is approved or not.
 **@payload:**
+
 ```js
 {
     approved: true
 }
 ```
-
-
-

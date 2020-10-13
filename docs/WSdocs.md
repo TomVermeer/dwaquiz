@@ -3,6 +3,7 @@
 
 #WS
 All websocket communications must have a messageType and payload.
+All messagetypes are based on events/actions that occur within the different applications. 
 
 
 ##messageType onTeamApply:

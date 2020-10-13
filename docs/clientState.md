@@ -10,6 +10,7 @@ For guarding the state in our applications we will be using Redux, in the follow
 {
     state: {
         allCategories: [string],
+        chosenCategories: [map(string, [string])], // categoryName -> question suggestions in category.
         scorePerTeam: map(number, {roundPoints: number, correctQuestions: number}), // teamIndex -> roundpoints, correctquestions
         quizNight :
         {
@@ -18,14 +19,13 @@ For guarding the state in our applications we will be using Redux, in the follow
             teamApplications: [string],
             approvedTeams: [string]
         },
-        chosenCategories: [map(string, [string])], // categoryName -> question suggestions in category.
         currentQuestion: {
             category: string,
             question: string,
             correctAnswer: string,
             teamAnswers: map(number, {answer: string, isCorrect: boolean}) // teamIndex -> answer, iscorrect
         },
-        quizInfo: {
+        quizProgress: {
             quizPin: number,
             roundNumber: number,
             questionNumber: number,
@@ -40,7 +40,7 @@ For guarding the state in our applications we will be using Redux, in the follow
 ```js
 {
     state: {
-        quizInfo: {
+        quizProgress: {
             quizPin: number,
             roundNumber: number,
             questionNumber: number,
@@ -58,7 +58,7 @@ For guarding the state in our applications we will be using Redux, in the follow
 ```js
 {
     state: {
-        quizInfo: {
+        quizProgress: {
             quizPin: number,
             roundNumber: number,
             questionNumber: number,
@@ -87,16 +87,34 @@ In this section the different reducers and their responsibillities will be docum
 
 ## Master app
 
-### quizNightreducer
+### master reducer
+the master reducer handles all data changes in the categories, chosencategories and teamscores.
 
-### roundreducer
+### quizNight reducer
+the quizNight reducer handles all data changes in the quizNight state.
 
-### questionReducer
+### currentQuestion reducer
+
+---
 
 ## scoreboard
 
+### scoreBoard reducer
+
+---
+
 ## teamapp
 
+### teamApp reducer
+
+### placing reducer
+
+---
+
 ## shared
+
+### quizProgress reducer
+
+### teamScore reducer
 
 ---

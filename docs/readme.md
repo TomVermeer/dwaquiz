@@ -44,7 +44,41 @@ ___
 We have chosen to model 5 different schema's in for our application, altough we intend to only use 2 collections.
 We decided to make the "questioningsSchema", "teamSchema" and "roundSchema" schemes to more easily handle our data in the frontend. These schema's however will not become their own collections but rather be embedded in the "quizNightSchema".
 
-[mongoose schema's](mongooseSchema.PNG)
+```js
+
+const questioningsSchema = new mongoose.schema({
+    teamName: String,
+    question: String,
+    answer: String,
+    isCorrect: Boolean
+})
+
+const teamSchema = new mongoose.schema({
+    teamName: String,
+    numberOfCorrectQuestions: Number,
+    roundPoints: Number,
+})
+
+const roundSchema = new mongoose.schema({
+    chosenCategories: [String],  
+    roundNumber: Number,
+    questionings: [questioningsSchema],
+})
+
+const quizNightSchema = new mongoose.Schema({
+  _id: Number, // quizPin
+  teams: [teamSchema],
+  rounds: [roundSchema],
+});
+
+const questionSchema = new mongoose.schema({
+  _id: String, // question
+  category: String,
+  answer: String,
+});
+
+```
+
 ___
 
 ## Client-State

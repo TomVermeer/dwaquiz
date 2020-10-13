@@ -1,9 +1,13 @@
-# readme-Quizzer
+# Quizzer
 
 ##Introduction
 
-this documentation is written using Markdown and Draw.io.
-**made-by:** Erik Knaake & Tom Vermeer
+This documentation is written using Markdown and Draw.io.
+To read this document as intented it should be read using [VS Code](https://code.visualstudio.com/) and the following extensions:
+- [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/) to be able to read all headings and plant uml snippets
+- [vscode-drawio](https://marketplace.visualstudio.com/items?itemName=eightHundreds.vscode-drawio) to be able to read the drawio diagram
+
+**Made by:** Erik Knaake & Tom Vermeer
 ___
 ##wireframes
 Wireframes were made using draw.io and illustrate the different screens of our applications.

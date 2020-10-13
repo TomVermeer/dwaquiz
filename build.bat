@@ -1,0 +1,1 @@
+npm run build --prefix clients/master && npm run build --prefix clients/master && npm run build --prefix clients/master

@@ -84,9 +84,34 @@ ___
 
 ## Client-State
 
-// TODO
+[Client State](clientState.md)
 ___
 
 ## Express-structure
 
-// TODO
+[Express Structure](expressStructure.md)
+
+## General Overview
+
+```puml
+@startmindmap
+* /
+ *_ build.bat
+ * docs
+ * clients
+  * master
+   * src
+  * team
+   * src
+  * scoreboard
+   * src
+  * shared
+   * src
+    * reducers
+    * components
+ * server
+  * route-handlers
+  * routers
+  * middleware
+@endmindmap
+```

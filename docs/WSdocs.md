@@ -5,14 +5,24 @@
 All websocket communications must have a messageType and payload.
 
 
-#Quizmaster
+##messageType onTeamApply:
+**@payload:**
+```js
+{
+    teamName: "de billy butchers"
+}
+```
+___
 
-##onTeamApply:
-
-
-
-#Scoreboard
-
+##messageType: onAnswer
+**@payload:**
+```js
+{
+    teamName: "de billy Butchers",
+    answer: "answer to silly question"
+}
+```
+___
 
 ##messageType: onAnswer
 **@payload:**
@@ -93,20 +103,14 @@ ___
 ```
 ___
 
-##messageType: 
+##messageType: onTeamApprovel
+**@description:** Returns true or false depending on if team is approved or not.
 **@payload:**
 ```js
 {
-
+    approved: true
 }
 ```
-___
 
-##messageType: 
-**@payload:**
-```js
-{
 
-}
-```
 

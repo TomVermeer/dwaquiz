@@ -23,13 +23,14 @@ The following diagram shows all available routes with their supported methods.
   *_ POST
   * /:quizPin
    *_ DELETE
+   * /suggestedQuestions
+    *_ GET
    *_ PATCH
    * /teams
     *_ POST
    * /rounds
     *_ POST
     * /:round
-     *_ GET
      * /questionings
       *_ POST
     * /:question
@@ -118,7 +119,19 @@ ___
 
 #####404:
 **@description:** When quizPin does not exist.
+___
 
+##/quiz-Nights/:quizpin/team-applications
+**@method:** POST
+**@body:**
+```js
+{
+    teamName: "de billy Butchers"
+}
+
+```
+####@response:
+___
 ##/quiz-nights/:quizPin/team-applications/:teamName
 **@method:** DELETE
 
@@ -190,7 +203,7 @@ ___
 **@description:** when quizPin does not exist.
 ___
 
-##/quiz-nights/:quizPin/rounds/:round/?:offset&:limit
+##/quiz-nights/:quizPin/suggestedQuestions/?:offset&:limit
 **@method:** GET
 **@body:** 
 ```js
@@ -327,39 +340,54 @@ ___
 ```
 ___
 
-##/
-**@method:**
+#TeamApp
+
+
+
+##/quiz-Nights/:quizPin/teams/:teamName/answers
+**@method:** POST
 **@body:**
 ```js
-
+{
+    roundNumber:1,
+    questionNumber:1,
+    answer: "answer to silly question"
+}
 ```
 ####@response:
+#####200:
+**@body** *None*
+#####404:
+**@description:** can occur when either the round number or question number is not found. 
+**@body:**
+```js
+{
+    error: "Round or question not found"
+}
+```
+
 ___
 
-##/
-**@method:**
+##/quiz-Nights/:quizPin/teams/:teamName/answers
+**@method:** PUT
 **@body:**
 ```js
+{
+    roundNumber:1,
+    questionNumber:1,
+    answer: "answer to silly question revised"
+}
 
 ```
 ####@response:
-___
-
-##/
-**@method:**
+#####200:
+**@body** *None*
+#####404:
+**@description:** can occur when either the round number or question number is not found. 
 **@body:**
 ```js
-
+{
+    error: "Round or question not found"
+}
 ```
-####@response:
-___
-
-##/
-**@method:**
-**@body:**
-```js
-
-```
-####@response:
-
 

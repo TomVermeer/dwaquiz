@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-10-13T11:09:55.683Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="_UbGfqvuQSbBzf_-7fPL" version="13.7.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-13T11:32:43.518Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="j7igfB0NX1qsoPw1LIk1" version="13.7.9" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
     <mxGraphModel dx="2499" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -934,7 +934,7 @@
         <mxCell id="bd66M0HTxPimwIOGu9iC-56" value="[REST] POST &lt;br&gt;/quiz-nights/:quizPin/rounds/:round/questionings" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="710" y="1810" width="270" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="bd66M0HTxPimwIOGu9iC-57" value="&amp;lt;GameProgress&lt;br&gt;gamePin: number,&lt;br&gt;round: number,&lt;br&gt;question: number&lt;br&gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
+        <mxCell id="bd66M0HTxPimwIOGu9iC-57" value="&amp;lt;QuizProgress&lt;br&gt;gamePin: number,&lt;br&gt;round: number,&lt;br&gt;question: number&lt;br&gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="685" y="1470" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="bd66M0HTxPimwIOGu9iC-60" value="[REST] POST&amp;nbsp;&lt;br&gt;/quiz-nights/:quizPin/rounds/:round/questionings/:question/grade" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">

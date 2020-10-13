@@ -1,10 +1,14 @@
 const cors = require('cors');
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const { environment, DEVELOPMENT } = require('../constants');
 
 const installCors = (app) => {
-    app.use(cors({ origin: true, credentials: true }));
-    app.options("*", cors({ origin: true, credentials: true }));
+    if(environment === DEVELOPMENT) {
+        console.log('Enabling cors for development');
+        app.use(cors({ origin: true, credentials: true }));
+        app.options("*", cors({ origin: true, credentials: true }));
+    }
 }
 
 const installSession = (app) => {

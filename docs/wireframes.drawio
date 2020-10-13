@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-13T13:36:55.641Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="2nEpWZzWJJKtUeLTja9h" version="13.7.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-13T13:51:21.231Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="MkxNqilV3RUP8geVQzGr" version="13.7.9" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="2011" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="2499" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -600,7 +600,7 @@
           <mxGeometry x="2920" y="1630" width="192.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-290" value="Na verbetering: herzien" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="3330" y="1630" width="190" height="20" as="geometry" />
+          <mxGeometry x="3330" y="1635" width="190" height="20" as="geometry" />
         </mxCell>
         <mxCell id="tzb5yaRrSsXEz6ic2CVl-291" value="" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="tzb5yaRrSsXEz6ic2CVl-289" target="tzb5yaRrSsXEz6ic2CVl-290" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -1316,6 +1316,27 @@
         </mxCell>
         <mxCell id="PG2lcVViqY5leGbTb4DN-35" value="[ACTION]&lt;br&gt;ON_SCORE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1440" y="4390" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-36" value="[ACTION] ON_TEAM_APPLY" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3420" y="375" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-37" value="[ACTION] ON_NEXT_QUESTION" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2476.5" y="1380" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-38" value="[ACTION]&lt;br&gt;ON_ANSWER_SUBMIT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2355" y="1635" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-39" value="[ACTION] ON_NEXT_ROUND" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3380" y="1400" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-40" value="[ACTION] ON_QUESTION_CLOSED" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2290" y="1255" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-41" value="[ACTION]&lt;br&gt;ON_QUIZ_NIGHT_SCORE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2415" y="2025" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PG2lcVViqY5leGbTb4DN-42" value="[ACTION]&lt;br&gt;ON_QUIZ_NIGHT_END" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3390" y="2280" width="40" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

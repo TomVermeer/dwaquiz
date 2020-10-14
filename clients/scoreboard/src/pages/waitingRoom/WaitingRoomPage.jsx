@@ -1,7 +1,7 @@
 import React from "react";
 
 import WaitingRoomHeader from "../../components/waitingRoomHeader/WaitingRoomHeader";
-import WaitingRoomTeams from "../../components/waitingRoomTeams/WaitingRoomTeams"
+import TeamsDisplay from "../../components/TeamsDisplay/TeamsDisplay"
 
 const WaitingRoomHomepage = () => {
   const teams = [
@@ -19,7 +19,7 @@ const WaitingRoomHomepage = () => {
   return (
     <>
       <WaitingRoomHeader quizpin={12314} />
-      <WaitingRoomTeams teams={teams} />
+      <TeamsDisplay title="joined" teams={teams} />
     </>
   );
 };

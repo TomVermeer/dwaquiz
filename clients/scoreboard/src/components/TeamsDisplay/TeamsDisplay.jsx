@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 
-const WaitingRoomTeams = (props) => {
+const TeamsDisplay = (props) => {
   return (
-    <Container>
-        <h1>Teams</h1>
+    <Container style={{marginTop: "40px"}}>
+        <h1>{props.title}</h1>
       {props.teams.map((el) => {
         return (
           <Card style={{margin: '10px'}}>
@@ -15,4 +15,4 @@ const WaitingRoomTeams = (props) => {
     </Container>
   );
 };
-export default WaitingRoomTeams;
+export default TeamsDisplay;

@@ -37,7 +37,6 @@ const createQuizNightHandler = async (req, res) => {
             quizPin: quizNight._id
         });
     } catch (e) {
-        console.log('ERROR: ', e);
         throw e;
     }
 };

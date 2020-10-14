@@ -7,7 +7,7 @@ export const openQuizNight = () => (dispatch) => {
             method: 'POST'
         })
         .then(data => data.json())
-        .then((json) => dispatch(onOpenQuizNight(json)));
+        .then(json => dispatch(onOpenQuizNight(json)));
 }
 
 const onOpenQuizNight = (response) => {

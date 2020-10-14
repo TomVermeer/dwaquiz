@@ -14,7 +14,6 @@ export const Home = (props) => {
     const onStartQuizNight = () => {
         history.push(PAGES.TEAMS);
         dispatch(openQuizNight());
-        console.log('click');
     };
 
     return (

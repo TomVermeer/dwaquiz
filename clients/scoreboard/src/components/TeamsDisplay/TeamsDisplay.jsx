@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Container, Table } from "react-bootstrap";
+import { Card, Container, Table } from "react-bootstrap";
 
 import "../TeamsDisplay/teamDisplay.scss";
 
@@ -31,7 +31,11 @@ const TeamsDisplay = (props) => {
   const renderScoreTeams = () => {
     return (
       <Container>
-        <Table>
+        <Table className="TeamTable" >
+          <tr>
+            <th>Team:</th>
+            <th>Answer:</th>
+          </tr>
           {props.teams.map((el) => {
             return (
               <tr className={decideClassName(el)}>

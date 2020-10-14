@@ -1,11 +1,14 @@
 {
   "name": "shared",
+  "module": "dist",
   "version": "1.0.0",
   "description": "Shared logic for all Quizzer clients",
   "author": "Erik Knaake (598368)",
   "license": "ISC",
   "scripts": {
-    "build": "babel src --out-file index.js"
+    "babelBuild": "babel src --out-dir dist",
+    "build:linux": "npm run babelBuild && cp package.json dist",
+    "build": "npm run babelBuild && copy package.json dist"
   },
   "dependencies": {
     "react": "^16.13.1",

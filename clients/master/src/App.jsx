@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import { GameProgress } from 'shared';
+import { GameProgress } from 'shared/components/GameProgress';
 
 function App() {
   return (

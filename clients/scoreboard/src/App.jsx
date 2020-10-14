@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom'
 
 
 import HomePage from '../src/pages/homePage/HomePage'
+import WaitingRoomPage from '../src/pages/waitingRoom/WaitingRoomPage'
 
 import './App.scss';
 
@@ -16,6 +17,8 @@ function App() {
       <Switch>
         <Route exact path="/"
         component={HomePage}/>
+        <Route exact path="/waitingRoom" component={WaitingRoomPage}/>
+
       </Switch>
      </div>
     </BrowserRouter>

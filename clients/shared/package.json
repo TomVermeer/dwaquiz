@@ -8,6 +8,7 @@
     "build": "babel src --out-file index.js"
   },
   "dependencies": {
+    "immer": "^7.0.9",
     "react": "^16.13.1"
   },
   "devDependencies": {

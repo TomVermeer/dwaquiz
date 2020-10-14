@@ -26,3 +26,27 @@ var GameProgress = function GameProgress(props) {
 };
 
 exports.GameProgress = GameProgress;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createReducer = void 0;
+
+var immer = require('immer');
+/**
+ * Wraps a reducer in immer, making it possible to write muttable code in a reducer
+ * @param reducer {Function} reducer with mutable code to make immutable
+ * @return {Function} immutable version of reducer
+ */
+
+
+var createReducer = function createReducer(reducer) {
+  return function (state, action) {
+    return immer.produce(state, function (draft) {
+      return reducer(draft, action);
+    });
+  };
+};
+
+exports.createReducer = createReducer;

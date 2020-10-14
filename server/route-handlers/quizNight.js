@@ -5,6 +5,11 @@ const generateQuizPin = (length) => Math.floor(Math.random() * (9 * Math.pow(10,
 
 const doesPinAlreadExist = async (quizPin) => await QuizNight.findOne({_id: quizPin}).exec() != null;
 
+/**
+ * Generates a unique quiz pin with a minimal length
+ * @param {Number} length minimal length the generated quizPin must have
+ * @return {Number} quizpin that is not yet present in database 
+ */
 const getNewQuizPin = async (length = 6) => {
     let quizPin;
     let additionalLength = 0;
@@ -15,6 +20,9 @@ const getNewQuizPin = async (length = 6) => {
     return quizPin;
 }
 
+/**
+ * Generates an unique quizPin and saves it as an empty quiznight to the database
+ */
 const createQuizNightHandler = async (req, res) => {
     try {
         const pin = await getNewQuizPin();

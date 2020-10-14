@@ -11,6 +11,7 @@
     "build": "npm run babelBuild && copy package.json dist"
   },
   "dependencies": {
+    "immer": "^7.0.9",
     "react": "^16.13.1",
     "bootstrap": "^4.5.3",
     "node-sass": "^4.14.1",

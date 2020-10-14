@@ -1,4 +1,5 @@
-export const ACTIONS = Object.freeze({
+export const Actions = Object.freeze({
+    OPEN_QUIZ_NIGHT: 'OPEN_QUIZ_NIGHT',
     ON_OPEN_QUIZ_NIGHT: 'ON_OPEN_QUIZ_NIGHT',
     ON_TEAM_APPLY: 'ON_TEAM_APPLY',
     ON_TEAM_APPROVE: 'ON_TEAM_APPROVE',

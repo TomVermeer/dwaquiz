@@ -1,4 +1,5 @@
 export const Actions = Object.freeze({
+    TEAM_APPLY: 'TEAM_APPLY',
     ON_TEAM_APPLY: 'ON_TEAM_APPLY',
     ON_NEXT_QUESTION: 'ON_NEXT_QUESTION',
     ON_NEXT_ROUND: 'ON_NEXT_ROUND',

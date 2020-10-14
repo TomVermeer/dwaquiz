@@ -19,7 +19,7 @@ const WaitingRoomHomepage = () => {
   return (
     <>
       <WaitingRoomHeader quizpin={12314} />
-      <TeamsDisplay title="joined" teams={teams} />
+      <TeamsDisplay title="joined" teams={teams} type="display" />
     </>
   );
 };

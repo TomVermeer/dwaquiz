@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const apiRoot = require('./routers/apiRoot');
 const { environment, PRODUCTION } = require("./constants");
 const { installCors, installJsonBodyParser, installSession } = require("./middleware/defaultMiddleware");
 
@@ -30,10 +31,7 @@ const registerExpressServer = (httpServer) => {
 
     serveClientFiles(app);
 
-    // TODO install routers
-    app.get('/api/v1', (req, res) => {
-        res.json({ hello: 'world' });
-    });
+    app.use('/api/v1', apiRoot);
 
     httpServer.on("request", app);
 };

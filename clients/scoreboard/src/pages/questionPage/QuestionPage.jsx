@@ -1,8 +1,6 @@
 import React from 'react';
 
-import RoundHeader from "../../components/roundHeader/RoundHeader"
-import Question from "../../components/Question/Question"
-import TeamsDisplay from '../../components/TeamsDisplay/TeamsDisplay';
+import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components"
 
 const Questionpage = () => {
     const teams = [
@@ -24,9 +22,10 @@ const Questionpage = () => {
 
     return(
         <>
-            <RoundHeader roundNumber={1} questionNumber={4} quizPin={12314}/>
+            <QuestionHeader roundNumber={1} questionNumber={4} quizPin={12314}/>
             <Question question={question}/>
             <TeamsDisplay title="Answered by" teams={teams}/>
+            <Footer/>
         </>
     )
 }

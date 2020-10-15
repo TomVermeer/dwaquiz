@@ -1,6 +1,6 @@
 import { getWebsocket } from "shared/websocket";
-import { Actions } from "../../actions";
 import {postAndParse} from "shared/fetchHelpers";
+import {SharedActions} from "shared/actions";
 
 export const openQuizNight = () => (dispatch) => {
     postAndParse('quiz-nights')
@@ -11,5 +11,5 @@ export const openQuizNight = () => (dispatch) => {
 };
 
 const onOpenQuizNight = (response) => {
-    return { type: Actions.ON_OPEN_QUIZ_NIGHT, payload: response.quizPin }
+    return { type: SharedActions.ON_OPEN_QUIZ_NIGHT, payload: response.quizPin }
 };

@@ -14,7 +14,6 @@ const WaitingRoomHeader = (props) => {
           </Spinner>
         </Col>
         <Col>
-          {" "}
           <div classname="mr-auto">
             <h3>quizpin: {props.quizpin}</h3>
           </div>

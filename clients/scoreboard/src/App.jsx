@@ -11,7 +11,7 @@ import {
   ScorePage,
   RoundEndPage,
   QuizNightEndPage
-} from "../src/pages/index"
+} from "../src/pages/"
 
 
 

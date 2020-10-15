@@ -15,11 +15,11 @@ const TeamsDisplay = (props) => {
 
   const renderDisplayTeams = () => {
     return (
-      <Container style={{ marginTop: "40px" }}>
+      <Container className="TeamContainer">
         <h1>{props.title}</h1>
         {props.teams.map((el) => {
           return (
-            <Card style={{ margin: "10px" }}>
+            <Card className="TeamCard">
               <Card.Body>{el.name}</Card.Body>
             </Card>
           );
@@ -75,7 +75,7 @@ const TeamsDisplay = (props) => {
   };
 
   const sortTeams = (teams) => {
-    if(props.type=== "roundScore") {
+    if(props.type === "roundScore") {
       return teams.sort((x, y) => (x.correctQuestions > y.correctQuestions ? -1 : 1))
     }else {
       return teams.sort((x, y) => (x.roundPoints > y.roundPoints ? -1 : 1))

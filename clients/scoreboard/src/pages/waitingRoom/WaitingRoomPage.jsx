@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WaitingRoomHeader, TeamsDisplay, Footer } from '../../components'
+import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 
 const WaitingRoomHomepage = () => {
   const teams = [
@@ -19,7 +19,7 @@ const WaitingRoomHomepage = () => {
     <>
       <WaitingRoomHeader quizpin={12314} />
       <TeamsDisplay title="joined" teams={teams} type="display" />
-      <Footer/>
+      <Footer />
     </>
   );
 };

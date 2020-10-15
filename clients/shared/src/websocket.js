@@ -1,15 +1,16 @@
+import { SERVER } from "./constants";
 import { getDispatch } from "./store";
-const WS_URL = 'ws://localhost:3000';
+const WS_URL = `ws://${SERVER}/ws`;
 
 let websocket = null;
 
 const initializeWebSocket = (url, dispatch) => {
     const ws = new WebSocket(url);
     
-    ws.onmessage((data) => {
+    ws.onmessage = ({data}) => {
         const message = JSON.parse(data);
         dispatch(message);
-    });
+    };
 
     return ws;
 }

@@ -1,17 +1,48 @@
-const ws = require("ws");
+const WebSocket = require("ws");
+const Roles = require("./roles");
+const { sessionParser } = require('./middleware/session');
 
 const setupWebSocketServer = (server) => {
     server.on('connection', (ws) => {
-        // TODO: event handlers
+        ws.sendJson = (data) => ws.send(JSON.stringify(data));
     });
+
+    server.on('error', (error) => {
+        console.log('connection error: ', error);
+    });
+
+    server.on('close', (close) => {
+        console.log('connection closed: ', close);
+    })
 }
 
+let wss = null;
+
 const registerWebSocketServer = (httpServer) => {
-    // TODO: test
-    const websocketServer = new ws.Server({
-        server: httpServer
+    wss = new WebSocket.Server({ noServer: true, path: '/ws'});
+
+    httpServer.on('upgrade', (req, networkSocket, head) => {
+        sessionParser(req, {}, () => {
+            if (req.session.role === undefined) {
+                // TODO check only one master?
+                console.log('refusing connection because role is not set');
+                networkSocket.destroy();
+                return;
+            }
+            wss.handleUpgrade(req, networkSocket, head, newWebSocket => {
+                newWebSocket.role = req.session.role;
+                newWebSocket.quizPin = Number(req.session.quizPin);
+                wss.emit('connection', newWebSocket, req);
+            });
+        });
     });
-    setupWebSocketServer(websocketServer);
+
+    setupWebSocketServer(wss);
 };
 
-module.exports = registerWebSocketServer;
+const getWebSocketClients = () => [...wss.clients];
+const getMaster = (pin) => getWebSocketClients().find(x => x.quizPin === pin && x.role === Roles.QUIZ_MASTER);
+const getScoreBoards = (pin) => getWebSocketClients().filter(x => x.quizPin === pin && x.role === Roles.SCOREBOARD);
+const getTeams = (pin) => getWebSocketClients().filter(x => x.quizPin === pin && x.role === Roles.TEAM);
+
+module.exports = { registerWebSocketServer, getWebSocketClients, getMaster, getScoreBoards, getTeams };

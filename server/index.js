@@ -1,12 +1,12 @@
 const http = require("http");
-const registerWebSocketServer = require("./setupWebSockets");
+const {registerWebSocketServer} = require("./setupWebSockets");
 const registerExpressServer = require("./setupExpressServer");
 const registerMongoose = require("./setupMongoose");
 
-const httpServer = http.createServer();
+const app = registerExpressServer();
+const httpServer = http.createServer(app);
 
 registerMongoose();
-registerExpressServer(httpServer);
 registerWebSocketServer(httpServer);
 
 const port = Number(process.env.HTTP_PORT) || 3000;

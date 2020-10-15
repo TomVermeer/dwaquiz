@@ -1,9 +1,9 @@
+const { doesPinExist } = require("../helpers/quizPin");
 const { QuizNight } = require("../models");
+const Roles = require("../roles");
 
 // https://stackoverflow.com/a/58509734/7736404
 const generateQuizPin = (length) => Math.floor(Math.random() * (9 * Math.pow(10, length - 1))) + Math.pow(10, length - 1);
-
-const doesPinAlreadExist = async (quizPin) => await QuizNight.findOne({_id: quizPin}).exec() != null;
 
 /**
  * Generates a unique quiz pin with a minimal length
@@ -16,7 +16,7 @@ const getNewQuizPin = async (length = 6) => {
     do {
         quizPin = generateQuizPin(length + additionalLength);
         additionalLength++
-    } while (await doesPinAlreadExist(quizPin));
+    } while (await doesPinExist(quizPin));
     return quizPin;
 }
 
@@ -32,9 +32,11 @@ const createQuizNightHandler = async (req, res) => {
             rounds: []
         });
         await quizNight.save();
+        req.session.role = Roles.QUIZ_MASTER;
+        req.session.quizPin = pin;
 
         res.json({
-            quizPin: quizNight._id
+            quizPin: pin
         });
     } catch (e) {
         throw e;

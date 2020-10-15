@@ -5,6 +5,9 @@ import './teams.scss';
 export const Teams = (props) => {
     const state = useSelector(state => state.quizNight);
     return (
-        <p>Teams works {state.quizPin}</p>
+        <>
+            <p>Teams works {state.quizPin}</p>
+            {state.teamApplications.map(x => <p key={x}>{x}</p>)}
+        </>
     );
 } 

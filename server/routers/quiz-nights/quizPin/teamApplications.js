@@ -1,5 +1,6 @@
 const router = require('express').Router();
+const { applyTeamHandler } = require('../../../route-handlers/teamApplication');
 
-// TODO post
+router.post('/', applyTeamHandler);
 
 module.exports = router;

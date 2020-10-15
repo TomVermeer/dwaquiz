@@ -1,13 +1,18 @@
 import { API_BASE_URL } from "shared/constants"
+import { getWebsocket } from "shared/websocket";
 import { Actions } from "../../actions";
 
 export const openQuizNight = () => (dispatch) => {
     fetch(API_BASE_URL + 'quiz-nights',
         {
-            method: 'POST'
+            method: 'POST',
+            credentials: 'include'
         })
         .then(data => data.json())
-        .then(json => dispatch(onOpenQuizNight(json)));
+        .then(json => {
+            getWebsocket(); // Open websocket to listen to teams that apply
+            dispatch(onOpenQuizNight(json));
+        });
 }
 
 const onOpenQuizNight = (response) => {

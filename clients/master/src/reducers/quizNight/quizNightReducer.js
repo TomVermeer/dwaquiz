@@ -1,6 +1,6 @@
 import {createReducer} from 'shared/reducers/createReducer';
 import { Actions } from '../../actions';
-import * as WsEvents from "websocketEvents";
+import * as WsEvents from "websocket-events";
 
 const initialState = {
     approvedTeams: [],

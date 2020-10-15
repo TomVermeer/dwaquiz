@@ -1,5 +1,6 @@
 {
   "name": "websocketevents",
+  "module": "index.js",
   "version": "1.0.0",
   "description": "All websockets events of Quizzer",
   "author": "",

@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const apiRoot = require('./routers/apiRoot');
 const { environment, PRODUCTION } = require("./constants");
-const { installCors, installJsonBodyParser, installSession } = require("./middleware/defaultMiddleware");
+const { installCors, installJsonBodyParser } = require("./middleware/defaultMiddleware");
+const { installSession } = require("./middleware/session");
 
 const installRootMiddleware = (app) => {
     installCors(app);
@@ -25,7 +26,7 @@ const serveClientFiles = (app) => {
     }
 }
 
-const registerExpressServer = (httpServer) => {
+const registerExpressServer = () => {
     const app = express();
     installRootMiddleware(app);
 
@@ -33,7 +34,7 @@ const registerExpressServer = (httpServer) => {
 
     app.use('/api/v1', apiRoot);
 
-    httpServer.on("request", app);
+    return app;
 };
 
 module.exports = registerExpressServer;

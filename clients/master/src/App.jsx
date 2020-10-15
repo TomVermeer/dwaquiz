@@ -8,12 +8,12 @@ import './App.scss';
 import { Home } from './pages/home/Home';
 import { Teams } from './pages/teams/Teams';
 import { PAGES } from './pages/pages';
-import {Title} from "shared/components/title/Title";
+import {MasterTitle} from "./components/MasterTitle";
 
 function App() {
   return (
     <div className="App">
-      <Title/>
+      <MasterTitle/>
       <div className="content">
           <Router>
               <Switch>

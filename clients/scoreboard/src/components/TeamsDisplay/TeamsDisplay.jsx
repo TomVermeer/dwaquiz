@@ -88,7 +88,7 @@ const TeamsDisplay = (props) => {
       return renderQuestionScoreTeams();
     } else if (props.type === "roundScore" || props.type === "nightScore") {
       return renderEndScoreTeams();
-    } else if (props.type == undefined || props.type === "display") {
+    } else if (props.type === undefined || props.type === "display") {
       return renderDisplayTeams();
     }
   };

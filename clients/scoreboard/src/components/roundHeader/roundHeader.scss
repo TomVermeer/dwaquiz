@@ -1,0 +1,15 @@
+.infoWrapper {
+    box-sizing: border-box;
+    justify-content: end;
+    display: flex;
+    flex-direction: column;
+    .infoRow {
+        justify-content: end;
+        align-content: flex-end;
+
+        p {
+            float: right;
+            margin: 0px;
+        }
+    }
+}

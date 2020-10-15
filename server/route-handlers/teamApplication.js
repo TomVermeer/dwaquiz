@@ -1,11 +1,12 @@
+const WsEvents = require("websocketevents");
+
 const Roles = require("../roles");
-const { getMaster } = require("../setupWebSockets");
+const {getMaster} = require("../setupWebSockets");
 
 const sendTeamApplicationToMaster = (pin, teamName) => {
     const masterSocket = getMaster(pin);
-    // TODO extract websocket messages to shared project
-    masterSocket.sendJson({type: 'ON_TEAM_APPLY', payload: teamName});
-}
+    masterSocket.sendJson({type: WsEvents.ON_TEAM_APPLY, payload: teamName});
+};
 
 const applyTeamHandler = async (req, res) => {
     try {
@@ -20,4 +21,4 @@ const applyTeamHandler = async (req, res) => {
     }
 }
 
-module.exports = { applyTeamHandler };
+module.exports = {applyTeamHandler};

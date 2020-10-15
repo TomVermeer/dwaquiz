@@ -1,4 +1,4 @@
-const WsEvents = require("websocketevents");
+const WsEvents = require("websocket-events");
 
 const Roles = require("../roles");
 const {getMaster} = require("../setupWebSockets");

@@ -1,5 +1,7 @@
 export const SharedActions = Object.freeze({
-    NEXT_QUESTION: 0,
-    NEXT_ROUND: 1,
-    NIGHT_END: 2
+    NEXT_QUESTION: 'NEXT_QUESTION',
+    NEXT_ROUND: 'NEXT_ROUND',
+    NIGHT_END: 'NIGHT_END',
+    CHANGE_TITLE: 'CHANGE_TITLE',
+    ON_OPEN_QUIZ_NIGHT: 'ON_OPEN_QUIZ_NIGHT'
 });

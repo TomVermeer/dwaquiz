@@ -15,14 +15,12 @@ export const Header = (props) => {
 
     return (
         <div className="header">
-            {/*<div className="split">*/}
             <div className="padding"></div>
-                <MasterTitle className="title"/>
-                <QuizProgress
-                    roundNumber={quizProgress.roundNumber}
-                    questionNumber={quizProgress.questionNumber}
-                    quizPin={quizProgress.quizPin}/>
-            {/*</div>*/}
+            <MasterTitle className="title"/>
+            <QuizProgress
+                roundNumber={quizProgress.roundNumber}
+                questionNumber={quizProgress.questionNumber}
+                quizPin={quizProgress.quizPin}/>
         </div>
     );
 };

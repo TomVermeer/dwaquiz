@@ -1,5 +1,21 @@
 .applications {
-  height: 80%;
+  height: 100%;
   overflow-y: auto;
-  border: 1px solid black;
+}
+
+.panel {
+  width: 18rem;
+  height: 100%;
+
+  .card {
+    height: 80%;
+  }
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 45%;
+  }
 }

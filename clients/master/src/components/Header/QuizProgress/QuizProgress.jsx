@@ -5,16 +5,20 @@ import {Card} from "react-bootstrap";
 
 export const QuizProgress = (props) => {
     return (
-        <Card className="progress">
-            <Card.Body>
-                <Card.Title>
-                    {props.quizPin}
-                </Card.Title>
-                <Card.Text>
-                    <p>Quizronde {props.roundNumber}</p>
-                    <QuestionProgress questionNumber={props.questionNumber}/>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div className="progress">
+            {(props.quizPin || props.roundNumber || props.questionNumber) && <Card>
+                <Card.Body>
+                    <Card.Title>
+                        {props.quizPin}
+                    </Card.Title>
+                    <p>
+                        Quizronde {props.roundNumber}</p>
+                    <p>
+                        <QuestionProgress questionNumber={props.questionNumber}/>
+                    </p>
+                </Card.Body>
+            </Card>
+            }
+        </div>
     );
 };

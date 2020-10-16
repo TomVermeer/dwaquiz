@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 import {QuizProgress} from "./QuizProgress/QuizProgress";
-import {Title} from "./title/Title";
+import {Title} from "./Title/Title";
 
 export const Header = (props) => {
     return (

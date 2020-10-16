@@ -1,32 +1,19 @@
 import React, {useState} from 'react';
-import {ListGroup, Button, Card} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import './team-applications-panel.scss';
+import {Panel} from "../Panel/Panel";
 
 export const TeamApplicationsPanel = (props) => {
-    const [selected, setSelected] = useState(null);
+    const [selectedApplication, setSelectedApplication] = useState(null);
 
     return (
-        <div className="panel">
-            <Card>
-                <Card.Header>Wachtrij</Card.Header>
-                <ListGroup variant="flush" className="applications">
-                    {props.applications.map(application => (
-                        <ListGroup.Item key={application}
-                                        active={selected === application}
-                                        onClick={() => setSelected(application)}
-                        >
-                            {application}
-                        </ListGroup.Item>
-                    ))}
-                </ListGroup>
-                <Card.Footer>
-                    <div className="card-actions">
-                        <Button variant="primary" disabled={selected === null}>Toevoegen</Button>
-                        <Button variant="danger" disabled={selected === null}>Afwijzen</Button>
-                    </div>
-                </Card.Footer>
+        <Panel header="Wachtrij"
+            rows={props.applications}
+            onClick={(application) => setSelectedApplication(application)}
+            selected={selectedApplication}>
+            <Button variant="primary" disabled={selectedApplication === null}>Toevoegen</Button>
+            <Button variant="danger" disabled={selectedApplication === null}>Afwijzen</Button>
+        </Panel>
 
-            </Card>
-        </div>
     );
 };

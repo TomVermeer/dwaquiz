@@ -1,0 +1,22 @@
+.panel {
+  width: 18rem;
+  height: 100%;
+
+  .card {
+    height: 80%;
+  }
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 45%;
+  }
+}
+
+.panel-content {
+  height: 100%;
+  overflow-y: auto;
+}
+

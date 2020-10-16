@@ -1,4 +1,5 @@
 const WsEvents = Object.freeze({
+    ON_QUIZ_NIGHT_START: 'ON_QUIZ_NIGHT_START',
     ON_TEAM_APPLY: 'ON_TEAM_APPLY',
     ON_ANSWER: 'ON_ANSWER',
     ON_QUESTION: 'ON_QUESTION',

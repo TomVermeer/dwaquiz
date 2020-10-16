@@ -31,7 +31,8 @@ const registerWebSocketServer = (httpServer) => {
             }
             wss.handleUpgrade(req, networkSocket, head, newWebSocket => {
                 newWebSocket.role = req.session.role;
-                newWebSocket.quizPin = Number(req.session.quizPin);
+                newWebSocket.quizPin = req.session.quizPin;
+                newWebSocket.teamName = req.session.teamName;
                 wss.emit('connection', newWebSocket, req);
             });
         });
@@ -44,5 +45,5 @@ const getWebSocketClients = () => [...wss.clients];
 const getMaster = (pin) => getWebSocketClients().find(x => x.quizPin === pin && x.role === Roles.QUIZ_MASTER);
 const getScoreBoards = (pin) => getWebSocketClients().filter(x => x.quizPin === pin && x.role === Roles.SCOREBOARD);
 const getTeams = (pin) => getWebSocketClients().filter(x => x.quizPin === pin && x.role === Roles.TEAM);
-
-module.exports = { registerWebSocketServer, getWebSocketClients, getMaster, getScoreBoards, getTeams };
+const getTeam = (pin, teamName) => getTeams(pin).find(x => x.teamName === teamName);
+module.exports = { registerWebSocketServer, getWebSocketClients, getMaster, getScoreBoards, getTeams, getTeam };

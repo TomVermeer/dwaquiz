@@ -8,6 +8,10 @@ const initialState = {
     teamApplications: []
 };
 
+function removeTeamApplication(state, action) {
+    state.teamApplications = state.teamApplications.filter(x => x !== action.payload);
+}
+
 export const quizNightReducer = createReducer((state = initialState, action) => {
     switch(action.type) {
         case SharedActions.ON_OPEN_QUIZ_NIGHT:
@@ -17,8 +21,11 @@ export const quizNightReducer = createReducer((state = initialState, action) => 
             state.teamApplications.push(action.payload);
             break;
         case Actions.ON_TEAM_APPROVE:
-            state.teamApplications = state.teamApplications.filter(x => x !== action.payload);
+            removeTeamApplication(state, action);
             state.approvedTeams.push(action.payload);
+            break;
+        case Actions.ON_TEAM_REJECTED:
+            removeTeamApplication(state, action);
             break;
         default: return state;
     }

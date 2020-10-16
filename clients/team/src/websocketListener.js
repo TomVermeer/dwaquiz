@@ -8,4 +8,11 @@ export const routeOnTeamApproval = history => message => {
     return false;
 };
 
-export const additionalListeners = (history) => [routeOnTeamApproval(history)];
+export const routeOnTeamRejection = history => message => {
+    if(message.type === WsEvents.ON_TEAM_REJECTED) {
+        history.push(Pages.HOME);
+    }
+    return false;
+};
+
+export const additionalListeners = (history) => [routeOnTeamApproval(history), routeOnTeamRejection(history)];

@@ -17,8 +17,12 @@ const initializeWebSocket = (url, dispatch, additionalListeners = []) => {
         dispatch(message);
     };
 
+    ws.onclose = () => {
+      websocket = null;
+    };
+
     return ws;
-}
+};
 
 /**
  * Get's a websocket to the websocket server

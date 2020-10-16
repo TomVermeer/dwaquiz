@@ -11,7 +11,7 @@ export const Panel = (props) => {
                     {props.rows.map(row => (
                         <ListGroup.Item key={row}
                                         active={props.selected === row}
-                                        onClick={() => props.onClick(row)}
+                                        onClick={() => props.onClick && props.onClick(row)}
                         >
                             {row}
                         </ListGroup.Item>

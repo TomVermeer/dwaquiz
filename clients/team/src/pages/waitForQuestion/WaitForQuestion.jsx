@@ -1,8 +1,9 @@
 import React from 'react';
 import './wait-for-question.scss';
+import {LoadingSpinner} from "../../components/LoadingSpinner/LoadingSpinner";
 
 export const WaitForQuestion = (props) => {
     return (
-        <p>Wait for question works</p>
+        <LoadingSpinner text="Wachten op vraag"/>
     )
 }

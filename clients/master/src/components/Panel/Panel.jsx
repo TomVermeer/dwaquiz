@@ -1,12 +1,13 @@
 import {Card, ListGroup} from "react-bootstrap";
 import React from "react";
+import './panel.scss';
 
 export const Panel = (props) => {
     return (
         <div className="panel">
             <Card>
                 <Card.Header>{props.header}</Card.Header>
-                <ListGroup variant="flush" className="panel-content">
+                <ListGroup variant="flush">
                     {props.rows.map(row => (
                         <ListGroup.Item key={row}
                                         active={props.selected === row}

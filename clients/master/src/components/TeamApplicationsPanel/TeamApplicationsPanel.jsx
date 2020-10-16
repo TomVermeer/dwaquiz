@@ -18,8 +18,10 @@ export const TeamApplicationsPanel = (props) => {
             rows={props.applications}
             onClick={(application) => setSelectedApplication(application)}
             selected={selectedApplication}>
-            <Button variant="primary" disabled={selectedApplication === null} onClick={onApproveTeam}>Toevoegen</Button>
-            <Button variant="danger" disabled={selectedApplication === null}>Afwijzen</Button>
+            <div className="team-application-buttons">
+                <Button variant="primary" disabled={selectedApplication === null} onClick={onApproveTeam}>Toevoegen</Button>
+                <Button variant="danger" disabled={selectedApplication === null}>Afwijzen</Button>
+            </div>
         </Panel>
 
     );

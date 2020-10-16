@@ -9,7 +9,7 @@ export const Teams = (props) => {
     return (
         <div className="team">
             <TeamApplicationsPanel applications={state.teamApplications}/>
-            <ApprovedTeamsPanel/>
+            <ApprovedTeamsPanel teams={state.approvedTeams}/>
         </div>
     );
 } 

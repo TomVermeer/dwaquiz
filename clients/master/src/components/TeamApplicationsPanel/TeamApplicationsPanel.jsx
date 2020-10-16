@@ -10,6 +10,7 @@ export const TeamApplicationsPanel = (props) => {
     const dispatch = useDispatch();
 
     const onApproveTeam = () => {
+        setSelectedApplication(null);
         dispatch(approveTeam(selectedApplication));
     };
 

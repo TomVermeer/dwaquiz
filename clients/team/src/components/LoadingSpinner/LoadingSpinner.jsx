@@ -7,7 +7,7 @@ export const LoadingSpinner = (props) => {
     return (
         <div>
             <Spinner animation="border" size="huge"/>
-            <p>
+            <p className="center">
                 {props.text}
                 <Dots interval={500} maxNumber={3}/>
             </p>

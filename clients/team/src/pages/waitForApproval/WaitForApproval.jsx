@@ -4,8 +4,6 @@ import {LoadingSpinner} from "../../components/LoadingSpinner/LoadingSpinner";
 
 export const WaitForApproval = (props) => {
     return (
-        <div class="content">
-            <LoadingSpinner text="Wachten op toelating"/>
-        </div>
+        <LoadingSpinner text="Wachten op toelating"/>
     );
-}
+};

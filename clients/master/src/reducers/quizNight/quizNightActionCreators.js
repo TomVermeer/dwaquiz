@@ -1,5 +1,5 @@
 import { getWebsocket } from "shared/websocket";
-import {postAndParse} from "shared/fetchHelpers";
+import {postAndParse, isErrorResponse, post} from "shared/fetchHelpers";
 import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
 
@@ -15,6 +15,18 @@ const onOpenQuizNight = (response) => {
     return { type: SharedActions.ON_OPEN_QUIZ_NIGHT, payload: response.quizPin }
 };
 
-export const approveTeam = (team) => {
-    return {type: Actions.ON_TEAM_APPROVE, payload: team};
+const onApproveTeam = teamName => {
+    return {type: Actions.ON_TEAM_APPROVE, payload: teamName};
+};
+
+export const approveTeam = (teamName, quizPin) => dispatch => {
+    post(`quiz-nights/${quizPin}/teams`, {teamName})
+        .then(response => {
+            console.log('receive response: ', response);
+            if(isErrorResponse(response)) {
+                // TODO
+                return;
+            }
+            dispatch(onApproveTeam(teamName));
+        });
 };

@@ -2,16 +2,17 @@ import React, {useState} from 'react';
 import {Button} from 'react-bootstrap';
 import './team-applications-panel.scss';
 import {Panel} from "../Panel/Panel";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {approveTeam} from "../../reducers/quizNight/quizNightActionCreators";
 
 export const TeamApplicationsPanel = (props) => {
     const [selectedApplication, setSelectedApplication] = useState(null);
+    const quizPin = useSelector(state => state.quizNight.quizPin);
     const dispatch = useDispatch();
 
     const onApproveTeam = () => {
         setSelectedApplication(null);
-        dispatch(approveTeam(selectedApplication));
+        dispatch(approveTeam(selectedApplication, quizPin));
     };
 
     return (

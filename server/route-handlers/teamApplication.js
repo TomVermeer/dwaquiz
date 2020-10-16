@@ -14,6 +14,7 @@ const applyTeamHandler = async (req, res) => {
         const teamName = req.body.teamName;
         req.session.quizPin = quizPin;
         req.session.role = Roles.TEAM;
+        req.session.teamName = teamName;
         sendTeamApplicationToMaster(quizPin, teamName);
         res.send('ok');
     } catch (e) {

@@ -6,7 +6,6 @@ import {Title} from "./title/Title";
 export const Header = (props) => {
     return (
         <div className="header">
-            <div className="padding"></div>
             <Title className="title" text={props.title}/>
             <QuizProgress
                 roundNumber={props.quizNight.roundNumber}

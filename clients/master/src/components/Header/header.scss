@@ -1,0 +1,14 @@
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+
+  &>.progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

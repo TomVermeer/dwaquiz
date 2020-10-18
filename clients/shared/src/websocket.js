@@ -24,9 +24,10 @@ let websocket = null;
 const executeHandler = (handlers, message, dispatch) => {
     const handler = handlers[message.type];
     if (!handler.additionalAction || !handler.additionalAction(message)) {
-        getAndParse(handler.path).then(responseData => {
-            dispatch(handler.actionCreator(responseData));
-        });
+        getAndParse(handler.path)
+            .then(responseData => {
+                dispatch(handler.actionCreator(responseData));
+            });
     } else {
         dispatch(message);
     }
@@ -46,7 +47,7 @@ const initializeWebSocket = (wsUrl, dispatch, handlers) => {
         if (handlers[message.type]) {
             executeHandler(handlers, message, dispatch);
         } else {
-            throw new Error(`No websocket event handler was installed for type: ${data.type}`);
+            throw new Error(`No websocket event handler was installed for type: ${message.type}`);
         }
     };
 

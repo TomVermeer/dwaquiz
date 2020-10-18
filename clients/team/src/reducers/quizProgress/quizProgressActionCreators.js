@@ -1,9 +1,7 @@
 import {Actions} from '../../actions';
-import {post} from "shared/fetchHelpers";
-import {isErrorResponse} from "shared/fetchHelpers";
-import {getWebsocket} from "shared/websocket";
-import {additionalListeners} from "../../websocketListener";
+import {isErrorResponse, post} from "shared/fetchHelpers";
 import {Pages} from "../../pages";
+import {startWebsocket} from "../../websocketHandlers";
 
 const onTeamApply = (teamName, quizPin) => {
     return {
@@ -18,7 +16,7 @@ export const applyTeam = (teamName, quizPin, history) => dispatch => {
             if (isErrorResponse(response)) {
                 // TODO: handle errors
             } else {
-                getWebsocket(additionalListeners(history)); // start websocket connection
+                startWebsocket(history);
                 dispatch(onTeamApply(teamName, quizPin));
                 history.push(Pages.WAIT_FOR_APPROVAL);
             }

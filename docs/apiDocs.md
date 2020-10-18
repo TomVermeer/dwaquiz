@@ -28,6 +28,7 @@ The following diagram shows all available routes with their supported methods.
    *_ DELETE
    *_ PATCH
    * team-applications
+    *_ GET
     *_ POST
    * /suggested-questions
     *_ GET
@@ -162,6 +163,22 @@ ___
 
 #### @response
 
+___
+
+**@method:** GET
+**@body:** _none_
+
+#### @response
+
+##### 200
+
+**@body:**
+```js
+[
+    "super coole teamname",
+    "jack sparrow"
+]
+```
 ___
 
 ## /quiz-nights/:quizPin/team-applications/:teamName

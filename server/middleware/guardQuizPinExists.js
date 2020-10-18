@@ -6,10 +6,10 @@ const doesQuizPinExist = async (quizPin) => {
 
 const guardQuizPinExists = async (req, res, next) => {
     try {
-        if(!await doesQuizPinExist(req.params.quizPin)) {
+        req.quizPin = Number(req.params.quizPin);
+        if(!await doesQuizPinExist(req.quizPin)) {
             res.status(404).send({error: 'Quiz-night does not exist'});
         } else {
-            req.quizPin = Number(req.params.quizPin);
             next();
         }
     } catch(e) {

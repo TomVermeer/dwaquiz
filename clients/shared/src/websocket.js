@@ -1,24 +1,58 @@
-import { SERVER } from "./constants";
-import { getDispatch } from "./store";
+import {SERVER} from "./constants";
+import {getDispatch} from "./store";
+import {getAndParse} from "./fetchHelpers";
+
 const WS_URL = `ws://${SERVER}/ws`;
 
 let websocket = null;
 
-const initializeWebSocket = (url, dispatch, additionalListeners = []) => {
-    const ws = new WebSocket(url);
-    
+/**
+ * When this additionalAction returns a falsy value:
+ * Executes a GET request to the API with path specified in the handler, after the result is pared dispatches the parsed message
+ * Otherwise:
+ * The websocket event is dispatched
+ * @throws {Error} when the GET request is not in the 2xx range
+ * @param handlers {Object} an object serving as map whose keys are WsEvents and values are handlers
+ * which have the type {
+ *  path: string | null | undefined,
+ *  additionalAction: ((Object) => boolean) | null | undefined,
+ *  actionCreator: ((Object) => {type: string, payload: Object}) | null | undefined
+ *  }
+ * @param message {Object} the ws event
+ * @param dispatch {Function} function to dispatch the action with
+ */
+const executeHandler = (handlers, message, dispatch) => {
+    const handler = handlers[message.type];
+    if (!handler.additionalAction || !handler.additionalAction(message)) {
+        getAndParse(handler.path).then(responseData => {
+            dispatch(handler.actionCreator(responseData));
+        });
+    } else {
+        dispatch(message);
+    }
+};
+
+/**
+ * @param wsUrl url to start websocket connection to
+ * @param dispatch @see{executeHandler}
+ * @param handlers @see{executeHandler} for details about the handlers parameter
+ * @return {WebSocket}
+ */
+const initializeWebSocket = (wsUrl, dispatch, handlers) => {
+    const ws = new WebSocket(wsUrl);
+
     ws.onmessage = ({data}) => {
         const message = JSON.parse(data);
-        for (let listener of additionalListeners) {
-            if(listener(message)) {
-                return;
-            }
+        if (handlers[message.type]) {
+            console.log('executing: ', message);
+            executeHandler(handlers, message, dispatch);
+        } else {
+            throw new Error(`No websocket event handler was installed for type: ${data.type}`);
         }
-        dispatch(message);
     };
 
     ws.onclose = () => {
-      websocket = null;
+        websocket = null;
     };
 
     return ws;
@@ -28,12 +62,10 @@ const initializeWebSocket = (url, dispatch, additionalListeners = []) => {
  * Get's a websocket to the websocket server
  * All messages received by this websocket are dispatched to the connected redux store
  * No error handling and reconnection are implemented yet
- * @param additionalListeners {[function({type: string, payload: Object}): boolean]} Functions that get a chance to do something with a websocket message before it is dispatched
- * When one function returns true the other listerners are not executed and no dispatch is done.
  */
-export const getWebsocket = (additionalListeners) => {
-    if(websocket == null) {
-        websocket = initializeWebSocket(WS_URL, getDispatch(), additionalListeners);
+export const getWebsocket = (handlers) => {
+    if (websocket == null) {
+        websocket = initializeWebSocket(WS_URL, getDispatch(), handlers);
     }
     return websocket;
 };

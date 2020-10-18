@@ -44,7 +44,6 @@ const initializeWebSocket = (wsUrl, dispatch, handlers) => {
     ws.onmessage = ({data}) => {
         const message = JSON.parse(data);
         if (handlers[message.type]) {
-            console.log('executing: ', message);
             executeHandler(handlers, message, dispatch);
         } else {
             throw new Error(`No websocket event handler was installed for type: ${data.type}`);

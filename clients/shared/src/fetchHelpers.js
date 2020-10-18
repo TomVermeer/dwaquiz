@@ -29,10 +29,7 @@ export const deleteReq = (path, body) => fetch(API_BASE_URL + path, options(body
 
 export const postAndParse = (path, body) => checkAndParseResponse(post(path, body));
 
-export const get = (path, body) => {
-    console.log('GET: ', API_BASE_URL + path);
-    return fetch(API_BASE_URL + path, options(body, 'GET'));
-};
+export const get = (path, body) => fetch(API_BASE_URL + path, options(body, 'GET'));
 
 export const getAndParse = (path, body) => get(path, body)
     .then(response => {

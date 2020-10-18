@@ -2,7 +2,7 @@ const { doesPinExist } = require("../helpers/quizPin");
 
 const doesQuizPinExist = async (quizPin) => {
     return quizPin != null && await doesPinExist(Number(quizPin));
-}
+};
 
 const guardQuizPinExists = async (req, res, next) => {
     try {
@@ -15,6 +15,6 @@ const guardQuizPinExists = async (req, res, next) => {
     } catch(e) {
         throw e;
     }
-}
+};
 
 module.exports = guardQuizPinExists;

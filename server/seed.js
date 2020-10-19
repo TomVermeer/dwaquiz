@@ -27,9 +27,9 @@ if (process.env.CLEAN != null) {
 } else {
     seedDatabase()
         .then(() => {
-        console.log('done');
-        process.exit(0);
-    });
+            console.log('done');
+            process.exit(0);
+        });
 }
 
 

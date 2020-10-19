@@ -13,24 +13,13 @@ let websocket = null;
  * The websocket event is dispatched
  * @throws {Error} when the GET request is not in the 2xx range
  * @param handlers {Object} an object serving as map whose keys are WsEvents and values are handlers
- * which have the type {
- *  path: string | null | undefined,
- *  additionalAction: ((Object) => boolean) | null | undefined,
- *  actionCreator: ((Object) => {type: string, payload: Object}) | null | undefined
- *  }
+ * which have the type WebsocketHandler
  * @param message {Object} the ws event
  * @param dispatch {Function} function to dispatch the action with
  */
 const executeHandler = (handlers, message, dispatch) => {
     const handler = handlers[message.type];
-    if (!handler.additionalAction || !handler.additionalAction(message)) {
-        getAndParse(handler.path)
-            .then(responseData => {
-                dispatch(handler.actionCreator(responseData));
-            });
-    } else {
-        dispatch(message);
-    }
+    handler.execute(message, dispatch);
 };
 
 /**

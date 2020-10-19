@@ -1,15 +1,12 @@
 import {getWebsocket} from "shared/websocket";
 import * as WsEvents from "websocket-events";
 import {afterTeamApplyFetch} from "./reducers/quizNight/quizNightActionCreators";
+import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
 
-const handlers = (quizPin) => {
-    return {
-        [WsEvents.ON_TEAM_APPLY]: {
-            path: `quiz-nights/${quizPin}/team-applications`,
-            actionCreator: afterTeamApplyFetch,
-            additionalAction: null
-        },
-    }
-};
+const buildHandlers = (quizPin) =>
+    new WebsocketHandlersBuilder()
+        .on(WsEvents.ON_TEAM_APPLY)
+            .fetch(`quiz-nights/${quizPin}/team-applications`, afterTeamApplyFetch)
+        .build();
 
-export const startWebsocket = (quizPin) => getWebsocket(handlers(quizPin));
+export const startWebsocket = (quizPin) => getWebsocket(buildHandlers(quizPin));

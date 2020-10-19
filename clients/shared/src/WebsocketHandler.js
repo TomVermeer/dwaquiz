@@ -19,12 +19,13 @@ export class WebsocketHandler {
     };
 }
 
-const wrapActionWithReturn = (action, returnValue) => {
-    return (message) => {
+/**
+ * Executes the action if it is truthy, always return specified return value
+ */
+const wrapActionWithReturn = (action, returnValue) => message => {
         action && action(message);
         return returnValue;
-    }
-};
+    };
 
 /**
  * Wraps websocket handler for fetching,
@@ -36,10 +37,9 @@ export class WebsocketFetchHandler {
             path,
             actionCreator,
             wrapActionWithReturn(additionalAction, false)
-        )
+        );
+        this.execute = this._handler.execute;
     }
-
-    execute = this._handler.execute;
 }
 
 /**
@@ -52,8 +52,7 @@ export class WebsocketActionHandler {
             null,
             null,
             wrapActionWithReturn(additionalAction, true)
-        )
+        );
+        this.execute = this._handler.execute;
     }
-
-    execute = this._handler.execute;
 }

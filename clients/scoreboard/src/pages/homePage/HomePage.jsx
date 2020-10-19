@@ -16,7 +16,7 @@ const HomePage = () => {
 const dispatch = useDispatch();
 
 const onChange = (e) => {
-  setQuizPin(e.target.value)
+  setQuizPin(e.target.value.trim())
 }
 
 const handleSubmit = (e) => {

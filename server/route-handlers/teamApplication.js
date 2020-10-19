@@ -2,35 +2,68 @@ const WsEvents = require("websocket-events");
 
 const Roles = require("../roles");
 const {getMaster, getTeam} = require("../setupWebSockets");
+const {getQuizNight} = require("../helpers/quizNight");
 
-const sendTeamApplicationToMaster = (pin, teamName) => {
+const sendTeamApplicationToMaster = (pin) => {
     const masterSocket = getMaster(pin);
-    masterSocket.sendJson({type: WsEvents.ON_TEAM_APPLY, payload: teamName});
+    masterSocket.sendJson({type: WsEvents.ON_TEAM_APPLY});
+};
+
+const  upgradeSessionForTeam = (req, quizPin, teamName) => {
+    req.session.quizPin = quizPin;
+    req.session.role = Roles.TEAM;
+    req.session.teamName = teamName;
+};
+
+const saveTeamApplication = async (quizPin, teamName) => {
+    const quizNight = await getQuizNight(quizPin);
+    quizNight.teamApplications.push(teamName);
+    await quizNight.save();
 };
 
 const applyTeamHandler = async (req, res) => {
     try {
-        const quizPin = Number(req.quizPin);
+        const quizPin = req.quizPin;
         const teamName = req.body.teamName;
-        req.session.quizPin = quizPin;
-        req.session.role = Roles.TEAM;
-        req.session.teamName = teamName;
-        sendTeamApplicationToMaster(quizPin, teamName);
+        await saveTeamApplication(quizPin, teamName);
+        upgradeSessionForTeam(req, quizPin, teamName);
+        sendTeamApplicationToMaster(quizPin);
         res.send('ok');
     } catch (e) {
         throw e;
     }
 };
 
+const sendTeamRejected = (req, teamName) => {
+    const teamSocket = getTeam(req.quizPin, teamName);
+    teamSocket.sendJson({type: WsEvents.ON_TEAM_REJECTED});
+    teamSocket.close(); // Clean up data that might interfere with re-applying
+};
+
+const removeTeamApplication = async (quizPin, teamName) => {
+    const quizNight = await getQuizNight(quizPin);
+    quizNight.teamApplications = quizNight.teamApplications.filter(x => x !== teamName);
+    await quizNight.save();
+};
+
 const rejectTeamHandler = async (req, res) => {
     try {
-        const teamSocket = getTeam(req.quizPin, req.params.teamName);
-        teamSocket.sendJson({type: WsEvents.ON_TEAM_REJECTED});
-        teamSocket.close(); // Clean up data that might interfere with re-applying
+        const teamName = req.params.teamName;
+        await removeTeamApplication(req.quizPin, teamName);
+        sendTeamRejected(req, teamName);
         res.send('ok');
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
 
-module.exports = {applyTeamHandler, rejectTeamHandler};
+const getTeamApplicationsHandler = async (req, res) => {
+    try {
+        const quizNight = await getQuizNight(req.quizPin);
+        res.send(quizNight.teamApplications);
+    } catch (e) {
+        throw e;
+    }
+};
+
+module.exports = {applyTeamHandler, rejectTeamHandler, getTeamApplicationsHandler};

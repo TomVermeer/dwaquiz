@@ -7,7 +7,7 @@ export const checkAndParseResponse = async (responsePromise) => {
     if (!isErrorResponse(response)) {
         return response.json();
     } else {
-        throw new Error('Unexpected http statuscode: ', response);
+        throw new Error(`Unexpected http statuscode: ${response.status}`);
     }
 };
 
@@ -28,3 +28,14 @@ export const post = (path, body) => fetch(API_BASE_URL + path, options(body, 'PO
 export const deleteReq = (path, body) => fetch(API_BASE_URL + path, options(body, 'DELETE'));
 
 export const postAndParse = (path, body) => checkAndParseResponse(post(path, body));
+
+export const get = (path, body) => fetch(API_BASE_URL + path, options(body, 'GET'));
+
+export const getAndParse = (path, body) => get(path, body)
+    .then(response => {
+       if(isErrorResponse(response)) {
+           throw new Error(`Unexpected http statuscode: ${response.status}`);
+       } else {
+           return response.json();
+       }
+    });

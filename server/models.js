@@ -21,6 +21,7 @@ const roundSchema = mongoose.Schema({
 
 const quizNightSchema = mongoose.Schema({
     _id: Number, // quizPin
+    teamApplications: {type: [String], required: true},
     teams: { type: [teamSchema], required: true },
     rounds: { type: [roundSchema], required: true },
 });

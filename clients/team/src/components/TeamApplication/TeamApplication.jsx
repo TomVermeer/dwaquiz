@@ -16,7 +16,7 @@ export const TeamApplication = (props) => {
         e.preventDefault();
         // TODO validation
         dispatch(applyTeam(teamName, pin, history));
-    }
+    };
 
     return (
         <Form onSubmit={onParticipate}>

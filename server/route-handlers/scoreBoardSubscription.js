@@ -11,7 +11,8 @@ const subscribeScoreBoardToQuiz = (pin) => {
 
 const applyScoreBoardHandler = async (req, res) => {
     try {
-        const quizPin = Number(req.quizPin);
+        console.log(req.quizPin)
+        const quizPin = req.quizPin;
         req.session.quizPin = quizPin;
         req.session.role = Roles.SCOREBOARD;
         subscribeScoreBoardToQuiz(quizPin);

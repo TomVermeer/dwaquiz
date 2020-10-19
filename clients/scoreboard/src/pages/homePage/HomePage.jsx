@@ -1,16 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react'
 import { Button, Container, Form, Navbar, Col } from "react-bootstrap";
 import {Footer} from "../../components"
+import {openQuizNight} from "../../reducers/quizProgressActionCreators"
 
 import "../homePage/homepage.scss";
+import { useHistory } from "react-router";
 
 const HomePage = () => {
+  const history = useHistory()
+  const state = useSelector(state => state.quizProgress);
   const [quizPin, setQuizPin] = useState();
 
-  const handleQuizPinChange = (val) => {
-    setQuizPin(val);
-  };
+const dispatch = useDispatch();
+
+const onChange = (e) => {
+  setQuizPin(e.target.value)
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+  console.log("in submit", quizPin)
+  history.push("/waitingRoom")
+  dispatch(openQuizNight(quizPin))
+  // post in action creater 
+
+}
 
   return (
     <>
@@ -29,11 +45,10 @@ const HomePage = () => {
               size="lg"
               type="text"
               placeholder="Enter your quizpin number"
-              value={quizPin}
-              onChange={handleQuizPinChange}
+              onChange={onChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submmit">
+          <Button variant="primary" type="submmit" onClick={handleSubmit}>
             submit quizpin
           </Button>
         </Form>

@@ -5,6 +5,6 @@ const {QuizNight} = require('../models');
  * @param {Number} quizPin 
  * @return {Boolean}
  */
-const doesPinExist = async (quizPin) => await QuizNight.findOne({_id: quizPin}).exec() != null;
+const doesPinExist = async (quizPin) => await QuizNight.findOne({_id: quizPin}).exec() != null
 
 module.exports = {doesPinExist}

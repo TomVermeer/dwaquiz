@@ -27,7 +27,7 @@ const quizNightSchema = mongoose.Schema({
 });
 
 const questionSchema = mongoose.Schema({
-    _id: String, // question
+    question: {type: String, required: true},
     category: { type: String, required: true },
     answer: { type: String, required: true },
 });

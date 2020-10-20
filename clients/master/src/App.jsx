@@ -9,8 +9,8 @@ import {Home} from './pages/home/Home';
 import {Teams} from './pages/teams/Teams';
 import {PAGES} from './pages/pages';
 import {useSelector} from "react-redux";
-import {Page} from "shared/components/Page/Page";
 import {Categories} from "./pages/categories/Categories";
+import { Page } from "shared/components/Page/Page";
 
 function App() {
     const title = useSelector(state => state.shared.title);

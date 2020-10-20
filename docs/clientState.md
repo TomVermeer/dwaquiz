@@ -50,8 +50,9 @@ For guarding the state in our applications we will be using Redux, in the follow
             roundNumber: number,
             questionNumber: number,
         },
+        participatingTeams: [string],
         currentQuestion: string,
-        answeredTeams: [strings],
+        answeredTeams: [string],
         teamAnswers: map(string, string), // teamname -> answer
         scorePerTeam: map(number, {roundPoints: number, correctQuestions: number})
     }

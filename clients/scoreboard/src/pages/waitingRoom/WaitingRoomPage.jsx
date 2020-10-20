@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 
 const WaitingRoomHomepage = () => {
+
+  const quizPin = useSelector(state => state.quizProgress.quizPin)
+
+
   const teams = [
     {
       name: "de billy butchers",
@@ -17,7 +22,7 @@ const WaitingRoomHomepage = () => {
 
   return (
     <>
-      <WaitingRoomHeader quizpin={12314} />
+      <WaitingRoomHeader quizpin={quizPin} />
       <TeamsDisplay title="joined" teams={teams} type="display" />
       <Footer />
     </>

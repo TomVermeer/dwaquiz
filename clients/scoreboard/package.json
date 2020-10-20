@@ -16,7 +16,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "shared": "file:../shared/dist"
+    "redux-thunk": "^2.3.0",
+    "shared": "file:../shared/dist",
+    "websocket-events": "file:../../websocket-events"
   },
   "scripts": {
     "start": "react-scripts start",

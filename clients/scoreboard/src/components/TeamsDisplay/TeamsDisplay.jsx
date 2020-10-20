@@ -5,7 +5,6 @@ import "../TeamsDisplay/teamDisplay.scss";
 
 const TeamsDisplay = (props) => {
   const decideClassName = (el) => {
-    console.log(el.isCorrect);
     if (el.isCorrect) {
       return "Correct";
     } else {
@@ -19,7 +18,7 @@ const TeamsDisplay = (props) => {
         <h1>{props.title}</h1>
         {props.teams.map((el) => {
           return (
-            <Card className="TeamCard">
+            <Card key={el.name} className="TeamCard">
               <Card.Body>{el.name}</Card.Body>
             </Card>
           );

@@ -21,10 +21,9 @@ const onChange = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  console.log("in submit", quizPin)
   history.push("/waitingRoom")
   dispatch(openQuizNight(quizPin))
-  // post in action creater 
+ 
 
 }
 

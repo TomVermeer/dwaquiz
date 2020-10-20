@@ -1,13 +1,14 @@
 import { postAndParse } from "shared/fetchHelpers";
 import { SharedActions } from "shared/actions";
+import { startWebsocket } from "../../../master/src/websocketHandlers";
+
 
 export const openQuizNight = (quizpin) => (dispatch) => {
-    console.log("in action creator!",quizpin) // oke
   postAndParse(`scoreboards/${quizpin}`)
     .then((json) =>{
         dispatch(onOpenQuizNight(json))
-    }
-   
+        startWebsocket(quizpin)
+    } 
   );
 };
 

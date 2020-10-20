@@ -17,7 +17,8 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "shared": "file:../shared/dist"
+    "shared": "file:../shared/dist",
+    "websocket-events": "file:../../websocket-events"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -16,9 +16,13 @@ export const ApprovedTeamsPanel = (props) => {
     };
 
     return (
-      <Panel header="Toegevoegde teams"
-             rows={props.teams}>
-          <Button disabled={props.teams.length < 2} onClick={startQuizNight}>Start quiz night</Button>
-      </Panel>
+        <Panel header="Toegevoegde teams"
+               rows={props.teams}>
+            <Button disabled={props.teams.length < 2}
+                    onClick={startQuizNight}
+                    className="full-width">
+                Start quiz night
+            </Button>
+        </Panel>
     );
 };

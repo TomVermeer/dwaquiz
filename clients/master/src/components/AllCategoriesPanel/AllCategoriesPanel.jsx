@@ -20,11 +20,11 @@ export const AllCategoriesPanel = (props) => {
 
     return (
         <Panel
-            header="Categoriën"
+            header="Categorieën"
             rows={categories}
             onClick={setSelectedCategory}
             selected={selectedCategory}>
-            <Button variant="primary" disabled={selectedCategory === null} onClick={onAddCategory}>Toevoegen</Button>
+            <Button variant="primary" disabled={selectedCategory === null} onClick={onAddCategory} className="full-width">Toevoegen</Button>
         </Panel>
     );
 };

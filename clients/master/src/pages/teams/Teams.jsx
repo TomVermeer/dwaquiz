@@ -7,9 +7,9 @@ import {ApprovedTeamsPanel} from "../../components/ApprovedTeamsPanel/ApprovedTe
 export const Teams = (props) => {
     const state = useSelector(state => state.quizNight);
     return (
-        <div className="team">
+        <div className="space-between">
             <TeamApplicationsPanel applications={state.teamApplications}/>
             <ApprovedTeamsPanel teams={state.approvedTeams}/>
         </div>
     );
-} 
+};

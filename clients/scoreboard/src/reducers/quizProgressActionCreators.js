@@ -1,6 +1,6 @@
 import { postAndParse } from "shared/fetchHelpers";
 import { SharedActions } from "shared/actions";
-import { startWebsocket } from "../../../master/src/websocketHandlers";
+import { startWebsocket } from "../webSocketHandlers";
 
 
 export const openQuizNight = (quizpin) => (dispatch) => {

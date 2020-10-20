@@ -3,6 +3,7 @@ import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
 import {startWebsocket} from "../../websocketHandlers";
 import {PAGES} from "../../pages/pages";
+import {changeTitle} from "shared/reducers/sharedActionCreators";
 
 export const openQuizNight = () => (dispatch) => {
     postAndParse('quiz-nights')
@@ -52,12 +53,13 @@ export const afterTeamApplyFetch = teamNames => {
     return {type: Actions.AFTER_TEAM_APPLY_FETCH, payload: teamNames};
 };
 
-export const closeApplicationPeriod = (quizPin, history) => () => {
+export const closeApplicationPeriod = (quizPin, history) => dispatch => {
     patch(`quiz-nights/${quizPin}`, {isOpenForApplication: false})
         .then((response) => {
             if(isErrorResponse(response)) {
                 // TODO
             } else {
+                dispatch(changeTitle('Categorieën'));
                 history.push(PAGES.CATEGORIES);
             }
         })

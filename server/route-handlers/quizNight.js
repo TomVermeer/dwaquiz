@@ -47,7 +47,7 @@ const changeOpenForApplicationHandler = async (req, res) => {
     try {
         const quizNight = await getQuizNight(req.quizPin);
         quizNight.isOpenForApplication = req.body.isOpenForApplication;
-        quizNight.save();
+        await quizNight.save();
 
         res.send('ok');
     } catch(e) {

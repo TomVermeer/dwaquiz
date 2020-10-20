@@ -9,7 +9,7 @@ export const Panel = (props) => {
                 <Card.Header>{props.header}</Card.Header>
                 <ListGroup variant="flush">
                     {props.rows.map(row => (
-                        <ListGroup.Item key={row}
+                        <ListGroup.Item key={row.key ? row.key : row}
                                         active={props.selected === row}
                                         onClick={() => props.onClick && props.onClick(row)}
                         >

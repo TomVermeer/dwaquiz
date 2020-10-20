@@ -10,7 +10,7 @@ export const AllCategoriesPanel = (props) => {
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
-    const categories = useSelector(state => state.category.allCategories);
+    const categories = useSelector(state => state.category.allCategories.slice().sort());
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     const onAddCategory = () => {

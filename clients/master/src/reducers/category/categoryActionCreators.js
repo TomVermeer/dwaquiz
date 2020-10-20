@@ -15,3 +15,7 @@ export const getCategories = () => dispatch => {
 export const addCategory = category => {
     return {type: Actions.ON_CATEGORY_ADD, payload: category};
 };
+
+export const removeCategory = category => {
+    return {type: Actions.ON_CATEGORY_REMOVE, payload: category};
+};

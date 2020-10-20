@@ -6,7 +6,7 @@ import {Button} from "react-bootstrap";
 import {ChosenCategoryRow} from "./ChosenCategoryRow/ChosenCategoryRow";
 
 export const ChosenCategoriesPanel = (props) => {
-    const chosenCategories = useSelector(state => state.category.chosenCategories);
+    const chosenCategories = useSelector(state => state.category.chosenCategories.slice().sort());
 
     return (
         <Panel

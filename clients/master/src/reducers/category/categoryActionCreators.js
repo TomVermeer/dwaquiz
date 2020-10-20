@@ -11,3 +11,7 @@ export const getCategories = () => dispatch => {
             dispatch(onReceiveCategories(categories));
         });
 };
+
+export const addCategory = category => {
+    return {type: Actions.ON_CATEGORY_ADD, payload: category};
+};

@@ -1,3 +1,4 @@
+const {getQuizNight} = require('../helpers/quizNight');
 const { doesPinExist } = require("../helpers/quizPin");
 const { QuizNight } = require("../models");
 const Roles = require("../roles");
@@ -18,7 +19,7 @@ const getNewQuizPin = async (length = 6) => {
         additionalLength++
     } while (await doesPinExist(quizPin));
     return quizPin;
-}
+};
 
 /**
  * Generates an unique quizPin and saves it as an empty quiznight to the database
@@ -34,7 +35,6 @@ const createQuizNightHandler = async (req, res) => {
         await quizNight.save();
         req.session.role = Roles.QUIZ_MASTER;
         req.session.quizPin = pin;
-
         res.json({
             quizPin: pin
         });
@@ -43,4 +43,16 @@ const createQuizNightHandler = async (req, res) => {
     }
 };
 
-module.exports = { createQuizNightHandler };
+const changeOpenForApplicationHandler = async (req, res) => {
+    try {
+        const quizNight = await getQuizNight(req.quizPin);
+        quizNight.isOpenForApplication = req.body.isOpenForApplication;
+        quizNight.save();
+
+        res.send('ok');
+    } catch(e) {
+        throw e;
+    }
+};
+
+module.exports = { createQuizNightHandler, closeApplicationPeriodHandler: changeOpenForApplicationHandler };

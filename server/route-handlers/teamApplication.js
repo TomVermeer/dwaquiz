@@ -2,14 +2,14 @@ const WsEvents = require("websocket-events");
 
 const Roles = require("../roles");
 const {getMaster, getTeam} = require("../setupWebSockets");
-const {getQuizNight} = require("../helpers/quizNight");
+const {getQuizNight, isQuizNightOpenForApplications} = require("../helpers/quizNight");
 
 const sendTeamApplicationToMaster = (pin) => {
     const masterSocket = getMaster(pin);
     masterSocket.sendJson({type: WsEvents.ON_TEAM_APPLY});
 };
 
-const  upgradeSessionForTeam = (req, quizPin, teamName) => {
+const upgradeSessionForTeam = (req, quizPin, teamName) => {
     req.session.quizPin = quizPin;
     req.session.role = Roles.TEAM;
     req.session.teamName = teamName;
@@ -25,10 +25,15 @@ const applyTeamHandler = async (req, res) => {
     try {
         const quizPin = req.quizPin;
         const teamName = req.body.teamName;
-        await saveTeamApplication(quizPin, teamName);
-        upgradeSessionForTeam(req, quizPin, teamName);
-        sendTeamApplicationToMaster(quizPin);
-        res.send('ok');
+        if(await isQuizNightOpenForApplications(quizPin)) {
+            await saveTeamApplication(quizPin, teamName);
+            upgradeSessionForTeam(req, quizPin, teamName);
+            sendTeamApplicationToMaster(quizPin);
+            res.send('ok');
+        } else {
+            res.status(400).json({error: 'The quiz-night is not accepting applications'});
+        }
+
     } catch (e) {
         throw e;
     }

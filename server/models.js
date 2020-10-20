@@ -24,7 +24,7 @@ const quizNightSchema = mongoose.Schema({
     teamApplications: {type: [String], required: true},
     teams: { type: [teamSchema], required: true },
     rounds: { type: [roundSchema], required: true },
-    openForApplication: {type: Boolean, default: true}
+    isOpenForApplication: {type: Boolean, default: true}
 });
 
 const questionSchema = mongoose.Schema({

@@ -5,7 +5,6 @@ import "../TeamsDisplay/teamDisplay.scss";
 
 const TeamsDisplay = (props) => {
   const decideClassName = (el) => {
-    console.log(el.isCorrect);
     if (el.isCorrect) {
       return "Correct";
     } else {

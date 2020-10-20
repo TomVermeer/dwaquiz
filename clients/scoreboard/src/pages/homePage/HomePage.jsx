@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from 'react'
 import { Button, Container, Form, Navbar, Col } from "react-bootstrap";
 import {Footer} from "../../components"
@@ -10,7 +10,6 @@ import { useHistory } from "react-router";
 
 const HomePage = () => {
   const history = useHistory()
-  const state = useSelector(state => state.quizProgress);
   const [quizPin, setQuizPin] = useState();
 
 const dispatch = useDispatch();
@@ -23,8 +22,6 @@ const handleSubmit = (e) => {
   e.preventDefault()
   history.push("/waitingRoom")
   dispatch(openQuizNight(quizPin))
- 
-
 }
 
   return (

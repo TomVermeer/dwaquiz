@@ -64,3 +64,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
             }
         })
 };
+
+export const setRoundNumber = roundNumber => {
+  return {type: Actions.CHANGE_ROUND_NUMBER, payload: roundNumber};
+};

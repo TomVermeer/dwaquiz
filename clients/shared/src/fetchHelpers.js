@@ -39,3 +39,5 @@ export const getAndParse = (path, body) => get(path, body)
            return response.json();
        }
     });
+
+export const patch = (path, body) => fetch(API_BASE_URL + path, options(body, 'PATCH'));

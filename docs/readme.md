@@ -75,10 +75,11 @@ const quizNightSchema = new mongoose.Schema({
   _id: Number, // quizPin
   teams: [teamSchema],
   rounds: [roundSchema],
+  isOpenForApplication: Boolean
 });
 
 const questionSchema = new mongoose.schema({
-  _id: String, // question
+  question: String,
   category: String,
   answer: String,
 });

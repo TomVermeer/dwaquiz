@@ -9,8 +9,8 @@ import {Home} from './pages/home/Home';
 import {Teams} from './pages/teams/Teams';
 import {PAGES} from './pages/pages';
 import {useSelector} from "react-redux";
+import {Categories} from "./pages/categories/Categories";
 import { Page } from "shared/components/Page/Page";
-
 
 function App() {
     const title = useSelector(state => state.shared.title);
@@ -30,6 +30,9 @@ function App() {
                     </Route>
                     <Route exact path={PAGES.TEAMS}>
                         <Teams/>
+                    </Route>
+                    <Route exact path={PAGES.CATEGORIES}>
+                        <Categories/>
                     </Route>
                 </Switch>
             </Router>

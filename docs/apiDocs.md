@@ -106,7 +106,7 @@ ___
 
 ```js
 {
-  active: true;
+  isOpenForApplication: true;
 }
 ```
 
@@ -162,6 +162,20 @@ ___
 ```
 
 #### @response
+
+##### 200
+
+**@body:** _none_
+
+##### 400
+
+**@description:** When the quiznight no longer accepts applications
+**@body:**
+```js
+{
+    error: 'The quiz-night is not accepting applications'
+}
+```
 
 ___
 

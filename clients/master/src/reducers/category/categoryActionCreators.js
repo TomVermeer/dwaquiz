@@ -26,6 +26,6 @@ export const submitCategories = (quizPin, categories, history) => dispatch => {
   postAndParse(`quiz-nights/${quizPin}/rounds`, categories)
       .then(json => {
           dispatch(setRoundNumber(json.roundNumber));
-          history.push(PAGES.QUESTION);
+          history.push(PAGES.QUESTIONS);
       })
 };

@@ -9,7 +9,7 @@ import {useHistory} from 'react-router-dom';
 
 export const ChosenCategoriesPanel = (props) => {
     const chosenCategories = useSelector(state => state.category.chosenCategories.slice().sort());
-    const quizPin = useSelector(state => state.quizNight.quizPin);
+    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
     const dispatch = useDispatch();
     const history = useHistory();
 

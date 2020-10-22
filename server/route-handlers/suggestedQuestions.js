@@ -28,7 +28,7 @@ const getSuggestedQuestionsHandler = async (req, res) => {
                 question: true,
                 _id: false
             })
-            .sort('_id')
+            .sort('orderNumber')
             .skip(Number(req.query.offset))
             .limit(Number(req.query.limit))
             .exec();

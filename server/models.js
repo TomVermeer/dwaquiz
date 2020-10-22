@@ -31,6 +31,7 @@ const questionSchema = mongoose.Schema({
     question: {type: String, required: true},
     category: { type: String, required: true },
     answer: { type: String, required: true },
+    orderNumber: {type: Number, required: true}
 });
 
 const QuizNight = mongoose.model('QuizNight', quizNightSchema);

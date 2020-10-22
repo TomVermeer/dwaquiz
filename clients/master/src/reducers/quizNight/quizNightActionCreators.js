@@ -3,7 +3,7 @@ import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
 import {startWebsocket} from "../../websocketHandlers";
 import {PAGES} from "../../pages/pages";
-import {changeTitle, changeRoundNumber} from "shared/reducers/sharedActionCreators";
+import {changeRoundNumber} from "shared/reducers/sharedActionCreators";
 
 export const openQuizNight = () => (dispatch) => {
     postAndParse('quiz-nights')
@@ -60,12 +60,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
                 // TODO
             } else {
                 dispatch(changeRoundNumber(1));
-                dispatch(changeTitle('Categorieën'));
                 history.push(PAGES.CATEGORIES);
             }
         })
-};
-
-export const setRoundNumber = roundNumber => {
-  return {type: Actions.CHANGE_ROUND_NUMBER, payload: roundNumber};
 };

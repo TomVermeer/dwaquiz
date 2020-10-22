@@ -12,7 +12,6 @@ export const sharedReducer = createReducer((state = initialState, action) => {
             state.title = action.payload;
             break;
         case SharedActions.ON_OPEN_QUIZ_NIGHT:
-            state.title = 'Quiz night';
             state.quizProgress.quizPin = action.payload;
             break;
         case SharedActions.NEXT_ROUND:

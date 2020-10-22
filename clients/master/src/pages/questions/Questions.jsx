@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './questions.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchSuggestedQuestions} from "../../reducers/rootActionCreators";
-import {changeTitle} from "shared/reducers/sharedActionCreators";
+import {useTitle} from "../../effects/useTitle";
 
 export const Questions = (props) => {
 
@@ -10,9 +10,7 @@ export const Questions = (props) => {
   const suggestedQuestions = useSelector(state => state.root.suggestedQuestions);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeTitle('Kies Vraag'));
-  }, []);
+  useTitle('Kiez vraag');
 
   useEffect(() => {
       dispatch(fetchSuggestedQuestions(quizPin, roundNumber, 0, 20));

@@ -6,5 +6,5 @@ export const useTitle = title => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(changeTitle(title))
-    }, [title])
+    }, [title, dispatch])
 };

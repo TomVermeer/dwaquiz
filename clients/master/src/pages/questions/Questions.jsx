@@ -14,7 +14,7 @@ export const Questions = (props) => {
 
   useEffect(() => {
       dispatch(fetchSuggestedQuestions(quizPin, roundNumber, 0, 20));
-  }, [quizPin, roundNumber]);
+  }, [quizPin, roundNumber, dispatch]);
 
   return (
       <div>

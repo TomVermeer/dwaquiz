@@ -44,7 +44,7 @@ export const rejectTeam = (teamName, quizPin) => dispatch => {
 };
 
 export const afterTeamApplyFetch = teamNames => {
-    return {type: Actions.AFTER_TEAM_APPLY_FETCH, payload: teamNames};
+    return {type: Actions.ON_TEAM_APPLICATIONS_RECEIVED, payload: teamNames};
 };
 
 export const closeApplicationPeriod = (quizPin, history) => dispatch => {

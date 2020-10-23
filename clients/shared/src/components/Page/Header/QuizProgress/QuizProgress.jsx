@@ -5,19 +5,25 @@ import {QuestionProgress} from "./QuestionProgress";
 export const QuizProgress = (props) => {
     return (
         <div className="progress">
-            {(props.quizPin || props.roundNumber || props.questionNumber) && <div>
+            <div>
                 <div>
-                    <h2>
-                        {props.quizPin}
-                    </h2>
-                    <p>
-                        Quizronde {props.roundNumber}</p>
-                    <p>
-                        <QuestionProgress questionNumber={props.questionNumber}/>
-                    </p>
+                    {props.quizPin &&
+                        <h2>
+                            {props.quizPin}
+                        </h2>
+                    }
+                    {props.roundNumber &&
+                        <p>
+                            Quizronde {props.roundNumber}
+                        </p>
+                    }
+                    {props.questionNumber &&
+                        <p>
+                            <QuestionProgress questionNumber={props.questionNumber}/>
+                        </p>
+                    }
                 </div>
             </div>
-            }
         </div>
     );
 };

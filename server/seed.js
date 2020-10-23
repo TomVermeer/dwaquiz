@@ -11,7 +11,10 @@ cleanDatabase = async () => {
 seedDatabase = async () => {
     console.log('seeding database');
     await Question.deleteMany({});
-    return Question.insertMany(questions);
+    return Question.insertMany(questions.map(x => {
+        x.orderNumber = Math.random();
+        return x;
+    }));
 };
 
 

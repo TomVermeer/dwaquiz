@@ -18,7 +18,6 @@ For guarding the state in our applications we will be using Redux, in the follow
         scorePerTeam: map(number, {roundPoints: number, correctQuestions: number}), // teamIndex ->; roundpoints, correctquestions
         quizNight :
         {
-            quizPin: number,
             askedQuestions: [string],
             teamApplications: [string],
             approvedTeams: [string]

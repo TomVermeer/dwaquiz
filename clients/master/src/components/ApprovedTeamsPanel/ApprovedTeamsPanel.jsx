@@ -8,7 +8,7 @@ import {useHistory} from 'react-router-dom';
 
 export const ApprovedTeamsPanel = (props) => {
     const dispatch = useDispatch();
-    const quizPin = useSelector(state => state.quizNight.quizPin);
+    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
     const history = useHistory();
 
     const startQuizNight = () => {

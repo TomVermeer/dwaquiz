@@ -82,6 +82,7 @@ const questionSchema = new mongoose.schema({
   question: String,
   category: String,
   answer: String,
+  orderNumber: Number
 });
 
 ```

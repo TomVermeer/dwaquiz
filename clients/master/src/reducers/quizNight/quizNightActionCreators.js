@@ -1,8 +1,7 @@
 import {postAndParse, isErrorResponse, post, deleteReq, patch} from "shared/fetchHelpers";
-import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
 import {Pages} from "../../pages/routerUrls";
-import {changeRoundNumber} from "shared/reducers/sharedActionCreators";
+import {setQuizPin} from "shared/reducers/sharedActionCreators";
 
 export const openQuizNight = (history) => (dispatch) => {
     postAndParse('quiz-nights')
@@ -11,10 +10,6 @@ export const openQuizNight = (history) => (dispatch) => {
             history.push(Pages(quizPin).TEAMS);
             dispatch(setQuizPin(quizPin));
         });
-};
-
-export const setQuizPin = (quizPin) => {
-    return { type: SharedActions.SET_QUIZ_PIN, payload: quizPin }
 };
 
 const onApproveTeam = teamName => {
@@ -58,8 +53,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
             if(isErrorResponse(response)) {
                 // TODO
             } else {
-                dispatch(changeRoundNumber(1));
-                history.push(Pages(quizPin).CATEGORIES);
+                history.push(Pages(quizPin, 1).CATEGORIES);
             }
         })
 };

@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {setQuizPin} from "../reducers/quizNight/quizNightActionCreators";
+import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {useParams} from "react-router-dom";
 
 export const useQuizPinFromUrl = () => {
@@ -9,4 +9,5 @@ export const useQuizPinFromUrl = () => {
     useEffect(() => {
         dispatch(setQuizPin(quizPin));
     }, [quizPin, dispatch]);
+    return quizPin
 };

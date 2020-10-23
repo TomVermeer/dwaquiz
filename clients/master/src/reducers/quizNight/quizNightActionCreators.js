@@ -1,21 +1,20 @@
 import {postAndParse, isErrorResponse, post, deleteReq, patch} from "shared/fetchHelpers";
 import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
-import {startWebsocket} from "../../websocketHandlers";
-import {PAGES} from "../../pages/pages";
+import {Pages} from "../../pages/routerUrls";
 import {changeRoundNumber} from "shared/reducers/sharedActionCreators";
 
-export const openQuizNight = () => (dispatch) => {
+export const openQuizNight = (history) => (dispatch) => {
     postAndParse('quiz-nights')
         .then(json => {
             const quizPin = json.quizPin;
-            startWebsocket(quizPin); // Open websocket to listen to teams that apply
-            dispatch(onOpenQuizNight(quizPin));
+            history.push(Pages(quizPin).TEAMS);
+            dispatch(setQuizPin(quizPin));
         });
 };
 
-const onOpenQuizNight = (quizPin) => {
-    return { type: SharedActions.ON_OPEN_QUIZ_NIGHT, payload: quizPin }
+export const setQuizPin = (quizPin) => {
+    return { type: SharedActions.SET_QUIZ_PIN, payload: quizPin }
 };
 
 const onApproveTeam = teamName => {
@@ -60,7 +59,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
                 // TODO
             } else {
                 dispatch(changeRoundNumber(1));
-                history.push(PAGES.CATEGORIES);
+                history.push(Pages(quizPin).CATEGORIES);
             }
         })
 };

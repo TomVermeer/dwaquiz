@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import './questions.scss';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchSuggestedQuestions} from "../../reducers/rootActionCreators";
-import {useTitle} from "../../effects/useTitle";
-import {Panel} from "../../components/Panel/Panel";
+import {fetchSuggestedQuestions} from "../../../reducers/rootActionCreators";
+import {useTitle} from "../../../effects/useTitle";
+import {Panel} from "../../../components/Panel/Panel";
 
 export const Questions = (props) => {
 

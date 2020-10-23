@@ -13,5 +13,5 @@ export const openQuizNight = (quizpin) => (dispatch) => {
 };
 
 const onOpenQuizNight = (response) => {
-  return { type: SharedActions.ON_OPEN_QUIZ_NIGHT, payload: response.quizPin };
+  return { type: SharedActions.SET_QUIZ_PIN, payload: response.quizPin };
 };

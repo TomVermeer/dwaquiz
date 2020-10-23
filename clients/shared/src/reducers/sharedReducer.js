@@ -11,7 +11,7 @@ export const sharedReducer = createReducer((state = initialState, action) => {
         case SharedActions.CHANGE_TITLE:
             state.title = action.payload;
             break;
-        case SharedActions.ON_OPEN_QUIZ_NIGHT:
+        case SharedActions.SET_QUIZ_PIN:
             state.quizProgress.quizPin = action.payload;
             break;
         case SharedActions.NEXT_ROUND:

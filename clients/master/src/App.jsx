@@ -6,12 +6,10 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import {Home} from './pages/home/Home';
-import {Teams} from './pages/teams/Teams';
-import {Questions} from './pages/questions/Questions';
-import {PAGES} from './pages/pages';
+import {RouterUrls} from './pages/routerUrls';
 import {useSelector} from "react-redux";
-import {Categories} from "./pages/categories/Categories";
 import { Page } from "shared/components/Page/Page";
+import {QuizNightRouter} from "./pages/quizNight/QuizNightRouter";
 
 function App() {
     const title = useSelector(state => state.shared.title);
@@ -20,17 +18,11 @@ function App() {
         <Page quizNight={quizProgress} title={title}>
             <Router>
                 <Switch>
-                    <Route exact path={PAGES.HOME}>
+                    <Route exact path={RouterUrls.HOME}>
                         <Home/>
                     </Route>
-                    <Route exact path={PAGES.TEAMS}>
-                        <Teams/>
-                    </Route>
-                    <Route exact path={PAGES.CATEGORIES}>
-                        <Categories/>
-                    </Route>
-                    <Route exact path={PAGES.QUESTIONS}>
-                        <Questions/>
+                    <Route path={RouterUrls.QUIZ_PIN}>
+                        <QuizNightRouter/>
                     </Route>
                 </Switch>
             </Router>

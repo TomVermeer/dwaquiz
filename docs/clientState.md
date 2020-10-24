@@ -110,7 +110,7 @@ In this section the different reducers and which actions they handle are documen
 ### quizNight reducer
 
 **@actions:**
-- ON_OPEN_QUIZ_NIGHT &rarr; create quizNightPin
+- SET_QUIZ_PIN &rarr; create quizNightPin
 - ON_TEAM_APPLY &rarr; create team application
 - ON_TEAM_APPROVE &rarr; approve team, remove team appliction create team
 - ON_TEAM_REJECT &rarr; reject team, remove team application.

@@ -1,21 +1,15 @@
 import {postAndParse, isErrorResponse, post, deleteReq, patch} from "shared/fetchHelpers";
-import {SharedActions} from "shared/actions";
 import {Actions} from "../../actions";
-import {startWebsocket} from "../../websocketHandlers";
-import {PAGES} from "../../pages/pages";
-import {changeRoundNumber} from "shared/reducers/sharedActionCreators";
+import {Pages} from "../../pages/routerUrls";
+import {setQuizPin} from "shared/reducers/sharedActionCreators";
 
-export const openQuizNight = () => (dispatch) => {
+export const openQuizNight = (history) => (dispatch) => {
     postAndParse('quiz-nights')
         .then(json => {
             const quizPin = json.quizPin;
-            startWebsocket(quizPin); // Open websocket to listen to teams that apply
-            dispatch(onOpenQuizNight(quizPin));
+            history.push(Pages(quizPin).TEAMS);
+            dispatch(setQuizPin(quizPin));
         });
-};
-
-const onOpenQuizNight = (quizPin) => {
-    return { type: SharedActions.ON_OPEN_QUIZ_NIGHT, payload: quizPin }
 };
 
 const onApproveTeam = teamName => {
@@ -50,7 +44,7 @@ export const rejectTeam = (teamName, quizPin) => dispatch => {
 };
 
 export const afterTeamApplyFetch = teamNames => {
-    return {type: Actions.AFTER_TEAM_APPLY_FETCH, payload: teamNames};
+    return {type: Actions.ON_TEAM_APPLICATIONS_RECEIVED, payload: teamNames};
 };
 
 export const closeApplicationPeriod = (quizPin, history) => dispatch => {
@@ -59,8 +53,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
             if(isErrorResponse(response)) {
                 // TODO
             } else {
-                dispatch(changeRoundNumber(1));
-                history.push(PAGES.CATEGORIES);
+                history.push(Pages(quizPin, 1).CATEGORIES);
             }
         })
 };

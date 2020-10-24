@@ -1,0 +1,22 @@
+.questions-panel-row {
+  display: flex;
+
+  .category-column {
+    width: 33%;
+  }
+
+  .question-column {
+    width: 100%;
+  }
+}
+
+.question-panel {
+  display: flex;
+  justify-content: center;
+  width: 60rem;
+  height: 100%;
+
+  .panel {
+    width: 100%;
+  }
+}

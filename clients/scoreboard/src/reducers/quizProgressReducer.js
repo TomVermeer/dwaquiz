@@ -11,7 +11,7 @@ const initialState = {
 export const quizProgressReducer = createReducer(
   (state = initialState, action) => {
     switch (action.type) {
-      case SharedActions.ON_OPEN_QUIZ_NIGHT:
+      case SharedActions.SET_QUIZ_PIN:
         state.quizPin = action.payload;
         break;
         default: return state;

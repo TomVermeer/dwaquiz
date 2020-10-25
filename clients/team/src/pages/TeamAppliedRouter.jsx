@@ -1,16 +1,19 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {RouterUrls} from "./pages";
 import {WaitForApproval} from "./waitForApproval/WaitForApproval";
 import {WaitForQuestion} from "./waitForQuestion/WaitForQuestion";
 import {useWebsocket} from "../effects/useWebsocket";
-import {useQuizPinFromUrl} from "../effects/useQuizPinFromUrl";
-import {useTeamNameFromUrl} from "../effects/useTeamNameFromUrl";
+import {QuestionRouter} from "./Question/QuestionRouter";
+import {setQuizPin} from "shared/reducers/sharedActionCreators";
+import {useFromUrl} from "../effects/useFromUrl";
+import {setTeamName} from "../reducers/rootActionCreators";
 
 export const TeamAppliedRouter = (props) => {
 
-    const quizPin = useQuizPinFromUrl();
-    const teamName = useTeamNameFromUrl();
+
+    const quizPin = useFromUrl('quizPin', setQuizPin);
+    const teamName = useFromUrl('teamName', setTeamName);
     useWebsocket(quizPin, teamName);
 
     return (
@@ -20,6 +23,9 @@ export const TeamAppliedRouter = (props) => {
           </Route>
           <Route exact path={RouterUrls.WAIT_FOR_QUESTION}>
               <WaitForQuestion/>
+          </Route>
+          <Route path={RouterUrls.QUESTION}>
+              <QuestionRouter/>
           </Route>
       </Switch>
     );

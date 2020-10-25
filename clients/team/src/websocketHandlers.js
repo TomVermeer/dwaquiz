@@ -3,13 +3,19 @@ import {getWebsocket} from "shared/websocket";
 import {Pages} from "./pages/pages";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
 
-const buildHandlers = (history, quizPin, teamName) =>
-    new WebsocketHandlersBuilder()
-        .on(WsEvents.ON_TEAM_APPROVAL)
-            .doAction(() => history.push(Pages(quizPin, teamName).WAIT_FOR_QUESTION))
-        .on(WsEvents.ON_TEAM_REJECTED)
-            .doAction(() => history.push(Pages().HOME))
-        .build();
+const buildHandlers = (history, quizPin, teamName, questionNumber, roundNumber) => {
+    const pages = Pages(quizPin, teamName, questionNumber, roundNumber);
 
-export const startWebsocket = (history, quizPin, teamName) =>
-    getWebsocket(buildHandlers(history, quizPin, teamName));
+    return new WebsocketHandlersBuilder()
+        .on(WsEvents.ON_TEAM_APPROVAL)
+            .doAction(() => history.push(pages.WAIT_FOR_QUESTION))
+        .on(WsEvents.ON_TEAM_REJECTED)
+            .doAction(() => history.push(pages.HOME))
+        .on(WsEvents.ON_QUESTION)
+            .doAction((message) => history.push(Pages(quizPin, teamName, message.roundNumber, message.questionNumber).QUESTION))
+        .build();
+};
+
+
+export const startWebsocket = (history, quizPin, teamName, questionNumber, roundNumber) =>
+    getWebsocket(buildHandlers(history, quizPin, teamName, questionNumber, roundNumber));

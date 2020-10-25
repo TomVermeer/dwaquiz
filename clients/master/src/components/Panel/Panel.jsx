@@ -6,10 +6,8 @@ export const Panel = (props) => {
     const onClickRow = (row) => () => {
         if(props.onClick) {
             if(row.key) {
-                console.log('key is present: ', row.key);
                 props.onClick(row.key);
             } else {
-                console.log('no key');
                 props.onClick(row);
             }
         }

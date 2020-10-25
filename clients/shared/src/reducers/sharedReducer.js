@@ -17,6 +17,12 @@ export const sharedReducer = createReducer((state = initialState, action) => {
         case SharedActions.NEXT_ROUND:
             state.quizProgress.roundNumber = action.payload;
             break;
+        case SharedActions.SET_ROUND_NUMBER:
+            state.quizProgress.roundNumber = action.payload;
+            break;
+        case SharedActions.SET_QUESTION_NUMBER:
+            state.quizProgress.questionNumber = action.payload;
+            break;
         default:
             return state;
     }

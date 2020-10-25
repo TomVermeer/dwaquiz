@@ -1,5 +1,5 @@
 const {getQuizNight} = require("../helpers/quizNight");
-const {getTeams} = require('../setupWebSockets');
+const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
 const {Question} = require('../models');
 
@@ -25,18 +25,27 @@ const saveQuestioning = async (quizPin, roundNumber, questionId) => {
         round.questionings.push(questioning);
     });
     await quizNight.save();
+    return {roundNumber, questionNumber: round.questionings.length / quizNight.teams.length};
 };
 
-const notifyTeams = quizPin =>
+const notifyTeams = (quizPin, onQuestionEvent) =>
     getTeams(quizPin)
         .forEach(team => {
-            team.sendJson({type: WsEvents.ON_QUESTION});
+            team.sendJson(onQuestionEvent);
+        });
+
+const notifyScoreboard = (quizPin, onQuestionEvent) =>
+    getScoreBoards(quizPin)
+        .forEach(scoreboard => {
+            scoreboard.sendJson(onQuestionEvent);
         });
 
 const createQuestioning = async (req, res) => {
     try {
-        await saveQuestioning(req.quizPin, req.round, req.body.questionId);
-        notifyTeams(req.quizPin);
+        const {roundNumber, questionNumber} = await saveQuestioning(req.quizPin, req.round, req.body.questionId);
+        const onQuestionEvent = {type: WsEvents.ON_QUESTION, roundNumber, questionNumber};
+        notifyTeams(req.quizPin, onQuestionEvent);
+        notifyScoreboard(req.quizPin, onQuestionEvent);
         res.send('ok');
     } catch (e) {
         throw e;

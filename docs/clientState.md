@@ -14,7 +14,7 @@ For guarding the state in our applications we will be using Redux, in the follow
             chosenCategories: [numbers], // references index of allCategories,
             categoryValidationFailed: boolean,
         }
-        suggestedQuestions: [{category: number, question: string,}], // category references index of allCategories
+        suggestedQuestions: [{category: string, question: string, _id: number}],
         scorePerTeam: map(number, {roundPoints: number, correctQuestions: number}), // teamIndex ->; roundpoints, correctquestions
         quizNight :
         {

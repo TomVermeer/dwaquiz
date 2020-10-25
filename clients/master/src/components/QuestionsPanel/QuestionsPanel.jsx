@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './questions-panel.scss';
 import {Panel} from "../Panel/Panel";
-import {fetchSuggestedQuestions} from "../../reducers/rootActionCreators";
+import {askQuestion, fetchSuggestedQuestions} from "../../reducers/rootActionCreators";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "react-bootstrap";
+import {useHistory} from 'react-router-dom';
 
 const QuestionsPanelRow = (props) => (
     <div className="questions-panel-row">
@@ -18,6 +19,7 @@ export const QuestionsPanel = (props) => {
     const {quizPin, roundNumber} = useSelector(state => state.shared.quizProgress);
     const suggestedQuestions = useSelector(state => state.root.suggestedQuestions);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const fetchQuestions = (quizPin, roundNumber, startIndex) =>
         dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmount));
@@ -33,6 +35,7 @@ export const QuestionsPanel = (props) => {
     };
 
     const onLoadMoreQuestions = () => fetchQuestions(quizPin, roundNumber, suggestedQuestions.length);
+    const onAskQuestion = () => dispatch(askQuestion(quizPin, roundNumber, history, selectedQuestion._id));
 
     return (
         <div className="question-panel">

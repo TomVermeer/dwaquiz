@@ -12,19 +12,28 @@ const QuestionsPanelRow = (props) => (
     </div>
 );
 
+const fetchAmmount = 20;
+
 export const QuestionsPanel = (props) => {
     const {quizPin, roundNumber} = useSelector(state => state.shared.quizProgress);
     const suggestedQuestions = useSelector(state => state.root.suggestedQuestions);
     const dispatch = useDispatch();
 
+    const fetchQuestions = (quizPin, roundNumber, startIndex) =>
+        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmmount));
+
     useEffect(() => {
-        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, 0, 20));
-    }, [quizPin, roundNumber, dispatch]);
+        fetchQuestions(quizPin, roundNumber, 0)
+    }, [quizPin, roundNumber]);
 
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
     const onSelectQuestion = (question) => {
         setSelectedQuestion(question.key);
+    };
+
+    const onLoadMoreQuestions = () => {
+        fetchQuestions(quizPin, roundNumber, suggestedQuestions.length);
     };
 
     return (
@@ -43,7 +52,7 @@ export const QuestionsPanel = (props) => {
                         />)}
             >
                 <div className="align-right">
-                        <Button variant="secondary" className="load-more">Laad meer vragen</Button>
+                        <Button variant="secondary" className="load-more" onClick={onLoadMoreQuestions}>Laad meer vragen</Button>
                         <Button variant="primary" disabled={selectedQuestion == null}>Stel vraag</Button>
                 </div>
             </Panel>

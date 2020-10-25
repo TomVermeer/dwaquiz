@@ -12,7 +12,7 @@ const initialState = {
 const mainReducer = createReducer((state = initialState, action) => {
     switch (action.type) {
         case Actions.ON_QUESTIONS_RECEIVED:
-            state.suggestedQuestions = action.payload;
+            state.suggestedQuestions = state.suggestedQuestions.concat(action.payload);
             break;
         default:
             return state;

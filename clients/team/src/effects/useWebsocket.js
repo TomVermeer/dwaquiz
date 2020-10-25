@@ -6,5 +6,5 @@ export const useWebsocket = (quizPin, teamName) => {
     const history = useHistory();
     useEffect(() => {
         startWebsocket(history, quizPin, teamName);
-    }, [quizPin]);
+    }, [history, quizPin, teamName]);
 };

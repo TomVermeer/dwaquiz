@@ -1,14 +1,15 @@
 import * as WsEvents from "websocket-events";
 import {getWebsocket} from "shared/websocket";
-import {Pages} from "./pages";
+import {Pages} from "./pages/pages";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
 
-const buildHandlers = (history) =>
+const buildHandlers = (history, quizPin, teamName) =>
     new WebsocketHandlersBuilder()
         .on(WsEvents.ON_TEAM_APPROVAL)
-            .doAction(() => history.push(Pages.WAIT_FOR_QUESTION))
+            .doAction(() => history.push(Pages(quizPin, teamName).WAIT_FOR_QUESTION))
         .on(WsEvents.ON_TEAM_REJECTED)
-            .doAction(() => history.push(Pages.HOME))
+            .doAction(() => history.push(Pages().HOME))
         .build();
 
-export const startWebsocket = (history) => getWebsocket(buildHandlers(history));
+export const startWebsocket = (history, quizPin, teamName) =>
+    getWebsocket(buildHandlers(history, quizPin, teamName));

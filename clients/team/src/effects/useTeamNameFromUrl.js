@@ -3,11 +3,11 @@ import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {changeRoundNumber} from "shared/reducers/sharedActionCreators";
 
-export const useRoundNumberFromUrl = () => {
+export const useTeamNameFromUrl = () => {
     const dispatch = useDispatch();
-    const roundNumber = useParams().roundNumber;
+    const teamName = useParams().teamName;
     useEffect(() => {
-        dispatch(changeRoundNumber(Number(roundNumber)));
-    }, [roundNumber, dispatch]);
-    return roundNumber
+        dispatch(changeRoundNumber(Number(teamName)));
+    }, [teamName, dispatch]);
+    return teamName
 };

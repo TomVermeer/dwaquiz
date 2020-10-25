@@ -12,7 +12,7 @@ const QuestionsPanelRow = (props) => (
     </div>
 );
 
-const fetchAmmount = 20;
+const fetchAmount = 40;
 
 export const QuestionsPanel = (props) => {
     const {quizPin, roundNumber} = useSelector(state => state.shared.quizProgress);
@@ -20,7 +20,7 @@ export const QuestionsPanel = (props) => {
     const dispatch = useDispatch();
 
     const fetchQuestions = (quizPin, roundNumber, startIndex) =>
-        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmmount));
+        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmount));
 
     useEffect(() => {
         fetchQuestions(quizPin, roundNumber, 0)

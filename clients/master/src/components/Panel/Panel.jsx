@@ -3,6 +3,18 @@ import React from "react";
 import './panel.scss';
 
 export const Panel = (props) => {
+    const onClickRow = (row) => () => {
+        if(props.onClick) {
+            if(row.key) {
+                console.log('key is present: ', row.key);
+                props.onClick(row.key);
+            } else {
+                console.log('no key');
+                props.onClick(row);
+            }
+        }
+    };
+
     return (
         <div className="panel">
             <Card>
@@ -11,7 +23,7 @@ export const Panel = (props) => {
                     {props.rows.map(row => (
                         <ListGroup.Item key={row.key ? row.key : row}
                                         active={props.selected && (props.selected === row || props.selected === row.key)}
-                                        onClick={() => props.onClick && props.onClick(row)}
+                                        onClick={onClickRow(row)}
                         >
                             {row}
                         </ListGroup.Item>

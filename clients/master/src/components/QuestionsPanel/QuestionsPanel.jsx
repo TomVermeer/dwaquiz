@@ -31,11 +31,12 @@ export const QuestionsPanel = (props) => {
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
     const onSelectQuestion = (question) => {
-        setSelectedQuestion(question.key);
+        console.log('selecting: ', question);
+        setSelectedQuestion(question);
     };
 
     const onLoadMoreQuestions = () => fetchQuestions(quizPin, roundNumber, suggestedQuestions.length);
-    const onAskQuestion = () => dispatch(askQuestion(quizPin, roundNumber, history, selectedQuestion._id));
+    const onAskQuestion = () => dispatch(askQuestion(quizPin, roundNumber, selectedQuestion, history));
 
     return (
         <div className="question-panel">
@@ -54,7 +55,7 @@ export const QuestionsPanel = (props) => {
             >
                 <div className="align-right">
                         <Button variant="secondary" className="load-more" onClick={onLoadMoreQuestions}>Laad meer vragen</Button>
-                        <Button variant="primary" disabled={selectedQuestion == null}>Stel vraag</Button>
+                        <Button variant="primary" disabled={selectedQuestion == null} onClick={onAskQuestion}>Stel vraag</Button>
                 </div>
             </Panel>
         </div>

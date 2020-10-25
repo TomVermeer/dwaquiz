@@ -10,7 +10,7 @@ export const Panel = (props) => {
                 <ListGroup variant="flush">
                     {props.rows.map(row => (
                         <ListGroup.Item key={row.key ? row.key : row}
-                                        active={props.selected === row}
+                                        active={props.selected === row || props.selected === row.key}
                                         onClick={() => props.onClick && props.onClick(row)}
                         >
                             {row}

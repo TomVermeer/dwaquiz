@@ -23,3 +23,9 @@ code {
 .full-width {
   width: 100%;
 }
+
+.align-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

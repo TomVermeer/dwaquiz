@@ -26,7 +26,7 @@ const getSuggestedQuestionsHandler = async (req, res) => {
             }, {
                 category: true,
                 question: true,
-                _id: false
+                _id: true
             })
             .sort('orderNumber')
             .skip(Number(req.query.offset))

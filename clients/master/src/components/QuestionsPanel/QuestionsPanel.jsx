@@ -23,8 +23,8 @@ export const QuestionsPanel = (props) => {
         dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmount));
 
     useEffect(() => {
-        fetchQuestions(quizPin, roundNumber, 0)
-    }, [quizPin, roundNumber]);
+        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, 0, fetchAmount));
+    }, [quizPin, roundNumber, dispatch]);
 
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
@@ -32,9 +32,7 @@ export const QuestionsPanel = (props) => {
         setSelectedQuestion(question.key);
     };
 
-    const onLoadMoreQuestions = () => {
-        fetchQuestions(quizPin, roundNumber, suggestedQuestions.length);
-    };
+    const onLoadMoreQuestions = () => fetchQuestions(quizPin, roundNumber, suggestedQuestions.length);
 
     return (
         <div className="question-panel">
@@ -46,7 +44,7 @@ export const QuestionsPanel = (props) => {
                     question="Vraag"/>}
                 rows={suggestedQuestions.map(x =>
                     <QuestionsPanelRow
-                        key={x.question}
+                        key={x._id}
                         category={x.category}
                         question={x.question}
                         />)}

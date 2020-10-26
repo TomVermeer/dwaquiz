@@ -8,6 +8,8 @@ const initialState = {};
 const mainReducer = createReducer((state = initialState, action) => {
     switch(action.type) {
         case Actions.SET_TEAM_NAME:
+            state.teamName = action.payload;
+            break;
         case Actions.ON_TEAM_APPLY:
             state.teamName = action.teamName;
             break;

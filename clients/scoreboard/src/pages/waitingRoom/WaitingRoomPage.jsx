@@ -6,19 +6,8 @@ import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 const WaitingRoomHomepage = () => {
 
   const quizPin = useSelector(state => state.quizProgress.quizPin)
+  const teams = useSelector(state => state.participatingTeams)
 
-
-  const teams = [
-    {
-      name: "de billy butchers",
-    },
-    {
-      name: "super cool team",
-    },
-    {
-      name: "bitch mctits",
-    },
-  ];
 
   return (
     <>

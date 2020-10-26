@@ -83,6 +83,7 @@ const TeamsDisplay = (props) => {
   }
 
   const renderCorrectType = () => {
+    if(props.teams){
     if (props.type === "questionScore") {
       return renderQuestionScoreTeams();
     } else if (props.type === "roundScore" || props.type === "nightScore") {
@@ -90,6 +91,9 @@ const TeamsDisplay = (props) => {
     } else if (props.type === undefined || props.type === "display") {
       return renderDisplayTeams();
     }
+  } else {
+    return <h1>no teams joined yet</h1>
+  }
   };
 
   return renderCorrectType();

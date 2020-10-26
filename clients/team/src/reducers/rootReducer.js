@@ -14,7 +14,11 @@ const mainReducer = createReducer((state = initialState, action) => {
             state.teamName = action.teamName;
             break;
         case Actions.SET_QUESTION:
+            state.hasSubmittedAnswer = false;
             state.currentQuestion = action.payload;
+            break;
+        case Actions.ON_ANSWER_SUBMIT:
+            state.hasSubmittedAnswer = true;
             break;
         default:
             return state;

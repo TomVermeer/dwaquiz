@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react';
 import {fetchQuestion} from "../../reducers/rootActionCreators";
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {Card} from 'react-bootstrap';
+import './question.scss';
+import {AnswerForm} from "../../components/AnswerForm/AnswerForm";
 
 export const Question = (props) => {
 
@@ -8,11 +11,23 @@ export const Question = (props) => {
     const teamName = useSelector(state => state.root.teamName);
     const question = useSelector(state => state.root.currentQuestion);
     const dispatch = useDispatch();
+
     useEffect(() => {
-        dispatch(fetchQuestion(quizPin, roundNumber, questionNumber, teamName));
+        if(quizPin && roundNumber && questionNumber && teamName) {
+            dispatch(fetchQuestion(quizPin, roundNumber, questionNumber, teamName));
+        }
     }, [quizPin, roundNumber, questionNumber, teamName, dispatch]);
 
     return (
-        <p>{question}</p>
+        <div className="question-page">
+            <Card>
+                <Card.Header>
+                    <h2>{question}</h2>
+                </Card.Header>
+                <Card.Body>
+                    <AnswerForm/>
+                </Card.Body>
+            </Card>
+        </div>
     );
 };

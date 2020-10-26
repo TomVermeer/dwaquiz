@@ -8,7 +8,8 @@ import {useWebsocket} from "../../effects/useWebsocket";
 import {useSelector} from 'react-redux';
 
 export const QuestionRouter = (props) => {
-    const {quizPin, teamName} = useSelector(state => state.shared.quizProgress);
+    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
+    const teamName = useSelector(state => state.root.teamName);
 
     const roundNumber = useFromUrl('roundNumber', setRoundNumber);
     const questionNumber = useFromUrl('questionNumber', setQuestionNumber);

@@ -57,4 +57,38 @@ const createQuestioning = async (req, res) => {
     }
 };
 
-module.exports = {createQuestioning};
+const getQuestioningForTeam = async (req, res) => {
+    try {
+        const teamName = req.params.teamName;
+        const {question} = await Questioning
+            .findOne({
+                quizPin: req.quizPin,
+                teamName,
+                roundNumber: req.round,
+                questionNumber: Number(req.params.questionNumber)
+            })
+            .populate('question')
+            .exec();
+        res.json({question: question.question});
+    } catch (e) {
+        throw e;
+    }
+};
+
+const getQuestioning = async (req, res) => {
+    try {
+        const {question} = await Questioning
+            .findOne({
+                quizPin: req.quizPin,
+                roundNumber: req.round,
+                questionNumber: Number(req.params.questionNumber)
+            })
+            .populate('question')
+            .exec();
+        res.json({question: question.question, answer: question.answer, category: question.category});
+    } catch (e) {
+        throw e;
+    }
+};
+
+module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning};

@@ -13,6 +13,9 @@ const mainReducer = createReducer((state = initialState, action) => {
         case Actions.ON_TEAM_APPLY:
             state.teamName = action.teamName;
             break;
+        case Actions.SET_QUESTION:
+            state.currentQuestion = action.payload;
+            break;
         default:
             return state;
     }

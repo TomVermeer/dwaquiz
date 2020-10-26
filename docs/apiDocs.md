@@ -41,9 +41,13 @@ The following diagram shows all available routes with their supported methods.
     * /:round
      * /questionings
       *_ POST
+      * /:questionNumber
+       *_ GET
+       * /:teamName
+        *_ GET
      * /suggested-questions
       *_ GET
-    * /:question
+    * /:questionNumber
      *_ PATCH
      * /grade
       *_ POST
@@ -339,7 +343,7 @@ end
 
 ___
 
-## /quiz-nights/:quizPin/rounds/:round/questionings/:question/grade
+## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber/grade
 
 **@method:** POST
 **@description:** if last question in round, score is also calculated and saved.
@@ -367,7 +371,7 @@ ___
 **@TODO:** Error situaties
 ___
 
-## /quiz-nights/:quizPin/rounds/:round/questionings/:question
+## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber
 
 **@method** PATCH
 **@body:**
@@ -383,6 +387,64 @@ ___
 ##### 200
 
 **@body:** *None*
+
+##### 404
+
+**@description:** When question is not found.
+**@body:**
+
+```js
+{
+    error: "Question not found"
+}
+```
+
+___
+
+## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber
+
+**@method** GET
+
+#### @response
+
+##### 200
+
+**@body:**
+```js
+{
+    question: "In welk programma heb je als kandidaat 100 tegenspelers?",
+    category: "Film en TV",
+    answer: "1 tegen 100"
+}
+```
+
+##### 404
+
+**@description:** When question is not found.
+**@body:**
+
+```js
+{
+    error: "Question not found"
+}
+```
+
+___
+
+## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber/:teamName
+
+**@method** GET
+
+#### @response
+
+##### 200
+
+**@body:**
+```js
+{
+    question: "In welk programma heb je als kandidaat 100 tegenspelers?"
+}
+```
 
 ##### 404
 

@@ -1,8 +1,6 @@
 import { postAndParse } from "shared/fetchHelpers";
 import { SharedActions } from "shared/actions";
 import { startWebsocket } from "../webSocketHandlers";
-import WsEvents from "websocket-events";
-
 
 export const openQuizNight = (quizpin) => (dispatch) => {
   postAndParse(`scoreboards/${quizpin}`)

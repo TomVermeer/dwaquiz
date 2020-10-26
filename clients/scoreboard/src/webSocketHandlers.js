@@ -1,6 +1,6 @@
 import {getWebsocket} from "shared/websocket";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
-import { setParticipatingTeams} from '../src/reducers/quizProgressActionCreators';
+import { setParticipatingTeams} from './reducers/mainActionCreators';
 import * as WsEvents from "websocket-events";
 
 

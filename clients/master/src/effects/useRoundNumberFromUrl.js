@@ -7,10 +7,7 @@ export const useRoundNumberFromUrl = () => {
     const dispatch = useDispatch();
     const roundNumber = useParams().roundNumber;
     useEffect(() => {
-
-        if(roundNumber) {
-            dispatch(changeRoundNumber(Number(roundNumber)));
-        }
+        dispatch(changeRoundNumber(Number(roundNumber)));
     }, [roundNumber, dispatch]);
     return roundNumber
 };

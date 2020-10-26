@@ -1,7 +1,6 @@
 import {Actions} from '../../actions';
 import {isErrorResponse, post} from "shared/fetchHelpers";
-import {Pages} from "../../pages";
-import {startWebsocket} from "../../websocketHandlers";
+import {Pages} from "../../pages/pages";
 
 const onTeamApply = (teamName, quizPin) => {
     return {
@@ -16,9 +15,8 @@ export const applyTeam = (teamName, quizPin, history) => dispatch => {
             if (isErrorResponse(response)) {
                 // TODO: handle errors
             } else {
-                startWebsocket(history);
                 dispatch(onTeamApply(teamName, quizPin));
-                history.push(Pages.WAIT_FOR_APPROVAL);
+                history.push(Pages(quizPin, teamName).WAIT_FOR_APPROVAL);
             }
         });
 };

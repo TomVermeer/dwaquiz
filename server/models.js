@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const questioningsSchema = new mongoose.Schema({
     teamName: { type: String, required: true },
     question: { type: String, required: true },
+    questionId: {type: String, required: true},
     answer: String,
     isCorrect: { type: Boolean, default: false }
 });

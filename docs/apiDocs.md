@@ -314,14 +314,11 @@ ___
 @startuml
 
 Master -> Server : POST /quiz-nights/:quizPin/rounds/:round/questionings
-Server -> Server : answer = findAnswer(question)
 Server --> ScoreBoard : onQuestion
 
 loop Team : TeamsInQuizNight
     Server --> Team : onQuestion
 end
-
-Master <- Server : answer
 
 @enduml
 ```
@@ -330,7 +327,7 @@ Master <- Server : answer
 
 ```js
 {
-    question: "vraag1"
+    questionId: "asdf12"
 }
 ```
 
@@ -338,13 +335,7 @@ Master <- Server : answer
 
 ##### 200
 
-**@body:**
-
-```js
-{
-    answer: "antwoord voor vraag 1"
-}
-```
+**@body:** _none_
 
 ___
 

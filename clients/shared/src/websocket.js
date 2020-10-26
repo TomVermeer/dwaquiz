@@ -1,6 +1,5 @@
 import {SERVER} from "./constants";
 import {getDispatch} from "./store";
-import {getAndParse} from "./fetchHelpers";
 
 const WS_URL = `ws://${SERVER}/ws`;
 
@@ -31,14 +30,7 @@ const executeHandler = (handlers, message, dispatch) => {
 const initializeWebSocket = (wsUrl, dispatch, handlers) => {
     const ws = new WebSocket(wsUrl);
 
-    ws.onmessage = ({data}) => {
-        const message = JSON.parse(data);
-        if (handlers[message.type]) {
-            executeHandler(handlers, message, dispatch);
-        } else {
-            throw new Error(`No websocket event handler was installed for type: ${message.type}`);
-        }
-    };
+    changeHandlers(ws, handlers, dispatch);
 
     ws.onclose = () => {
         websocket = null;
@@ -47,14 +39,28 @@ const initializeWebSocket = (wsUrl, dispatch, handlers) => {
     return ws;
 };
 
+const changeHandlers = (ws, handlers, dispatch) => {
+    ws.onmessage = ({data}) => {
+        const message = JSON.parse(data);
+        if (handlers[message.type]) {
+            executeHandler(handlers, message, dispatch);
+        } else {
+            throw new Error(`No websocket event handler was installed for type: ${message.type}`);
+        }
+    };
+};
+
 /**
  * Get's a websocket to the websocket server
  * All messages received by this websocket are dispatched to the connected redux store
  * No error handling and reconnection are implemented yet
  */
 export const getWebsocket = (handlers) => {
+    const dispatch = getDispatch();
     if (websocket == null) {
-        websocket = initializeWebSocket(WS_URL, getDispatch(), handlers);
+        websocket = initializeWebSocket(WS_URL, dispatch, handlers);
+    } else {
+        changeHandlers(websocket, handlers, dispatch);
     }
     return websocket;
 };

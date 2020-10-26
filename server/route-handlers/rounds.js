@@ -1,15 +1,7 @@
 const {getQuizNight} = require('../helpers/quizNight');
+const {findHighestRoundNumber} = require('../helpers/findHighestRoundNumber');
 
-const findNewRoundNumber = (quizNight) => {
-    if(quizNight.rounds.length !== 0) {
-        const maxRoundNumber= Math.max(...
-            (quizNight.rounds.map(x => x.roundNumber)));
-        return maxRoundNumber + 1;
-    } else {
-        return 1;
-    }
-};
-
+const findNewRoundNumber = quizNight => findHighestRoundNumber(quizNight) + 1;
 
 const createRoundHandler = async (req, res) => {
     try {

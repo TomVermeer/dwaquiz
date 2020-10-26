@@ -1,3 +1,4 @@
+const {getMaster} = require("../setupWebSockets");
 const {getQuizNight} = require("../helpers/quizNight");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
@@ -91,4 +92,28 @@ const getQuestioning = async (req, res) => {
     }
 };
 
-module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning};
+const answerQuestioning = async (req, res) => {
+    try {
+        const questioning = await Questioning
+            .findOne({
+                quizPin: req.quizPin,
+                roundNumber: req.round,
+                questionNumber: Number(req.params.questionNumber)
+            })
+            .exec();
+        if(questioning.isOpen) {
+            questioning.answer = req.body.answer;
+            questioning.isCorrect = false;
+            await questioning.save();
+            getMaster(req.quizPin).sendJson({type: WsEvents.ON_ANSWER});
+            res.send('ok');
+        } else {
+            res.status(400).send({error: 'This question has been closed and no longer accepts answers'});
+        }
+
+    } catch(e) {
+        throw e;
+    }
+};
+
+module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning, answerQuestioning};

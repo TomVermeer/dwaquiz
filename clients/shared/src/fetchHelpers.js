@@ -23,9 +23,11 @@ const options = (body, method, additionalHeaders = {}) => {
     };
 };
 
-export const post = (path, body) => fetch(API_BASE_URL + path, options(body, 'POST'));
+const createHelperForMethod = method => (path, body) => fetch(API_BASE_URL + path, options(body, method));
 
-export const deleteReq = (path, body) => fetch(API_BASE_URL + path, options(body, 'DELETE'));
+export const post = createHelperForMethod('POST');
+
+export const deleteReq = createHelperForMethod('DELETE');
 
 export const postAndParse = (path, body) => checkAndParseResponse(post(path, body));
 
@@ -40,4 +42,6 @@ export const getAndParse = (path, body) => get(path, body)
        }
     });
 
-export const patch = (path, body) => fetch(API_BASE_URL + path, options(body, 'PATCH'));
+export const patch = createHelperForMethod('PATCH');
+
+export const put = createHelperForMethod('PUT');

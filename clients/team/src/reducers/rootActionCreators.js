@@ -1,5 +1,5 @@
 import {Actions} from "../actions";
-import {isErrorResponse, post, put, getAndParse} from "shared/fetchHelpers";
+import {getAndParse, isErrorResponse, put} from "shared/fetchHelpers";
 
 export const setTeamName = teamName => {
     return {type: Actions.SET_TEAM_NAME, payload: teamName};

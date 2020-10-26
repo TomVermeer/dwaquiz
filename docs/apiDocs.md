@@ -30,8 +30,6 @@ The following diagram shows all available routes with their supported methods.
    * team-applications
     *_ GET
     *_ POST
-   * /suggested-questions
-    *_ GET
    * /teams
     *_ POST
     * /:team
@@ -43,6 +41,8 @@ The following diagram shows all available routes with their supported methods.
     * /:round
      * /questionings
       *_ POST
+     * /suggested-questions
+      *_ GET
     * /:question
      *_ PATCH
      * /grade
@@ -106,7 +106,7 @@ ___
 
 ```js
 {
-  active: true;
+  isOpenForApplication: true;
 }
 ```
 
@@ -162,6 +162,20 @@ ___
 ```
 
 #### @response
+
+##### 200
+
+**@body:** _none_
+
+##### 400
+
+**@description:** When the quiznight no longer accepts applications
+**@body:**
+```js
+{
+    error: 'The quiz-night is not accepting applications'
+}
+```
 
 ___
 
@@ -233,22 +247,7 @@ ___
 
 ```js
 {
-    roundNumber: 1,
-    possibleRoundQuestions:
-        [
-            {
-                categoryName: "kunst"
-                questions: ["vraag1","vraag2"]
-            },
-            {
-                categoryName: "sport"
-                questions: ["vraag1","vraag2"]
-            },
-            {
-                categoryName: "topografie"
-                questions: ["vraag1","vraag2"]
-            }
-        ]
+    roundNumber: 1
 }
 ```
 
@@ -268,18 +267,9 @@ ___
 **@description:** when quizPin does not exist.
 ___
 
-## /quiz-nights/:quizPin/suggestedQuestions/?:offset&:limit
+## /quiz-nights/:quizPin/round/:round/suggestedQuestions/?:offset&:limit
 
 **@method:** GET
-**@body:**
-
-```js
-[
-    "sport",
-    "kunst",
-    "topografie"
-]
-```
 
 ##### 200
 
@@ -324,14 +314,11 @@ ___
 @startuml
 
 Master -> Server : POST /quiz-nights/:quizPin/rounds/:round/questionings
-Server -> Server : answer = findAnswer(question)
 Server --> ScoreBoard : onQuestion
 
 loop Team : TeamsInQuizNight
     Server --> Team : onQuestion
 end
-
-Master <- Server : answer
 
 @enduml
 ```
@@ -340,7 +327,7 @@ Master <- Server : answer
 
 ```js
 {
-    question: "vraag1"
+    questionId: "asdf12"
 }
 ```
 
@@ -348,13 +335,7 @@ Master <- Server : answer
 
 ##### 200
 
-**@body:**
-
-```js
-{
-    answer: "antwoord voor vraag 1"
-}
-```
+**@body:** _none_
 
 ___
 

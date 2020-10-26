@@ -6,30 +6,23 @@ import {
 } from "react-router-dom";
 import './App.scss';
 import {Home} from './pages/home/Home';
-import {Teams} from './pages/teams/Teams';
-import {PAGES} from './pages/pages';
+import {RouterUrls} from './pages/routerUrls';
 import {useSelector} from "react-redux";
 import { Page } from "shared/components/Page/Page";
-
+import {QuizNightRouter} from "./pages/quizNight/QuizNightRouter";
 
 function App() {
     const title = useSelector(state => state.shared.title);
-    const quizProgress = useSelector(state => {
-        return {
-            quizPin: state.quizNight.quizPin,
-            roundNumber: 1, // TODO
-            questionNumber: 2 // TODO
-        }
-    });
+    const quizProgress = useSelector(state => state.shared.quizProgress);
     return (
         <Page quizNight={quizProgress} title={title}>
             <Router>
                 <Switch>
-                    <Route exact path={PAGES.HOME}>
+                    <Route exact path={RouterUrls.HOME}>
                         <Home/>
                     </Route>
-                    <Route exact path={PAGES.TEAMS}>
-                        <Teams/>
+                    <Route path={RouterUrls.QUIZ_PIN}>
+                        <QuizNightRouter/>
                     </Route>
                 </Switch>
             </Router>

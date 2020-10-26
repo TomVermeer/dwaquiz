@@ -7,7 +7,7 @@ import {approveTeam, rejectTeam} from "../../reducers/quizNight/quizNightActionC
 
 export const TeamApplicationsPanel = (props) => {
     const [selectedApplication, setSelectedApplication] = useState(null);
-    const quizPin = useSelector(state => state.quizNight.quizPin);
+    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
     const dispatch = useDispatch();
 
     const onApproveTeam = () => {

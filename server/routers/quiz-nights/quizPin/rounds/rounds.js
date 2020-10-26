@@ -1,10 +1,9 @@
 const roundRouter = require('./round/round');
-const questionRouter = require('./question/question');
-
+const {createRoundHandler} = require('../../../../route-handlers/rounds');
+const {saveRoundNumber} = require('../../../../middleware/round');
 const router = require('express').Router();
 
-router.use('/:round', roundRouter);
-router.use('/:question', questionRouter);
-// TODO: post
+router.use('/:round', [saveRoundNumber, roundRouter]);
+router.post('/', createRoundHandler);
 
 module.exports = router;

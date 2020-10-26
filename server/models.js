@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const questioningsSchema = new mongoose.Schema({
     teamName: { type: String, required: true },
     question: { type: String, required: true },
+    questionId: {type: String, required: true},
     answer: String,
     isCorrect: { type: Boolean, default: false }
 });
@@ -24,12 +25,14 @@ const quizNightSchema = mongoose.Schema({
     teamApplications: {type: [String], required: true},
     teams: { type: [teamSchema], required: true },
     rounds: { type: [roundSchema], required: true },
+    isOpenForApplication: {type: Boolean, default: true}
 });
 
 const questionSchema = mongoose.Schema({
     question: {type: String, required: true},
     category: { type: String, required: true },
     answer: { type: String, required: true },
+    orderNumber: {type: Number, required: true}
 });
 
 const QuizNight = mongoose.model('QuizNight', quizNightSchema);

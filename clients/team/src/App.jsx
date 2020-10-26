@@ -5,11 +5,10 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-import {Pages} from './pages';
+import {RouterUrls} from './pages/pages';
 import {Home} from './pages/home/Home';
-import {WaitForApproval} from './pages/waitForApproval/WaitForApproval';
-import {WaitForQuestion} from "./pages/waitForQuestion/WaitForQuestion";
 import {Page} from "shared/components/Page/Page";
+import {TeamAppliedRouter} from "./pages/TeamAppliedRouter";
 
 function App() {
     return (
@@ -20,14 +19,11 @@ function App() {
         }}>
             <Router>
                 <Switch>
-                    <Route exact path={Pages.HOME}>
+                    <Route exact path={RouterUrls.HOME}>
                         <Home/>
                     </Route>
-                    <Route exact path={Pages.WAIT_FOR_APPROVAL}>
-                        <WaitForApproval/>
-                    </Route>
-                    <Route exact path={Pages.WAIT_FOR_QUESTION}>
-                        <WaitForQuestion/>
+                    <Route path={RouterUrls.TEAM_APPLIED}>
+                        <TeamAppliedRouter/>
                     </Route>
                 </Switch>
             </Router>

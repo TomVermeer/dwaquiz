@@ -1,5 +1,6 @@
 const router = require('express').Router();
+const {createQuestioning} = require('../../../../../route-handlers/questionings');
 
-// TODO post
+router.post('/', createQuestioning);
 
 module.exports = router;

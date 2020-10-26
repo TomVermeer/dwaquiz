@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useState } from 'react'
 import { Button, Container, Form, Navbar, Col } from "react-bootstrap";
 import {Footer} from "../../components"
-import {openQuizNight} from "../../reducers/quizProgressActionCreators"
+import {openQuizNight} from "../../reducers/mainActionCreators"
 
 import "../homePage/homepage.scss";
 import { useHistory } from "react-router";

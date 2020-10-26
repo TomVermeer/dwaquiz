@@ -14,7 +14,8 @@ const questioningsSchema = new mongoose.Schema({
     isCorrect: { type: Boolean, default: false },
     questionNumber: {type: Number, required: true},
     roundNumber: {type: Number, required: true},
-    quizPin: {type: Number, ref: 'QuizNight', required: true}
+    quizPin: {type: Number, ref: 'QuizNight', required: true},
+    isOpen: {type: Boolean, default: true}
 });
 
 const teamSchema = mongoose.Schema({

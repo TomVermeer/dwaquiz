@@ -20,7 +20,7 @@ const onChange = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  history.push("/waitingRoom")
+  history.push(`/${quizPin}/waitingRoom`)
   dispatch(openQuizNight(quizPin))
 }
 

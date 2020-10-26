@@ -7,7 +7,7 @@ const applyScoreBoardHandler = async (req, res) => {
         const quizPin = req.quizPin;
         req.session.quizPin = quizPin;
         req.session.role = Roles.SCOREBOARD;
-        res.send('ok');
+        res.json('ok');
     } catch (e) {
         throw e;
     }

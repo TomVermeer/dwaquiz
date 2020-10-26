@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
+import { RouterUrls } from './pages/routerUrls'
 
 import './App.scss';
 
@@ -24,12 +25,12 @@ function App() {
     <BrowserRouter>
      <div className="App">
       <Switch>
-        <Route exact path="/" component={HomePage}/>
-        <Route exact path="/waitingRoom" component={WaitingRoomPage}/>
-        <Route exact path="/question" component={QuestionPage} />
-        <Route exact path="/score" component={ScorePage}/>
-        <Route exact path="/roundEnd" component={RoundEndPage}/>
-        <Route exact path="/nightEnd" component={QuizNightEndPage} />
+        <Route exact path={RouterUrls.HOME} component={HomePage}/>
+        <Route exact path={RouterUrls.WAITINGROOM} component={WaitingRoomPage}/>
+        <Route exact path={RouterUrls.QUESTION} component={QuestionPage} />
+        <Route exact path={RouterUrls.SCORE} component={ScorePage}/>
+        <Route exact path={RouterUrls.ROUNDEND} component={RoundEndPage}/>
+        <Route exact path={RouterUrls.NIGHTEND} component={QuizNightEndPage} />
       </Switch>
      </div>
     </BrowserRouter>

@@ -14,7 +14,7 @@ export const mainReducer = createReducer(
     switch (action.type) {
       case SharedActions.ON_TEAM_APPROVAL :
         //console.log("hey reducer triggered")
-        initialState.participatingTeams.push(action.payload)
+        state.participatingTeams = action.payload
       break;
     }
     return state;

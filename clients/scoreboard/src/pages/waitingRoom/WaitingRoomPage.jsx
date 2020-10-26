@@ -1,12 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { setQuizPin } from "shared/reducers/sharedActionCreators";
+import { useFromUrl } from "../../effects/useFromUrl"
 
 import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 
 const WaitingRoomHomepage = () => {
 
-  const quizPin = useSelector(state => state.quizProgress.quizPin)
-  const teams = useSelector(state => state.participatingTeams)
+  const quizPin = useFromUrl('quizPin', setQuizPin)
+  const teams = useSelector(state => state.root.participatingTeams)
 
 
   return (

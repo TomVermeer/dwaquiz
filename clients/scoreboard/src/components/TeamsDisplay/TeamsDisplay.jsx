@@ -18,8 +18,8 @@ const TeamsDisplay = (props) => {
         <h1>{props.title}</h1>
         {props.teams.map((el) => {
           return (
-            <Card key={el.name} className="TeamCard">
-              <Card.Body>{el.name}</Card.Body>
+            <Card key={el} className="TeamCard">
+              <Card.Body>{el}</Card.Body>
             </Card>
           );
         })}

@@ -18,7 +18,7 @@ const Questionpage = () => {
     const teams = [ ];
      useEffect( () => {
         dispatch(fetchQuestion(quizPin, round, questionNum))
-     },[questionNum, round, dispatch])
+     },[questionNum, round, dispatch, quizPin])
      const currentQuestion = useSelector(state => state.root.currentQuestion)
 
     return(

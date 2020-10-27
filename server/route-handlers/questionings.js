@@ -116,4 +116,28 @@ const answerQuestioning = async (req, res) => {
     }
 };
 
-module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning, answerQuestioning};
+const gradeQuestioning = async (req, res) => {
+    try {
+        // TODO
+    } catch(e) {
+        throw e;
+    }
+};
+
+const closeQuestioning = async (req, res) => {
+    try {
+        const questioning = await Questioning.findOne({
+            question: req.params.questionId,
+            quizPin: req.quizPin,
+            roundNumber: req.round
+            }).exec();
+        console.log('closing question: ', questioning);
+        questioning.isOpen = Boolean(req.body.isOpen);
+        await questioning.save();
+        res.send('ok');
+    } catch(e) {
+        throw e;
+    }
+};
+
+module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning, answerQuestioning, gradeQuestioning, closeQuestioning};

@@ -4,6 +4,7 @@ import {sharedReducer} from "shared/reducers/sharedReducer";
 import {categoryReducer} from "./category/categoryReducer";
 import {createReducer} from "shared/reducers/createReducer";
 import {Actions} from "../actions";
+import {currentQuestionReducer} from "./currentQuestion/currentQuestionReducer";
 
 const initialState = {
     suggestedQuestions: []
@@ -24,5 +25,6 @@ export const rootReducer = combineReducers({
     quizNight: quizNightReducer,
     category: categoryReducer,
     shared: sharedReducer,
-    root: mainReducer
+    root: mainReducer,
+    currentQuestion: currentQuestionReducer
 });

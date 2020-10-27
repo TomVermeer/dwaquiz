@@ -16,7 +16,7 @@ For guarding the state in our applications we will be using Redux, in the follow
         }
         suggestedQuestions: [{category: string, question: string, _id: number}],
         scorePerTeam: map(number, {roundPoints: number, correctQuestions: number}), // teamIndex ->; roundpoints, correctquestions
-        quizNight :
+        quizNight:
         {
             askedQuestions: [string],
             teamApplications: [string],
@@ -26,7 +26,7 @@ For guarding the state in our applications we will be using Redux, in the follow
             isOpen: boolean,
             category: string,
             question: string,
-            correctAnswer: string,
+            answer: string,
             teamAnswers: map(number, {answer: string, isCorrect: boolean}) // teamIndex -> answer, iscorrect
         },
         quizProgress: {

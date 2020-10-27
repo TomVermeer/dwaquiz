@@ -20,7 +20,7 @@ export const AnswerRow = (props) => {
             <div>
                 {answerText}
             </div>
-            <div className={props.isDisabled && "disabled"}>
+            <div className={props.isDisabled ? 'disabled' : ''}>
                 <BootstrapSwitchButton checked={props.teamAnswer.isCorrect}
                                        onstyle="sucess"
                                        offstyle="outline-danger"
@@ -28,7 +28,8 @@ export const AnswerRow = (props) => {
                                        offlabel="Onjuist"
                                        width={100}
                                        onChange={onChangeIsCorrect}
-                                       disabled={props.isDisabled}/>
+                    // Not disabled because this module cant deal with being undisabled
+                />
             </div>
         </div>
     );

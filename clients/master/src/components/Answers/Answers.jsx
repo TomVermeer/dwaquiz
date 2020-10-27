@@ -26,7 +26,6 @@ export const Answers = (props) => {
     return (
         <div className="answers">
             <Card>
-                {/*<Card.Header>Antwoorden</Card.Header>*/}
                 <Card.Header>
                     <div className="list-row ">
                         <h5>Team</h5>

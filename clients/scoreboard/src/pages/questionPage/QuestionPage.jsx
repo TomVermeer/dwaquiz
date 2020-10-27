@@ -1,32 +1,29 @@
 import React from 'react';
 import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components"
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux'
-import { fetchQuestion } from '../../reducers/mainActionCreators';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchQuestion, roundNumberSetter, questionNumberSetter } from '../../reducers/mainActionCreators';
+import { useFromUrl } from '../../effects/useFromUrl'
+
 
 
 const Questionpage = () => {
+    const round = useFromUrl('roundNumber', roundNumberSetter);
+    const questionNum = useFromUrl('questionNumber', questionNumberSetter)
 
+    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
 
-    const {quizPin, roundNumber, questionNumber} = useSelector(state => state.shared.quizProgress);
-    const currentQuestion = fetchQuestion(quizPin,roundNumber,questionNumber)
-    const teams = [
-        
-          "de billy butchers",
-        ,
-           "super cool team",
-        ,
-          "bitch mctits",
-        ,
-      ];
+    const dispatch = useDispatch();
 
+    const teams = [ ];
      useEffect( () => {
-
-     },[questionNumber])
+        dispatch(fetchQuestion(quizPin, round, questionNum))
+     },[questionNum, round, dispatch])
+     const currentQuestion = useSelector(state => state.root.currentQuestion)
 
     return(
         <>
-            <QuestionHeader roundNumber={roundNumber} questionNumber={questionNumber} quizPin={quizPin}/>
+            <QuestionHeader roundNumber={round} questionNumber={questionNum} quizPin={quizPin}/>
             <Question question={currentQuestion}/>
             <TeamsDisplay title="Answered by" teams={teams}/>
             <Footer/>

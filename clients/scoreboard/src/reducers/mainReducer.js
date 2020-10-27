@@ -3,7 +3,7 @@ import { SharedActions } from "shared/actions";
 import { Actions } from "../actions";
 
 const initialState = {
-    currentQuestion: "",
+    currentQuestion: {},
     participatingTeams: [],
     answeredTeams: [],
     teamAnswers: [],

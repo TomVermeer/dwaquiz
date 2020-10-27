@@ -10,7 +10,7 @@ import { useHistory } from "react-router";
 
 const HomePage = () => {
   const history = useHistory()
-  const [quizPin, setQuizPin] = useState();
+  const [quizPin, setQuizPin] = useState("");
 
 const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const onChange = (e) => {
 const handleSubmit = (e) => {
   e.preventDefault()
   history.push(`/${quizPin}/waitingRoom`)
-  dispatch(openQuizNight(quizPin))
+  dispatch(openQuizNight(quizPin, history))
 }
 
   return (

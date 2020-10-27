@@ -8,10 +8,10 @@ import {closeQuestion} from "../../reducers/currentQuestion/currentQuestionActio
 export const Answers = (props) => {
 
     const dispatch = useDispatch();
-    const {quizPin, roundNumber} = useSelector(state => state.shared.quizProgress);
-    const {questionId, isOpen} = useSelector(state => state.currentQuestion);
+    const {quizPin, roundNumber, questionNumber} = useSelector(state => state.shared.quizProgress);
+    const {isOpen} = useSelector(state => state.currentQuestion);
     const onCloseQuestion = () => {
-        dispatch(closeQuestion(quizPin, roundNumber, questionId));
+        dispatch(closeQuestion(quizPin, roundNumber, questionNumber));
     };
 
     return (

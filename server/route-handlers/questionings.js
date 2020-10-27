@@ -52,7 +52,7 @@ const createQuestioning = async (req, res) => {
         const onQuestionEvent = {type: WsEvents.ON_QUESTION, roundNumber, questionNumber};
         notifyTeams(req.quizPin, onQuestionEvent);
         notifyScoreboard(req.quizPin, onQuestionEvent);
-        res.send('ok');
+        res.send({quizPin: req.quizPin, roundNumber, questionNumber});
     } catch (e) {
         throw e;
     }
@@ -101,7 +101,7 @@ const answerQuestioning = async (req, res) => {
                 questionNumber: Number(req.params.questionNumber)
             })
             .exec();
-        if(questioning.isOpen) {
+        if (questioning.isOpen) {
             questioning.answer = req.body.answer;
             questioning.isCorrect = false;
             await questioning.save();
@@ -111,7 +111,7 @@ const answerQuestioning = async (req, res) => {
             res.status(400).send({error: 'This question has been closed and no longer accepts answers'});
         }
 
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
@@ -119,25 +119,36 @@ const answerQuestioning = async (req, res) => {
 const gradeQuestioning = async (req, res) => {
     try {
         // TODO
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
 
 const closeQuestioning = async (req, res) => {
     try {
-        const questioning = await Questioning.findOne({
-            question: req.params.questionId,
+        const questionings = await Questioning.find({
+            questionNumber: Number(req.params.questionNumber),
             quizPin: req.quizPin,
             roundNumber: req.round
-            }).exec();
-        console.log('closing question: ', questioning);
-        questioning.isOpen = Boolean(req.body.isOpen);
-        await questioning.save();
+        }).exec();
+        await Promise.all(
+            questionings.map(async questioning => {
+                questioning.isOpen = Boolean(req.body.isOpen);
+                await questioning.save();
+            })
+        );
+
         res.send('ok');
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
 
-module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning, answerQuestioning, gradeQuestioning, closeQuestioning};
+module.exports = {
+    createQuestioning,
+    getQuestioningForTeam,
+    getQuestioning,
+    answerQuestioning,
+    gradeQuestioning,
+    closeQuestioning
+};

@@ -8,7 +8,6 @@ import {Grade} from "./grade/Grade";
 
 export const RoundRouter = () => {
     useRoundNumberFromUrl();
-
     return (
         <Switch>
             <Route path={RouterUrls.CATEGORIES}>

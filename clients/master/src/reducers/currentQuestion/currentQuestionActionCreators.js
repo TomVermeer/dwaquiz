@@ -20,8 +20,8 @@ const onCloseQuestionSuccess = (isOpen) => {
   return {type: Actions.ON_CLOSE_QUESTION, payload: isOpen};
 };
 
-export const closeQuestion = (quizPin, roundNumber, questionId) => dispatch => {
-    patch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionId}`, {isOpen: false})
+export const closeQuestion = (quizPin, roundNumber, questionNumber) => dispatch => {
+    patch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`, {isOpen: false})
         .then(response => {
             if(isErrorResponse(response)) {
                 // TODO

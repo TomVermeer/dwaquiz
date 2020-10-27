@@ -21,7 +21,3 @@ When running in production mode the express app can serve the apps using `expres
 ### Body parser
 
 Because we use JSON as a media for REST we parse the http bodies with bodyParser.
-
-### Sessions
-
-We use session to store the quizPin for the scoreboard, this way the websocket server can initialy setup a socket to only listen for events in a given quiznight.

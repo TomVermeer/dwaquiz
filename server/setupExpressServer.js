@@ -3,13 +3,11 @@ const path = require("path");
 const apiRoot = require('./routers/apiRoot');
 const { environment, PRODUCTION } = require("./constants");
 const { installCors, installJsonBodyParser } = require("./middleware/defaultMiddleware");
-const { installSession } = require("./middleware/session");
 
 const installRootMiddleware = (app) => {
     installCors(app);
     installJsonBodyParser(app);
-    installSession(app);
-}
+};
 
 const serveClient = (app, client) => {
     const clientPath = path.join(__dirname, '..', 'clients', client, 'build');
@@ -17,14 +15,14 @@ const serveClient = (app, client) => {
     app.use('/static', express.static(staticPath));
     app.use('/' + client, express.static(clientPath));
     console.log('Serving client: ', client, ' from: ', clientPath, ' at: /' + client);
-}
+};
 
 const serveClientFiles = (app) => {
     if (environment === PRODUCTION) {
         const clients = ['master', 'team', 'scoreboard'];
         clients.forEach(client => serveClient(app, client));
     }
-}
+};
 
 const registerExpressServer = () => {
     const app = express();

@@ -2,6 +2,7 @@ import * as WsEvents from "websocket-events";
 import {getWebsocket} from "shared/websocket";
 import {Pages} from "./pages/pages";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
+import * as Roles from "roles";
 
 const buildHandlers = (history, quizPin, teamName, questionNumber, roundNumber) => {
 
@@ -22,6 +23,17 @@ const buildHandlers = (history, quizPin, teamName, questionNumber, roundNumber) 
         .build();
 };
 
+const initializationMessage = (quizPin, teamName) => {
+    return {
+        type: WsEvents.INITIALIZE,
+        payload: {
+            role: Roles.TEAM,
+            quizPin,
+            teamName
+        }
+    };
+};
+
 
 export const startWebsocket = (history, quizPin, teamName, questionNumber, roundNumber) =>
-    getWebsocket(buildHandlers(history, quizPin, teamName, questionNumber, roundNumber));
+    getWebsocket(buildHandlers(history, quizPin, teamName, questionNumber, roundNumber), initializationMessage(Number(quizPin), teamName));

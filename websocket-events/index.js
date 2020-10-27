@@ -7,7 +7,8 @@ const WsEvents = Object.freeze({
     ON_ROUND_END: 'ON_ROUND_END',
     ON_QUIZ_NIGHT_END: 'ON_QUIZ_NIGHT_END',
     ON_TEAM_APPROVAL: 'ON_TEAM_APPROVAL',
-    ON_TEAM_REJECTED: 'ON_TEAM_REJECTED'
+    ON_TEAM_REJECTED: 'ON_TEAM_REJECTED',
+    INITIALIZE: 'INITIALIZE'
 });
 
 module.exports = WsEvents;

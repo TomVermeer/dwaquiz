@@ -1,0 +1,8 @@
+{
+  "name": "roles",
+  "module": "index.js",
+  "version": "1.0.0",
+  "description": "Roles of Quizzer",
+  "author": "",
+  "license": "ISC"
+}

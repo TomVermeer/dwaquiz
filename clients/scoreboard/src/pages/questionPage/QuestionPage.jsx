@@ -1,29 +1,33 @@
 import React from 'react';
-
 import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components"
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux'
+import { fetchQuestion } from '../../reducers/mainActionCreators';
+
 
 const Questionpage = () => {
+
+
+    const {quizPin, roundNumber, questionNumber} = useSelector(state => state.shared.quizProgress);
+    const currentQuestion = fetchQuestion(quizPin,roundNumber,questionNumber)
     const teams = [
-        {
-          name: "de billy butchers",
-        },
-        {
-          name: "super cool team",
-        },
-        {
-          name: "bitch mctits",
-        },
+        
+          "de billy butchers",
+        ,
+           "super cool team",
+        ,
+          "bitch mctits",
+        ,
       ];
 
-    const question = {
-        category: "topografie",
-        question: "Wat is de hoofdstad van Frankrijk?"
-    }
+     useEffect( () => {
+
+     },[questionNumber])
 
     return(
         <>
-            <QuestionHeader roundNumber={1} questionNumber={4} quizPin={12314}/>
-            <Question question={question}/>
+            <QuestionHeader roundNumber={roundNumber} questionNumber={questionNumber} quizPin={quizPin}/>
+            <Question question={currentQuestion}/>
             <TeamsDisplay title="Answered by" teams={teams}/>
             <Footer/>
         </>

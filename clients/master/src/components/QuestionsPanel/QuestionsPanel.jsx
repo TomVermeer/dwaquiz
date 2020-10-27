@@ -54,7 +54,7 @@ export const QuestionsPanel = (props) => {
                         />)}
             >
                 <div className="align-right">
-                        <Button variant="secondary" className="load-more" onClick={onLoadMoreQuestions}>Laad meer vragen</Button>
+                        <Button variant="secondary" className="margin-right" onClick={onLoadMoreQuestions}>Laad meer vragen</Button>
                         <Button variant="primary" disabled={selectedQuestion == null} onClick={onAskQuestion}>Stel vraag</Button>
                 </div>
             </Panel>

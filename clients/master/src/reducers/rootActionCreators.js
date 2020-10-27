@@ -1,4 +1,4 @@
-import {getAndParse, isErrorResponse, post} from "shared/fetchHelpers";
+import {getAndParse, postAndParse} from "shared/fetchHelpers";
 import {Actions} from "../actions";
 import {Pages} from "../pages/routerUrls";
 
@@ -14,12 +14,8 @@ export const fetchSuggestedQuestions = (quizPin, roundNumber, offset, limit) => 
 };
 
 export const askQuestion = (quizPin, roundNumber, questionId, history) => dispatch => {
-    post(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings`, {questionId})
-        .then(response => {
-            if(isErrorResponse(response)) {
-                // TODO
-            } else {
-                history.push(Pages(quizPin, roundNumber, questionId).GRADE);
-            }
+    postAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings`, {questionId})
+        .then(json => {
+                history.push(Pages(json.quizPin, json.roundNumber, json.questionNumber, questionId).GRADE);
         });
 };

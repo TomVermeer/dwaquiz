@@ -15,7 +15,7 @@ export const AnswerForm = (props) => {
         dispatch(submitAnswer(quizPin, roundNumber, questionNumber, teamName, answer));
     };
 
-    const buttonText = hasSubmittedAnswer === true ? 'Versturen' : 'Herzien';
+    const buttonText = hasSubmittedAnswer !== true ? 'Versturen' : 'Herzien';
 
     return (
         <Form onSubmit={onSendAnswer}>

@@ -13,15 +13,23 @@ export const AnswerRow = (props) => {
     };
 
     return (
-        <div>
-            {props.teamAnswer.teamName} {answerText}
-            <BootstrapSwitchButton checked={props.teamAnswer.isCorrect}
-                                   onstyle="success"
-                                   offstyle="outline-danger"
-                                   onlabel="Correct"
-                                   offlabel="Onjuist"
-                                   width={100}
-                                   onChange={onChangeIsCorrect}/>
+        <div className="list-row">
+            <div>
+                {props.teamAnswer.teamName}
+            </div>
+            <div>
+                {answerText}
+            </div>
+            <div className={props.isDisabled && "disabled"}>
+                <BootstrapSwitchButton checked={props.teamAnswer.isCorrect}
+                                       onstyle="sucess"
+                                       offstyle="outline-danger"
+                                       onlabel="Correct"
+                                       offlabel="Onjuist"
+                                       width={100}
+                                       onChange={onChangeIsCorrect}
+                                       disabled={props.isDisabled}/>
+            </div>
         </div>
     );
 };

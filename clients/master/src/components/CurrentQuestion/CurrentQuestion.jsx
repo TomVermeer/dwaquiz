@@ -15,7 +15,7 @@ export const CurrentQuestion = (props) => {
         <div className="current-question">
             <div className="category">{currentQuestion.category}</div>
             <div className="question">{currentQuestion.question}</div>
-            <div className="answer">{currentQuestion.answer}</div>
+            <div className="answer"><i>Antwoord: </i>{currentQuestion.answer}</div>
         </div>
     );
 };

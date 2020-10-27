@@ -9,7 +9,7 @@ export const Categories = (props) => {
     useTitle('Categorieën');
 
     return (
-        <div className="space-between">
+        <div className="space-around">
             <AllCategoriesPanel/>
             <ChosenCategoriesPanel/>
         </div>

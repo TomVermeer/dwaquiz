@@ -39,3 +39,7 @@ export const fetchAnswers = (quizPin, roundNumber, questionNumber) => dispatch =
 export const onReceiveAnswers = (teamAnswers) => {
     return {type: Actions.ON_ANSWERS_RECEIVED, payload: teamAnswers};
 };
+
+export const setIsCorrect = (isCorrect, teamName) => {
+    return {type: Actions.ON_ANSWER_GRADE, payload: {isCorrect, teamName}};
+};

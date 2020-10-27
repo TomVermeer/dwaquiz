@@ -24,22 +24,31 @@ export const Answers = (props) => {
     };
 
     return (
-        <Card>
-            <Card.Header>Antwoorden</Card.Header>
-            <ListGroup variant="flush">
-                {teamAnswers.map(x =>
-                    <ListGroup.Item key={x.teamName}>
-                        <AnswerRow teamAnswer={x}/>
-                    </ListGroup.Item>)}
-            </ListGroup>
-            <Card.Body>
-                <div className="align-right">
-                    <Button variant="secondary" className="margin-right" onClick={onCloseQuestion} disabled={!isOpen}>
-                        Sluit vraag
-                    </Button>
-                    <Button variant="primary">Volgende vraag</Button>
-                </div>
-            </Card.Body>
-        </Card>
+        <div className="answers">
+            <Card>
+                <Card.Header>
+                    <div className="list-row ">
+                        <h5>Team</h5>
+                        <h5>Antwoord</h5>
+                        <h5>Beoordeling</h5>
+                    </div>
+                </Card.Header>
+                <ListGroup variant="flush">
+                    {teamAnswers.map(x =>
+                        <ListGroup.Item key={x.teamName}>
+                            <AnswerRow teamAnswer={x} isDisabled={isOpen}/>
+                        </ListGroup.Item>)}
+                </ListGroup>
+                <Card.Body>
+                    <div className="align-right">
+                        <Button variant="secondary" className="margin-right" onClick={onCloseQuestion}
+                                disabled={!isOpen}>
+                            Sluit vraag
+                        </Button>
+                        <Button variant="primary" disabled={isOpen}>Volgende vraag</Button>
+                    </div>
+                </Card.Body>
+            </Card>
+        </div>
     );
 };

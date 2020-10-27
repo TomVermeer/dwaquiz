@@ -25,10 +25,14 @@ const executeHandler = (handlers, message, dispatch) => {
  * @param wsUrl url to start websocket connection to
  * @param dispatch @see{executeHandler}
  * @param handlers @see{executeHandler} for details about the handlers parameter
+ * @param initializeMessage {Object} message to send when the connection is established
  * @return {WebSocket}
  */
-const initializeWebSocket = (wsUrl, dispatch, handlers) => {
+const initializeWebSocket = (wsUrl, dispatch, handlers, initializeMessage) => {
     const ws = new WebSocket(wsUrl);
+    ws.onopen = () => {
+        ws.send(JSON.stringify(initializeMessage));
+    };
 
     changeHandlers(ws, handlers, dispatch);
 
@@ -52,13 +56,12 @@ const changeHandlers = (ws, handlers, dispatch) => {
 
 /**
  * Get's a websocket to the websocket server
- * All messages received by this websocket are dispatched to the connected redux store
  * No error handling and reconnection are implemented yet
  */
-export const getWebsocket = (handlers) => {
+export const getWebsocket = (handlers, initializeMessage) => {
     const dispatch = getDispatch();
     if (websocket == null) {
-        websocket = initializeWebSocket(WS_URL, dispatch, handlers);
+        websocket = initializeWebSocket(WS_URL, dispatch, handlers, initializeMessage);
     } else {
         changeHandlers(websocket, handlers, dispatch);
     }

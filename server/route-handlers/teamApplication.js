@@ -1,18 +1,12 @@
 const WsEvents = require("websocket-events");
 
-const Roles = require("../roles");
+const Roles = require("roles");
 const {getMaster, getTeam} = require("../setupWebSockets");
 const {getQuizNight, isQuizNightOpenForApplications} = require("../helpers/quizNight");
 
 const sendTeamApplicationToMaster = (pin) => {
     const masterSocket = getMaster(pin);
     masterSocket.sendJson({type: WsEvents.ON_TEAM_APPLY});
-};
-
-const upgradeSessionForTeam = (req, quizPin, teamName) => {
-    req.session.quizPin = quizPin;
-    req.session.role = Roles.TEAM;
-    req.session.teamName = teamName;
 };
 
 const saveTeamApplication = async (quizPin, teamName) => {
@@ -27,7 +21,6 @@ const applyTeamHandler = async (req, res) => {
         const teamName = req.body.teamName;
         if(await isQuizNightOpenForApplications(quizPin)) {
             await saveTeamApplication(quizPin, teamName);
-            upgradeSessionForTeam(req, quizPin, teamName);
             sendTeamApplicationToMaster(quizPin);
             res.send('ok');
         } else {

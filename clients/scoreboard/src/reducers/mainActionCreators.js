@@ -1,4 +1,3 @@
-import {postAndParse} from "shared/fetchHelpers";
 import {SharedActions} from "shared/actions";
 import {startWebsocket} from "../webSocketHandlers";
 

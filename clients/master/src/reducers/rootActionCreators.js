@@ -1,4 +1,4 @@
-import {getAndParse, isErrorResponse, postAndParse} from "shared/fetchHelpers";
+import {getAndParse, postAndParse} from "shared/fetchHelpers";
 import {Actions} from "../actions";
 import {Pages} from "../pages/routerUrls";
 

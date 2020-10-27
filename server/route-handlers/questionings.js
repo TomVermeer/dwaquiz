@@ -137,6 +137,10 @@ const closeQuestioning = async (req, res) => {
                 await questioning.save();
             })
         );
+        getTeams(req.quizPin)
+            .forEach(team =>
+                team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
+            );
 
         res.send('ok');
     } catch (e) {

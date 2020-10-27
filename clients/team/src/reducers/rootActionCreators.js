@@ -21,10 +21,11 @@ const onAnswerSubmitted = answer => {
 };
 
 export const submitAnswer = (quizPin, roundNumber, questionNumber, teamName, answer) => dispatch => {
-    put(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/${teamName}/answer`, {answer})
+    put(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/${teamName}`, {answer})
         .then(response => {
             if (isErrorResponse(response)) {
                 // TODO
+                console.log('ERROR: ', response);
             } else {
                 dispatch(onAnswerSubmitted());
             }

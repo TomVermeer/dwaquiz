@@ -30,3 +30,12 @@ export const closeQuestion = (quizPin, roundNumber, questionNumber) => dispatch 
             }
         });
 };
+
+export const fetchAnswers = (quizPin, roundNumber, questionNumber) => dispatch => {
+    getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`)
+        .then(json => dispatch(onReceiveAnswers(json)));
+};
+
+export const onReceiveAnswers = (teamAnswers) => {
+    return {type: Actions.ON_ANSWERS_RECEIVED, payload: teamAnswers};
+};

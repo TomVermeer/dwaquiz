@@ -1,7 +1,9 @@
 import {createReducer} from "shared/reducers/createReducer";
 import {Actions} from "../../actions";
 
-const initialState = {};
+const initialState = {
+    teamAnswers: []
+};
 export const currentQuestionReducer = createReducer((state = initialState, action) => {
     switch (action.type) {
         case Actions.SET_QUESTION_ID:
@@ -15,6 +17,9 @@ export const currentQuestionReducer = createReducer((state = initialState, actio
             break;
         case Actions.ON_CLOSE_QUESTION:
             state.isOpen = false;
+            break;
+        case Actions.ON_ANSWERS_RECEIVED:
+            state.teamAnswers = action.payload;
             break;
         default:
             return state;

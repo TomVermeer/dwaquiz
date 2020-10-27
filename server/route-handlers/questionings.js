@@ -61,7 +61,7 @@ const createQuestioning = async (req, res) => {
 const getQuestioningForTeam = async (req, res) => {
     try {
         const teamName = req.params.teamName;
-        const {question} = await Questioning
+        const questioning = await Questioning
             .findOne({
                 quizPin: req.quizPin,
                 teamName,
@@ -70,7 +70,7 @@ const getQuestioningForTeam = async (req, res) => {
             })
             .populate('question')
             .exec();
-        res.json({question: question.question});
+        res.json({question: questioning.question.question});
     } catch (e) {
         throw e;
     }
@@ -124,19 +124,22 @@ const gradeQuestioning = async (req, res) => {
     }
 };
 
+const findQuestionings = (req) =>
+    Questioning.find({
+        questionNumber: Number(req.params.questionNumber),
+        quizPin: req.quizPin,
+        roundNumber: req.round
+    }).exec();
+
 const closeQuestioning = async (req, res) => {
     try {
-        const questionings = await Questioning.find({
-            questionNumber: Number(req.params.questionNumber),
-            quizPin: req.quizPin,
-            roundNumber: req.round
-        }).exec();
-        await Promise.all(
-            questionings.map(async questioning => {
-                questioning.isOpen = Boolean(req.body.isOpen);
-                await questioning.save();
-            })
-        );
+        const questionings = await findQuestionings(req);
+            await Promise.all(
+                questionings.map(async questioning => {
+                    questioning.isOpen = Boolean(req.body.isOpen);
+                    await questioning.save();
+                })
+            );
         getTeams(req.quizPin)
             .forEach(team =>
                 team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
@@ -148,11 +151,27 @@ const closeQuestioning = async (req, res) => {
     }
 };
 
+const getAnswers = async (req, res) => {
+    try {
+        const questionings = await findQuestionings(req);
+        res.json(questionings.map(x => {
+            return {
+                teamName: x.teamName,
+                isCorrect: x.isCorrect,
+                answer: x.answer
+            };
+        }));
+    } catch (e) {
+        throw e;
+    }
+};
+
 module.exports = {
     createQuestioning,
     getQuestioningForTeam,
     getQuestioning,
     answerQuestioning,
     gradeQuestioning,
-    closeQuestioning
+    closeQuestioning,
+    getAnswers
 };

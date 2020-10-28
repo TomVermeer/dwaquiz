@@ -13,7 +13,7 @@ export const Grade = (props) => {
     useTitle('Beoordelen');
     const questionNumber = useFromUrl('questionNumber', setQuestionNumber);
     const {quizPin, roundNumber} = useSelector(state => state.shared.quizProgress);
-
+    console.log('quizpin: ', quizPin);
     useWebsocket(quizPin, roundNumber, questionNumber);
     return (
         <div className="grade">

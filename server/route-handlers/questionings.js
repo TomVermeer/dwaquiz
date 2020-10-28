@@ -98,7 +98,8 @@ const answerQuestioning = async (req, res) => {
             .findOne({
                 quizPin: req.quizPin,
                 roundNumber: req.round,
-                questionNumber: Number(req.params.questionNumber)
+                questionNumber: Number(req.params.questionNumber),
+                teamName: req.params.teamName
             })
             .exec();
         if (questioning.isOpen) {
@@ -118,7 +119,15 @@ const answerQuestioning = async (req, res) => {
 
 const gradeQuestioning = async (req, res) => {
     try {
-        // TODO
+        const questionings = await findQuestionings(req);
+        await Promise.all(
+            questionings.map(async questioning => {
+                const grading = req.body.find(x => x.teamName === questioning.teamName);
+                questioning.isCorrect = grading.isCorrect;
+                await questioning.save();
+            })
+        );
+        res.send('ok');
     } catch (e) {
         throw e;
     }

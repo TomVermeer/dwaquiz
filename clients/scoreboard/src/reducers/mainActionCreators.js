@@ -37,9 +37,3 @@ export const fetchQuestion = (quizPin, roundNumber, questionNumber) => dispatch 
     dispatch(setQuestion(json))
   })
 }
-
-export const setParticipatingTeams = (teamNames) => {
-    return {
-        type: SharedActions.ON_TEAM_APPROVAL, payload: teamNames
-    };
-};

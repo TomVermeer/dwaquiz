@@ -38,10 +38,6 @@ export const fetchQuestion = (quizPin, roundNumber, questionNumber) => dispatch 
   })
 }
 
-
-import {SharedActions} from "shared/actions";
-import {startWebsocket} from "../webSocketHandlers";
-
 export const openQuizNight = (quizpin) => (dispatch) => {
     startWebsocket(quizpin); // TODO: refactor this to hooks with routers
 };

@@ -62,7 +62,7 @@ export const gradeQuestion = (quizPin, roundNumber, questionNumber, teamAnswers,
                 if(questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
                     history.push(pages.ROUND_END);
                 } else {
-                    history.push(pages.CHOSE_QUESTION);
+                    history.push(pages.CHOOSE_QUESTION);
                 }
             }
         })

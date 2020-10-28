@@ -24,6 +24,6 @@ export const removeCategory = category => {
 export const submitCategories = (quizPin, categories, history) => dispatch => {
     postAndParse(`quiz-nights/${quizPin}/rounds`, categories)
         .then(json => {
-            history.push(Pages(quizPin, json.quizRound).CHOSE_QUESTION);
+            history.push(Pages(quizPin, json.roundNumber).CHOOSE_QUESTION);
         })
 };

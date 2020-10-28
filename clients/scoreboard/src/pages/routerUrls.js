@@ -5,7 +5,7 @@ const questionNumberVariable = ':questionNumber';
 const createUrlEnum = (quizPin, roundNumber = 1, questionNumber = 1) => Object.freeze({
     HOME: '/',
     WAITINGROOM: `/${quizPin}/waitingRoom`,
-    CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
+    CHOOSE_CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
     QUESTION: `/${quizPin}/${roundNumber}/${questionNumber}/question`,
     QUIZ_PIN: `/${quizPin}`,
     ROUND_NUMBER: `/${quizPin}/${roundNumber}`,

@@ -11,10 +11,10 @@ export const RoundRouter = () => {
     useRoundNumberFromUrl();
     return (
         <Switch>
-            <Route path={RouterUrls.CATEGORIES}>
+            <Route path={RouterUrls.CHOOSE_CATEGORIES}>
                 <Categories/>
             </Route>
-            <Route path={RouterUrls.CHOSE_QUESTION}>
+            <Route path={RouterUrls.CHOOSE_QUESTION}>
                 <Questions/>
             </Route>
             <Route path={RouterUrls.GRADE}>

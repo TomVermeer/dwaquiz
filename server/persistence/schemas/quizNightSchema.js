@@ -7,7 +7,8 @@ const quizNightSchema = mongoose.Schema({
     teamApplications: {type: [String], required: true},
     teams: {type: [teamSchema], required: true},
     rounds: {type: [roundSchema], required: true},
-    isOpenForApplication: {type: Boolean, default: true}
+    isOpenForApplication: {type: Boolean, default: true},
+    isActive: {type: Boolean, default: true}
 });
 
 quizNightSchema.statics.findByQuizPin = function (quizPin) {
@@ -52,6 +53,7 @@ quizNightSchema.statics.createEmptyQuizNight = async function () {
 
 quizNightSchema.methods.findHighestRoundNumber = function () {
     if (this.rounds.length !== 0) {
+        console.log('we have rounds, finding max');
         return Math.max(...
             (this.rounds.map(x => x.roundNumber)));
     } else {

@@ -17,7 +17,11 @@ export const mainReducer = createReducer(
         state.participatingTeams = action.payload;
       break;
       case Actions.SET_QUESTION :
-        state.currentQuestion = action.payload
+        state.currentQuestion = action.payload;
+        break;
+      case Actions.ON_TEAM_ANSWER :
+        console.log(action.payload, ": in main reducer")
+        state.answeredTeams = action.payload;
         break;
       default: return state;
     }

@@ -16,12 +16,33 @@ const TeamsDisplay = (props) => {
     return (
       <Container className="TeamContainer">
         <h1>{props.title}</h1>
-        {props.teams.map((el) => {
+        {console.log(props.teams, ": in teamsDisplay")}
+        {
+        props.teams.map((el) => {
           return (
             <Card key={el} className="TeamCard">
               <Card.Body>{el}</Card.Body>
             </Card>
           );
+        })}
+      </Container>
+    );
+  };
+
+  const renderAnswerTeams = () => {
+    return (
+      <Container className="TeamContainer">
+        <h1>{props.title}</h1>
+        {console.log(props.teams, ": in teamsDisplay")}
+        {
+        props.teams.map((el) => {
+          if(el.answer) {
+          return (
+            <Card key={el.teamName} className="TeamCard">
+              <Card.Body>{el.teamName}</Card.Body>
+            </Card>
+          );
+          }
         })}
       </Container>
     );
@@ -88,6 +109,8 @@ const TeamsDisplay = (props) => {
       return renderQuestionScoreTeams();
     } else if (props.type === "roundScore" || props.type === "nightScore") {
       return renderEndScoreTeams();
+    }else if(props.type ==="answer") {
+      return renderAnswerTeams();
     } else if (props.type === undefined || props.type === "display") {
       return renderDisplayTeams();
     }

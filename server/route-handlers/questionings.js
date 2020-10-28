@@ -106,6 +106,9 @@ const answerQuestioning = async (req, res) => {
             questioning.isCorrect = false;
             await questioning.save();
             getMaster(req.quizPin).sendJson({type: WsEvents.ON_ANSWER});
+            getScoreBoards(req.quizPin).forEach((x) => {
+                x.sendJson({type: WsEvents.ON_ANSWER});
+            });
             res.send('ok');
         } else {
             res.status(400).send({error: 'This question has been closed and no longer accepts answers'});

@@ -1,40 +1,41 @@
-const e = require("express");
 const WsEvents = require("websocket-events");
-const { getQuizNight } = require("../helpers/quizNight");
-const { QuizNight } = require("../models");
-const { getTeam, getScoreBoards } = require("../setupWebSockets");
+const {QuizNight} = require("../persistence/models");
+const {getTeam, getScoreBoards} = require("../setupWebSockets");
 
-const addTeamHandler = async (req, res) => {
-  try {
-    const quizPin = req.quizPin;
-    const teamName = req.body.teamName;
-
-    const quizNight = await QuizNight.findOne({ _id: quizPin }).exec();
-    quizNight.teams.push({
-      teamName,
-    });
-    await quizNight.save();
+const notifyClientsOfNewTeam = (quizPin, teamName) => {
     const team = getTeam(quizPin, teamName);
-    team.sendJson({ type: WsEvents.ON_TEAM_APPROVAL, payload: teamName });
+    team.sendJson({type: WsEvents.ON_TEAM_APPROVAL, payload: teamName});
     const scoreboards = getScoreBoards(quizPin);
     scoreboards.forEach(scoreboard => scoreboard.sendJson({
-      type: WsEvents.ON_TEAM_APPROVAL,
-      payload: teamName,
+        type: WsEvents.ON_TEAM_APPROVAL,
+        payload: teamName,
     }));
-    res.send("ok");
-  } catch (e) {
-    throw e;
-  }
+};
+
+const addTeamHandler = async (req, res) => {
+    try {
+        const quizPin = req.quizPin;
+        const teamName = req.body.teamName;
+
+        const quizNight = await QuizNight.findByQuizPin(quizPin);
+        quizNight.addTeam(teamName);
+        await quizNight.save();
+
+        notifyClientsOfNewTeam(quizPin, teamName);
+        res.send("ok");
+    } catch (e) {
+        throw e;
+    }
 };
 
 const getTeamsHandler = async (req, res) => {
-  try {
-    const quizNight = await getQuizNight(req.quizPin);
-    const teamNames = quizNight.teams.map((x) => x.teamName);
-    res.json(teamNames);
-  } catch (e) {
-    throw e;
-  }
+    try {
+        const quizNight = await QuizNight.findByQuizPin(req.quizPin);
+        const teamNames = quizNight.teams.map((x) => x.teamName);
+        res.json(teamNames);
+    } catch (e) {
+        throw e;
+    }
 };
 
-module.exports = { addTeamHandler, getTeamsHandler };
+module.exports = {addTeamHandler, getTeamsHandler};

@@ -22,7 +22,7 @@ export const AnswerRow = (props) => {
             </div>
             <div className={props.isDisabled ? 'disabled' : ''}>
                 <BootstrapSwitchButton checked={props.teamAnswer.isCorrect}
-                                       onstyle="sucess"
+                                       onstyle="success"
                                        offstyle="outline-danger"
                                        onlabel="Correct"
                                        offlabel="Onjuist"

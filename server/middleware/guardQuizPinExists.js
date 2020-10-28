@@ -1,7 +1,7 @@
-const { doesPinExist } = require("../helpers/quizPin");
+const { QuizNight } = require("../persistence/models");
 
 const doesQuizPinExist = async (quizPin) => {
-    return quizPin != null && await doesPinExist(Number(quizPin));
+    return quizPin != null && await QuizNight.doesPinExist(Number(quizPin));
 };
 
 const guardQuizPinExists = async (req, res, next) => {

@@ -1,7 +1,7 @@
 const setupMongoose = require('./setupMongoose');
 const mongoose = require('mongoose');
 const {Question} = require('./models');
-const questions = require('./resources/questions.json');
+const questions = require('../resources/questions.json');
 
 cleanDatabase = async () => {
     console.log('Cleaning entire database');

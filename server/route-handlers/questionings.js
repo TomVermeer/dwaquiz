@@ -1,8 +1,7 @@
 const {getMaster} = require("../setupWebSockets");
-const {getQuizNight} = require("../helpers/quizNight");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
-const {Question, Questioning} = require('../models');
+const {Question, Questioning, QuizNight} = require('../models');
 
 
 const getQuestion = questionId => Question.findOne({_id: questionId}).exec();
@@ -12,7 +11,7 @@ const getParticipatingTeamNames = quizNight => quizNight.teams.map(x => x.teamNa
 const saveQuestioning = async (quizPin, roundNumber, questionId) => {
 
     const questionPromise = getQuestion(questionId);
-    const quizNight = await getQuizNight(quizPin);
+    const quizNight = await QuizNight.findByQuizPin(quizPin);
     const round = quizNight.rounds[roundNumber - 1];
     const teams = getParticipatingTeamNames(quizNight);
     const questionNumber = (round.questionings.length / quizNight.teams.length) + 1;

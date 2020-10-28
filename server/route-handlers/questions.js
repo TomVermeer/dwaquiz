@@ -2,8 +2,7 @@ const {Question} = require('../models');
 
 const getQuestion = async (req, res) => {
     try {
-        const question = await Question.findById(req.params.id);
-        res.json(question);
+        res.json(await Question.findById(req.params.id));
     } catch(e) {
         throw e;
     }

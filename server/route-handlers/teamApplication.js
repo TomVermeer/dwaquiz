@@ -1,8 +1,6 @@
 const WsEvents = require("websocket-events");
-
-const Roles = require("roles");
 const {getMaster, getTeam} = require("../setupWebSockets");
-const {getQuizNight, isQuizNightOpenForApplications} = require("../helpers/quizNight");
+const {QuizNight} = require('../models');
 
 const sendTeamApplicationToMaster = (pin) => {
     const masterSocket = getMaster(pin);
@@ -10,7 +8,7 @@ const sendTeamApplicationToMaster = (pin) => {
 };
 
 const saveTeamApplication = async (quizPin, teamName) => {
-    const quizNight = await getQuizNight(quizPin);
+    const quizNight = await QuizNight.findByQuizPin(quizPin);
     quizNight.teamApplications.push(teamName);
     await quizNight.save();
 };
@@ -19,7 +17,7 @@ const applyTeamHandler = async (req, res) => {
     try {
         const quizPin = req.quizPin;
         const teamName = req.body.teamName;
-        if(await isQuizNightOpenForApplications(quizPin)) {
+        if(await QuizNight.isQuizNightOpenForApplications(quizPin)) {
             await saveTeamApplication(quizPin, teamName);
             sendTeamApplicationToMaster(quizPin);
             res.send('ok');
@@ -39,7 +37,7 @@ const sendTeamRejected = (req, teamName) => {
 };
 
 const removeTeamApplication = async (quizPin, teamName) => {
-    const quizNight = await getQuizNight(quizPin);
+    const quizNight = await QuizNight.findByQuizPin(quizPin);
     quizNight.teamApplications = quizNight.teamApplications.filter(x => x !== teamName);
     await quizNight.save();
 };
@@ -57,7 +55,7 @@ const rejectTeamHandler = async (req, res) => {
 
 const getTeamApplicationsHandler = async (req, res) => {
     try {
-        const quizNight = await getQuizNight(req.quizPin);
+        const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         res.send(quizNight.teamApplications);
     } catch (e) {
         throw e;

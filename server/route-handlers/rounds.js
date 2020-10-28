@@ -1,4 +1,4 @@
-const {QuizNight} = require('../models');
+const {QuizNight} = require('../persistence/models');
 
 const createRoundHandler = async (req, res) => {
     try {

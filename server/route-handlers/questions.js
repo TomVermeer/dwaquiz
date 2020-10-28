@@ -1,4 +1,4 @@
-const {Question} = require('../models');
+const {Question} = require('../persistence/models');
 
 const getQuestion = async (req, res) => {
     try {

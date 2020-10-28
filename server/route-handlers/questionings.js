@@ -1,7 +1,7 @@
 const {getMaster} = require("../setupWebSockets");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
-const {Questioning, QuizNight} = require('../models');
+const {Questioning, QuizNight} = require('../persistence/models');
 
 const findQuestionings = (req) =>
     Questioning.findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();

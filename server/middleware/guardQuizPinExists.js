@@ -1,4 +1,4 @@
-const { QuizNight } = require("../models");
+const { QuizNight } = require("../persistence/models");
 
 const doesQuizPinExist = async (quizPin) => {
     return quizPin != null && await QuizNight.doesPinExist(Number(quizPin));

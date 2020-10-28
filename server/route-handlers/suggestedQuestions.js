@@ -1,4 +1,4 @@
-const {Question} = require('../models');
+const {Question} = require('../persistence/models');
 
 const getSuggestedQuestionsHandler = async (req, res) => {
     try {

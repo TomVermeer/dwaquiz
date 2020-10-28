@@ -1,7 +1,7 @@
 const http = require("http");
 const {registerWebSocketServer} = require("./setupWebSockets");
 const registerExpressServer = require("./setupExpressServer");
-const registerMongoose = require("./setupMongoose");
+const registerMongoose = require("./persistence/setupMongoose");
 
 const app = registerExpressServer();
 const httpServer = http.createServer(app);

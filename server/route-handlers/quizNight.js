@@ -1,4 +1,4 @@
-const { QuizNight } = require("../models");
+const { QuizNight } = require("../persistence/models");
 
 /**
  * Generates an unique quizPin and saves it as an empty quiznight to the database

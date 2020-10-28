@@ -1,6 +1,6 @@
 const WsEvents = require("websocket-events");
 const {getMaster, getTeam} = require("../setupWebSockets");
-const {QuizNight} = require('../models');
+const {QuizNight} = require('../persistence/models');
 
 const sendTeamApplicationToMaster = (pin) => {
     const masterSocket = getMaster(pin);

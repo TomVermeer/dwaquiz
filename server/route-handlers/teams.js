@@ -1,5 +1,5 @@
 const WsEvents = require("websocket-events");
-const {QuizNight} = require("../models");
+const {QuizNight} = require("../persistence/models");
 const {getTeam, getScoreBoards} = require("../setupWebSockets");
 
 const notifyClientsOfNewTeam = (quizPin, teamName) => {

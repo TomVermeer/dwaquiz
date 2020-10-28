@@ -18,7 +18,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "shared": "file:../shared/dist",
-    "websocket-events": "file:../../websocket-events"
+    "websocket-events": "file:../../websocket-events",
+    "roles": "file:../../roles"
   },
   "scripts": {
     "start": "react-scripts start",

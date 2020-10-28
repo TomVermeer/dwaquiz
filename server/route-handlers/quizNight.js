@@ -1,7 +1,6 @@
 const {getQuizNight} = require('../helpers/quizNight');
 const { doesPinExist } = require("../helpers/quizPin");
 const { QuizNight } = require("../models");
-const Roles = require("../roles");
 
 // https://stackoverflow.com/a/58509734/7736404
 const generateQuizPin = (length) => Math.floor(Math.random() * (9 * Math.pow(10, length - 1))) + Math.pow(10, length - 1);
@@ -33,8 +32,6 @@ const createQuizNightHandler = async (req, res) => {
             rounds: []
         });
         await quizNight.save();
-        req.session.role = Roles.QUIZ_MASTER;
-        req.session.quizPin = pin;
         res.json({
             quizPin: pin
         });

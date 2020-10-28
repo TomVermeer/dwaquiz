@@ -1,8 +1,12 @@
+
 import { getWebsocket } from "shared/websocket";
 import { WebsocketHandlersBuilder } from "shared/WebsocketHandlersBuilder";
 import { setParticipatingTeams } from "./reducers/mainActionCreators";
 import { Pages } from "./pages/routerUrls";
+
 import * as WsEvents from "websocket-events";
+import * as Roles from "roles";
+
 
 const buildHandlers = (quizPin, history) =>
   new WebsocketHandlersBuilder()
@@ -16,5 +20,15 @@ const buildHandlers = (quizPin, history) =>
     })
     .build();
 
-export const startWebsocket = (quizPin, history) =>
-  getWebsocket(buildHandlers(quizPin, history));
+const initializationMessage = (quizPin) => {
+    return {
+        type: WsEvents.INITIALIZE,
+        payload: {
+            role: Roles.SCOREBOARD,
+            quizPin
+        }
+    };
+};
+
+export const startWebsocket = (quizPin) =>
+    getWebsocket(buildHandlers(quizPin), initializationMessage(Number(quizPin)));

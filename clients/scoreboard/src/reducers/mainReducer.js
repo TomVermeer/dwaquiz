@@ -14,7 +14,7 @@ export const mainReducer = createReducer(
   (state = initialState, action) => {
     switch (action.type) {
       case SharedActions.ON_TEAM_APPROVAL :
-        state.participatingTeams = action.payload
+        state.participatingTeams = action.payload;
       break;
       case Actions.SET_QUESTION :
         state.currentQuestion = action.payload

@@ -27,7 +27,13 @@ For guarding the state in our applications we will be using Redux, in the follow
             category: string,
             question: string,
             answer: string,
-            teamAnswers: map(number, {answer: string, isCorrect: boolean}) // teamIndex -> answer, iscorrect
+            teamAnswers: [
+                {
+                    teamName: string,
+                    answer: string,
+                    isCorrect: boolean
+                }
+            ]
         },
         quizProgress: {
             quizPin: number,

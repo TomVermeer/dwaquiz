@@ -12,12 +12,10 @@ export const AnswerForm = (props) => {
 
     const onSendAnswer = (e) => {
         e.preventDefault();
-        console.log('submitted: ', answer);
-            console.log('submitting');
-            dispatch(submitAnswer(quizPin, roundNumber, questionNumber, teamName, answer));
+        dispatch(submitAnswer(quizPin, roundNumber, questionNumber, teamName, answer));
     };
 
-    const buttonText = hasSubmittedAnswer === true ? 'Versturen' : 'Herzien';
+    const buttonText = hasSubmittedAnswer !== true ? 'Versturen' : 'Herzien';
 
     return (
         <Form onSubmit={onSendAnswer}>

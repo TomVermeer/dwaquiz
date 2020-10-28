@@ -10,7 +10,7 @@ export const Teams = (props) => {
     useTitle('Quiz night');
 
     return (
-        <div className="space-between">
+        <div className="space-around">
             <TeamApplicationsPanel applications={state.teamApplications}/>
             <ApprovedTeamsPanel teams={state.approvedTeams}/>
         </div>

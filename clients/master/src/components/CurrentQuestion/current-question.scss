@@ -5,8 +5,6 @@
   font-size: 1.2rem;
 
   display: grid;
-  grid-template-columns: 1rem 20rem auto 20rem 1rem;
-  grid-template-rows: auto;
   grid-template-areas:
           ". category . question ."
           ". . . answer .";
@@ -22,8 +20,4 @@
   .answer {
     grid-area: answer;
   }
-}
-
-.content {
-  align-items: flex-start;
 }

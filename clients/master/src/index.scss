@@ -12,7 +12,7 @@ code {
   monospace;
 }
 
-.space-between {
+.space-around {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -28,4 +28,8 @@ code {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.margin-right {
+  margin-right: 1rem;
 }

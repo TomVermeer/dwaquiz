@@ -52,7 +52,7 @@ const createQuestioning = async (req, res) => {
         const onQuestionEvent = {type: WsEvents.ON_QUESTION, roundNumber, questionNumber};
         notifyTeams(req.quizPin, onQuestionEvent);
         notifyScoreboard(req.quizPin, onQuestionEvent);
-        res.send('ok');
+        res.send({quizPin: req.quizPin, roundNumber, questionNumber});
     } catch (e) {
         throw e;
     }
@@ -61,7 +61,7 @@ const createQuestioning = async (req, res) => {
 const getQuestioningForTeam = async (req, res) => {
     try {
         const teamName = req.params.teamName;
-        const {question} = await Questioning
+        const questioning = await Questioning
             .findOne({
                 quizPin: req.quizPin,
                 teamName,
@@ -70,7 +70,7 @@ const getQuestioningForTeam = async (req, res) => {
             })
             .populate('question')
             .exec();
-        res.json({question: question.question});
+        res.json({question: questioning.question.question});
     } catch (e) {
         throw e;
     }
@@ -101,7 +101,7 @@ const answerQuestioning = async (req, res) => {
                 questionNumber: Number(req.params.questionNumber)
             })
             .exec();
-        if(questioning.isOpen) {
+        if (questioning.isOpen) {
             questioning.answer = req.body.answer;
             questioning.isCorrect = false;
             await questioning.save();
@@ -111,9 +111,67 @@ const answerQuestioning = async (req, res) => {
             res.status(400).send({error: 'This question has been closed and no longer accepts answers'});
         }
 
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
 
-module.exports = {createQuestioning, getQuestioningForTeam, getQuestioning, answerQuestioning};
+const gradeQuestioning = async (req, res) => {
+    try {
+        // TODO
+    } catch (e) {
+        throw e;
+    }
+};
+
+const findQuestionings = (req) =>
+    Questioning.find({
+        questionNumber: Number(req.params.questionNumber),
+        quizPin: req.quizPin,
+        roundNumber: req.round
+    }).exec();
+
+const closeQuestioning = async (req, res) => {
+    try {
+        const questionings = await findQuestionings(req);
+            await Promise.all(
+                questionings.map(async questioning => {
+                    questioning.isOpen = Boolean(req.body.isOpen);
+                    await questioning.save();
+                })
+            );
+        getTeams(req.quizPin)
+            .forEach(team =>
+                team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
+            );
+
+        res.send('ok');
+    } catch (e) {
+        throw e;
+    }
+};
+
+const getAnswers = async (req, res) => {
+    try {
+        const questionings = await findQuestionings(req);
+        res.json(questionings.map(x => {
+            return {
+                teamName: x.teamName,
+                isCorrect: x.isCorrect,
+                answer: x.answer
+            };
+        }));
+    } catch (e) {
+        throw e;
+    }
+};
+
+module.exports = {
+    createQuestioning,
+    getQuestioningForTeam,
+    getQuestioning,
+    answerQuestioning,
+    gradeQuestioning,
+    closeQuestioning,
+    getAnswers
+};

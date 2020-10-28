@@ -1,6 +1,7 @@
 import {Actions} from "../../actions";
 import {getAndParse, patch, isErrorResponse, post} from "shared/fetchHelpers";
 import {Pages} from "../../pages/routerUrls";
+import {NUMBER_OF_QUESTIONS_IN_ROUND} from "shared/constants";
 
 const onCurrentQuestionReceived = (category, question, answer) => {
     return {type: Actions.ON_QUESTION_RECEIVED, payload: {category, question, answer}};
@@ -57,8 +58,12 @@ export const gradeQuestion = (quizPin, roundNumber, questionNumber, teamAnswers,
             if(isErrorResponse(response)) {
                 // TODO
             } else {
-                // TODO determine route to chose question or chose next round or stop
-                history.push(Pages(quizPin, roundNumber).QUESTIONS);
+                const pages = Pages(quizPin, roundNumber);
+                if(questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
+                    history.push(pages.ROUND_END);
+                } else {
+                    history.push(pages.CHOSE_QUESTION);
+                }
             }
         })
 };

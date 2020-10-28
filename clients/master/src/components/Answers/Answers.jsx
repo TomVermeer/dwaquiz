@@ -7,6 +7,7 @@ import {AnswerRow} from "./AnswerRow/AnswerRow";
 import {ListGroup} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import './answers.scss';
+import {NUMBER_OF_QUESTIONS_IN_ROUND} from "shared/constants";
 
 export const Answers = (props) => {
 
@@ -26,10 +27,10 @@ export const Answers = (props) => {
     };
 
     const onGradeQuestion = () => {
-      dispatch(gradeQuestion(quizPin, roundNumber, questionNumber, teamAnswers, history));
+        dispatch(gradeQuestion(quizPin, roundNumber, questionNumber, teamAnswers, history));
     };
 
-    const gradeQuestionButtonText = questionNumber === 12 ? 'Volgende ronde' : 'Volgende vraag';
+    const gradeQuestionButtonText = questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND ? 'Volgende ronde' : 'Volgende vraag';
 
     return (
         <div className="answers">
@@ -57,7 +58,9 @@ export const Answers = (props) => {
                         </Button>
                         <Button variant="primary"
                                 disabled={isOpen}
-                                onClick={onGradeQuestion}>{gradeQuestionButtonText}</Button>
+                                onClick={onGradeQuestion}>
+                            {gradeQuestionButtonText}
+                        </Button>
                     </div>
                 </Card.Body>
             </Card>

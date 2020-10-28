@@ -7,10 +7,11 @@ const createUrlEnum = (quizPin, roundNumber = 1, questionNumber = 1, questionId)
     HOME: '/',
     TEAMS: `/${quizPin}/teams`,
     CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
-    QUESTIONS: `/${quizPin}/${roundNumber}/questions`,
+    CHOSE_QUESTION: `/${quizPin}/${roundNumber}/questions`,
     QUIZ_PIN: `/${quizPin}`,
     ROUND_NUMBER: `/${quizPin}/${roundNumber}`,
-    GRADE: `/${quizPin}/${roundNumber}/${questionNumber}/${questionId}/grade`
+    GRADE: `/${quizPin}/${roundNumber}/${questionNumber}/${questionId}/grade`,
+    ROUND_END: `/${quizPin}/${roundNumber}/round-end`
 });
 
 export const RouterUrls = createUrlEnum(quizPinVariable, roundNumberVariable, questionNumberVariable, questionIdVariable);

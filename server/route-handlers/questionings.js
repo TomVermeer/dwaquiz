@@ -3,34 +3,14 @@ const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
 const {Question, Questioning, QuizNight} = require('../models');
 
-
-const getQuestion = questionId => Question.findOne({_id: questionId}).exec();
-
-const getParticipatingTeamNames = quizNight => quizNight.teams.map(x => x.teamName);
+const findQuestionings = (req) =>
+    Questioning.findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
 
 const saveQuestioning = async (quizPin, roundNumber, questionId) => {
-
-    const questionPromise = getQuestion(questionId);
     const quizNight = await QuizNight.findByQuizPin(quizPin);
-    const round = quizNight.rounds[roundNumber - 1];
-    const teams = getParticipatingTeamNames(quizNight);
-    const questionNumber = (round.questionings.length / quizNight.teams.length) + 1;
-
-    const question = await questionPromise;
-    const questioningIdPromises = teams.map(teamName => {
-        const questioning = new Questioning({
-            teamName: teamName,
-            question: question._id,
-            quizPin,
-            questionNumber,
-            roundNumber: roundNumber
-        });
-        return questioning.save();
-    });
-    const questioningsIds = await Promise.all(questioningIdPromises);
-    round.questionings = round.questionings.concat(questioningsIds);
+    const questionNumber = await quizNight.askQuestion(roundNumber, questionId);
     await quizNight.save();
-    return {roundNumber, questionNumber};
+    return questionNumber;
 };
 
 const notifyTeams = (quizPin, onQuestionEvent) =>
@@ -47,7 +27,8 @@ const notifyScoreboard = (quizPin, onQuestionEvent) =>
 
 const createQuestioning = async (req, res) => {
     try {
-        const {roundNumber, questionNumber} = await saveQuestioning(req.quizPin, req.round, req.body.questionId);
+        const roundNumber = req.round;
+        const questionNumber = await saveQuestioning(req.quizPin, req.round, req.body.questionId);
         const onQuestionEvent = {type: WsEvents.ON_QUESTION, roundNumber, questionNumber};
         notifyTeams(req.quizPin, onQuestionEvent);
         notifyScoreboard(req.quizPin, onQuestionEvent);
@@ -78,11 +59,7 @@ const getQuestioningForTeam = async (req, res) => {
 const getQuestioning = async (req, res) => {
     try {
         const {question} = await Questioning
-            .findOne({
-                quizPin: req.quizPin,
-                roundNumber: req.round,
-                questionNumber: Number(req.params.questionNumber)
-            })
+            .findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber))
             .populate('question')
             .exec();
         res.json({question: question.question, answer: question.answer, category: question.category});
@@ -94,13 +71,7 @@ const getQuestioning = async (req, res) => {
 const answerQuestioning = async (req, res) => {
     try {
         const questioning = await Questioning
-            .findOne({
-                quizPin: req.quizPin,
-                roundNumber: req.round,
-                questionNumber: Number(req.params.questionNumber),
-                teamName: req.params.teamName
-            })
-            .exec();
+            .findTeamQuestioning(req.quizPin, req.round, Number(req.params.questionNumber), req.params.teamName);
         if (questioning.isOpen) {
             questioning.answer = req.body.answer;
             questioning.isCorrect = false;
@@ -131,13 +102,6 @@ const gradeQuestioning = async (req, res) => {
         throw e;
     }
 };
-
-const findQuestionings = (req) =>
-    Questioning.find({
-        questionNumber: Number(req.params.questionNumber),
-        quizPin: req.quizPin,
-        roundNumber: req.round
-    }).exec();
 
 const closeQuestioning = async (req, res) => {
     try {

@@ -18,7 +18,7 @@ questionSchema.statics.findById = function (id) {
         .exec()
 };
 
-questionSchema.statics.findSuggestedQuestionsForQuizNight = async function(quizPin, roundNumber, offset, limit) {
+questionSchema.statics.findSuggestedQuestionsForQuizNight = async function (quizPin, roundNumber, offset, limit) {
     const quizNight = await QuizNight.findByQuizPin(quizPin);
     const categories = quizNight.findChosenCategories(roundNumber);
     const alreadyAskedQuestions = await quizNight.findAskedQuestions();
@@ -46,6 +46,23 @@ const questioningsSchema = new mongoose.Schema({
     quizPin: {type: Number, ref: 'QuizNight', required: true},
     isOpen: {type: Boolean, default: true}
 });
+
+questioningsSchema.statics.findByQuestionNumber = function (quizPin, roundNumber, questionNumber) {
+    return this.find({
+        questionNumber,
+        quizPin,
+        roundNumber
+    });
+};
+
+questioningsSchema.statics.findTeamQuestioning = function (quizPin, roundNumber, questionNumber, teamName) {
+    return this.findOne({
+        questionNumber,
+        quizPin,
+        roundNumber,
+        teamName
+    }).exec();
+};
 
 const teamSchema = mongoose.Schema({
     teamName: {type: String, required: true},
@@ -144,6 +161,35 @@ quizNightSchema.methods.findAskedQuestions = function () {
         .exec();
 };
 
+quizNightSchema.methods.getParticipatingTeamNames = function () {
+    return this.teams.map(x => x.teamName);
+};
+
+quizNightSchema.methods.getCurrentQuestionNumber = function (roundNumber) {
+    return this.rounds[roundNumber - 1].questionings.length / this.teams.length;
+};
+
+quizNightSchema.methods.askQuestion = async function (roundNumber, questionId) {
+    const questionPromise = Question.findById(questionId);
+    const teams = this.getParticipatingTeamNames();
+    const questionNumber = this.getCurrentQuestionNumber(roundNumber) + 1;
+    const round = this.rounds[roundNumber - 1];
+    const question = await questionPromise;
+    const questioningIdPromises = teams.map(teamName => {
+        const questioning = new Questioning({
+            teamName: teamName,
+            question: question._id,
+            quizPin: this._id,
+            questionNumber,
+            roundNumber: roundNumber
+        });
+        return questioning.save();
+    });
+    const questioningsIds = await Promise.all(questioningIdPromises);
+    round.questionings = round.questionings.concat(questioningsIds);
+    await this.save();
+    return questionNumber;
+};
 
 const Question = mongoose.model('Question', questionSchema);
 const QuizNight = mongoose.model('QuizNight', quizNightSchema);

@@ -54,6 +54,7 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
                 // TODO
             } else {
                 history.push(Pages(quizPin, 1).CATEGORIES);
+                
             }
         })
 };

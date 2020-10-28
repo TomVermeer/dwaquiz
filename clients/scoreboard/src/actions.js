@@ -4,5 +4,6 @@ export const Actions = Object.freeze({
     ON_NEXT_ROUND: 'ON_NEXT_ROUND',
     ON_TEAM_ANSWER: 'ON_TEAM_ANSWER',
     ON_ANSWERS_REVEAL: 'ON_ANSWERS_REVEAL',
-    ON_SCORE: 'ON_SCORE'
+    ON_SCORE: 'ON_SCORE',
+    SET_QUESTION: 'SET_QUESTION'
 });

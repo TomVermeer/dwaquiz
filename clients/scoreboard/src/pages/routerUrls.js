@@ -6,7 +6,7 @@ const createUrlEnum = (quizPin, roundNumber = 1, questionNumber = 1) => Object.f
     HOME: '/',
     WAITINGROOM: `/${quizPin}/waitingRoom`,
     CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
-    QUESTION: `/${quizPin}/${roundNumber}/question`,
+    QUESTION: `/${quizPin}/${roundNumber}/${questionNumber}/question`,
     QUIZ_PIN: `/${quizPin}`,
     ROUND_NUMBER: `/${quizPin}/${roundNumber}`,
     SCORE: `/${quizPin}/${roundNumber}/${questionNumber}/score`,

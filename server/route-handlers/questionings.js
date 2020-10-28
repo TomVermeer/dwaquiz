@@ -1,7 +1,7 @@
 const {getMaster} = require("../setupWebSockets");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
-const {Question, Questioning, QuizNight} = require('../models');
+const {Questioning, QuizNight} = require('../models');
 
 const findQuestionings = (req) =>
     Questioning.findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
@@ -41,16 +41,9 @@ const createQuestioning = async (req, res) => {
 const getQuestioningForTeam = async (req, res) => {
     try {
         const teamName = req.params.teamName;
-        const questioning = await Questioning
-            .findOne({
-                quizPin: req.quizPin,
-                teamName,
-                roundNumber: req.round,
-                questionNumber: Number(req.params.questionNumber)
-            })
-            .populate('question')
-            .exec();
-        res.json({question: questioning.question.question});
+        const question = await Questioning
+            .findQuestionForTeam(req.quizPin, req.round, Number(req.params.questionNumber), teamName);
+        res.json(question);
     } catch (e) {
         throw e;
     }
@@ -58,10 +51,8 @@ const getQuestioningForTeam = async (req, res) => {
 
 const getQuestioning = async (req, res) => {
     try {
-        const {question} = await Questioning
-            .findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber))
-            .populate('question')
-            .exec();
+        const question = await Questioning
+            .findQuestion(req.quizPin, req.round, Number(req.params.questionNumber));
         res.json({question: question.question, answer: question.answer, category: question.category});
     } catch (e) {
         throw e;

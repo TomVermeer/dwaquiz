@@ -64,6 +64,26 @@ questioningsSchema.statics.findTeamQuestioning = function (quizPin, roundNumber,
     }).exec();
 };
 
+questioningsSchema.statics.findQuestion = function (quizPin, roundNumber, questionNumber) {
+    const {question} = this.findByQuestionNumber(quizPin, rounNumber, questionNumber)
+        .populate('question')
+        .exec();
+    return question;
+};
+
+questioningsSchema.statics.findQuestionForTeam = async function (quizPin, roundNumber, questionNumber, teamName) {
+    const {question} = await this.findOne(
+        {
+            questionNumber,
+            quizPin,
+            roundNumber,
+            teamName
+        })
+        .populate('question')
+        .exec();
+    return question;
+};
+
 const teamSchema = mongoose.Schema({
     teamName: {type: String, required: true},
     numberOfCorrectQuestions: {type: Number, default: 0},

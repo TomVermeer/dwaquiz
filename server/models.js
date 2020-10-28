@@ -13,6 +13,11 @@ questionSchema.statics.findAllCategories = function () {
         .exec();
 };
 
+questionSchema.statics.findById = function (id) {
+    return this.findOne({_id: id})
+        .exec()
+};
+
 
 const questioningsSchema = new mongoose.Schema({
     teamName: {type: String, required: true},

@@ -1,7 +1,4 @@
-const {getQuizNight} = require('../helpers/quizNight');
-const {findHighestRoundNumber} = require('../helpers/findHighestRoundNumber');
-
-const findNewRoundNumber = quizNight => findHighestRoundNumber(quizNight) + 1;
+const {QuizNight} = require('../persistence/models');
 
 const createRoundHandler = async (req, res) => {
     try {
@@ -10,13 +7,8 @@ const createRoundHandler = async (req, res) => {
             res.status(400).json({error: "A round must have exactly 3 categories."});
         }
 
-        const quizNight = await getQuizNight(req.quizPin);
-        const roundNumber = findNewRoundNumber(quizNight);
-        quizNight.rounds.push({
-            roundNumber,
-            chosenCategories,
-            questionings: []
-        });
+        const quizNight = await QuizNight.findByQuizPin(req.quizPin);
+        const roundNumber = quizNight.startRound(chosenCategories);
         await quizNight.save();
 
         res.json({roundNumber});

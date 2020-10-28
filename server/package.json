@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
     "start:prod": "set NODE_ENV=production && nodemon index.js",
-    "seed": "node seed.js",
-    "seed:clean": "set CLEAN=true && node seed.js"
+    "seed": "node persistence/seed.js",
+    "seed:clean": "set CLEAN=true && node persistence/seed.js"
   },
   "author": "Erik Knaake",
   "license": "ISC",

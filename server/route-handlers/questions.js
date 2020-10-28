@@ -1,9 +1,8 @@
-const {Question} = require('../models');
+const {Question} = require('../persistence/models');
 
 const getQuestion = async (req, res) => {
     try {
-        const question = await Question.findOne({_id: req.params.id}).exec();
-        res.json(question);
+        res.json(await Question.findById(req.params.id));
     } catch(e) {
         throw e;
     }

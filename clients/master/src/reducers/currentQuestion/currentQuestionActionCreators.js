@@ -1,5 +1,6 @@
 import {Actions} from "../../actions";
-import {getAndParse, patch, isErrorResponse} from "shared/fetchHelpers";
+import {getAndParse, patch, isErrorResponse, post} from "shared/fetchHelpers";
+import {Pages} from "../../pages/routerUrls";
 
 const onCurrentQuestionReceived = (category, question, answer) => {
     return {type: Actions.ON_QUESTION_RECEIVED, payload: {category, question, answer}};
@@ -42,4 +43,22 @@ export const onReceiveAnswers = (teamAnswers) => {
 
 export const setIsCorrect = (isCorrect, teamName) => {
     return {type: Actions.ON_ANSWER_GRADE, payload: {isCorrect, teamName}};
+};
+
+export const gradeQuestion = (quizPin, roundNumber, questionNumber, teamAnswers, history) => dispatch => {
+    const gradings = teamAnswers.map(answer => {
+        return {
+            isCorrect: answer.isCorrect,
+            teamName: answer.teamName
+        }
+    });
+    post(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/grades`, gradings)
+        .then(response => {
+            if(isErrorResponse(response)) {
+                // TODO
+            } else {
+                // TODO determine route to chose question or chose next round or stop
+                history.push(Pages(quizPin, roundNumber).QUESTIONS);
+            }
+        })
 };

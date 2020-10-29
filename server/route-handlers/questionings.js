@@ -82,28 +82,22 @@ const answerQuestioning = async (req, res) => {
 
 const calculateScores = async (quizPin, roundNumber) => {
     const allQuestioningsInRound = await Questioning.findForRound(quizPin, roundNumber);
-    console.log('questionings in round: ', allQuestioningsInRound);
     return calculateScoreFromQuestioningsInRound(allQuestioningsInRound);
 };
 
 const gradeQuestioning = async (req, res) => {
     try {
         const questionings = await findQuestionings(req);
-        console.log('grading questionings: ', questionings);
         await Promise.all(
             questionings.map(questioning => {
                 const grading = req.body.find(x => x.teamName === questioning.teamName);
-                console.log('grading: ', grading);
                 questioning.isCorrect = grading.isCorrect;
                 return questioning.save();
             })
         );
         if(Number(req.params.questionNumber) === NUMBER_OF_QUESTIONS_IN_ROUND) {
-            console.log('calculating score');
             const quizNight = await QuizNight.findByQuizPin(req.quizPin);
             await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
-        } else {
-            console.log('NOT calculating score: ', Number(req.params.questionNumber));
         }
         res.send('ok');
     } catch (e) {

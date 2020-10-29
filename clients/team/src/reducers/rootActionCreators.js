@@ -25,7 +25,6 @@ export const submitAnswer = (quizPin, roundNumber, questionNumber, teamName, ans
         .then(response => {
             if (isErrorResponse(response)) {
                 // TODO
-                console.log('ERROR: ', response);
             } else {
                 dispatch(onAnswerSubmitted());
             }

@@ -6,18 +6,28 @@ const placingToScoreMap = [
 
 const roundPointsForNotPlacedTeams = 0.1;
 
+const getCurrentNumberOfCorrectQuestions = (map, teamName) => {
+  if(map[teamName] == null) {
+      return 0;
+  } else {
+      return map[teamName].numberOfCorrectQuestions;
+  }
+};
+
+const calculateNextNumberOfCorrectQuestions = (currentNumberOfCorrectQuestions, isCurrentAnswerCorrect) => {
+  if(isCurrentAnswerCorrect) {
+      return currentNumberOfCorrectQuestions + 1;
+  }
+  return currentNumberOfCorrectQuestions;
+};
+
 const createNumberOfCorrectQuestionsMap = (allQuestioningsInRound) => {
     return allQuestioningsInRound.reduce((map, questioning) => {
-        console.log('reduce, current map: ', map);
-        console.log('is correct: ', questioning.isCorrect);
         map[questioning.teamName] = {
             numberOfCorrectQuestions:
-                map[questioning.teamName]
-                    ? map[questioning.teamName].numberOfCorrectQuestions +
-                        (questioning.isCorrect
-                            ? 1
-                            : 0)
-                    : 0,
+                calculateNextNumberOfCorrectQuestions(
+                    getCurrentNumberOfCorrectQuestions(map, questioning.teamName),
+                    questioning.isCorrect),
             roundPoints: 0
         };
         return map;
@@ -27,15 +37,14 @@ const createNumberOfCorrectQuestionsMap = (allQuestioningsInRound) => {
 const addRoundPointsToTeamNameIndexedObject = (scoreMap) => {
     const sortedScores = Object.values(scoreMap).sort();
     for(let i = 0; i < sortedScores.length; i++) {
-        if(i > placingToScoreMap.length - 1) {
-            // TODO check if reference is not changed
-            sortedScores[i].roundPoints += roundPointsForNotPlacedTeams;
-        } else {
-            sortedScores[i].roundPoints += placingToScoreMap[i];
+
+        let roundPointsEarned = roundPointsForNotPlacedTeams;
+        if(i < placingToScoreMap.length - 1) {
+            roundPointsEarned = placingToScoreMap[i];
         }
+
+        sortedScores[i].roundPoints += roundPointsEarned;
     }
-    console.log('calculated roundPoints array: ', sortedScores);
-    console.log('calculated roundPoints map: ', scoreMap);
 };
 
 const calculateScoreFromQuestioningsInRound = (allQuestioningsInRound) => {

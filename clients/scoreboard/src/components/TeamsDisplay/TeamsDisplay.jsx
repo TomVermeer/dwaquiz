@@ -40,6 +40,8 @@ const TeamsDisplay = (props) => {
               <Card.Body>{el.teamName}</Card.Body>
             </Card>
           );
+          } else {
+            return null
           }
         })}
       </Container>

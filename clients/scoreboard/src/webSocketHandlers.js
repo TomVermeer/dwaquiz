@@ -24,7 +24,7 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
     .on(WsEvents.ON_QUESTION_GRADED)
     .doAction((message) => {
       history.push(
-        Pages(quizPin, message.roundNumber, message.questionNumber).SCORE
+        Pages(quizPin, message.payload.roundNumber, message.payload.questionNumber).SCORE
       );
     })
     .build();

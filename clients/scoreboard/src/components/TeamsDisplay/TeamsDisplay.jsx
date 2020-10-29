@@ -52,19 +52,24 @@ const TeamsDisplay = (props) => {
     return (
       <Container>
         <Table className="TeamTable">
+          <thead>
           <tr>
             <th>Team:</th>
             <th>Answer:</th>
           </tr>
+          </thead>
+          <tbody>
           {props.teams.map((el) => {
             return (
-              <tr className={decideClassName(el)}>
+              <tr key={el.teamName} className={decideClassName(el)}>
                 <th>{el.teamName}</th>
                 <th>{el.answer}</th>
               </tr>
             );
           })}
+          </tbody>
         </Table>
+        
       </Container>
     );
   };

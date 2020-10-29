@@ -22,6 +22,10 @@ export const mainReducer = createReducer(
       case Actions.ON_TEAM_ANSWER :
         state.answeredTeams = action.payload;
         break;
+      case Actions.ON_SCORE :
+        console.log(action.payload, ": arrived in reducer")
+        state.teamAnswers = action.payload; 
+        break;
       default: return state;
     }
     return state;

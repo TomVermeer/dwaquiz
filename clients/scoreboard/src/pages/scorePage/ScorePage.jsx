@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFromUrl } from '../../effects/useFromUrl';
-import { fetchQuestion } from '../../reducers/mainActionCreators';
+import { fetchQuestion, fetchScores } from '../../reducers/mainActionCreators';
 import { useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router';
 import { TeamsDisplay, Question, QuestionHeader, Footer } from '../../components';
@@ -14,15 +14,21 @@ const ScorePage = () => {
 
   const dispatch = useDispatch()
   const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
- 
   useEffect( () => {
-    
+    console.log(currentQuestion, "current question")
+   
+    dispatch(fetchScores(quizPin, round, questionNum))
     dispatch(fetchQuestion(quizPin, history, round, questionNum))
  },[questionNum, round, dispatch, quizPin, history])
 
+ useEffect( () => {
+
+ })
+
  const currentQuestion = useSelector(state => state.root.currentQuestion)
 
- const teams= useSelector(state => state.root.answeredTeams);
+ const teams= useSelector(state => state.root.teamAnswers);
+
  console.log(teams)
     return (
         <>

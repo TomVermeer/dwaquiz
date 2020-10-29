@@ -1,37 +1,33 @@
 import React from 'react'
-
+import { useFromUrl } from '../../effects/useFromUrl';
+import { fetchQuestion } from '../../reducers/mainActionCreators';
+import { useSelector, useDispatch} from 'react-redux';
+import { useHistory } from 'react-router';
 import { TeamsDisplay, Question, QuestionHeader, Footer } from '../../components';
+import {setRoundNumber, setQuestionNumber} from "shared/reducers/sharedActionCreators";
+import { useEffect } from 'react'
 
 const ScorePage = () => {
-    const teams = [
-        {
-          name: "de billy butchers",
-          answer: "parijs",
-          isCorrect: true
-        },
-        {
-          name: "super cool team",
-          answer: "paris",
-          isCorrect: true
-        },
-        {
-          name: "bitch mctits",
-          answer: "bordeaux",
-          isCorrect: false
-        },
-      ];
+  const round = useFromUrl('roundNumber', setRoundNumber);
+  const questionNum = useFromUrl('questionNumber', setQuestionNumber);
+  const history = useHistory();
 
-    const question = {
-        category: "topografie",
-        question: "Wat is de hoofdstad van Frankrijk?",
-        answer: "parijs"
-    }
+  const dispatch = useDispatch()
+  const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
+ 
+  useEffect( () => {
+    
+    dispatch(fetchQuestion(quizPin, history, round, questionNum))
+ },[questionNum, round, dispatch, quizPin, history])
 
+ const currentQuestion = useSelector(state => state.root.currentQuestion)
 
+ const teams= useSelector(state => state.root.answeredTeams);
+ console.log(teams)
     return (
         <>
-          <QuestionHeader roundNumber={1} questionNumber={4} quizPin={12314}/>
-          <Question question={question}/>
+          <QuestionHeader roundNumber={round} questionNumber={questionNum} quizPin={quizPin}/>
+          <Question question={currentQuestion}/>
           <TeamsDisplay title="Team scores" teams={teams} type="questionScore"/>
           <Footer/>
         </>

@@ -102,11 +102,15 @@ const gradeQuestioning = async (req, res) => {
             const quizNight = await QuizNight.findByQuizPin(req.quizPin);
             await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
         }
+        getScoreBoards(req.quizPin).forEach((x) => {
+            x.sendJson({type: WsEvents.ON_QUESTION_GRADED});
+        })
         res.send('ok');
     } catch (e) {
         throw e;
     }
 };
+
 
 const closeQuestioning = async (req, res) => {
     try {

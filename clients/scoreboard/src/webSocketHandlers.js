@@ -21,6 +21,12 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
     })
     .on(WsEvents.ON_ANSWER)
     .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers` , onReceiveAnswers)
+    .on(WsEvents.ON_QUESTION_GRADED)
+    .doAction((message) => {
+      history.push(
+        Pages(quizPin, message.roundNumber, message.questionNumber).SCORE
+      );
+    })
     .build();
 
 const initializationMessage = (quizPin) => {

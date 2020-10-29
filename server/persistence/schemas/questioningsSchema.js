@@ -14,12 +14,21 @@ const questioningsSchema = new mongoose.Schema({
 });
 
 questioningsSchema.statics.findByQuestionNumber = function (quizPin, roundNumber, questionNumber) {
+    return this.findOne({
+        questionNumber,
+        quizPin,
+        roundNumber
+    });
+};
+
+questioningsSchema.statics.findMultipleByQuestionNumber = function (quizPin, roundNumber, questionNumber) {
     return this.find({
         questionNumber,
         quizPin,
         roundNumber
     });
 };
+
 
 questioningsSchema.statics.findTeamQuestioning = function (quizPin, roundNumber, questionNumber, teamName) {
     return this.findOne({
@@ -30,8 +39,8 @@ questioningsSchema.statics.findTeamQuestioning = function (quizPin, roundNumber,
     }).exec();
 };
 
-questioningsSchema.statics.findQuestion = function (quizPin, roundNumber, questionNumber) {
-    const {question} = this.findByQuestionNumber(quizPin, rounNumber, questionNumber)
+questioningsSchema.statics.findQuestion = async function (quizPin, roundNumber, questionNumber) {
+    const {question} = await this.findByQuestionNumber(quizPin, roundNumber, questionNumber)
         .populate('question')
         .exec();
     return question;

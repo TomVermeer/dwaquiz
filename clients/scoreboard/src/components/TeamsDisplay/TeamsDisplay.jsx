@@ -16,7 +16,6 @@ const TeamsDisplay = (props) => {
     return (
       <Container className="TeamContainer">
         <h1>{props.title}</h1>
-        {console.log(props.teams, ": in teamsDisplay")}
         {
         props.teams.map((el) => {
           return (
@@ -33,7 +32,6 @@ const TeamsDisplay = (props) => {
     return (
       <Container className="TeamContainer">
         <h1>{props.title}</h1>
-        {console.log(props.teams, ": in teamsDisplay")}
         {
         props.teams.map((el) => {
           if(el.answer) {

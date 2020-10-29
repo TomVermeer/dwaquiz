@@ -20,7 +20,7 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
       );
     })
     .on(WsEvents.ON_ANSWER)
-    .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers` ,onReceiveAnswers)
+    .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers` , onReceiveAnswers)
     .build();
 
 const initializationMessage = (quizPin) => {

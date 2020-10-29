@@ -3,7 +3,7 @@ import {SharedActions} from "shared/actions";
 import {startWebsocket} from "../webSocketHandlers";
 import {Actions} from "../actions"
 import {setRoundNumber, setQuestionNumber} from "shared/reducers/sharedActionCreators";
-
+import {setQuizPin} from "shared/reducers/sharedActionCreators"
 
 export const openQuizNight = (quizpin, history) => (dispatch) => {
         dispatch(setQuizPin(quizpin));
@@ -28,7 +28,7 @@ const setQuestion = question => {
     return {type: Actions.SET_QUESTION, payload: question}
 };
 
-export const fetchQuestion = (quizPin,history , roundNumber, questionNumber) => dispatch => {
+export const fetchQuestion = (quizPin, history, roundNumber, questionNumber) => dispatch => {
   getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`)
   .then(json => {
     dispatch(setQuestion(json))

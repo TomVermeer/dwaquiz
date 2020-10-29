@@ -4,9 +4,9 @@ const WsEvents = require('websocket-events');
 const {Questioning, QuizNight} = require('../persistence/models');
 
 const findQuestionings = (req) =>
-    Questioning.findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
+    Questioning.findMultipleByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
 
-const saveQuestioning = async (quizPin, roundNumber, questionId) => {
+    const saveQuestioning = async (quizPin, roundNumber, questionId) => {
     const quizNight = await QuizNight.findByQuizPin(quizPin);
     const questionNumber = await quizNight.askQuestion(roundNumber, questionId);
     await quizNight.save();

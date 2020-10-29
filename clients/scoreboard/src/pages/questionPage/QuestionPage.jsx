@@ -6,8 +6,6 @@ import { useHistory } from 'react-router'
 import { fetchQuestion, roundNumberSetter, questionNumberSetter } from '../../reducers/mainActionCreators';
 import { useFromUrl } from '../../effects/useFromUrl'
 
-
-
 const Questionpage = () => {
     const round = useFromUrl('roundNumber', roundNumberSetter);
     const questionNum = useFromUrl('questionNumber', questionNumberSetter);
@@ -20,7 +18,7 @@ const Questionpage = () => {
 
      useEffect( () => {
         dispatch(fetchQuestion(quizPin, history, round, questionNum))
-     },[questionNum, round, dispatch, quizPin])
+     },[questionNum, round, dispatch, quizPin, history])
 
      const currentQuestion = useSelector(state => state.root.currentQuestion)
 

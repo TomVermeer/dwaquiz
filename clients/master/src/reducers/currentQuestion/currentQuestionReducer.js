@@ -22,8 +22,7 @@ export const currentQuestionReducer = createReducer((state = initialState, actio
             state.teamAnswers = action.payload;
             break;
         case Actions.ON_ANSWER_GRADE:
-            const teamAnswer = state.teamAnswers.filter(x => x.teamName === action.payload.teamName);
-            teamAnswer.isCorrect = action.payload.isCorrect;
+            state.teamAnswers.find(x => x.teamName === action.payload.teamName).isCorrect = action.payload.isCorrect;
             break;
         default:
             return state;

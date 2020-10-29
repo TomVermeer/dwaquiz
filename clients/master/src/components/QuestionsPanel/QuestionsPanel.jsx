@@ -31,7 +31,6 @@ export const QuestionsPanel = (props) => {
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
     const onSelectQuestion = (question) => {
-        console.log('selecting: ', question);
         setSelectedQuestion(question);
     };
 

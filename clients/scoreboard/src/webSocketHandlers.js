@@ -1,14 +1,15 @@
 
 import { getWebsocket } from "shared/websocket";
 import { WebsocketHandlersBuilder } from "shared/WebsocketHandlersBuilder";
-import { setParticipatingTeams } from "./reducers/mainActionCreators";
+import { setParticipatingTeams, onReceiveAnswers } from "./reducers/mainActionCreators";
 import { Pages } from "./pages/routerUrls";
+
 
 import * as WsEvents from "websocket-events";
 import * as Roles from "roles";
 
 
-const buildHandlers = (quizPin, history) =>
+const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
   new WebsocketHandlersBuilder()
     .on(WsEvents.ON_TEAM_APPROVAL)
     .fetch(`quiz-nights/${quizPin}/teams`, setParticipatingTeams)
@@ -18,6 +19,8 @@ const buildHandlers = (quizPin, history) =>
         Pages(quizPin, message.roundNumber, message.questionNumber).QUESTION
       );
     })
+    .on(WsEvents.ON_ANSWER)
+    .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers` , onReceiveAnswers)
     .build();
 
 const initializationMessage = (quizPin) => {
@@ -30,5 +33,5 @@ const initializationMessage = (quizPin) => {
     };
 };
 
-export const startWebsocket = (quizPin) =>
-    getWebsocket(buildHandlers(quizPin), initializationMessage(Number(quizPin)));
+export const startWebsocket = (quizPin, history, roundNumber, questionNumber) =>
+    getWebsocket(buildHandlers(quizPin, history, roundNumber, questionNumber), initializationMessage(Number(quizPin)));

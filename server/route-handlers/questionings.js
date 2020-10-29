@@ -4,9 +4,9 @@ const WsEvents = require('websocket-events');
 const {Questioning, QuizNight} = require('../persistence/models');
 
 const findQuestionings = (req) =>
-    Questioning.findByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
+    Questioning.findMultipleByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
 
-const saveQuestioning = async (quizPin, roundNumber, questionId) => {
+    const saveQuestioning = async (quizPin, roundNumber, questionId) => {
     const quizNight = await QuizNight.findByQuizPin(quizPin);
     const questionNumber = await quizNight.askQuestion(roundNumber, questionId);
     await quizNight.save();
@@ -68,6 +68,9 @@ const answerQuestioning = async (req, res) => {
             questioning.isCorrect = false;
             await questioning.save();
             getMaster(req.quizPin).sendJson({type: WsEvents.ON_ANSWER});
+            getScoreBoards(req.quizPin).forEach((x) => {
+                x.sendJson({type: WsEvents.ON_ANSWER});
+            });
             res.send('ok');
         } else {
             res.status(400).send({error: 'This question has been closed and no longer accepts answers'});

@@ -7,7 +7,6 @@ import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 const WaitingRoomHomepage = () => {
   const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
   const teams = useSelector(state => state.root.participatingTeams);
-  
   return (
     <>
       <WaitingRoomHeader quizpin={quizPin} />

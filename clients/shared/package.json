@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "immer": "^7.0.9",
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "shared-constants": "file:../../shared-constants"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",

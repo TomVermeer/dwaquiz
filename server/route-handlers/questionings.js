@@ -1,3 +1,5 @@
+const {NUMBER_OF_QUESTIONS_IN_ROUND} = require("shared-constants");
+const {calculateScoreFromQuestioningsInRound} = require('../domain/score');
 const {getMaster} = require("../setupWebSockets");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
 const WsEvents = require('websocket-events');
@@ -81,16 +83,25 @@ const answerQuestioning = async (req, res) => {
     }
 };
 
+const calculateScores = async (quizPin, roundNumber) => {
+    const allQuestioningsInRound = await Questioning.findForRound(quizPin, roundNumber);
+    return calculateScoreFromQuestioningsInRound(allQuestioningsInRound);
+};
+
 const gradeQuestioning = async (req, res) => {
     try {
         const questionings = await findQuestionings(req);
         await Promise.all(
-            questionings.map(async questioning => {
+            questionings.map(questioning => {
                 const grading = req.body.find(x => x.teamName === questioning.teamName);
                 questioning.isCorrect = grading.isCorrect;
-                await questioning.save();
+                return questioning.save();
             })
         );
+        if(Number(req.params.questionNumber) === NUMBER_OF_QUESTIONS_IN_ROUND) {
+            const quizNight = await QuizNight.findByQuizPin(req.quizPin);
+            await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
+        }
         res.send('ok');
     } catch (e) {
         throw e;
@@ -100,12 +111,12 @@ const gradeQuestioning = async (req, res) => {
 const closeQuestioning = async (req, res) => {
     try {
         const questionings = await findQuestionings(req);
-            await Promise.all(
-                questionings.map(async questioning => {
-                    questioning.isOpen = Boolean(req.body.isOpen);
-                    await questioning.save();
-                })
-            );
+        await Promise.all(
+            questionings.map(questioning => {
+                questioning.isOpen = Boolean(req.body.isOpen);
+                return questioning.save();
+            })
+        );
         getTeams(req.quizPin)
             .forEach(team =>
                 team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})

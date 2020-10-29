@@ -59,4 +59,11 @@ questioningsSchema.statics.findQuestionForTeam = async function (quizPin, roundN
     return question;
 };
 
+questioningsSchema.statics.findForRound = function (quizPin, roundNumber) {
+    return this.find({
+        quizPin,
+        roundNumber
+    }).exec();
+};
+
 module.exports = {questioningsSchema};

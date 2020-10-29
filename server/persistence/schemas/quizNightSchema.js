@@ -53,7 +53,6 @@ quizNightSchema.statics.createEmptyQuizNight = async function () {
 
 quizNightSchema.methods.findHighestRoundNumber = function () {
     if (this.rounds.length !== 0) {
-        console.log('we have rounds, finding max');
         return Math.max(...
             (this.rounds.map(x => x.roundNumber)));
     } else {
@@ -119,5 +118,18 @@ quizNightSchema.methods.askQuestion = async function (roundNumber, questionId) {
     return questionNumber;
 };
 
+/**
+ * Adds the scores from a round to the teams
+ * @param teamScores object whose keys are teamNames and values are {numberOfCorrectQuestions: number, roundPoints: number}
+ * @return {Promise<void>}
+ */
+quizNightSchema.methods.saveScoresOfRoundToTeams = function (teamScores) {
+    this.teams.forEach(team => {
+        const score = teamScores[team.teamName];
+        team.numberOfCorrectQuestions += score.numberOfCorrectQuestions;
+        team.roundPoints += score.roundPoints;
+    });
+    return this.save();
+};
 
 module.exports = {quizNightSchema};

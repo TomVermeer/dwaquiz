@@ -1,0 +1,8 @@
+{
+  "name": "shared-constants",
+  "module": "index.js",
+  "version": "1.0.0",
+  "description": "Contants for Quizzer",
+  "author": "",
+  "license": "ISC"
+}

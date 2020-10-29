@@ -1,14 +1,15 @@
 import React from 'react';
-import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components"
+import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components";
 import { useEffect } from 'react';
-import { useSelector, useDispatch} from 'react-redux'
-import { useHistory } from 'react-router'
-import { fetchQuestion, roundNumberSetter, questionNumberSetter } from '../../reducers/mainActionCreators';
-import { useFromUrl } from '../../effects/useFromUrl'
+import { useSelector, useDispatch} from 'react-redux';
+import { useHistory } from 'react-router';
+import { fetchQuestion } from '../../reducers/mainActionCreators';
+import { useFromUrl } from '../../effects/useFromUrl';
+import {setRoundNumber, setQuestionNumber} from "shared/reducers/sharedActionCreators";
 
 const Questionpage = () => {
-    const round = useFromUrl('roundNumber', roundNumberSetter);
-    const questionNum = useFromUrl('questionNumber', questionNumberSetter);
+    const round = useFromUrl('roundNumber', setRoundNumber);
+    const questionNum = useFromUrl('questionNumber', setQuestionNumber);
     const history = useHistory();
 
     const quizPin = useSelector(state => state.shared.quizProgress.quizPin);

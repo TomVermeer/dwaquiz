@@ -10,14 +10,6 @@ export const openQuizNight = (quizpin, history) => (dispatch) => {
         startWebsocket(quizpin, history);
 };
 
-export const roundNumberSetter = (num) => (dispatch) => {
-    dispatch(setRoundNumber(num))
-};
-
-export const questionNumberSetter = (num) => (dispatch) => {
-    dispatch(setQuestionNumber(num));
-};
-
 export const setParticipatingTeams = (teamNames) => {
     return {
         type: SharedActions.ON_TEAM_APPROVAL, payload: teamNames

@@ -1,4 +1,4 @@
-const { QuizNight } = require("../persistence/models");
+const {QuizNight} = require("../persistence/models");
 
 /**
  * Generates an unique quizPin and saves it as an empty quiznight to the database
@@ -15,16 +15,21 @@ const createQuizNightHandler = async (req, res) => {
     }
 };
 
-const changeOpenForApplicationHandler = async (req, res) => {
+const patchQuizNightHandler = async (req, res) => {
     try {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
-        quizNight.isOpenForApplication = req.body.isOpenForApplication;
+        if (req.body.isOpenForApplication != null) {
+            quizNight.isOpenForApplication = req.body.isOpenForApplication;
+        }
+        if(req.body.isActive != null) {
+            quizNight.isActive = req.body.isActive;
+        }
         await quizNight.save();
 
         res.send('ok');
-    } catch(e) {
+    } catch (e) {
         throw e;
     }
 };
 
-module.exports = { createQuizNightHandler, closeApplicationPeriodHandler: changeOpenForApplicationHandler };
+module.exports = {createQuizNightHandler, closeApplicationPeriodHandler: patchQuizNightHandler};

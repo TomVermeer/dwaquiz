@@ -10,7 +10,6 @@ const createRoundHandler = async (req, res) => {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         const roundNumber = quizNight.startRound(chosenCategories);
         await quizNight.save();
-
         res.json({roundNumber});
     } catch (e) {
         throw e;

@@ -53,8 +53,19 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
             if(isErrorResponse(response)) {
                 // TODO
             } else {
-                history.push(Pages(quizPin, 1).CATEGORIES);
+                history.push(Pages(quizPin, 1).CHOOSE_CATEGORIES);
                 
             }
         })
+};
+
+export const endNight = (quizPin, history) => dispatch => {
+  patch(`quiz-nights/${quizPin}`, {isActive: false})
+      .then(response => {
+          if(isErrorResponse(response)) {
+              // TODO
+          } else {
+              history.push(Pages(quizPin).NIGHT_END);
+          }
+      })
 };

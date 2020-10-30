@@ -17,7 +17,7 @@ const TopScore = (props) => {
     return (
         <div className="top-placement">
             <props.cardProvider>
-                <a target="_blank" href="https://www.vexels.com/vectors/preview/129154/1st-place-laurel-medal" rel="no-opener">
+                <a target="_blank" href="https://www.vexels.com/vectors/preview/129154/1st-place-laurel-medal" rel="noreferrer noopener">
                     <props.cardProvider.Img variant="top" src={medal}/>
                 </a>
                 <props.cardProvider.Body>

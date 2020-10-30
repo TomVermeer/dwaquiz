@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './final-scores.scss';
-import {Card, ListGroup, Table} from "react-bootstrap";
+import {Card, ListGroup} from "react-bootstrap";
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchTeamScores} from "shared/reducers/sharedActionCreators";
 
@@ -33,7 +33,6 @@ export const FinalScores = (props) => {
                         <div>Goede antwoorden</div>
                     </div>
                 </Card.Header>
-                {/*<Card.Body>*/}
                 <ListGroup variant="flush">
                     {sortTeamScores(teamScores)
                         .map((teamScore) => {
@@ -48,7 +47,6 @@ export const FinalScores = (props) => {
                             );
                         })}
                 </ListGroup>
-                {/*</Card.Body>*/}
             </Card>
         </div>
     );

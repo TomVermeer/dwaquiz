@@ -33,10 +33,10 @@ export const Answers = (props) => {
     const gradeQuestionButtonText = questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND ? 'Volgende ronde' : 'Volgende vraag';
 
     return (
-        <div className="answers">
+        <div className="card-container">
             <Card>
                 <Card.Header>
-                    <div className="list-row ">
+                    <div className="list-row">
                         <h5>Team</h5>
                         <h5>Antwoord</h5>
                         <h5>Beoordeling</h5>

@@ -1,0 +1,18 @@
+.placing {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+
+  .card-body p:first-child b {
+    font-size: 2em;
+  }
+
+  .card {
+    text-align: center;
+    height: 25rem;
+    width: 25rem;
+  }
+}

@@ -1,6 +1,5 @@
 const WebSocket = require("ws");
-const Roles = require("roles");
-const WsEvents = require('websocket-events');
+const {Roles, WsEvents} = require("shared-constants");
 
 const setupWebSocketServer = (server) => {
     server.on('connection', (ws) => {

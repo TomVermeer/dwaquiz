@@ -24,11 +24,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci --prefix clients/shared
-    - run: npm run build:linux --prefix clients/shared
-    - run: npm ci --prefix clients/team
-    - run: npm ci --prefix clients/master
-    - run: npm ci --prefix clients/scoreboard
+    - run: npm i --prefix clients/shared/shared
+    - run: npm run build:linux --prefix clients/shared/shared
+    - run: npm i --prefix clients/shared/dist
+    - run: npm i --prefix clients/team
+    - run: npm i --prefix clients/master
+    - run: npm i --prefix clients/scoreboard
     - run: npm run build --prefix clients/team
     - run: npm run build --prefix clients/master
     - run: npm run build --prefix clients/scoreboard

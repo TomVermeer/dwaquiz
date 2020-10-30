@@ -17,7 +17,7 @@ function App() {
             questionNumber: null,
             quizPin: null
         }}>
-            <Router>
+            <Router basename="/team">
                 <Switch>
                     <Route exact path={RouterUrls.HOME}>
                         <Home/>

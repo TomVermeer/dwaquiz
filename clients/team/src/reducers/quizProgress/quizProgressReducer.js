@@ -1,6 +1,6 @@
 import { createReducer } from "shared/reducers/createReducer";
 import { Actions } from "../../actions";
-import * as WsEvents from "websocket-events";
+import {WsEvents} from "shared/constants";
 
 const initialState = {};
 export const quizProgressReducer = createReducer((state = initialState, action) => {

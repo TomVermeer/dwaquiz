@@ -3,7 +3,8 @@ import {SharedActions} from "../actions";
 
 const initialState = {
     title: 'Quizzer',
-    quizProgress: {}
+    quizProgress: {},
+    teamScores: []
 };
 
 export const sharedReducer = createReducer((state = initialState, action) => {
@@ -23,6 +24,9 @@ export const sharedReducer = createReducer((state = initialState, action) => {
             break;
         case SharedActions.SET_QUESTION_NUMBER:
             state.quizProgress.questionNumber = action.payload;
+            break;
+        case SharedActions.ON_TEAM_SCORES_RECEIVED:
+            state.teamScores = action.payload;
             break;
         default:
             return state;

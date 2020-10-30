@@ -1,4 +1,5 @@
 import {SharedActions} from "../actions";
+import {getAndParse} from "../fetchHelpers";
 
 export const changeTitle = newTitle => {
     return {type: SharedActions.CHANGE_TITLE, payload: newTitle};
@@ -18,4 +19,13 @@ export const setRoundNumber = roundNumber => {
 
 export const setQuestionNumber = questionNumber => {
   return {type: SharedActions.SET_QUESTION_NUMBER, payload: Number(questionNumber)}
+};
+
+const onTeamScoresReceived = (teamScores) => {
+    return {type: SharedActions.ON_TEAM_SCORES_RECEIVED, payload: teamScores};
+};
+
+export const fetchTeamScores = quizPin => dispatch => {
+  getAndParse(`quiz-nights/${quizPin}/scores`)
+      .then(json => dispatch(onTeamScoresReceived(json)));
 };

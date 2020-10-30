@@ -1,16 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './final-scores.scss';
-import {Card, ListGroup} from "react-bootstrap";
-import {useSelector, useDispatch} from 'react-redux';
 import {fetchTeamScores} from "shared/reducers/sharedActionCreators";
 
 export const FinalScores = (props) => {
 
-    const teamScores = useSelector(state => state.shared.teamScores.slice());
-    const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
-    const dispatch = useDispatch();
+    const teamScores = props.useSelector(state => state.shared.teamScores.slice());
+    const quizPin = props.useSelector(state => state.shared.quizProgress.quizPin);
+    const dispatch = props.useDispatch();
 
-    useEffect(() => {
+    props.useEffect(() => {
         dispatch(fetchTeamScores(quizPin));
     }, [quizPin, dispatch]);
 
@@ -25,29 +23,29 @@ export const FinalScores = (props) => {
 
     return (
         <div className="card-container">
-            <Card>
-                <Card.Header>
+            <props.cardProvider>
+                <props.cardHeaderProvider>
                     <div className="list-row">
                         <div>Team</div>
                         <div>Ronde punten</div>
                         <div>Goede antwoorden</div>
                     </div>
-                </Card.Header>
-                <ListGroup variant="flush">
+                </props.cardHeaderProvider>
+                <props.listGroupProvider variant="flush">
                     {sortTeamScores(teamScores)
                         .map((teamScore) => {
                             return (
-                                <ListGroup.Item key={teamScore.teamName}>
+                                <props.listGroupItemProvider key={teamScore.teamName}>
                                     <div className="list-row">
                                         <div>{teamScore.teamName}</div>
                                         <div>{teamScore.roundPoints}</div>
                                         <div>{teamScore.numberOfCorrectQuestions}</div>
                                     </div>
-                                </ListGroup.Item>
+                                </props.listGroupItemProvider>
                             );
                         })}
-                </ListGroup>
-            </Card>
+                </props.listGroupProvider>
+            </props.cardProvider>
         </div>
-    );
+);
 };

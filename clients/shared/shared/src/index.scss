@@ -1,0 +1,30 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .card {
+    width: 80%;
+  }
+
+}
+
+.list-row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  & > * {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+}

@@ -15,7 +15,13 @@ For guarding the state in our applications we will be using Redux, in the follow
             categoryValidationFailed: boolean,
         }
         suggestedQuestions: [{category: string, question: string, _id: number}],
-        scorePerTeam: map(number, {roundPoints: number, correctQuestions: number}), // teamIndex ->; roundpoints, correctquestions
+        teamScores: [
+            {
+                teamName: string,
+                roundPoints: number,
+                numberOfCorrectQuestions: number
+            }
+        ],
         quizNight:
         {
             askedQuestions: [string],
@@ -59,7 +65,13 @@ For guarding the state in our applications we will be using Redux, in the follow
         currentQuestion: string,
         answeredTeams: [string],
         teamAnswers: map(string, string), // teamname -> answer
-        scorePerTeam: map(number, {roundPoints: number, correctQuestions: number})
+        teamScores: [
+            {
+                teamName: string,
+                roundPoints: number,
+                numberOfCorrectQuestions: number
+            }
+        ]
     }
 }
 ```

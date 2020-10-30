@@ -1,6 +1,6 @@
 import React from 'react';
 import './final-scores.scss';
-import {fetchTeamScores} from "shared/reducers/sharedActionCreators";
+import {fetchTeamScores} from "../../reducers/sharedActionCreators";
 
 export const FinalScores = (props) => {
 

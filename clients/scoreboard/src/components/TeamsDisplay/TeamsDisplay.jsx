@@ -88,7 +88,7 @@ const TeamsDisplay = (props) => {
             .map((el) => {
               return (
                 <tr>
-                  <th>{el.name}</th>
+                  <th>{el.teamName}</th>
                   <th>{el.correctQuestions}</th>
                   <th>{el.roundPoints}</th>
                 </tr>

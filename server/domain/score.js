@@ -39,7 +39,7 @@ const addRoundPointsToTeamNameIndexedObject = (scoreMap) => {
     for(let i = 0; i < sortedScores.length; i++) {
 
         let roundPointsEarned = roundPointsForNotPlacedTeams;
-        if(i < placingToScoreMap.length - 1) {
+        if(i < placingToScoreMap.length) {
             roundPointsEarned = placingToScoreMap[i];
         }
 

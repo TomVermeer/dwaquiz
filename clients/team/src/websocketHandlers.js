@@ -19,6 +19,8 @@ const buildHandlers = (history, quizPin, teamName, questionNumber, roundNumber) 
             .doAction((message) => history.push(Pages(quizPin, teamName, message.roundNumber, message.questionNumber).QUESTION))
         .on(WsEvents.ON_QUESTION_CLOSE)
             .doAction(navigateToWaitForQuestion)
+        .on(WsEvents.ON_QUIZ_NIGHT_END)
+            .doAction(() => history.push(pages.NIGHT_END))
         .build();
 };
 

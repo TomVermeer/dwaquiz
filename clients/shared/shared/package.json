@@ -1,20 +1,20 @@
 {
   "name": "shared",
-  "module": "dist",
+  "module": "../dist",
   "version": "1.0.0",
   "description": "Shared logic for all Quizzer clients",
   "author": "Erik Knaake (598368)",
   "license": "ISC",
   "scripts": {
-    "babelBuild": "babel src --out-dir dist --copy-files",
-    "build:linux": "npm run babelBuild && cp package.json dist",
-    "build": "npm run babelBuild && copy package.json dist",
-    "watch": "babel src --out-dir dist --copy-files --watch"
+    "babelBuild": "babel src --out-dir ../dist --copy-files",
+    "build:linux": "npm run babelBuild && cp package.json \"../dist\" && cp package-lock.json \"../dist\"",
+    "build": "npm run babelBuild && copy package.json \"../dist\" && copy package-lock.json \"../dist\"",
+    "watch": "babel src --out-dir ../dist --copy-files --watch"
   },
   "dependencies": {
     "immer": "^7.0.9",
     "react": "^16.13.1",
-    "shared-constants": "file:../../shared-constants"
+    "shared-constants": "file:../../../shared-constants"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",

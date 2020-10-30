@@ -1,9 +1,8 @@
 import {getWebsocket} from "shared/websocket";
-import * as WsEvents from "websocket-events";
 import {afterTeamApplyFetch} from "./reducers/quizNight/quizNightActionCreators";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
 import {onReceiveAnswers} from "./reducers/currentQuestion/currentQuestionActionCreators";
-import * as Roles from "roles";
+import {Roles, WsEvents} from "shared/constants";
 
 const buildHandlers = (quizPin, roundNumber, questionNumber) =>
     new WebsocketHandlersBuilder()

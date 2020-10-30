@@ -17,8 +17,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.10.8",
-    "websocket-events": "file:../websocket-events",
-    "roles": "file:../roles",
     "shared-constants": "file:../shared-constants",
     "ws": "^7.3.1"
   },

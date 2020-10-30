@@ -1,4 +1,4 @@
-const WsEvents = require("websocket-events");
+const {WsEvents} = require("shared-constants");
 const {getMaster, getTeam} = require("../setupWebSockets");
 const {QuizNight} = require('../persistence/models');
 

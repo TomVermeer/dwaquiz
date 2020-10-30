@@ -1,7 +1,7 @@
-cd clients\shared &&^
+cd clients\shared\shared &&^
 npm i &&^
 npm run build &&^
-cd ..\master &&^
+cd ..\..\master &&^
 npm i &&^
 cd ..\team &&^
 npm i &&^

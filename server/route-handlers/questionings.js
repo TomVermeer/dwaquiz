@@ -1,8 +1,7 @@
-const {NUMBER_OF_QUESTIONS_IN_ROUND} = require("shared-constants");
+const {NUMBER_OF_QUESTIONS_IN_ROUND, WsEvents} = require("shared-constants");
 const {calculateScoreFromQuestioningsInRound} = require('../domain/score');
 const {getMaster} = require("../setupWebSockets");
 const {getTeams, getScoreBoards} = require('../setupWebSockets');
-const WsEvents = require('websocket-events');
 const {Questioning, QuizNight} = require('../persistence/models');
 
 const findQuestionings = (req) =>

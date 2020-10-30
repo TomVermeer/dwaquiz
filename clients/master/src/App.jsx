@@ -16,7 +16,7 @@ function App() {
     const quizProgress = useSelector(state => state.shared.quizProgress);
     return (
         <Page quizNight={quizProgress} title={title}>
-            <Router>
+            <Router basename="/master">
                 <Switch>
                     <Route exact path={RouterUrls.HOME}>
                         <Home/>

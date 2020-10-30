@@ -22,7 +22,7 @@ import {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/scoreboard">
      <div className="App">
       <Switch>
         <Route exact path={RouterUrls.HOME} component={HomePage}/>

@@ -5,7 +5,7 @@
 This documentation is written using Markdown and Draw.io.
 To read this document as intented it should be read using [VS Code](https://code.visualstudio.com/) and the following extensions:
 
-- [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/) to be able to read all headings and plant uml snippets
+- [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/) to be able to read all headings and plant uml snippets. Some users may also need [graphviz](https://graphviz.gitlab.io/) which can be installed with `choco install graphviz` on windows.
 - [vscode-drawio](https://marketplace.visualstudio.com/items?itemName=eightHundreds.vscode-drawio) to be able to read the drawio diagram
 
 **Made by:** Erik Knaake & Tom Vermeer
@@ -106,27 +106,4 @@ ___
 
 ## General Overview
 
-The following diagram shows folders which already have been identified in the Quizzer.
-
-```puml
-@startmindmap
-* /
- *_ build.bat
- * docs
- * clients
-  * master
-   * src
-  * team
-   * src
-  * scoreboard
-   * src
-  * shared
-   * src
-    * reducers
-    * components
- * server
-  * route-handlers
-  * routers
-  * middleware
-@endmindmap
-```
+See [module structure](moduleStructure.md)

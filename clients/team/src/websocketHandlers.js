@@ -1,8 +1,7 @@
-import * as WsEvents from "websocket-events";
 import {getWebsocket} from "shared/websocket";
 import {Pages} from "./pages/pages";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
-import * as Roles from "roles";
+import {Roles, WsEvents} from "shared/constants";
 
 const buildHandlers = (history, quizPin, teamName, questionNumber, roundNumber) => {
 

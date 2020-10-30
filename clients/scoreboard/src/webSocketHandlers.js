@@ -1,12 +1,8 @@
-
 import { getWebsocket } from "shared/websocket";
 import { WebsocketHandlersBuilder } from "shared/WebsocketHandlersBuilder";
 import { setParticipatingTeams, onReceiveAnswers } from "./reducers/mainActionCreators";
 import { Pages } from "./pages/routerUrls";
-
-
-import * as WsEvents from "websocket-events";
-import * as Roles from "roles";
+import {WsEvents, Roles} from "shared/constants";
 
 
 const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>

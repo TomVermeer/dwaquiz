@@ -11,8 +11,6 @@ const installRootMiddleware = (app) => {
 
 const serveClient = (app, client) => {
     const clientPath = path.join(__dirname, '..', 'clients', client, 'build');
-    const staticPath = path.join(clientPath, 'static');
-    app.use('/static', express.static(staticPath));
     app.use('/' + client, express.static(clientPath));
     console.log('Serving client: ', client, ' from: ', clientPath, ' at: /' + client);
 };

@@ -22,7 +22,6 @@ questionSchema.statics.findSuggestedQuestionsForQuizNight = async function (quiz
     const quizNight = await mongoose.model('QuizNight').findByQuizPin(quizPin);
     const categories = quizNight.findChosenCategories(roundNumber);
     const alreadyAskedQuestions = await mongoose.model('Questioning').findAskedQuestions(quizPin);
-    console.log({alreadyAskedQuestions});
     return this.find({
         category: {$in: categories},
         _id: {

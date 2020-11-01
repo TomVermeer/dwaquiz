@@ -28,7 +28,7 @@ export const QuestionsPanel = (props) => {
         if (suggestedQuestions.length < fetchAmount) {
             dispatch(fetchSuggestedQuestions(quizPin, roundNumber, suggestedQuestions.length, fetchAmount));
         }
-    }, [quizPin, roundNumber, dispatch]);
+    }, [quizPin, roundNumber, dispatch, suggestedQuestions.length]);
 
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 

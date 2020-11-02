@@ -10,6 +10,7 @@ export const categoryReducer = createReducer((state = initialState, action) => {
     switch(action.type) {
         case Actions.ON_CATEGORIES_RECEIVED:
             state.allCategories = action.payload;
+            state.chosenCategories = [];
             break;
         case Actions.ON_CATEGORY_ADD:
             state.chosenCategories.push(action.payload);

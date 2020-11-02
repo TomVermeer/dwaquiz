@@ -17,12 +17,13 @@ const TopScore = (props) => {
     return (
         <div className="top-placement">
             <props.cardProvider>
-                <a target="_blank" href="https://www.vexels.com/vectors/preview/129154/1st-place-laurel-medal" rel="noreferrer noopener">
+                <a target="_blank" href="https://www.vexels.com/vectors/preview/129154/1st-place-laurel-medal"
+                   rel="noreferrer noopener">
                     <props.cardProvider.Img variant="top" src={medal}/>
                 </a>
                 <props.cardProvider.Body>
                     <props.cardProvider.Title>
-                            {props.team.teamName}
+                        {props.team.teamName}
                     </props.cardProvider.Title>
                     <p><b>{props.team.roundPoints}</b> ronde punten</p>
                     <p><b>{props.team.numberOfCorrectQuestions}</b> goede antwoorden</p>
@@ -75,6 +76,9 @@ export const FinalScores = (props) => {
                                 );
                             })}
                     </props.listGroupProvider>
+                    <div className="align-right card-buttons">
+                        {props.children}
+                    </div>
                 </props.cardProvider>
             </div>
         </div>

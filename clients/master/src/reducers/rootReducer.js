@@ -12,6 +12,8 @@ const initialState = {
 
 const mainReducer = createReducer((state = initialState, action) => {
     switch (action.type) {
+        case Actions.ON_RESET:
+            return initialState;
         case Actions.ON_QUESTION_ASKED:
             state.suggestedQuestions = state.suggestedQuestions.filter(x => x._id !== action.payload);
             break;

@@ -5,25 +5,25 @@ import {QuestionProgress} from "./QuestionProgress";
 export const QuizProgress = (props) => {
     return (
         <div className="progress">
-            <div>
-                <div>
-                    {props.quizPin &&
-                        <h2>
-                            {props.quizPin}
-                        </h2>
-                    }
+            {props.quizPin &&
+            <props.cardProvider>
+                <props.cardProvider.Header>
+                    <h3>{props.quizPin}</h3>
+                </props.cardProvider.Header>
+                <props.cardProvider.Body>
                     {props.roundNumber &&
-                        <p>
-                            Quizronde {props.roundNumber}
-                        </p>
+                    <p>
+                        Quizronde {props.roundNumber}
+                    </p>
                     }
                     {props.questionNumber &&
-                        <p>
-                            <QuestionProgress questionNumber={props.questionNumber}/>
-                        </p>
+                    <p>
+                        <QuestionProgress questionNumber={props.questionNumber}/>
+                    </p>
                     }
-                </div>
-            </div>
+                </props.cardProvider.Body>
+            </props.cardProvider>
+            }
         </div>
     );
 };

@@ -1,12 +1,11 @@
 const {QuizNight} = require('../persistence/models');
-const { getScoreBoards } = require('../setupWebSockets');
-const { WsEvents } = require("shared-constants");
+const HttpErrors = require("../httpErrors");
 
 const createRoundHandler = async (req, res) => {
     try {
         const chosenCategories = req.body;
         if (chosenCategories.length !== 3) {
-            res.status(400).json({error: "A round must have exactly 3 categories."});
+            res.sendError(HttpErrors.INVALID_NUMBER_OF_CATEGORIES);
         }
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         const roundNumber = quizNight.startRound(chosenCategories);

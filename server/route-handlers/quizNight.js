@@ -32,7 +32,7 @@ const patchQuizNightHandler = async (req, res) => {
         }
         await quizNight.save();
 
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }

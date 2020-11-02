@@ -29,8 +29,8 @@ export const TeamApplication = (props) => {
                 <Form.Control type="text" placeholder='Team name' value={teamName} onChange={e => setTeamName(e.target.value)}/>
             </Form.Group>
             <Button variant="primary" type="submit">
-                Participate
+                Deelnemen
             </Button>
         </Form>
     );
-}
+};

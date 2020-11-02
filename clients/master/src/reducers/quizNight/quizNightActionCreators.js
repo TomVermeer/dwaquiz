@@ -1,4 +1,4 @@
-import {postAndParse, isErrorResponse, post, deleteReq, patch} from "shared/fetchHelpers";
+import {postAndParse, deleteAndParse, patchAndParse} from "shared/fetchHelpers";
 import {Actions} from "../../actions";
 import {Pages} from "../../pages/routerUrls";
 import {setQuizPin} from "shared/reducers/sharedActionCreators";
@@ -17,13 +17,9 @@ const onApproveTeam = teamName => {
 };
 
 export const approveTeam = (teamName, quizPin) => dispatch => {
-    post(`quiz-nights/${quizPin}/teams`, {teamName})
-        .then(response => {
-            if(isErrorResponse(response)) {
-                // TODO
-                return;
-            }
-            dispatch(onApproveTeam(teamName));
+    postAndParse(`quiz-nights/${quizPin}/teams`, {teamName})
+        .then(json => {
+            dispatch(onApproveTeam(teamName))
         });
 };
 
@@ -33,13 +29,9 @@ const onRejectTeam = teamName => {
 };
 
 export const rejectTeam = (teamName, quizPin) => dispatch => {
-    deleteReq(`quiz-nights/${quizPin}/team-applications/${teamName}`)
-        .then(response => {
-            if(isErrorResponse(response)) {
-                // TODO
-            } else {
-                dispatch(onRejectTeam(teamName));
-            }
+    deleteAndParse(`quiz-nights/${quizPin}/team-applications/${teamName}`)
+        .then(json => {
+            dispatch(onRejectTeam(teamName));
         });
 };
 
@@ -48,24 +40,11 @@ export const afterTeamApplyFetch = teamNames => {
 };
 
 export const closeApplicationPeriod = (quizPin, history) => dispatch => {
-    patch(`quiz-nights/${quizPin}`, {isOpenForApplication: false})
-        .then((response) => {
-            if(isErrorResponse(response)) {
-                // TODO
-            } else {
-                history.push(Pages(quizPin, 1).CHOOSE_CATEGORIES);
-                
-            }
-        })
+    patchAndParse(`quiz-nights/${quizPin}`, {isOpenForApplication: false})
+        .then(json => history.push(Pages(quizPin, 1).CHOOSE_CATEGORIES));
 };
 
 export const endNight = (quizPin, history) => dispatch => {
-  patch(`quiz-nights/${quizPin}`, {isActive: false})
-      .then(response => {
-          if(isErrorResponse(response)) {
-              // TODO
-          } else {
-              history.push(Pages(quizPin).NIGHT_END);
-          }
-      })
+    patchAndParse(`quiz-nights/${quizPin}`, {isActive: false})
+        .then(json => history.push(Pages(quizPin).NIGHT_END))
 };

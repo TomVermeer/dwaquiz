@@ -1,13 +1,25 @@
 import {API_BASE_URL} from "./constants";
 
-export const isErrorResponse = (response) => response.status < 200 || response.status >= 300;
+let globalHttpErrorHandler = null;
 
-export const checkAndParseResponse = async (responsePromise) => {
+export const installGlobalHttpErrorHandler = (errorHandler) => {
+    globalHttpErrorHandler = errorHandler;
+};
+
+
+const isErrorResponse = (response) => response.status < 200 || response.status >= 300;
+
+const checkAndParseResponse = async (responsePromise) => {
     const response = await responsePromise;
     if (!isErrorResponse(response)) {
         return response.json();
     } else {
-        throw new Error(`Unexpected http statuscode: ${response.status}`);
+        if (globalHttpErrorHandler == null) {
+            throw new Error(`Unexpected http statuscode: ${response.status}`);
+        } else {
+            globalHttpErrorHandler(await response.json());
+            return Promise.reject(response);
+        }
     }
 };
 
@@ -25,23 +37,19 @@ const options = (body, method, additionalHeaders = {}) => {
 
 const createHelperForMethod = method => (path, body) => fetch(API_BASE_URL + path, options(body, method));
 
-export const post = createHelperForMethod('POST');
-
-export const deleteReq = createHelperForMethod('DELETE');
-
+const post = createHelperForMethod('POST');
 export const postAndParse = (path, body) => checkAndParseResponse(post(path, body));
 
-export const get = (path, body) => fetch(API_BASE_URL + path, options(body, 'GET'));
+const deleteReq = createHelperForMethod('DELETE');
+export const deleteAndParse = (path) => checkAndParseResponse(deleteReq(path));
 
-export const getAndParse = (path, body) => get(path, body)
-    .then(response => {
-       if(isErrorResponse(response)) {
-           throw new Error(`Unexpected http statuscode: ${response.status}`);
-       } else {
-           return response.json();
-       }
-    });
 
-export const patch = createHelperForMethod('PATCH');
+const get = createHelperForMethod('GET');
+export const getAndParse = (path, body) => checkAndParseResponse(get(path, body));
 
-export const put = createHelperForMethod('PUT');
+
+const patch = createHelperForMethod('PATCH');
+export const patchAndParse = (path, body) => checkAndParseResponse(patch(path, body));
+
+const put = createHelperForMethod('PUT');
+export const putAndParse = (path, body) => checkAndParseResponse(put(path, body));

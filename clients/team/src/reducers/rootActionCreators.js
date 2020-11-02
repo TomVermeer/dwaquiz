@@ -1,5 +1,5 @@
 import {Actions} from "../actions";
-import {getAndParse, isErrorResponse, put} from "shared/fetchHelpers";
+import {getAndParse, putAndParse} from "shared/fetchHelpers";
 
 export const setTeamName = teamName => {
     return {type: Actions.SET_TEAM_NAME, payload: teamName};
@@ -21,12 +21,6 @@ const onAnswerSubmitted = answer => {
 };
 
 export const submitAnswer = (quizPin, roundNumber, questionNumber, teamName, answer) => dispatch => {
-    put(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/${teamName}`, {answer})
-        .then(response => {
-            if (isErrorResponse(response)) {
-                // TODO
-            } else {
-                dispatch(onAnswerSubmitted());
-            }
-        });
+    putAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/${teamName}`, {answer})
+        .then(json => dispatch(onAnswerSubmitted()));
 };

@@ -1,5 +1,5 @@
 import {Actions} from '../../actions';
-import {isErrorResponse, post} from "shared/fetchHelpers";
+import {postAndParse} from "shared/fetchHelpers";
 import {Pages} from "../../pages/pages";
 
 const onTeamApply = (teamName, quizPin) => {
@@ -10,13 +10,11 @@ const onTeamApply = (teamName, quizPin) => {
 };
 
 export const applyTeam = (teamName, quizPin, history) => dispatch => {
-    post(`quiz-nights/${quizPin}/team-applications`, {teamName})
-        .then((response) => {
-            if (isErrorResponse(response)) {
-                // TODO: handle errors
-            } else {
-                dispatch(onTeamApply(teamName, quizPin));
-                history.push(Pages(quizPin, teamName).WAIT_FOR_APPROVAL);
-            }
+    console.log('posting');
+    postAndParse(`quiz-nights/${quizPin}/team-applications`, {teamName})
+        .then((json) => {
+            console.log('then: ', json);
+            dispatch(onTeamApply(teamName, quizPin));
+            history.push(Pages(quizPin, teamName).WAIT_FOR_APPROVAL);
         });
 };

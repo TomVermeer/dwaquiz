@@ -67,3 +67,9 @@ export const getWebsocket = (handlers, initializeMessage) => {
     }
     return websocket;
 };
+
+export const closeWebsocket = () => {
+    if (websocket != null) {
+        websocket.close();
+    }
+};

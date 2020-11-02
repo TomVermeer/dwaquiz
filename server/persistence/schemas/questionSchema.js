@@ -21,10 +21,12 @@ questionSchema.statics.findById = function (id) {
 questionSchema.statics.findSuggestedQuestionsForQuizNight = async function (quizPin, roundNumber, offset, limit) {
     const quizNight = await mongoose.model('QuizNight').findByQuizPin(quizPin);
     const categories = quizNight.findChosenCategories(roundNumber);
-    const alreadyAskedQuestions = await quizNight.findAskedQuestions();
+    const alreadyAskedQuestions = await mongoose.model('Questioning').findAskedQuestions(quizPin);
     return this.find({
         category: {$in: categories},
-        question: {$nin: alreadyAskedQuestions}
+        _id: {
+            $nin: alreadyAskedQuestions.map(x => x.question)
+        }
     }, {
         category: true,
         question: true,

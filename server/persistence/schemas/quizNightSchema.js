@@ -39,7 +39,7 @@ const getNewQuizPin = async (length = 6) => {
     do {
         quizPin = generateQuizPin(length + additionalLength);
         additionalLength++
-    } while (await mongoose.model('QuizNight').doesPinExist(quizPin));
+    } while (await QuizNight.doesPinExist(quizPin));
     return quizPin;
 };
 
@@ -49,6 +49,25 @@ quizNightSchema.statics.createEmptyQuizNight = async function () {
         teams: [],
         rounds: [],
     });
+};
+
+quizNightSchema.statics.findScoreForTeam = async function (teamName, quizPin) {
+    const quizNight = await this.findByQuizPin(quizPin);
+    const sortedTeamScores = quizNight.teams.sort((x, y) => {
+        if (x.roundPoints === y.roundPoints) {
+            return x.numberOfCorrectQuestions < y.numberOfCorrectQuestions ? 1 : -1;
+        }
+        return x.roundPoints < y.roundPoints ? 1 : -1;
+    });
+    const teamScoreIndex = sortedTeamScores.findIndex(x => x.teamName === teamName);
+    const team = quizNight.teams[teamScoreIndex];
+    return {
+        teamName: team.teamName,
+        roundPoints: team.roundPoints,
+        numberOfCorrectQuestions: team.numberOfCorrectQuestions,
+        placing: teamScoreIndex + 1
+    };
+
 };
 
 quizNightSchema.methods.findHighestRoundNumber = function () {
@@ -80,12 +99,6 @@ quizNightSchema.methods.addTeam = function (teamName) {
 
 quizNightSchema.methods.findChosenCategories = function (roundNumber) {
     return this.rounds.find(x => x.roundNumber === roundNumber).chosenCategories;
-};
-
-quizNightSchema.methods.findAskedQuestions = function () {
-    return mongoose.model('QuizNight').find({_id: this._id})
-        .distinct('round.questionings.question')
-        .exec();
 };
 
 quizNightSchema.methods.getParticipatingTeamNames = function () {
@@ -132,4 +145,7 @@ quizNightSchema.methods.saveScoresOfRoundToTeams = function (teamScores) {
     return this.save();
 };
 
-module.exports = {quizNightSchema};
+const QuizNight = mongoose.model('QuizNight', quizNightSchema);
+
+
+module.exports = {quizNightSchema, QuizNight};

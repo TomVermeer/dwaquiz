@@ -3,6 +3,7 @@ import { createReducer } from "shared/reducers/createReducer";
 import { quizProgressReducer } from "./quizProgress/quizProgressReducer";
 import {Actions} from '../actions';
 import {sharedReducer} from "shared/reducers/sharedReducer";
+import {placingReducer} from "./placing/placingReducer";
 
 const initialState = {};
 const mainReducer = createReducer((state = initialState, action) => {
@@ -29,5 +30,6 @@ const mainReducer = createReducer((state = initialState, action) => {
 export const rootReducer = combineReducers({
     quizProgress: quizProgressReducer,
     root: mainReducer,
-    shared: sharedReducer
+    shared: sharedReducer,
+    placing: placingReducer
 });

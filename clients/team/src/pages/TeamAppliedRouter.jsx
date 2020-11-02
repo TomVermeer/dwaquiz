@@ -4,10 +4,11 @@ import {RouterUrls} from "./pages";
 import {WaitForApproval} from "./waitForApproval/WaitForApproval";
 import {WaitForQuestion} from "./waitForQuestion/WaitForQuestion";
 import {useWebsocket} from "../effects/useWebsocket";
-import {QuestionRouter} from "./Question/QuestionRouter";
+import {QuestionRouter} from "./question/QuestionRouter";
 import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {useFromUrl} from "../effects/useFromUrl";
 import {setTeamName} from "../reducers/rootActionCreators";
+import {NightEnd} from "./nightEnd/NightEnd";
 
 export const TeamAppliedRouter = (props) => {
 
@@ -23,6 +24,9 @@ export const TeamAppliedRouter = (props) => {
           </Route>
           <Route exact path={RouterUrls.WAIT_FOR_QUESTION}>
               <WaitForQuestion/>
+          </Route>
+          <Route path={RouterUrls.NIGHT_END}>
+              <NightEnd/>
           </Route>
           <Route path={RouterUrls.QUESTION}>
               <QuestionRouter/>

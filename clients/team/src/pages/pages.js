@@ -12,7 +12,8 @@ const createUrlEnum = (quizPin, teamName, roundNumber, questionNumber) => {
         TEAM_APPLIED,
         WAIT_FOR_APPROVAL: `${TEAM_APPLIED}/wait-for-approval`,
         WAIT_FOR_QUESTION: `${TEAM_APPLIED}/wait-for-question`,
-        QUESTION
+        QUESTION,
+        NIGHT_END: `${TEAM_APPLIED}/end`
     });
 };
 

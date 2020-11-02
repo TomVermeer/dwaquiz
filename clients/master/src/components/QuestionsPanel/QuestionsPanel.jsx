@@ -25,8 +25,10 @@ export const QuestionsPanel = (props) => {
         dispatch(fetchSuggestedQuestions(quizPin, roundNumber, startIndex, fetchAmount));
 
     useEffect(() => {
-        dispatch(fetchSuggestedQuestions(quizPin, roundNumber, 0, fetchAmount));
-    }, [quizPin, roundNumber, dispatch]);
+        if (suggestedQuestions.length < fetchAmount) {
+            dispatch(fetchSuggestedQuestions(quizPin, roundNumber, suggestedQuestions.length, fetchAmount));
+        }
+    }, [quizPin, roundNumber, dispatch, suggestedQuestions.length]);
 
     const [selectedQuestion, setSelectedQuestion] = useState(null);
 
@@ -50,11 +52,13 @@ export const QuestionsPanel = (props) => {
                         key={x._id}
                         category={x.category}
                         question={x.question}
-                        />)}
+                    />)}
             >
                 <div className="align-right">
-                        <Button variant="secondary" className="margin-right" onClick={onLoadMoreQuestions}>Laad meer vragen</Button>
-                        <Button variant="primary" disabled={selectedQuestion == null} onClick={onAskQuestion}>Stel vraag</Button>
+                    <Button variant="secondary" className="margin-right" onClick={onLoadMoreQuestions}>Laad meer
+                        vragen</Button>
+                    <Button variant="primary" disabled={selectedQuestion == null} onClick={onAskQuestion}>Stel
+                        vraag</Button>
                 </div>
             </Panel>
         </div>

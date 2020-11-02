@@ -10,12 +10,16 @@ import {RouterUrls} from './pages/routerUrls';
 import {useSelector} from "react-redux";
 import { Page } from "shared/components/Page/Page";
 import {QuizNightRouter} from "./pages/quizNight/QuizNightRouter";
+import {Card, Navbar} from 'react-bootstrap';
 
 function App() {
     const title = useSelector(state => state.shared.title);
     const quizProgress = useSelector(state => state.shared.quizProgress);
     return (
-        <Page quizNight={quizProgress} title={title}>
+        <Page quizNight={quizProgress}
+              title={title}
+              cardProvider={Card}
+              navbarProvider={Navbar}>
             <Router basename="/master">
                 <Switch>
                     <Route exact path={RouterUrls.HOME}>

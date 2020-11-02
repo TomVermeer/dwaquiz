@@ -6,11 +6,11 @@ const WaitingRoomHeader = (props) => {
     <Navbar bg="primary" variant="dark">
       <Container>
         <Col>
-          <h1>Waiting for round to start.</h1>
+          <h1>Wachten tot de ronde begint.</h1>
         </Col>
         <Col>
           <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
+            <span className="sr-only">Laden...</span>
           </Spinner>
         </Col>
         <Col>

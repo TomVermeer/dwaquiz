@@ -16,5 +16,5 @@ const RoundHeader = (props) => {
             </Col>
         </Navbar>
     )
-}
-export default RoundHeader
+};
+export default RoundHeader;

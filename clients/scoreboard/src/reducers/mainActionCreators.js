@@ -1,12 +1,10 @@
 import {getAndParse} from "shared/fetchHelpers";
 import {SharedActions} from "shared/actions";
-import {startWebsocket} from "../webSocketHandlers";
 import {Actions} from "../actions"
 import {setQuizPin} from "shared/reducers/sharedActionCreators"
 
-export const openQuizNight = (quizpin, history) => (dispatch) => {
+export const openQuizNight = (quizpin) => (dispatch) => {
         dispatch(setQuizPin(quizpin));
-        startWebsocket(quizpin, history);
 };
 
 export const setParticipatingTeams = (teamNames) => {
@@ -23,7 +21,6 @@ export const fetchQuestion = (quizPin, history, roundNumber, questionNumber) => 
   getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`)
   .then(json => {
     dispatch(setQuestion(json));
-    startWebsocket(quizPin, history, roundNumber, questionNumber);
   })
 };
 

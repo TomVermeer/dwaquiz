@@ -26,9 +26,9 @@ const HomePage = () => {
         if (e.currentTarget.checkValidity() === false) {
             setValidated(true);
         } else {
-            dispatch(openQuizNight(quizPin, history));
+            dispatch(openQuizNight(quizPin));
             // TODO check if quiz pin exists (REST)
-            history.push(Pages(quizPin).WAITINGROOM);
+            history.push(Pages(quizPin).WAITING_ROOM);
         }
     };
 

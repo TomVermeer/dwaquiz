@@ -7,7 +7,6 @@ const setupWebSocketServer = (server) => {
 
         ws.on('message', (data) => {
             const message = JSON.parse(data);
-            console.log('message: ', message);
             if (message.type === WsEvents.INITIALIZE) {
                 ws.role = message.payload.role;
                 ws.quizPin = message.payload.quizPin;

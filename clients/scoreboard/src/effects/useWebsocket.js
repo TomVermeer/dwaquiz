@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {startWebsocket} from "../websocketHandlers";
+import {startWebsocket} from "../webSocketHandlers";
 import {useHistory} from 'react-router-dom';
 
 export const useWebsocket = (quizPin, roundNumber, questionNumber) => {
@@ -7,6 +7,7 @@ export const useWebsocket = (quizPin, roundNumber, questionNumber) => {
     useEffect(() => {
         if (history && quizPin) {
             startWebsocket(history, quizPin, roundNumber, questionNumber);
+        } else {
         }
     }, [history, quizPin, roundNumber, questionNumber]);
 };

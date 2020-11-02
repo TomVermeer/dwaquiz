@@ -35,7 +35,7 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
       );
     })
     .on(WsEvents.ON_QUIZ_NIGHT_END)
-    .doAction(() => history.push(Pages(quizPin).NIGHTEND))
+    .doAction(() => history.push(Pages(quizPin).NIGHT_END))
     .build();
 
 const initializationMessage = (quizPin) => {
@@ -55,7 +55,7 @@ const pushOnQuestionGraded = (
   questionNumber
 ) => {
   if (questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
-    history.push(Pages(quizPin, roundNumber).ROUNDEND);
+    history.push(Pages(quizPin, roundNumber).ROUND_END);
   } else {
     history.push(Pages(quizPin, roundNumber, questionNumber).SCORE);
   }

@@ -28,7 +28,7 @@ const HomePage = () => {
         } else {
             dispatch(openQuizNight(quizPin, history));
             // TODO check if quiz pin exists (REST)
-            history.push(Pages(quizPin).WAITINGROOM);
+            history.push(Pages(quizPin).WAITING_ROOM);
         }
     };
 

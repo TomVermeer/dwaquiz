@@ -1,24 +1,12 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom'
-import { RouterUrls } from './pages/routerUrls'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {RouterUrls} from './pages/routerUrls'
 
 import './App.scss';
-
 //page imports
-import { 
-  HomePage,
-  QuestionPage,
-  WaitingRoomPage,
-  ScorePage,
-  RoundEndPage,
-  QuizNightEndPage
-} from "../src/pages/"
+import {HomePage} from "../src/pages/"
 import {useHttpErrorHandler} from "./effects/useHttpErrorHandler";
-
-
-
-
-
+import {QuizNightRouter} from "./pages/quizNight/QuizNightRouter";
 
 
 function App() {
@@ -28,11 +16,9 @@ function App() {
      <div className="App">
       <Switch>
         <Route exact path={RouterUrls.HOME} component={HomePage}/>
-        <Route exact path={RouterUrls.WAITINGROOM} component={WaitingRoomPage}/>
-        <Route exact path={RouterUrls.QUESTION} component={QuestionPage} />
-        <Route exact path={RouterUrls.SCORE} component={ScorePage}/>
-        <Route exact path={RouterUrls.ROUNDEND} component={RoundEndPage}/>
-        <Route exact path={RouterUrls.NIGHTEND} component={QuizNightEndPage} />
+        <Route path={RouterUrls.QUIZ_PIN}>
+            <QuizNightRouter/>
+        </Route>
       </Switch>
      </div>
     </BrowserRouter>

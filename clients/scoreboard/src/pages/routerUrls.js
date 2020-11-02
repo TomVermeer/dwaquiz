@@ -4,14 +4,15 @@ const questionNumberVariable = ':questionNumber';
 
 const createUrlEnum = (quizPin, roundNumber = 1, questionNumber = 1) => Object.freeze({
     HOME: '/',
-    WAITINGROOM: `/${quizPin}/waitingRoom`,
-    CHOOSE_CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
-    QUESTION: `/${quizPin}/${roundNumber}/${questionNumber}/question`,
+    WAITING_ROOM: `/${quizPin}/waitingRoom`,
     QUIZ_PIN: `/${quizPin}`,
+    NIGHT_END: `/${quizPin}/nightEnd`,
     ROUND_NUMBER: `/${quizPin}/${roundNumber}`,
-    SCORE: `/${quizPin}/${roundNumber}/${questionNumber}/score`,
-    ROUNDEND: `/${quizPin}/${roundNumber}/roundEnd`,
-    NIGHTEND: `/${quizPin}/nightEnd`
+    CHOOSE_CATEGORIES: `/${quizPin}/${roundNumber}/categories`,
+    ROUND_END: `/${quizPin}/${roundNumber}/roundEnd`,
+    QUESTION_NUMBER: `/${quizPin}/${roundNumber}/${questionNumber}`,
+    QUESTION: `/${quizPin}/${roundNumber}/${questionNumber}/question`,
+    SCORE: `/${quizPin}/${roundNumber}/${questionNumber}/score`
 });
 
 export const RouterUrls = createUrlEnum(quizPinVariable, roundNumberVariable, questionNumberVariable);

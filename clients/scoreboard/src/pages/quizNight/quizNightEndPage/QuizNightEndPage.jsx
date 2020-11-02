@@ -1,14 +1,12 @@
-import React from "react";
-import { RoundHeader, Footer } from "../../components";
-import { FinalScores } from "shared/components/FinalScores/FinalScores";
-import { Button, Card, ListGroup } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from 'react'
-import { useHistory } from "react-router";
-import { Pages } from "../routerUrls";
-import {resetState, setQuizPin} from "shared/reducers/sharedActionCreators";
-import { closeWebsocket } from "shared/websocket";
-import { useFromUrl } from "../../effects/useFromUrl";
+import React, {useEffect} from "react";
+import {Footer, RoundHeader} from "../../../components/index";
+import {FinalScores} from "shared/components/FinalScores/FinalScores";
+import {Button, Card, ListGroup} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router";
+import {Pages} from "../../routerUrls";
+import {resetState} from "shared/reducers/sharedActionCreators";
+import {closeWebsocket} from "shared/websocket";
 
 const QuizNightEndPage = () => {
 
@@ -20,7 +18,7 @@ const QuizNightEndPage = () => {
     history.push(Pages().HOME)
   };
 
-  const quizPin = useFromUrl('quizPin', setQuizPin);
+  const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
 
   return (
     <>

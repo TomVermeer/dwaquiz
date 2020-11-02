@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchParticipatingTeams} from '../../../reducers/mainActionCreators';
-import {Footer, TeamsDisplay, WaitingRoomHeader} from "../../../components/index";
+import {Footer, WaitingRoomHeader} from "../../../components/index";
+import {ApprovedTeams} from "../../../components/TeamsDisplay/ApprovedTeams/ApprovedTeams";
 
 const WaitingRoomHomepage = () => {
 
@@ -16,7 +17,8 @@ const WaitingRoomHomepage = () => {
   return (
     <>
       <WaitingRoomHeader quizpin={urlQuizPin} />
-      <TeamsDisplay title="joined" teams={teams} type="display" />
+        {/*TODO joined vertalen*/}
+        <ApprovedTeams title="joined" teams={teams}/>
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import {Container} from "react-bootstrap";
 import {Card} from "react-bootstrap";
 import React from "react";
+import '../teamDisplay.scss';
 
 export const Answers = (props) => {
     return (

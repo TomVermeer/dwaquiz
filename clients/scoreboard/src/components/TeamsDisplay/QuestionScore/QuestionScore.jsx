@@ -1,7 +1,7 @@
 import {Container, Table} from "react-bootstrap";
 import React from "react";
+import '../teamDisplay.scss';
 import './question-score.scss';
-
 const decideClassName = (el) => {
     if (el.isCorrect) {
         return "Correct";

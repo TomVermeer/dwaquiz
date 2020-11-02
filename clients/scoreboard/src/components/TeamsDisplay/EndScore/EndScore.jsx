@@ -1,5 +1,6 @@
 import {Container, Table} from "react-bootstrap";
 import React from "react";
+import '../teamDisplay.scss';
 
 export const EndScore = (props) => {
     const sortTeams = (teams) => {

@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import {fetchQuestion, fetchScores} from '../../../../../reducers/mainActionCreators';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
-import {Footer, Question, QuestionHeader, TeamsDisplay} from '../../../../../components/index';
+import {Footer, Question, QuestionHeader} from '../../../../../components/index';
+import {QuestionScore} from "../../../../../components/TeamsDisplay/QuestionScore/QuestionScore";
 
 const ScorePage = () => {
     const {roundNumber, questionNumber} = useSelector(state => state.shared.quizProgress);
@@ -23,7 +24,7 @@ const ScorePage = () => {
         <>
             <QuestionHeader roundNumber={roundNumber} questionNumber={questionNumber} quizPin={quizPin}/>
             <Question question={currentQuestion}/>
-            <TeamsDisplay title="Team scores" teams={teams} type="questionScore"/>
+            <QuestionScore teams={teams} title="Team scores"/>
             <Footer/>
         </>
     )

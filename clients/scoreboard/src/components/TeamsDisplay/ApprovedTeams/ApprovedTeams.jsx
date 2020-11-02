@@ -1,5 +1,6 @@
 import {Container, Card} from "react-bootstrap";
 import React from "react";
+import '../teamDisplay.scss';
 
 export const ApprovedTeams = (props) => {
     return (

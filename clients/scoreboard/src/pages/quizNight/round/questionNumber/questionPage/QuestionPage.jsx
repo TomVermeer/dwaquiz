@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {Footer, Question, QuestionHeader, TeamsDisplay} from "../../../../../components/index";
+import {Footer, Question, QuestionHeader} from "../../../../../components/index";
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 import {fetchAnsweredTeams, fetchQuestion} from '../../../../../reducers/mainActionCreators';
+import {Answers} from "../../../../../components/TeamsDisplay/Answers/Answers";
 
 const Questionpage = () => {
     const {roundNumber, questionNumber} = useSelector(state => state.shared.quizProgress);
@@ -24,7 +25,7 @@ const Questionpage = () => {
         <>
             <QuestionHeader roundNumber={roundNumber} questionNumber={questionNumber} quizPin={quizPin}/>
             <Question question={currentQuestion}/>
-            <TeamsDisplay title="Beantwoord door" teams={teams} type="answer"/>
+            <Answers title="Beantwoord door" teams={teams}/>
             <Footer/>
         </>
     )

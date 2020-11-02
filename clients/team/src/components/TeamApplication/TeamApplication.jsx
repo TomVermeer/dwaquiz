@@ -27,14 +27,17 @@ export const TeamApplication = (props) => {
         <Form noValidate validated={validated} onSubmit={onParticipate}>
             <Form.Group controlId="quizPin">
                 <Form.Label>Quiz pin</Form.Label>
-                <Form.Control type="text" placeholder='quiz pin' value={pin} onChange={e => setPin(e.target.value)}
+                <Form.Control type="text"
+                              placeholder='quiz pin'
+                              value={pin}
+                              onChange={e => setPin(e.target.value)}
                               required
                               pattern={`[0-9]{${MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN},}`}/>
                 <Form.Control.Feedback type="invalid">Vul een quizpin in ({MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN} of meer cijfers)</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="teamName">
-                <Form.Label>Team name</Form.Label>
-                <Form.Control type="text" placeholder='Team name' value={teamName}
+                <Form.Label>Teamnaam</Form.Label>
+                <Form.Control type="text" placeholder='Teamnaam' value={teamName}
                               onChange={e => setTeamName(e.target.value)} required/>
                 <Form.Control.Feedback type="invalid">Vul teamnaam in</Form.Control.Feedback>
             </Form.Group>

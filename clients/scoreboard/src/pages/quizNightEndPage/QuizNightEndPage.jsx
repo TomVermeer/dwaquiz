@@ -15,12 +15,12 @@ const QuizNightEndPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const goHome = () => {
-    dispatch(resetState())
+    dispatch(resetState());
     closeWebsocket();
     history.push(Pages().HOME)
-  }
+  };
 
-  const quizPin = useFromUrl('quizPin', setQuizPin)
+  const quizPin = useFromUrl('quizPin', setQuizPin);
 
   return (
     <>

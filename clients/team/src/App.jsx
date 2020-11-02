@@ -9,14 +9,16 @@ import {RouterUrls} from './pages/pages';
 import {Home} from './pages/home/Home';
 import {Page} from "shared/components/Page/Page";
 import {TeamAppliedRouter} from "./pages/TeamAppliedRouter";
+import {Card, Navbar} from 'react-bootstrap';
+import {useSelector} from 'react-redux';
 
 function App() {
+    const quizProgress = useSelector(state => state.shared.quizProgress);
     return (
-        <Page title="Quizzer" quizNight={{
-            roundNumber: null,
-            questionNumber: null,
-            quizPin: null
-        }}>
+        <Page title="Quizzer"
+              quizNight={quizProgress}
+              cardProvider={Card}
+              navbarProvider={Navbar}>
             <Router basename="/team">
                 <Switch>
                     <Route exact path={RouterUrls.HOME}>

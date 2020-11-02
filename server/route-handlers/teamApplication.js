@@ -1,3 +1,4 @@
+const HttpErrors = require("../httpErrors");
 const {WsEvents} = require("shared-constants");
 const {getMaster, getTeam} = require("../setupWebSockets");
 const {QuizNight} = require('../persistence/models');
@@ -22,7 +23,7 @@ const applyTeamHandler = async (req, res) => {
             sendTeamApplicationToMaster(quizPin);
             res.send('ok');
         } else {
-            res.status(400).json({error: 'The quiz-night is not accepting applications'});
+            res.sendError(HttpErrors.QUIZ_NIGHT_DOES_NOT_ACCEPT_APPLICATIONS);
         }
 
     } catch (e) {

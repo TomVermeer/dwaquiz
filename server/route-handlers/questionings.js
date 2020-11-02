@@ -1,3 +1,4 @@
+const HttpErrors = require("../httpErrors");
 const {NUMBER_OF_QUESTIONS_IN_ROUND, WsEvents} = require("shared-constants");
 const {calculateScoreFromQuestioningsInRound} = require('../domain/score');
 const {getMaster} = require("../setupWebSockets");
@@ -74,7 +75,7 @@ const answerQuestioning = async (req, res) => {
             });
             res.send('ok');
         } else {
-            res.status(400).send({error: 'This question has been closed and no longer accepts answers'});
+            res.sendError(HttpErrors.QUESTION_CLOSED);
         }
 
     } catch (e) {

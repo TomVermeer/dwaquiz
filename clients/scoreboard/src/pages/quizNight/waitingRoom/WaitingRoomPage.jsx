@@ -17,8 +17,7 @@ const WaitingRoomHomepage = () => {
   return (
     <>
       <WaitingRoomHeader quizpin={urlQuizPin} />
-        {/*TODO joined vertalen*/}
-        <ApprovedTeams title="joined" teams={teams}/>
+        <ApprovedTeams title="Deelnemers" teams={teams}/>
       <Footer />
     </>
   );

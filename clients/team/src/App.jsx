@@ -11,8 +11,12 @@ import {Page} from "shared/components/Page/Page";
 import {TeamAppliedRouter} from "./pages/TeamAppliedRouter";
 import {Card, Navbar} from 'react-bootstrap';
 import {useSelector} from 'react-redux';
+import {useHttpErrorHandler} from "./effects/useHttpErrorHandler";
 
 function App() {
+
+    useHttpErrorHandler();
+
     const quizProgress = useSelector(state => state.shared.quizProgress);
     return (
         <Page title="Quizzer"

@@ -1,5 +1,12 @@
 import {API_BASE_URL} from "./constants";
 
+let globalHttpErrorHandler = null;
+
+export const installGlobalHttpErrorHandler = (errorHandler) => {
+    globalHttpErrorHandler = errorHandler;
+};
+
+
 export const isErrorResponse = (response) => response.status < 200 || response.status >= 300;
 
 export const checkAndParseResponse = async (responsePromise) => {
@@ -7,7 +14,12 @@ export const checkAndParseResponse = async (responsePromise) => {
     if (!isErrorResponse(response)) {
         return response.json();
     } else {
-        throw new Error(`Unexpected http statuscode: ${response.status}`);
+        if (globalHttpErrorHandler == null) {
+            throw new Error(`Unexpected http statuscode: ${response.status}`);
+        } else {
+            globalHttpErrorHandler(await response.json());
+            return Promise.reject();
+        }
     }
 };
 
@@ -33,14 +45,7 @@ export const postAndParse = (path, body) => checkAndParseResponse(post(path, bod
 
 export const get = (path, body) => fetch(API_BASE_URL + path, options(body, 'GET'));
 
-export const getAndParse = (path, body) => get(path, body)
-    .then(response => {
-       if(isErrorResponse(response)) {
-           throw new Error(`Unexpected http statuscode: ${response.status}`);
-       } else {
-           return response.json();
-       }
-    });
+export const getAndParse = (path, body) => checkAndParseResponse(get(path, body));
 
 export const patch = createHelperForMethod('PATCH');
 

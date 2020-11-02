@@ -2,9 +2,10 @@ const express = require("express");
 const path = require("path");
 const apiRoot = require('./routers/apiRoot');
 const { environment, PRODUCTION } = require("./constants");
-const { installCors, installJsonBodyParser } = require("./middleware/defaultMiddleware");
+const { installCors, installJsonBodyParser, installSendError } = require("./middleware/defaultMiddleware");
 
 const installRootMiddleware = (app) => {
+    installSendError(app);
     installCors(app);
     installJsonBodyParser(app);
 };

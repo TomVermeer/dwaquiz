@@ -124,7 +124,6 @@ const closeQuestioning = async (req, res) => {
             .forEach(team =>
                 team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
             );
-
         res.send('ok');
     } catch (e) {
         throw e;

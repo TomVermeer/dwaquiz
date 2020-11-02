@@ -1,34 +1,25 @@
-import React from 'react';
-import { RoundHeader, TeamsDisplay, Footer } from '../../components';
-
+import React from "react";
+import { RoundHeader, Footer } from "../../components";
+import { FinalScores } from "shared/components/FinalScores/FinalScores";
+import { Card, ListGroup } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react'
 
 const RoundEndpage = (props) => {
-
-    const teams = [
-        {
-          name: "de billy butchers",
-          correctQuestions: 9,
-          roundPoints: 4
-        },
-        {
-          name: "super cool team",
-          correctQuestions: 12,
-          roundPoints: 8
-        },
-        {
-          name: "bitch mctits",
-          correctQuestions: 5,
-          roundPoints: 0
-        },
-      ];
-
-    return (
-        <>
-            <RoundHeader title="Tussenstand"></RoundHeader>
-            <TeamsDisplay title={`Ronde ${1} score`} teams={teams} type="roundScore"/>
-            <Footer/>
-        </>
-
-    )
-}
+  return (
+    <>
+      <RoundHeader title="Tussenstand"></RoundHeader>
+      <FinalScores
+        cardProvider={Card}
+        cardHeaderProvider={Card.Header}
+        listGroupProvider={ListGroup}
+        listGroupItemProvider={ListGroup.Item}
+        useEffect={useEffect}
+        useSelector={useSelector}
+        useDispatch={useDispatch}
+      />
+      <Footer />
+    </>
+  );
+};
 export default RoundEndpage;

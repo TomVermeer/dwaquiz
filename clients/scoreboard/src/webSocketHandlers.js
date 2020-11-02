@@ -1,9 +1,16 @@
 import { getWebsocket } from "shared/websocket";
 import { WebsocketHandlersBuilder } from "shared/WebsocketHandlersBuilder";
-import { setParticipatingTeams, onReceiveAnswers } from "./reducers/mainActionCreators";
+import {
+  setParticipatingTeams,
+  onReceiveAnswers,
+} from "./reducers/mainActionCreators";
 import { Pages } from "./pages/routerUrls";
-import {WsEvents, Roles} from "shared/constants";
-
+import {
+  WsEvents,
+  Roles,
+  NUMBER_OF_QUESTIONS_IN_ROUND,
+} from "shared/constants";
+import { setRoundNumber } from "shared/reducers/sharedActionCreators";
 
 const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
   new WebsocketHandlersBuilder()
@@ -11,29 +18,59 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
     .fetch(`quiz-nights/${quizPin}/teams`, setParticipatingTeams)
     .on(WsEvents.ON_QUESTION)
     .doAction((message) => {
-      history.push(
-        Pages(quizPin, message.roundNumber, message.questionNumber).QUESTION
-      );
+      handleOnQuestion(quizPin,  roundNumber, history, questionNumber, message)
     })
     .on(WsEvents.ON_ANSWER)
-    .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers` , onReceiveAnswers)
+    .fetch(
+      `quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`,
+      onReceiveAnswers
+    )
     .on(WsEvents.ON_QUESTION_GRADED)
     .doAction((message) => {
-      history.push(
-        Pages(quizPin, message.payload.roundNumber, message.payload.questionNumber).SCORE
+      console.log(message);
+      pushOnQuestionGraded(
+        quizPin,
+        history,
+        message.payload.roundNumber,
+        message.payload.questionNumber
       );
     })
     .build();
 
 const initializationMessage = (quizPin) => {
-    return {
-        type: WsEvents.INITIALIZE,
-        payload: {
-            role: Roles.SCOREBOARD,
-            quizPin
-        }
-    };
+  return {
+    type: WsEvents.INITIALIZE,
+    payload: {
+      role: Roles.SCOREBOARD,
+      quizPin,
+    },
+  };
+};
+
+const pushOnQuestionGraded = (
+  quizPin,
+  history,
+  roundNumber,
+  questionNumber
+) => {
+  if (questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
+    history.push(Pages(quizPin, roundNumber).ROUNDEND);
+  } else {
+    history.push(Pages(quizPin, roundNumber, questionNumber).SCORE);
+  }
+};
+
+const handleOnQuestion = (quizPin, roundNumber, history, questionNumber, message) => {
+  if (questionNumber >= NUMBER_OF_QUESTIONS_IN_ROUND) {
+    setRoundNumber(roundNumber + 1);
+    history.push(Pages(quizPin, message.roundNumber, message.questionNumber).QUESTION);
+  }else {
+    history.push(Pages(quizPin, message.roundNumber, message.questionNumber).QUESTION);
+  }
 };
 
 export const startWebsocket = (quizPin, history, roundNumber, questionNumber) =>
-    getWebsocket(buildHandlers(quizPin, history, roundNumber, questionNumber), initializationMessage(Number(quizPin)));
+  getWebsocket(
+    buildHandlers(quizPin, history, roundNumber, questionNumber),
+    initializationMessage(Number(quizPin))
+  );

@@ -11,7 +11,6 @@ const WaitingRoomHomepage = () => {
   const urlQuizPin = useFromUrl('quizPin', setQuizPin)
   const dispatch = useDispatch();
   const teams = useSelector(state => state.root.participatingTeams);
-  const quizPin = useSelector(state => state.shared.quizProgress.quizPin)
  
   useEffect(() => {
     dispatch(fetchParticipatingTeams(urlQuizPin));

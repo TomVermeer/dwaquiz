@@ -1,5 +1,5 @@
 import {Actions} from "../../actions";
-import {getAndParse, patch, isErrorResponse, post} from "shared/fetchHelpers";
+import {getAndParse, patchAndParse, postAndParse} from "shared/fetchHelpers";
 import {Pages} from "../../pages/routerUrls";
 import {NUMBER_OF_QUESTIONS_IN_ROUND} from "shared/constants";
 
@@ -10,7 +10,7 @@ const onCurrentQuestionReceived = (category, question, answer) => {
 export const fetchCurrentQuestion = (questionId) => dispatch => {
     getAndParse(`questions/${questionId}`)
         .then(json => {
-           dispatch(onCurrentQuestionReceived(json.category, json.question, json.answer));
+            dispatch(onCurrentQuestionReceived(json.category, json.question, json.answer));
         });
 };
 
@@ -19,17 +19,13 @@ export const setQuestionId = (questionId) => {
 };
 
 const onCloseQuestionSuccess = (isOpen) => {
-  return {type: Actions.ON_CLOSE_QUESTION, payload: isOpen};
+    return {type: Actions.ON_CLOSE_QUESTION, payload: isOpen};
 };
 
 export const closeQuestion = (quizPin, roundNumber, questionNumber) => dispatch => {
-    patch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`, {isOpen: false})
-        .then(response => {
-            if(isErrorResponse(response)) {
-                // TODO
-            } else {
-                dispatch(onCloseQuestionSuccess(false));
-            }
+    patchAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`, {isOpen: false})
+        .then(json => {
+            dispatch(onCloseQuestionSuccess(false));
         });
 };
 
@@ -53,17 +49,13 @@ export const gradeQuestion = (quizPin, roundNumber, questionNumber, teamAnswers,
             teamName: answer.teamName
         }
     });
-    post(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/grades`, gradings)
-        .then(response => {
-            if(isErrorResponse(response)) {
-                // TODO
+    postAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/grades`, gradings)
+        .then(json => {
+            const pages = Pages(quizPin, roundNumber);
+            if (questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
+                history.push(pages.ROUND_END);
             } else {
-                const pages = Pages(quizPin, roundNumber);
-                if(questionNumber === NUMBER_OF_QUESTIONS_IN_ROUND) {
-                    history.push(pages.ROUND_END);
-                } else {
-                    history.push(pages.CHOOSE_QUESTION);
-                }
+                history.push(pages.CHOOSE_QUESTION);
             }
-        })
+        });
 };

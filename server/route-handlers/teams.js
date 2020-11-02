@@ -22,7 +22,7 @@ const addTeamHandler = async (req, res) => {
         await quizNight.save();
 
         notifyClientsOfNewTeam(quizPin, teamName);
-        res.send("ok");
+        res.json({});
     } catch (e) {
         throw e;
     }

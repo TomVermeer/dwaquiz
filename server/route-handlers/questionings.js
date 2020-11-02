@@ -73,7 +73,7 @@ const answerQuestioning = async (req, res) => {
             getScoreBoards(req.quizPin).forEach((x) => {
                 x.sendJson({type: WsEvents.ON_ANSWER});
             });
-            res.send('ok');
+            res.json({});
         } else {
             res.sendError(HttpErrors.QUESTION_CLOSED);
         }
@@ -102,7 +102,7 @@ const gradeQuestioning = async (req, res) => {
             const quizNight = await QuizNight.findByQuizPin(req.quizPin);
             await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
         }
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }
@@ -122,7 +122,7 @@ const closeQuestioning = async (req, res) => {
                 team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
             );
 
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }

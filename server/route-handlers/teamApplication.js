@@ -21,7 +21,7 @@ const applyTeamHandler = async (req, res) => {
         if(await QuizNight.isQuizNightOpenForApplications(quizPin)) {
             await saveTeamApplication(quizPin, teamName);
             sendTeamApplicationToMaster(quizPin);
-            res.send('ok');
+            res.json({});
         } else {
             res.sendError(HttpErrors.QUIZ_NIGHT_DOES_NOT_ACCEPT_APPLICATIONS);
         }
@@ -48,7 +48,7 @@ const rejectTeamHandler = async (req, res) => {
         const teamName = req.params.teamName;
         await removeTeamApplication(req.quizPin, teamName);
         sendTeamRejected(req, teamName);
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }

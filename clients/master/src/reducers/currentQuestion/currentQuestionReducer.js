@@ -1,6 +1,7 @@
 import {createReducer} from "shared/reducers/createReducer";
 import {Actions} from "../../actions";
 
+
 const initialState = {
     teamAnswers: []
 };

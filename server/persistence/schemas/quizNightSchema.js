@@ -101,12 +101,6 @@ quizNightSchema.methods.findChosenCategories = function (roundNumber) {
     return this.rounds.find(x => x.roundNumber === roundNumber).chosenCategories;
 };
 
-quizNightSchema.methods.findAskedQuestions = function () {
-    return QuizNight.find({_id: this._id})
-        .distinct('round.questionings.question')
-        .exec();
-};
-
 quizNightSchema.methods.getParticipatingTeamNames = function () {
     return this.teams.map(x => x.teamName);
 };

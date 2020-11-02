@@ -66,4 +66,8 @@ questioningsSchema.statics.findForRound = function (quizPin, roundNumber) {
     }).exec();
 };
 
+questioningsSchema.statics.findAskedQuestions = function (quizPin) {
+    return this.find({quizPin}, {_id: false, question: true}).exec();
+};
+
 module.exports = {questioningsSchema};

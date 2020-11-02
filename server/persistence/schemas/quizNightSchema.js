@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const {teamSchema} = require('./teamSchema');
 const {roundSchema} = require('./roundSchema');
+const {MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN} = require('shared-constants');
 
 const quizNightSchema = mongoose.Schema({
     _id: Number, // quizPin
@@ -33,7 +34,7 @@ const generateQuizPin = (length) => Math.floor(Math.random() * (9 * Math.pow(10,
  * @param {Number} length minimal length the generated quizPin must have
  * @return {Number} quizpin that is not yet present in database
  */
-const getNewQuizPin = async (length = 6) => {
+const getNewQuizPin = async (length) => {
     let quizPin;
     let additionalLength = 0;
     do {
@@ -45,7 +46,7 @@ const getNewQuizPin = async (length = 6) => {
 
 quizNightSchema.statics.createEmptyQuizNight = async function () {
     return this({
-        _id: await getNewQuizPin(),
+        _id: await getNewQuizPin(MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN),
         teams: [],
         rounds: [],
     });

@@ -29,3 +29,7 @@ export const fetchTeamScores = quizPin => dispatch => {
   getAndParse(`quiz-nights/${quizPin}/scores`)
       .then(json => dispatch(onTeamScoresReceived(json)));
 };
+
+export const resetState = () => {
+    return {type: SharedActions.ON_RESET};
+};

@@ -3,7 +3,7 @@ import { QuestionHeader, Question, TeamsDisplay, Footer } from "../../components
 import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router';
-import { fetchQuestion } from '../../reducers/mainActionCreators';
+import { fetchQuestion, fetchAnsweredTeams } from '../../reducers/mainActionCreators';
 import { useFromUrl } from '../../effects/useFromUrl';
 import {setRoundNumber, setQuestionNumber} from "shared/reducers/sharedActionCreators";
 
@@ -18,6 +18,7 @@ const Questionpage = () => {
     const teams = useSelector(state => state.root.answeredTeams)
 
      useEffect( () => {
+        dispatch(fetchAnsweredTeams(quizPin, round, questionNum))
         dispatch(fetchQuestion(quizPin, history, round, questionNum))
      },[questionNum, round, dispatch, quizPin, history])
 

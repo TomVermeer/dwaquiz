@@ -20,7 +20,10 @@ const onAnswerSubmitted = answer => {
     return {type: Actions.ON_ANSWER_SUBMIT, answer};
 };
 
-export const submitAnswer = (quizPin, roundNumber, questionNumber, teamName, answer) => dispatch => {
+export const submitAnswer = (quizPin, roundNumber, questionNumber, teamName, answer, addToast) => dispatch => {
     putAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers/${teamName}`, {answer})
-        .then(json => dispatch(onAnswerSubmitted()));
+        .then(json => {
+            dispatch(onAnswerSubmitted());
+            addToast('Antwoord is verstuurd', { appearance: 'success', autoDismiss: true });
+        });
 };

@@ -52,19 +52,24 @@ const TeamsDisplay = (props) => {
     return (
       <Container>
         <Table className="TeamTable">
+          <thead>
           <tr>
             <th>Team:</th>
-            <th>Answer:</th>
+            <th>Antwoord:</th>
           </tr>
+          </thead>
+          <tbody>
           {props.teams.map((el) => {
             return (
-              <tr className={decideClassName(el)}>
-                <th>{el.name}</th>
+              <tr key={el.teamName} className={decideClassName(el)}>
+                <th>{el.teamName}</th>
                 <th>{el.answer}</th>
               </tr>
             );
           })}
+          </tbody>
         </Table>
+        
       </Container>
     );
   };
@@ -83,7 +88,7 @@ const TeamsDisplay = (props) => {
             .map((el) => {
               return (
                 <tr>
-                  <th>{el.name}</th>
+                  <th>{el.teamName}</th>
                   <th>{el.correctQuestions}</th>
                   <th>{el.roundPoints}</th>
                 </tr>
@@ -101,7 +106,7 @@ const TeamsDisplay = (props) => {
       return teams.sort((x, y) => (x.roundPoints > y.roundPoints ? -1 : 1))
     }
 
-  }
+  };
 
   const renderCorrectType = () => {
     if(props.teams){
@@ -115,7 +120,7 @@ const TeamsDisplay = (props) => {
       return renderDisplayTeams();
     }
   } else {
-    return <h1>no teams joined yet</h1>
+    return <h1>Er zijn nog geen deelnemers</h1>
   }
   };
 

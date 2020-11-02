@@ -10,10 +10,8 @@ const onTeamApply = (teamName, quizPin) => {
 };
 
 export const applyTeam = (teamName, quizPin, history) => dispatch => {
-    console.log('posting');
     postAndParse(`quiz-nights/${quizPin}/team-applications`, {teamName})
         .then((json) => {
-            console.log('then: ', json);
             dispatch(onTeamApply(teamName, quizPin));
             history.push(Pages(quizPin, teamName).WAIT_FOR_APPROVAL);
         });

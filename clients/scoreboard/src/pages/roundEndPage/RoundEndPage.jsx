@@ -4,13 +4,18 @@ import { FinalScores } from "shared/components/FinalScores/FinalScores";
 import { Card, ListGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react'
+import { useFromUrl } from "../../effects/useFromUrl";
+import { setQuizPin } from "shared/reducers/sharedActionCreators";
 
 
 const RoundEndpage = (props) => {
 
+  const quizPin = useFromUrl('quizPin', setQuizPin);
+
+
   return (
     <>
-      <RoundHeader title="Tussenstand"></RoundHeader>
+      <RoundHeader title="Tussenstand" quizPin={quizPin}></RoundHeader>
       <FinalScores
         cardProvider={Card}
         cardHeaderProvider={Card.Header}

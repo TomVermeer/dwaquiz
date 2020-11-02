@@ -1,4 +1,4 @@
-const {getTeams} = require("../setupWebSockets");
+const {getTeams, getScoreBoards} = require("../setupWebSockets");
 const {WsEvents} = require("shared-constants");
 
 const {QuizNight} = require("../persistence/models");
@@ -27,9 +27,7 @@ const patchQuizNightHandler = async (req, res) => {
         if (req.body.isActive != null) {
             quizNight.isActive = req.body.isActive;
             if(!quizNight.isActive) {
-                getTeams(req.quizPin).forEach(team => {
-                    team.sendJson({type: WsEvents.ON_QUIZ_NIGHT_END})
-                });
+                sendQuizEndedToClients(req.quizPin)
             }
         }
         await quizNight.save();
@@ -39,5 +37,14 @@ const patchQuizNightHandler = async (req, res) => {
         throw e;
     }
 };
+
+const sendQuizEndedToClients = (quizPin) => {
+    getTeams(quizPin).forEach(team => {
+        team.sendJson({type: WsEvents.ON_QUIZ_NIGHT_END});
+    });
+    getScoreBoards(quizPin).forEach(ScoreBoard => {
+        ScoreBoard.sendJson({type: WsEvents.ON_QUIZ_NIGHT_END});
+    })
+}
 
 module.exports = {createQuizNightHandler, closeApplicationPeriodHandler: patchQuizNightHandler};

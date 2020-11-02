@@ -27,7 +27,6 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
     )
     .on(WsEvents.ON_QUESTION_GRADED)
     .doAction((message) => {
-      console.log(message);
       pushOnQuestionGraded(
         quizPin,
         history,
@@ -35,6 +34,8 @@ const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
         message.payload.questionNumber
       );
     })
+    .on(WsEvents.ON_QUIZ_NIGHT_END)
+    .doAction(() => history.push(Pages(quizPin).NIGHTEND))
     .build();
 
 const initializationMessage = (quizPin) => {

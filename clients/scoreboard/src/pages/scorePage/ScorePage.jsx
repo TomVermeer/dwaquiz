@@ -15,8 +15,6 @@ const ScorePage = () => {
   const dispatch = useDispatch()
   const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
   useEffect( () => {
-    console.log(currentQuestion, "current question")
-   
     dispatch(fetchScores(quizPin, round, questionNum))
     dispatch(fetchQuestion(quizPin, history, round, questionNum))
  },[questionNum, round, dispatch, quizPin, history])
@@ -29,7 +27,6 @@ const ScorePage = () => {
 
  const teams= useSelector(state => state.root.teamAnswers);
 
- console.log(teams)
     return (
         <>
           <QuestionHeader roundNumber={round} questionNumber={questionNum} quizPin={quizPin}/>

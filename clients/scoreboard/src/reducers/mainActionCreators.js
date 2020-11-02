@@ -43,7 +43,6 @@ export const fetchAnsweredTeams = (quizPin, roundNumber, questionNumber) => disp
 }
 
 export const onReceiveScores =  (teamScores) => dispatch => {
-  console.log("in main actionCreator")
   dispatch({type: Actions.ON_SCORE, payload: teamScores})
 }
 

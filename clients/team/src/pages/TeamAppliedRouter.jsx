@@ -4,7 +4,7 @@ import {RouterUrls} from "./pages";
 import {WaitForApproval} from "./waitForApproval/WaitForApproval";
 import {WaitForQuestion} from "./waitForQuestion/WaitForQuestion";
 import {useWebsocket} from "../effects/useWebsocket";
-import {QuestionRouter} from "./question/QuestionRouter";
+import { QuestionRouter} from "../pages/Question/QuestionRouter"
 import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {useFromUrl} from "../effects/useFromUrl";
 import {setTeamName} from "../reducers/rootActionCreators";

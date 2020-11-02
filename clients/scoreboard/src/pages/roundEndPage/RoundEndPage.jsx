@@ -5,7 +5,9 @@ import { Card, ListGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react'
 
+
 const RoundEndpage = (props) => {
+
   return (
     <>
       <RoundHeader title="Tussenstand"></RoundHeader>

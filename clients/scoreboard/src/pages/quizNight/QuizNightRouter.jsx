@@ -5,10 +5,11 @@ import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {RouterUrls} from "../routerUrls";
 import {QuizNightEndPage, WaitingRoomPage} from "../index";
 import {RoundRouter} from "./round/RoundRouter";
+import {useWebsocket} from "../../effects/useWebsocket";
 
 export const QuizNightRouter = (props) => {
-    useFromUrl('quizPin', setQuizPin);
-
+    const quizPin = Number(useFromUrl('quizPin', setQuizPin));
+    useWebsocket(quizPin);
     return (
         <Switch>
             <Route exact path={RouterUrls.WAITING_ROOM} component={WaitingRoomPage}/>

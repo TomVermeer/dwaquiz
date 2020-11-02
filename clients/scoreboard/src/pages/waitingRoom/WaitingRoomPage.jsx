@@ -8,13 +8,13 @@ import { WaitingRoomHeader, TeamsDisplay, Footer } from "../../components";
 
 const WaitingRoomHomepage = () => {
 
-  const urlQuizPin = useFromUrl('quizPin', setQuizPin)
+  const urlQuizPin = useFromUrl('quizPin', setQuizPin);
   const dispatch = useDispatch();
   const teams = useSelector(state => state.root.participatingTeams);
  
   useEffect(() => {
     dispatch(fetchParticipatingTeams(urlQuizPin));
-  },[urlQuizPin, dispatch])
+  },[urlQuizPin, dispatch]);
 
   return (
     <>

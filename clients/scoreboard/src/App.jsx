@@ -13,6 +13,7 @@ import {
   RoundEndPage,
   QuizNightEndPage
 } from "../src/pages/"
+import {useHttpErrorHandler} from "./effects/useHttpErrorHandler";
 
 
 
@@ -21,6 +22,7 @@ import {
 
 
 function App() {
+    useHttpErrorHandler();
   return (
     <BrowserRouter basename="/scoreboard">
      <div className="App">

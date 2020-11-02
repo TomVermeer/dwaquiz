@@ -15,22 +15,22 @@ const Questionpage = () => {
     const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
 
     const dispatch = useDispatch();
-    const teams = useSelector(state => state.root.answeredTeams)
+    const teams = useSelector(state => state.root.answeredTeams);
 
      useEffect( () => {
-        dispatch(fetchAnsweredTeams(quizPin, round, questionNum))
+        dispatch(fetchAnsweredTeams(quizPin, round, questionNum));
         dispatch(fetchQuestion(quizPin, history, round, questionNum))
-     },[questionNum, round, dispatch, quizPin, history])
+     },[questionNum, round, dispatch, quizPin, history]);
 
-     const currentQuestion = useSelector(state => state.root.currentQuestion)
+     const currentQuestion = useSelector(state => state.root.currentQuestion);
 
     return(
         <>
             <QuestionHeader roundNumber={round} questionNumber={questionNum} quizPin={quizPin}/>
             <Question question={currentQuestion}/>
-            <TeamsDisplay title="Answered by" teams={teams} type="answer"/>
+            <TeamsDisplay title="Beantwoord door" teams={teams} type="answer"/>
             <Footer/>
         </>
     )
-}
+};
 export default Questionpage;

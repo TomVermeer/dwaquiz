@@ -15,7 +15,7 @@ const RoundEndpage = (props) => {
 
   return (
     <>
-      <RoundHeader title="Tussenstand" quizPin={quizPin}></RoundHeader>
+      <RoundHeader title="Tussenstand" quizPin={quizPin}/>
       <FinalScores
         cardProvider={Card}
         cardHeaderProvider={Card.Header}

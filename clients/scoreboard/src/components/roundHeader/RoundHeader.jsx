@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Navbar } from "react-bootstrap";
-import { GameProgress } from 'shared/components/GameProgress';
 
 import "./roundHeader.scss"
 

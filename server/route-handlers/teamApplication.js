@@ -1,3 +1,4 @@
+const HttpErrors = require("../httpErrors");
 const {WsEvents} = require("shared-constants");
 const {getMaster, getTeam} = require("../setupWebSockets");
 const {QuizNight} = require('../persistence/models');
@@ -20,9 +21,9 @@ const applyTeamHandler = async (req, res) => {
         if(await QuizNight.isQuizNightOpenForApplications(quizPin)) {
             await saveTeamApplication(quizPin, teamName);
             sendTeamApplicationToMaster(quizPin);
-            res.send('ok');
+            res.json({});
         } else {
-            res.status(400).json({error: 'The quiz-night is not accepting applications'});
+            res.sendError(HttpErrors.QUIZ_NIGHT_DOES_NOT_ACCEPT_APPLICATIONS);
         }
 
     } catch (e) {
@@ -47,7 +48,7 @@ const rejectTeamHandler = async (req, res) => {
         const teamName = req.params.teamName;
         await removeTeamApplication(req.quizPin, teamName);
         sendTeamRejected(req, teamName);
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }

@@ -1,3 +1,4 @@
+const HttpErrors = require("../httpErrors");
 const {NUMBER_OF_QUESTIONS_IN_ROUND, WsEvents} = require("shared-constants");
 const {calculateScoreFromQuestioningsInRound} = require('../domain/score');
 const {getMaster} = require("../setupWebSockets");
@@ -72,9 +73,9 @@ const answerQuestioning = async (req, res) => {
             getScoreBoards(req.quizPin).forEach((x) => {
                 x.sendJson({type: WsEvents.ON_ANSWER});
             });
-            res.send('ok');
+            res.json({});
         } else {
-            res.status(400).send({error: 'This question has been closed and no longer accepts answers'});
+            res.sendError(HttpErrors.QUESTION_CLOSED);
         }
 
     } catch (e) {
@@ -101,7 +102,7 @@ const gradeQuestioning = async (req, res) => {
             const quizNight = await QuizNight.findByQuizPin(req.quizPin);
             await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
         }
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }
@@ -121,7 +122,7 @@ const closeQuestioning = async (req, res) => {
                 team.sendJson({type: WsEvents.ON_QUESTION_CLOSE})
             );
 
-        res.send('ok');
+        res.json({});
     } catch (e) {
         throw e;
     }

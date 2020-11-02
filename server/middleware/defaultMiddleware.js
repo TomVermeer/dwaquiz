@@ -8,13 +8,26 @@ const installCors = (app) => {
         app.use(cors({ origin: true, credentials: true }));
         app.options("*", cors({ origin: true, credentials: true }));
     }
-}
+};
 
 const installJsonBodyParser = (app) => {
     app.use(bodyParser.json());
-}
+};
+
+
+const injectSendError = (req, res, next) => {
+    res.sendError = error => {
+        res.status(error.statusCode).json({message: error.messageNL});
+    };
+    next();
+};
+
+const installSendError = app => {
+    app.use(injectSendError);
+};
 
 module.exports = {
     installCors,
-    installJsonBodyParser
+    installJsonBodyParser,
+    installSendError
 };

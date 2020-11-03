@@ -22,3 +22,7 @@ Cypress.Commands.add('applyAndApproveTeam', teamName => {
    cy.applyTeam(teamName);
    cy.approveTeam(teamName);
 });
+
+Cypress.Commands.add('chooseCategories', function(categories = ['Algemeen', 'Eten en Drinken', 'Muziek']) {
+    cy.request('POST', `${API_BASE_URL}/quiz-nights/${this.currentQuizPin}/rounds`, categories);
+});

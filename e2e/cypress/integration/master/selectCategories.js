@@ -1,4 +1,4 @@
-import {API_BASE_URL, MASTER_URL} from "../../constants";
+import {MASTER_URL} from "../../constants";
 
 describe('select categories', () => {
     before(() => {

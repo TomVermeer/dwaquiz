@@ -4,11 +4,11 @@ import {RouterUrls} from "./pages";
 import {WaitForApproval} from "./waitForApproval/WaitForApproval";
 import {WaitForQuestion} from "./waitForQuestion/WaitForQuestion";
 import {useWebsocket} from "../effects/useWebsocket";
-import {QuestionRouter} from "./Question/QuestionRouter";
 import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {useFromUrl} from "../effects/useFromUrl";
 import {setTeamName} from "../reducers/rootActionCreators";
 import {NightEnd} from "./nightEnd/NightEnd";
+import { QuestionRouter } from "../pages/question/QuestionRouter"
 
 export const TeamAppliedRouter = (props) => {
 

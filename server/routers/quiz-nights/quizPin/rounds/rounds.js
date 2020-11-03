@@ -5,5 +5,4 @@ const router = require('express').Router();
 
 router.use('/:round', [guardRoundNumberExists, roundRouter]);
 router.post('/', createRoundHandler);
-
 module.exports = router;

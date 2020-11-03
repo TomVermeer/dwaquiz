@@ -22,11 +22,30 @@ const setQuestion = question => {
 export const fetchQuestion = (quizPin, history, roundNumber, questionNumber) => dispatch => {
   getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}`)
   .then(json => {
-    dispatch(setQuestion(json))
+    dispatch(setQuestion(json));
     startWebsocket(quizPin, history, roundNumber, questionNumber);
   })
-}
+};
+
+export const fetchScores = (quizPin, roundNumber, questionNumber) => dispatch => {
+  getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`)
+  .then((json) => dispatch(onReceiveScores(json)))
+};
+
+export const fetchParticipatingTeams = (quizPin) => dispatch => {
+  getAndParse(`quiz-nights/${quizPin}/teams`)
+  .then((json) => dispatch(setParticipatingTeams(json)))
+};
+
+export const fetchAnsweredTeams = (quizPin, roundNumber, questionNumber) => dispatch => {
+  getAndParse(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`)
+  .then((json) => dispatch(onReceiveAnswers(json)))
+};
+
+export const onReceiveScores =  (teamScores) => dispatch => {
+  dispatch({type: Actions.ON_SCORE, payload: teamScores})
+};
 
 export const onReceiveAnswers = (teamAnswers) => dispatch => {
   dispatch({type: Actions.ON_TEAM_ANSWER , payload: teamAnswers})
-}
+};

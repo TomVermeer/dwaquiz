@@ -7,7 +7,6 @@ const createRoundHandler = async (req, res) => {
         if (chosenCategories.length !== 3) {
             res.sendError(HttpErrors.INVALID_NUMBER_OF_CATEGORIES);
         }
-
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         const roundNumber = quizNight.startRound(chosenCategories);
         await quizNight.save();

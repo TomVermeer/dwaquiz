@@ -251,3 +251,116 @@ Gets the score and placing for a specific team
 ##### 404
 
 When the quizpin or teamname does not exist
+
+___
+
+### /quiz-nights/:quizPin/team-applications
+
+#### POST
+
+_Description:_
+Adds a team to the team applications and notifies the quizmaster there has been a change in team applications.
+
+**Body:**
+```js
+{
+    teamName: "Erik"
+}
+```
+
+##### Responses
+
+###### 200
+
+###### 4040
+
+When the quizpin does not exist
+___
+
+#### GET
+
+_Description:_
+Returns a list of all teams that requested to join the quiznight and have not been rejected
+
+#### Responses
+
+##### 200
+
+**Body:**
+
+```js
+[
+    "Erik",
+    "Tom"
+]
+```
+
+##### 404
+
+When the quizpin does not exist
+
+___
+
+### quiz-nights/:quizPin/team-applications/:teamName
+
+#### DELETE
+
+_Description:_
+Removes a team application and notifies the accociated socket of its rejection
+
+##### Responses
+
+###### 200
+
+###### 404
+
+When the quizpin or teamname does not exist
+
+___
+
+### /quiz-nigts/:quizPin/teams
+
+#### GET
+
+_Description:_
+Gets the approved teams of a quiznight
+
+##### Responses
+
+###### 200
+
+**Body:**
+
+```js
+[
+    "Tom"
+]
+```
+
+###### 404
+
+When the quizpin does not exist
+___
+
+#### POST
+
+_Description:_
+Approves a given team and notifies the connected team and scoreboard(s)
+
+**Body:**
+
+```js
+{
+    teamName: "Tom"
+}
+```
+
+##### Responses
+
+###### 200
+
+###### 404
+
+When the quizpin does not exist
+___
+

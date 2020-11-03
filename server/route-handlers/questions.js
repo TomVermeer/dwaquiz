@@ -2,7 +2,12 @@ const {Question} = require('../persistence/models');
 
 const getQuestion = async (req, res) => {
     try {
-        res.json(await Question.findById(req.params.id));
+        const question = await Question.findById(req.params.id);
+        if(question == null) {
+            res.sendStatus(404);   
+        } else {
+            res.json(question);
+        }
     } catch(e) {
         throw e;
     }

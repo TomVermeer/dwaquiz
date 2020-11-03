@@ -1,3 +1,4 @@
+
 import { getAndParse } from "shared/fetchHelpers";
 import { SharedActions } from "shared/actions";
 import { startWebsocket } from "../webSocketHandlers";
@@ -33,6 +34,7 @@ export const fetchQuestion = (
     dispatch(setQuestion(json));
     startWebsocket(quizPin, history, roundNumber, questionNumber);
   });
+
 };
 
 export const fetchScores = (quizPin, roundNumber, questionNumber) => (

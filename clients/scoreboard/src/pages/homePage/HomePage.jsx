@@ -28,8 +28,8 @@ const HomePage = () => {
         if (e.currentTarget.checkValidity() === false) {
             setValidated(true);
         } else {
-            dispatch(openQuizNight(quizPin, history));
-            history.push(Pages(quizPin).WAITINGROOM);
+         dispatch(openQuizNight(quizPin, history));
+         history.push(Pages(quizPin).WAITINGROOM);
         }
     };
 

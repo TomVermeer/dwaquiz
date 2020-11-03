@@ -2,8 +2,12 @@ import React, {useEffect} from 'react';
 import './night-end.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchPlacing} from "../../reducers/placing/placingActionCreators";
-import {Card} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import {useTitle} from "../../effects/useTitle";
+import {closeWebsocket} from "shared/websocket";
+import {resetState} from "shared/reducers/sharedActionCreators";
+import {Pages} from "../pages";
+import {useHistory} from 'react-router-dom';
 
 const placingText = [
     "Eerste plaats!",
@@ -23,6 +27,7 @@ export const NightEnd = (props) => {
     const quizPin = useSelector(state => state.shared.quizProgress.quizPin);
     const dispatch = useDispatch();
     const placing = useSelector(state => state.placing);
+    const history = useHistory();
 
     useEffect(() => {
         if (teamName && quizPin) {
@@ -33,6 +38,12 @@ export const NightEnd = (props) => {
     useTitle('Einde quiz night');
 
     const cardVariant = placing.placing <= 3 ? "success" : "primary";
+
+    const reset = () => {
+        closeWebsocket();
+        history.push(Pages().HOME);
+        dispatch(resetState());
+    };
 
     return (
         <div className="placing">
@@ -46,6 +57,7 @@ export const NightEnd = (props) => {
                     <p><b>{placing.roundPoints}</b> ronde punten</p>
                     <p><b>{placing.numberOfCorrectQuestions}</b> goede antwoorden</p>
                 </Card.Body>
+                <Button onClick={reset} variant="dark">Home</Button>
             </Card>
         </div>
     );

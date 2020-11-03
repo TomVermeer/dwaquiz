@@ -12,6 +12,10 @@ function removeTeamApplication(state, action) {
 
 export const quizNightReducer = createReducer((state = initialState, action) => {
     switch(action.type) {
+        case Actions.ON_APPROVED_TEAMS_RECEIVED:
+            state.approvedTeams = action.payload;
+            state.teamApplications = state.teamApplications.filter(x => state.approvedTeams.find(y => y === x) == null);
+            break;
         case Actions.ON_TEAM_APPLICATIONS_RECEIVED:
             state.teamApplications = action.payload.filter(x => state.approvedTeams.find(y => y === x) == null);
             break;

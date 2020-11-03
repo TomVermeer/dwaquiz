@@ -147,5 +147,8 @@ quizNightSchema.methods.saveScoresOfRoundToTeams = function (teamScores) {
 
 const QuizNight = mongoose.model('QuizNight', quizNightSchema);
 
+quizNight.methods.findRound = function (roundNumber) {
+    return this.rounds[roundNumber]
+}
 
 module.exports = {quizNightSchema, QuizNight};

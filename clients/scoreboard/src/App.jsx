@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom'
+import {Switch, Route, BrowserRouter, useHistory} from 'react-router-dom'
 import { RouterUrls } from './pages/routerUrls'
 
 import './App.scss';
@@ -24,7 +24,6 @@ import {useHttpErrorHandler} from "./effects/useHttpErrorHandler";
 function App() {
     useHttpErrorHandler();
   return (
-    <BrowserRouter basename="/scoreboard">
      <div className="App">
       <Switch>
         <Route exact path={RouterUrls.HOME} component={HomePage}/>
@@ -35,7 +34,6 @@ function App() {
         <Route exact path={RouterUrls.NIGHTEND} component={QuizNightEndPage} />
       </Switch>
      </div>
-    </BrowserRouter>
   )
 
 }

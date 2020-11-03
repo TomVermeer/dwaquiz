@@ -9,6 +9,7 @@ import "../homePage/homepage.scss";
 import {useHistory} from "react-router";
 import {MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN} from "shared/constants";
 import {Pages} from "../routerUrls";
+import {checkPin} from "../../reducers/mainActionCreators"
 
 const HomePage = () => {
     const [validated, setValidated] = useState(false);
@@ -19,6 +20,7 @@ const HomePage = () => {
 
     const onChange = (e) => {
         setQuizPin(e.target.value.trim())
+        
     };
 
     const handleSubmit = (e) => {
@@ -27,7 +29,6 @@ const HomePage = () => {
             setValidated(true);
         } else {
             dispatch(openQuizNight(quizPin, history));
-            // TODO check if quiz pin exists (REST)
             history.push(Pages(quizPin).WAITINGROOM);
         }
     };

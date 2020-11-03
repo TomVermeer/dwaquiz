@@ -6,22 +6,21 @@ import {ApprovedTeamsPanel} from "../../../components/ApprovedTeamsPanel/Approve
 import {useTitle} from "../../../effects/useTitle";
 import {fetchApprovedTeams, fetchTeamApplications} from "../../../reducers/quizNight/quizNightActionCreators";
 
-const useFetchTeamApplications = quizPin => {
+const useFetchBasedOnQuizPin = (quizPin, actionCreator) => {
     const dispatch = useDispatch();
     useEffect(() => {
         if (quizPin) {
-            dispatch(fetchTeamApplications(quizPin));
+            dispatch(actionCreator(quizPin));
         }
     }, [dispatch, quizPin]);
 };
 
+const useFetchTeamApplications = quizPin => {
+    useFetchBasedOnQuizPin(quizPin, fetchTeamApplications);
+};
+
 const useFetchApprovedTeams = quizPin => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (quizPin) {
-            dispatch(fetchApprovedTeams(quizPin));
-        }
-    }, [dispatch, quizPin]);
+    useFetchBasedOnQuizPin(quizPin, fetchApprovedTeams);
 };
 
 export const Teams = (props) => {

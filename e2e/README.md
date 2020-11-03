@@ -15,4 +15,4 @@ In this folder, run: `npx cypress open` or `npm run cypress:open` to choose whic
 ## Notes
 
 Tests are not fully isolated, when one tests fails tests after that one may fail as well.
-However tests should be designed that test files cannot iterfere with each other
+However tests should be designed that test files cannot interfere with each other

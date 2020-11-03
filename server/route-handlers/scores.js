@@ -1,14 +1,14 @@
 const {QuizNight} = require('../persistence/models');
 
-const getTeamPlacing = async (req, res) => {
+const getTeamPlacing = async (req, res, next) => {
     try {
         res.json(await QuizNight.findScoreForTeam(req.params.teamName, req.quizPin));
     } catch(e) {
-        throw e;
+        next(e);
     }
 };
 
-const getScores = async (req, res) => {
+const getScores = async (req, res, next) => {
     try {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         res.json(quizNight.teams.map(x => {
@@ -19,7 +19,7 @@ const getScores = async (req, res) => {
             };
         }));
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 

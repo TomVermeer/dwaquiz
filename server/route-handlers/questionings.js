@@ -27,7 +27,7 @@ const notifyScoreboard = (quizPin, onQuestionEvent) =>
             scoreboard.sendJson(onQuestionEvent);
         });
 
-const createQuestioning = async (req, res) => {
+const createQuestioning = async (req, res, next) => {
     try {
         const roundNumber = req.round;
         const questionNumber = await saveQuestioning(req.quizPin, req.round, req.body.questionId);
@@ -36,32 +36,32 @@ const createQuestioning = async (req, res) => {
         notifyScoreboard(req.quizPin, onQuestionEvent);
         res.send({quizPin: req.quizPin, roundNumber, questionNumber});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const getQuestioningForTeam = async (req, res) => {
+const getQuestioningForTeam = async (req, res, next) => {
     try {
         const teamName = req.params.teamName;
         const question = await Questioning
             .findQuestionForTeam(req.quizPin, req.round, Number(req.params.questionNumber), teamName);
         res.json(question);
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const getQuestioning = async (req, res) => {
+const getQuestioning = async (req, res, next) => {
     try {
         const question = await Questioning
             .findQuestion(req.quizPin, req.round, Number(req.params.questionNumber));
         res.json({question: question.question, answer: question.answer, category: question.category});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const answerQuestioning = async (req, res) => {
+const answerQuestioning = async (req, res, next) => {
     try {
         const questioning = await Questioning
             .findTeamQuestioning(req.quizPin, req.round, Number(req.params.questionNumber), req.params.teamName);
@@ -79,7 +79,7 @@ const answerQuestioning = async (req, res) => {
         }
 
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
@@ -88,7 +88,7 @@ const calculateScores = async (quizPin, roundNumber) => {
     return calculateScoreFromQuestioningsInRound(allQuestioningsInRound);
 };
 
-const gradeQuestioning = async (req, res) => {
+const gradeQuestioning = async (req, res, next) => {
     try {
         const questionings = await findQuestionings(req);
         await Promise.all(
@@ -107,12 +107,12 @@ const gradeQuestioning = async (req, res) => {
         });
         res.json({});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
 
-const closeQuestioning = async (req, res) => {
+const closeQuestioning = async (req, res, next) => {
     try {
         const questionings = await findQuestionings(req);
         await Promise.all(
@@ -127,11 +127,11 @@ const closeQuestioning = async (req, res) => {
             );
         res.json({});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const getAnswers = async (req, res) => {
+const getAnswers = async (req, res, next) => {
     try {
         const questionings = await findQuestionings(req);
         res.json(questionings.map(x => {
@@ -142,7 +142,7 @@ const getAnswers = async (req, res) => {
             };
         }));
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 

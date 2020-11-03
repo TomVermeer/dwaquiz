@@ -1,7 +1,7 @@
 const {QuizNight} = require('../persistence/models');
 const HttpErrors = require("../httpErrors");
 
-const createRoundHandler = async (req, res) => {
+const createRoundHandler = async (req, res, next) => {
     try {
         const chosenCategories = req.body;
         if (chosenCategories.length !== 3) {
@@ -12,7 +12,7 @@ const createRoundHandler = async (req, res) => {
         await quizNight.save();
         res.json({roundNumber});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 

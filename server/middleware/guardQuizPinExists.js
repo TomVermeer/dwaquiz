@@ -14,7 +14,7 @@ const guardQuizPinExists = async (req, res, next) => {
             next();
         }
     } catch(e) {
-        throw e;
+        next(e);
     }
 };
 

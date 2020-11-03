@@ -12,7 +12,7 @@ const notifyClientsOfNewTeam = (quizPin, teamName) => {
     }));
 };
 
-const addTeamHandler = async (req, res) => {
+const addTeamHandler = async (req, res, next) => {
     try {
         const quizPin = req.quizPin;
         const teamName = req.body.teamName;
@@ -24,17 +24,17 @@ const addTeamHandler = async (req, res) => {
         notifyClientsOfNewTeam(quizPin, teamName);
         res.json({});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const getTeamsHandler = async (req, res) => {
+const getTeamsHandler = async (req, res, next) => {
     try {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         const teamNames = quizNight.teams.map((x) => x.teamName);
         res.json(teamNames);
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 

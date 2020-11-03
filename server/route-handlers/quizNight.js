@@ -6,7 +6,7 @@ const {QuizNight} = require("../persistence/models");
 /**
  * Generates an unique quizPin and saves it as an empty quiznight to the database
  */
-const createQuizNightHandler = async (req, res) => {
+const createQuizNightHandler = async (req, res, next) => {
     try {
         const quizNight = await QuizNight.createEmptyQuizNight();
         await quizNight.save();
@@ -14,11 +14,11 @@ const createQuizNightHandler = async (req, res) => {
             quizPin: quizNight._id
         });
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const patchQuizNightHandler = async (req, res) => {
+const patchQuizNightHandler = async (req, res, next) => {
     try {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         if (req.body.isOpenForApplication != null) {
@@ -34,7 +34,7 @@ const patchQuizNightHandler = async (req, res) => {
 
         res.json({});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
@@ -45,6 +45,6 @@ const sendQuizEndedToClients = (quizPin) => {
     getScoreBoards(quizPin).forEach(ScoreBoard => {
         ScoreBoard.sendJson({type: WsEvents.ON_QUIZ_NIGHT_END});
     })
-}
+};
 
 module.exports = {createQuizNightHandler, closeApplicationPeriodHandler: patchQuizNightHandler};

@@ -1,6 +1,6 @@
 # REST-API routes
 
-# Introduction
+## Introduction
 
 This markdown file is an overview of all available REST-routes for the Quizzer api v1. All routes assume a root of `/api/v1/`.
 
@@ -15,239 +15,379 @@ Each route has the following information:
     - In case of an error, what caused the error
   - Body
 
-# Overview
+## Overview
 
 The following diagram shows all available routes with their supported methods.
 
 ```puml
 @startmindmap
 * /
+ * /quiz-pins
+  * /:quizPin
+   *_ GET
+ * /categories
+  *_ GET
+ * /questions
+  * /:id
+   *_ GET
  * /quiz-nights
   *_ POST
   * /:quizPin
-   *_ DELETE
    *_ PATCH
-   * team-applications
+   * /scores
+    *_ GET
+    * /:teamName
+     *_ GET
+   * /team-applications
+    *_ POST
+    *_ GET
+    * /:teamName
+     *_ DELETE
+   * /teams
     *_ GET
     *_ POST
-   * /teams
-    *_ POST
-    * /:team
-     * answers
-      *_ POST
-      *_ PUT
    * /rounds
     *_ POST
-    * /:round
+    * /:roundNumber
      * /questionings
       *_ POST
       * /:questionNumber
+       *_ PATCH
        *_ GET
        * /:teamName
         *_ GET
-     * /suggested-questions
-      *_ GET
-    * /:questionNumber
-     *_ PATCH
-     * /grade
-      *_ POST
- * /categories
-  *_ GET
- * /scoreboards
-  * /:quizPin
-   *_ POST
+       * /answers
+        *_ GET
+        * /grades
+         *_ POST
+        * /:teamName
+         *_ PUT
+    * /suggested-questions
+     *_ GET
 @endmindmap
 ```
 
-# Master routes
+## Route descriptions
 
-## /quiz-nights
+### /quiz-pins/:quizPin
 
-**@method:** POST
-**@body:**
-none
+#### GET
 
-#### @response
+_Description:_
+Can be used to check whether or not a quizpin exists
 
-##### 200
+##### Responses
 
-```js
-{
-  quizPin: 103441;
-}
-```
+###### 200
 
-___
+when the quizpin exists
+**Body:** _none_
+###### 404
 
-## /quiz-nights/:quizPin
-
-**@method:** DELETE
-**@body:** *None*
-
-#### @response
-
-##### 200
-
-**@body:** *none*
-
-##### 404
-
-**@description:** when quizPin does not exist.
-**@body:**
-
-```js
-{
-    error: "Quiz-night does not exist"
-}
-```
+when the quizpin does not exist
+**Body:** _none_
 
 ___
 
-## /quiz-nights/:quizPin
+### /categories
 
-**@method:** PATCH
-**@body:**
+#### GET
 
-```js
-{
-  isOpenForApplication: true;
-}
-```
+_Description:_
+Gets all available categories
 
-#### @response
+##### Responses
 
-##### 200
+###### 200
 
-**@body:** _none_
-
-##### 404
-
-**@description:** When quizPin does not exist.
-**@body** _none_
-
-___
-
-## /quiz-nights/:quizPin/teams/
-
-**@method:** POST
-**@body:**
-
-```js
-{
-  teamName: "super-cool-team";
-}
-```
-
-#### @response
-
-##### 200
-
-**@body:** _none_
-
-##### 409
-
-**@description:** When teamName already exists in quiz.
-
-##### 404
-
-**@description:** When quizPin does not exist.
-___
-
-## /quiz-Nights/:quizpin/team-applications
-
-**@method:** POST
-**@body:**
-
-```js
-{
-    teamName: "de billy Butchers"
-}
-
-```
-
-#### @response
-
-##### 200
-
-**@body:** _none_
-
-##### 400
-
-**@description:** When the quiznight no longer accepts applications
-**@body:**
-```js
-{
-    error: 'The quiz-night is not accepting applications'
-}
-```
-
-___
-
-**@method:** GET
-**@body:** _none_
-
-#### @response
-
-##### 200
-
-**@body:**
+**Body**
 ```js
 [
-    "super coole teamname",
-    "jack sparrow"
-]
-```
-___
-
-## /quiz-nights/:quizPin/team-applications/:teamName
-
-**@method:** DELETE
-
-#### @response
-
-##### 200
-
-**@body:** _none_
-___
-
-## /categories
-
-**@method:** GET
-
-#### @response
-
-##### 200
-
-**@body:**
-
-```js
- [
-        "sport",
-        "kunst"
- ]
-```
-
-___
-
-## /quiz-nights/:quizPin/round
-
-**@method:** POST
-**@body**
-
-```js
-[
-    "sport",
-    "kunst",
-    "topografie"
+    "Algemeen",
+    "Sport",
+    "Wetenschap & techniek"
 ]
 ```
 
-#### @response
+___
+
+### /questions/:id
+
+#### GET
+
+_Description:_
+Gets the question with the given id
+
+##### Responses
+
+###### 200
+
+When the id exists
+**Body**
+```js
+{
+    "_id": "5f9a7cd5009c3613b49bcc14",
+    "question": "Hoe wordt een middagdutje zoals dit bijvoorbeeld in Spanje wordt gehouden genoemd?",
+    "answer": "Een siësta",
+    "category": "Algemeen",
+    "orderNumber": 0.07511334721142338,
+}
+```
+
+###### 404
+
+When the id does not exist
+
+___
+
+### /quiz-nights
+
+#### POST
+
+_Description:_
+Creates an empty quiz-night en returns the generated quizpin. The quizpin is always at least 6 digits.
+
+##### Responses
+
+###### 200
+
+**Body:**
+```js
+{
+    "quizPin": 661178
+}
+```
+
+___
+
+### /quiz-nights/:quizPin
+
+#### PATCH
+
+**Body:**
+
+_Description:_
+To end a quiz-night and notify the participating teams and scoreboards
+
+```js
+{
+    isActive: false
+}
+```
+
+_Description:_
+To close the application period for a quiz-night
+
+```js
+{
+    isOpenForApplication: false
+}
+```
+
+##### Responses
+
+###### 200
+
+###### 404
+
+When the quizpin does not exist
+
+____
+
+### /quiz-nights/:quizPin/scores
+
+#### GET
+
+_Description:_
+Gets the current scores of al teams in a quiz night
+
+##### Responses
 
 ##### 200
 
-**@description:** server bepaalt aan de hand van hoogste roundNumber wat het nieuwe roundNumber wordt.
-**@body:**
+**Body:**
+
+```js
+[
+    {
+        "roundPoints": 0,
+        "numberOfCorrectQuestions": 0,
+        "teamName": "Erik"
+    },
+    {
+        "roundPoints": 0,
+        "numberOfCorrectQuestions": 0,
+        "teamName": "Tom"
+    }
+]
+```
+
+##### 404
+
+When the quizpin does not exist
+
+___
+
+### /quiz-nights/:quizPin/scores/:teamName
+
+#### GET
+
+_Description:_
+Gets the score and placing for a specific team 
+
+#### Responses
+
+##### 200 
+
+**Body:**
+
+```js
+{
+    "teamName": "Erik",
+    "roundPoints": 0,
+    "numberOfCorrectQuestions": 0,
+    "placing": 2
+}
+```
+
+##### 404
+
+When the quizpin or teamname does not exist
+
+___
+
+### /quiz-nights/:quizPin/team-applications
+
+#### POST
+
+_Description:_
+Adds a team to the team applications and notifies the quizmaster there has been a change in team applications.
+
+**Body:**
+```js
+{
+    teamName: "Erik"
+}
+```
+
+##### Responses
+
+###### 200
+
+###### 4040
+
+When the quizpin does not exist
+___
+
+#### GET
+
+_Description:_
+Returns a list of all teams that requested to join the quiznight and have not been rejected
+
+#### Responses
+
+##### 200
+
+**Body:**
+
+```js
+[
+    "Erik",
+    "Tom"
+]
+```
+
+##### 404
+
+When the quizpin does not exist
+
+___
+
+### quiz-nights/:quizPin/team-applications/:teamName
+
+#### DELETE
+
+_Description:_
+Removes a team application and notifies the associated socket of its rejection
+
+##### Responses
+
+###### 200
+
+###### 404
+
+When the quizpin or teamname does not exist
+
+___
+
+### /quiz-nigts/:quizPin/teams
+
+#### GET
+
+_Description:_
+Gets the approved teams of a quiznight
+
+##### Responses
+
+###### 200
+
+**Body:**
+
+```js
+[
+    "Tom"
+]
+```
+
+###### 404
+
+When the quizpin does not exist
+___
+
+#### POST
+
+_Description:_
+Approves a given team and notifies the connected team and scoreboard(s)
+
+**Body:**
+
+```js
+{
+    teamName: "Tom"
+}
+```
+
+##### Responses
+
+###### 200
+
+###### 404
+
+When the quizpin does not exist
+___
+
+### /quiz-nights/:quizPin/rounds
+
+#### POST
+
+_Description:_
+Creates a round in a quiznight with the categories
+
+**Body:**
+
+```js
+[
+    "Techniek",
+    "Muziek",
+    "Sport"
+]
+```
+
+##### Responses
+
+###### 200
+
+**Body:**
 
 ```js
 {
@@ -255,298 +395,253 @@ ___
 }
 ```
 
-##### 400
+###### 400
 
-**@description:** When less or more than 3 categories are posted.
-**@body:**
+When there are not exactly 3 categories supplied in the body
+
+###### 404
+
+When the quizpin does not exist
+
+___
+
+### /quiz-nights/:quizPin/rounds/:roundNumber/questionings
+
+#### POST
+
+_Description:_
+Creates a questioning for each team in the quiz night and notifies the teams and scoreboards of the new questioning
+
+**Body:**
 
 ```js
 {
-    error: "A round must have exactly 3 categories."
+    questionId: "5f9a7cd5009c3613b49bcc14"
 }
 ```
 
-##### 404
+##### Responses
 
-**@description:** when quizPin does not exist.
+###### 200
+
+**Body:**
+
+```js
+{
+    quizPin: 583856,
+    roundNumber: 1
+    questionNumber: 2
+}
+```
+
+###### 404
+
+When the quizpin does not exist
+
 ___
 
-## /quiz-nights/:quizPin/round/:round/suggestedQuestions/?:offset&:limit
+### /quiz-nights/:quizPin/rounds/:roundNumber/questionings/:questionNumber
 
-**@method:** GET
+#### PATCH
+
+_Description:_
+Used to close a questioning for all teams in a quiznight and notifies teams and scoreboard the questioning has been closed.
+
+**Body:**
+
+```js
+{
+    isOpen: false
+}
+```
+
+##### Responses
 
 ##### 200
 
-**@body:**
+##### 404
+
+When the quizpin or questionnumber does not exist
+___
+
+#### GET
+
+_Description:_
+Finds a question associated with a questioning for the given combination of quizPin, roundNumber and questionnumber.
+
+##### Responses
+
+###### 200
+
+**Body:**
+
+```js
+{
+    question: "Hoe hoog is de domtoren",
+    answer: "112 meter",
+    category: "Architectuur"
+}
+```
+
+###### 404
+
+When quizpin, roundNumber or questionNumber does not exist
+
+___
+
+### /quiz-nights/:quizPin/rounds/:rounNumber/questionings/:questionNumber/:teamName
+
+#### GET
+
+_Description:_
+Finds a question associated with a questioning for the given combination of quizPin, roundNumber, questionnumber and teamName.
+
+##### Responses
+
+###### 200
+
+**Body:**
+
+```js
+{
+    question: "Hoe hoog is de domtoren",
+    answer: "112 meter",
+    category: "Architectuur"
+}
+```
+
+###### 404
+
+When quizpin, roundNumber, questionNumber or teamName does not exist
+___
+
+### /quiz-nights/:quizPin/rounds/:rounNumber/questionings/:questionNumber/answers
+
+#### GET
+
+_Description:_
+Gets all answers and current grades for questionings within the specified round with the specified questionNumber
+
+##### Responses
+
+###### 200
+
+**Body:**
 
 ```js
 [
     {
-        categoryName: "kunst"
-        questions: ["vraag1","vraag2"]
+        teamName: "Erik",
+        isCorrect: false,
+        answer: "96 meter"
     },
     {
-        categoryName: "sport"
-        questions: ["vraag1","vraag2"]
-    },
-    {
-        categoryName: "topografie"
-        questions: ["vraag1","vraag2"]
+        teamName: "Tom",
+        isCorrect: true,
+        answer: "115 meter"
     }
 ]
 ```
 
-##### 400
+###### 404
 
-**@description:** When less or more than 3 categories are posted.
-**@body:**
-
-```js
-{
-    error: "A round must have exactly 3 categories."
-}
-```
+When quizpin, roundNumber or questionNumber does not exist
 
 ___
 
-## /quiz-nights/:quizPin/rounds/:round/questionings
+### /quiz-nights/:quizPin/rounds/:rounNumber/questionings/:questionNumber/answers/grades
 
-**@method:** POST
-**@descripion:** Starts the asking of a question and informs the participation teams and scoreboard.
+#### POST
 
-```puml
-@startuml
+_Description:_
+Saves the grades for all questionings identified by the combination of roundNumber, questionNumber and quizPin. 
+When the graded question has a question number that is equal to the maximum number of questions in a round the scores are calculated and saved.
+In all cases the scoreboard is notified of the change in grading.
 
-Master -> Server : POST /quiz-nights/:quizPin/rounds/:round/questionings
-Server --> ScoreBoard : onQuestion
-
-loop Team : TeamsInQuizNight
-    Server --> Team : onQuestion
-end
-
-@enduml
-```
-
-**@body:**
-
-```js
-{
-    questionId: "asdf12"
-}
-```
-
-#### @response
-
-##### 200
-
-**@body:** _none_
-
-___
-
-## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber/grade
-
-**@method:** POST
-**@description:** if last question in round, score is also calculated and saved.
-**@body:**
+**Body:**
 
 ```js
 [
     {
-        teamName: "super-cool-team",
-        grade: true
+        teamName: "Erik",
+        isCorrect: true
     },
     {
-        teamName: "de billy butchers",
-        grade: false
+        teamName: "Tom",
+        isCorrect: false
     }
 ]
 ```
 
-#### @response
+##### Responses
 
-##### 200
+###### 200
 
-**@body:** *None.*
+###### 404
 
-**@TODO:** Error situaties
-___
-
-## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber
-
-**@method** PATCH
-**@body:**
-
-```js
-{
-    active: true
-}
-```
-
-#### @response
-
-##### 200
-
-**@body:** *None*
-
-##### 404
-
-**@description:** When question is not found.
-**@body:**
-
-```js
-{
-    error: "Question not found"
-}
-```
+When the quizpin, roundNumber or questionNumber does not exist
 
 ___
 
-## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber
+### /quiz-nights/:quizPin/rounds/:rounNumber/questionings/:questionNumber/answers/:teamName
 
-**@method** GET
+#### PUT
 
-#### @response
+_Description:_
+Saves an answer for a questioning and resets it's correctness. Notifies the scoreboard and master of the change in answer.
 
-##### 200
-
-**@body:**
-```js
-{
-    question: "In welk programma heb je als kandidaat 100 tegenspelers?",
-    category: "Film en TV",
-    answer: "1 tegen 100"
-}
-```
-
-##### 404
-
-**@description:** When question is not found.
-**@body:**
+**Body:**
 
 ```js
 {
-    error: "Question not found"
+    answer: "112 meter"
 }
 ```
+
+##### Responses
+
+###### 200
+
+###### 400
+
+When the question does not accept answers any more because it was closed
+
+###### 404
+
+When the quizpin, roundNumber, questionNumber or teamName does not exist
 
 ___
 
-## /quiz-nights/:quizPin/rounds/:round/questionings/:questionNumber/:teamName
+### /quiz-nights/:quizPin/rounds/:roundNumber/suggested-questions?offset=:offset&limit=:limit
 
-**@method** GET
+#### GET
 
-#### @response
+_Description:_
+Gets a subset of questions that can be asked given the chosen categories in a round and the questions already asked in the quiznight.
 
-##### 200
+##### Responses
 
-**@body:**
-```js
-{
-    question: "In welk programma heb je als kandidaat 100 tegenspelers?"
-}
-```
+###### 200
 
-##### 404
-
-**@description:** When question is not found.
-**@body:**
+**Body:**
 
 ```js
-{
-    error: "Question not found"
-}
+[
+    {
+        category: "Architectuur",
+        question: "Hoe hoog is de dom toren",
+        _id: "5f9a7cd5009c3613b49bcc14"
+    },
+    {
+        category: "Sport",
+        question: "Wat is de grootste jeugdvereniging van Nederland",
+        _id: "5f9a7cd5009c3613b49bcc15"
+    }
+]
 ```
+
+###### 404
+
+When the quizpin or roundNumber does not exist
 
 ___
-
-# Scoreboard Routes
-
-## scoreboards/:quizPin
-
-**@method:** POST
-**@Description:** Post quizPin to server to prepare Session for websocket connection.
-**@body:** *None*
-
-#### @response
-
-##### 200
-
-**@body:** *None*
-
-##### 404
-
-**@description:** when quizpin does not exist.
-**@body:**
-
-```js
-{
-    error: "No quiz-night with this pin was found."
-}
-```
-
-___
-
-# TeamApp
-
-## /quiz-Nights/:quizPin/teams/:teamName/answers
-
-**@method:** POST
-**@body:**
-
-```js
-{
-    roundNumber:1,
-    questionNumber:1,
-    answer: "answer to silly question"
-}
-```
-
-#### @response
-
-##### 200
-
-**@body** *None*
-
-##### 404
-
-**@description:** can occur when either the round number or question number is not found.
-**@body:**
-
-```js
-{
-    error: "Round or question not found"
-}
-```
-
-___
-
-## /quiz-Nights/:quizPin/teams/:teamName/answers
-
-**@method:** PUT
-**@body:**
-
-```js
-{
-    roundNumber:1,
-    questionNumber:1,
-    answer: "answer to silly question revised"
-}
-
-```
-
-#### @response
-
-##### 200
-
-**@body** *None*
-
-##### 404
-
-**@description:** can occur when either the round number or question number is not found.
-**@body:**
-
-```js
-{
-    error: "Round or question not found"
-}
-```

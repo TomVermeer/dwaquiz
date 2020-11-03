@@ -14,7 +14,7 @@ const saveTeamApplication = async (quizPin, teamName) => {
     await quizNight.save();
 };
 
-const applyTeamHandler = async (req, res) => {
+const applyTeamHandler = async (req, res, next) => {
     try {
         const quizPin = req.quizPin;
         const teamName = req.body.teamName;
@@ -27,7 +27,7 @@ const applyTeamHandler = async (req, res) => {
         }
 
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
@@ -43,23 +43,23 @@ const removeTeamApplication = async (quizPin, teamName) => {
     await quizNight.save();
 };
 
-const rejectTeamHandler = async (req, res) => {
+const rejectTeamHandler = async (req, res, next) => {
     try {
         const teamName = req.params.teamName;
         await removeTeamApplication(req.quizPin, teamName);
         sendTeamRejected(req, teamName);
         res.json({});
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 
-const getTeamApplicationsHandler = async (req, res) => {
+const getTeamApplicationsHandler = async (req, res, next) => {
     try {
         const quizNight = await QuizNight.findByQuizPin(req.quizPin);
         res.send(quizNight.teamApplications);
     } catch (e) {
-        throw e;
+        next(e);
     }
 };
 

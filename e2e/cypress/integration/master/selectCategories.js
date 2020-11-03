@@ -37,14 +37,13 @@ describe('select categories', () => {
         it('should remove a category', () => {
             cy.get('.panel:first-child .list-group-item')
                 .first()
-                .click()
-                .invoke('text').then((text) => {
-                cy.contains('Toevoegen').click();
-                cy.get('.panel:last-child .list-group-item button')
-                    .click();
-                cy.get('.panel:last-child .list-group-item')
-                    .should('not.exist',);
-            });
+                .click();
+
+            cy.contains('Toevoegen').click();
+            cy.get('.panel:last-child .list-group-item button')
+                .click();
+            cy.get('.panel:last-child .list-group-item')
+                .should('not.exist',);
         });
 
         it('should require 3 categories', () => {

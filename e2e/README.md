@@ -3,10 +3,8 @@
 ## Run
 
 Start the server
-1. from root of the repo: `build.bat`
-2. navigate to server
-3. `npm run start:prod`
-4. If not running start mongodb on default port
+1. from root of the repo: `start.cmd`
+2. If not running start mongodb on default port
 
 Run tests
 In this folder, run: `npx cypress open` or `npm run cypress:open`

@@ -1,4 +1,4 @@
-import {postAndParse, deleteAndParse, patchAndParse} from "shared/fetchHelpers";
+import {deleteAndParse, getAndParse, patchAndParse, postAndParse} from "shared/fetchHelpers";
 import {Actions} from "../../actions";
 import {Pages} from "../../pages/routerUrls";
 import {setQuizPin} from "shared/reducers/sharedActionCreators";
@@ -35,10 +35,6 @@ export const rejectTeam = (teamName, quizPin) => dispatch => {
         });
 };
 
-export const afterTeamApplyFetch = teamNames => {
-    return {type: Actions.ON_TEAM_APPLICATIONS_RECEIVED, payload: teamNames};
-};
-
 export const closeApplicationPeriod = (quizPin, history) => dispatch => {
     patchAndParse(`quiz-nights/${quizPin}`, {isOpenForApplication: false})
         .then(json => history.push(Pages(quizPin, 1).CHOOSE_CATEGORIES));
@@ -47,4 +43,22 @@ export const closeApplicationPeriod = (quizPin, history) => dispatch => {
 export const endNight = (quizPin, history) => dispatch => {
     patchAndParse(`quiz-nights/${quizPin}`, {isActive: false})
         .then(json => history.push(Pages(quizPin).NIGHT_END))
+};
+
+export const onTeamApplicationsReceived = teamNames => {
+    return {type: Actions.ON_TEAM_APPLICATIONS_RECEIVED, payload: teamNames};
+};
+
+export const fetchTeamApplications = quizPin => dispatch => {
+    getAndParse(`quiz-nights/${quizPin}/team-applications`)
+        .then(json => dispatch(onTeamApplicationsReceived(json)));
+};
+
+const onApprovedTeamsReceived = teamNames => {
+    return {type: Actions.ON_APPROVED_TEAMS_RECEIVED, payload: teamNames};
+};
+
+export const fetchApprovedTeams = quizPin => dispatch => {
+    getAndParse(`quiz-nights/${quizPin}/teams`)
+        .then((json) => dispatch(onApprovedTeamsReceived(json)));
 };

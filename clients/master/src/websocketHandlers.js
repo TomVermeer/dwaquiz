@@ -1,5 +1,5 @@
 import {getWebsocket} from "shared/websocket";
-import {afterTeamApplyFetch} from "./reducers/quizNight/quizNightActionCreators";
+import {onTeamApplicationsReceived} from "./reducers/quizNight/quizNightActionCreators";
 import {WebsocketHandlersBuilder} from "shared/WebsocketHandlersBuilder";
 import {onReceiveAnswers} from "./reducers/currentQuestion/currentQuestionActionCreators";
 import {Roles, WsEvents} from "shared/constants";
@@ -7,7 +7,7 @@ import {Roles, WsEvents} from "shared/constants";
 const buildHandlers = (quizPin, roundNumber, questionNumber) =>
     new WebsocketHandlersBuilder()
         .on(WsEvents.ON_TEAM_APPLY)
-            .fetch(`quiz-nights/${quizPin}/team-applications`, afterTeamApplyFetch)
+            .fetch(`quiz-nights/${quizPin}/team-applications`, onTeamApplicationsReceived)
         .on(WsEvents.ON_ANSWER)
             .fetch(`quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`, onReceiveAnswers)
         .build();

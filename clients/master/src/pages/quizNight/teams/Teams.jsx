@@ -12,7 +12,7 @@ const useFetchBasedOnQuizPin = (quizPin, actionCreator) => {
         if (quizPin) {
             dispatch(actionCreator(quizPin));
         }
-    }, [dispatch, quizPin]);
+    }, [dispatch, quizPin, actionCreator]);
 };
 
 const useFetchTeamApplications = quizPin => {

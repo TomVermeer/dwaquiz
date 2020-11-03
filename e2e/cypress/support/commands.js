@@ -25,5 +25,5 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('seedDb', () => {
-    cy.exec('cd ../server && dir && npm run seed:clean')
+    cy.exec('cd ../server && npm run seed:clean')
 });

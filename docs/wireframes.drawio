@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-11-03T13:37:04.954Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" etag="R0I4g1u5ZHKsvqj-exmo" version="13.8.7" type="github">
+<mxfile host="app.diagrams.net" modified="2020-11-03T13:51:09.761Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" etag="W391QrbBOrvVeRjP52mW" version="13.8.7" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="1580" dy="1133" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1706" dy="1322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1112,7 +1112,7 @@
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-1" value="[REST] POST &lt;br&gt;/quiz-night/:quizPin/team-applications" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="3320" y="282.5" width="260" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="KhyKdgcgQLaI3j5_o2oQ-3" value="[REST] POST/PUT&amp;nbsp;&lt;br&gt;/quiz-nights/:quizPin/teams/:team/answers" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="KhyKdgcgQLaI3j5_o2oQ-3" value="[REST] PUT&amp;nbsp;&lt;br&gt;/quiz-nights/:quizPin/teams/:team/answers" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="2440" y="1630" width="260" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-5" value="[ROUTE] team/wait-for-approval" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -1144,14 +1144,6 @@
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-16" value="&amp;lt;Spinner&lt;br&gt;text: string&lt;br&gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="3355" y="685" width="140" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="KhyKdgcgQLaI3j5_o2oQ-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=classic;endFill=1;" parent="1" source="KhyKdgcgQLaI3j5_o2oQ-19" target="tzb5yaRrSsXEz6ic2CVl-287" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2600" y="1460" />
-              <mxPoint x="2870" y="1460" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;" parent="1" source="KhyKdgcgQLaI3j5_o2oQ-19" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="2720" y="1320" as="targetPoint" />
@@ -1161,10 +1153,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="5WnQx_JsfJSw3w21Nt14-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="KhyKdgcgQLaI3j5_o2oQ-19" target="5WnQx_JsfJSw3w21Nt14-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-19" value="[WS] onQuestion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="2560" y="1365" width="80" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="KhyKdgcgQLaI3j5_o2oQ-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classic;endFill=1;" parent="1" source="KhyKdgcgQLaI3j5_o2oQ-22" target="tzb5yaRrSsXEz6ic2CVl-341" edge="1">
+        <mxCell id="KhyKdgcgQLaI3j5_o2oQ-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=classic;endFill=1;" parent="1" source="KhyKdgcgQLaI3j5_o2oQ-22" target="5WnQx_JsfJSw3w21Nt14-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="KhyKdgcgQLaI3j5_o2oQ-22" value="[WS] onQuizNightEnd" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" parent="1" vertex="1">
@@ -1324,7 +1319,7 @@
         <mxCell id="PG2lcVViqY5leGbTb4DN-41" value="[ACTION]&lt;br&gt;ON_QUIZ_NIGHT_SCORE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="2415" y="2025" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="PG2lcVViqY5leGbTb4DN-42" value="[ACTION]&lt;br&gt;ON_QUIZ_NIGHT_END" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="PG2lcVViqY5leGbTb4DN-42" value="[ACTION]&lt;br&gt;RESET_STATE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="3390" y="2280" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="OQgCpPnHtIGV4hBYztpx-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1424,6 +1419,18 @@
         </mxCell>
         <mxCell id="5WnQx_JsfJSw3w21Nt14-30" value="[ACTION] RESET_STATE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="826" y="3160" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="5WnQx_JsfJSw3w21Nt14-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="5WnQx_JsfJSw3w21Nt14-31" target="tzb5yaRrSsXEz6ic2CVl-287">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5WnQx_JsfJSw3w21Nt14-31" value="[REST]]&lt;br&gt;GET /quiz-night/:quizPin/rounds/:round/questionings/:teamName" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2415" y="1450" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5WnQx_JsfJSw3w21Nt14-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="5WnQx_JsfJSw3w21Nt14-34" target="tzb5yaRrSsXEz6ic2CVl-341">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5WnQx_JsfJSw3w21Nt14-34" value="[REST] GET /quiz-nights/:quizPin/scores/:teamName" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="2527" y="2090" width="113" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

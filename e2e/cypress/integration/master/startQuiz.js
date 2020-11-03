@@ -1,6 +1,6 @@
 import {MASTER_URL} from "../../constants";
 
-describe('Start quiznight', () => {
+describe('Start quiznight application period', () => {
 
     before(() => {
        cy.seedDb();

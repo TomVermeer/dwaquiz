@@ -52,6 +52,23 @@ describe('approve team', () => {
                 cy.get('.space-around .panel:last-child')
                     .should('contain', 'Erik');
             });
+
+            it('should require more than one approved team to start a quiz night', function () {
+                cy.contains('Toevoegen').click();
+                cy.contains('Start quiz night')
+                    .should('be.disabled');
+            });
+
+            it('should navigate to choose categories after starting a quiz night', function () {
+                cy.contains('Toevoegen').click();
+
+                cy.request('POST', `${API_BASE_URL}/quiz-nights/${this.currentQuizPin}/team-applications`, {teamName: 'Tom'});
+                cy.contains('Tom').click();
+                cy.contains('Toevoegen').click();
+
+                cy.contains('Start quiz night').click();
+                cy.url().should('match', /master\/[0-9]{6,}\/1\/categories/i);
+            });
         });
     });
 });

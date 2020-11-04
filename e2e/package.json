@@ -9,6 +9,9 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "shared-constants": "file:../shared-constants"
+  },
   "devDependencies": {
     "cypress": "^5.5.0"
   }

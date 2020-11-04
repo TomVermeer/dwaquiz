@@ -5,7 +5,7 @@ import './answer-row.scss';
 import {setIsCorrect} from "../../../reducers/currentQuestion/currentQuestionActionCreators";
 
 export const AnswerRow = (props) => {
-    const answerText = props.teamAnswer.answer || <i>Nog geen antwoord gegeveven</i>;
+    const answerText = props.teamAnswer.answer || <i>Nog geen antwoord gegeven</i>;
 
     const dispatch = useDispatch();
     const onChangeIsCorrect = (value) => {

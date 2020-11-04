@@ -6,7 +6,7 @@ export const useWebsocket = (quizPin, roundNumber, questionNumber) => {
     const history = useHistory();
     useEffect(() => {
         if (history && quizPin) {
-            startWebsocket(history, quizPin, roundNumber, questionNumber);
+            startWebsocket(quizPin, history, roundNumber, questionNumber);
         } else {
         }
     }, [history, quizPin, roundNumber, questionNumber]);

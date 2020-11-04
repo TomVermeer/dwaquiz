@@ -8,7 +8,7 @@ const {Questioning, QuizNight} = require('../persistence/models');
 const findQuestionings = (req) =>
     Questioning.findMultipleByQuestionNumber(req.quizPin, req.round, Number(req.params.questionNumber)).exec();
 
-    const saveQuestioning = async (quizPin, roundNumber, questionId) => {
+const saveQuestioning = async (quizPin, roundNumber, questionId) => {
     const quizNight = await QuizNight.findByQuizPin(quizPin);
     const questionNumber = await quizNight.askQuestion(roundNumber, questionId);
     await quizNight.save();
@@ -69,7 +69,10 @@ const answerQuestioning = async (req, res, next) => {
             questioning.answer = req.body.answer;
             questioning.isCorrect = false;
             await questioning.save();
-            getMaster(req.quizPin).sendJson({type: WsEvents.ON_ANSWER});
+            const master = getMaster(req.quizPin);
+            if (master) {
+                master.sendJson({type: WsEvents.ON_ANSWER});
+            }
             getScoreBoards(req.quizPin).forEach((x) => {
                 x.sendJson({type: WsEvents.ON_ANSWER});
             });
@@ -98,12 +101,15 @@ const gradeQuestioning = async (req, res, next) => {
                 return questioning.save();
             })
         );
-        if(Number(req.params.questionNumber) === NUMBER_OF_QUESTIONS_IN_ROUND) {
+        if (Number(req.params.questionNumber) === NUMBER_OF_QUESTIONS_IN_ROUND) {
             const quizNight = await QuizNight.findByQuizPin(req.quizPin);
             await quizNight.saveScoresOfRoundToTeams(await calculateScores(req.quizPin, req.round));
         }
         getScoreBoards(req.quizPin).forEach((x) => {
-            x.sendJson({type: WsEvents.ON_QUESTION_GRADED, payload: {roundNumber: req.round, questionNumber: Number(req.params.questionNumber)}});
+            x.sendJson({
+                type: WsEvents.ON_QUESTION_GRADED,
+                payload: {roundNumber: req.round, questionNumber: Number(req.params.questionNumber)}
+            });
         });
         res.json({});
     } catch (e) {

@@ -14,14 +14,16 @@ const Questionpage = () => {
     const dispatch = useDispatch();
     const teams = useSelector(state => state.root.answeredTeams);
 
-     useEffect( () => {
-        dispatch(fetchAnsweredTeams(quizPin, roundNumber, questionNumber));
-        dispatch(fetchQuestion(quizPin, history, roundNumber, questionNumber))
-     },[questionNumber, roundNumber, dispatch, quizPin, history]);
+    useEffect(() => {
+        if (quizPin && roundNumber) {
+            dispatch(fetchAnsweredTeams(quizPin, roundNumber, questionNumber));
+            dispatch(fetchQuestion(quizPin, history, roundNumber, questionNumber))
+        }
+    }, [questionNumber, roundNumber, dispatch, quizPin, history]);
 
-     const currentQuestion = useSelector(state => state.root.currentQuestion);
+    const currentQuestion = useSelector(state => state.root.currentQuestion);
 
-    return(
+    return (
         <>
             <QuestionHeader roundNumber={roundNumber} questionNumber={questionNumber} quizPin={quizPin}/>
             <Question question={currentQuestion}/>

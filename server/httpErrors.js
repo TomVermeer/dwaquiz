@@ -16,7 +16,20 @@ const HttpErrors = Object.freeze({
     QUIZ_NIGHT_DOES_NOT_ACCEPT_APPLICATIONS: {
         statusCode: 400,
         messageNL: 'De inschrijfperiode van de quiz night is verlopen'
+    },
+    NO_ROUND_NUMBER_FOUND: {
+        statusCode: 400,
+        messageNL: 'Geen rondenummer gevonden'
+    },
+    TEAM_NAME_EMPTY: {
+        statusCode: 400,
+        messageNL: 'Geen team naam ingestuurd.'
+    },
+    TEAM_NAME_IN_USE: {
+        statusCode: 400,
+        messageNL: 'Team naam is al in gebruik.'
     }
+
 });
 
 module.exports = HttpErrors;

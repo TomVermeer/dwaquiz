@@ -19,6 +19,7 @@ const HomePage = () => {
 
     const onChange = (e) => {
         setQuizPin(e.target.value.trim())
+        
     };
 
     const handleSubmit = (e) => {
@@ -26,9 +27,8 @@ const HomePage = () => {
         if (e.currentTarget.checkValidity() === false) {
             setValidated(true);
         } else {
-            dispatch(openQuizNight(quizPin));
-            // TODO check if quiz pin exists (REST)
-            history.push(Pages(quizPin).WAITING_ROOM);
+         dispatch(openQuizNight(quizPin, history));
+         history.push(Pages(quizPin).WAITINGROOM);
         }
     };
 

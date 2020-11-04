@@ -1,6 +1,7 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import {RouterUrls} from './pages/routerUrls'
+
+import {Switch, Route} from 'react-router-dom'
+import { RouterUrls } from './pages/routerUrls'
 
 import './App.scss';
 //page imports
@@ -12,7 +13,6 @@ import {QuizNightRouter} from "./pages/quizNight/QuizNightRouter";
 function App() {
     useHttpErrorHandler();
   return (
-    <BrowserRouter basename="/scoreboard">
      <div className="App">
       <Switch>
         <Route exact path={RouterUrls.HOME} component={HomePage}/>
@@ -21,7 +21,6 @@ function App() {
         </Route>
       </Switch>
      </div>
-    </BrowserRouter>
   )
 
 }

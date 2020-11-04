@@ -9,6 +9,7 @@ import {rootReducer} from './reducers/rootReducer';
 import {setStore} from 'shared/store';
 import thunk from 'redux-thunk';
 import { ToastProvider } from 'react-toast-notifications'
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 setStore(store);
@@ -17,7 +18,9 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <ToastProvider>
+            <BrowserRouter basename="/scoreboard">
                 <App/>
+                </BrowserRouter>
             </ToastProvider>
         </Provider>
     </React.StrictMode>,

@@ -11,27 +11,27 @@ import {setRoundNumber} from "shared/reducers/sharedActionCreators";
 const buildHandlers = (quizPin, history, roundNumber, questionNumber) =>
     new WebsocketHandlersBuilder()
         .on(WsEvents.ON_TEAM_APPROVAL)
-            .fetch(`quiz-nights/${quizPin}/teams`, setParticipatingTeams)
+        .fetch(`quiz-nights/${quizPin}/teams`, setParticipatingTeams)
         .on(WsEvents.ON_QUESTION)
-            .doAction((message) => {
-                handleOnQuestion(quizPin, roundNumber, history, questionNumber, message)
-            })
+        .doAction((message) => {
+            handleOnQuestion(quizPin, roundNumber, history, questionNumber, message)
+        })
         .on(WsEvents.ON_ANSWER)
-            .fetch(
-                `quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`,
-                onReceiveAnswers
-            )
+        .fetch(
+            `quiz-nights/${quizPin}/rounds/${roundNumber}/questionings/${questionNumber}/answers`,
+            onReceiveAnswers
+        )
         .on(WsEvents.ON_QUESTION_GRADED)
-            .doAction((message) => {
-                pushOnQuestionGraded(
-                    quizPin,
-                    history,
-                    message.payload.roundNumber,
-                    message.payload.questionNumber
-                );
-            })
+        .doAction((message) => {
+            pushOnQuestionGraded(
+                quizPin,
+                history,
+                message.payload.roundNumber,
+                message.payload.questionNumber
+            );
+        })
         .on(WsEvents.ON_QUIZ_NIGHT_END)
-            .doAction(() => history.push(Pages(quizPin).NIGHT_END))
+        .doAction(() => history.push(Pages(quizPin).NIGHT_END))
         .build();
 
 const initializationMessage = (quizPin) => {
@@ -61,7 +61,7 @@ const handleOnQuestion = (quizPin, roundNumber, history, questionNumber, message
     }
 };
 
-export const startWebsocket = (history, quizPin, roundNumber, questionNumber) =>
+export const startWebsocket = (quizPin, history, roundNumber, questionNumber) =>
     getWebsocket(
         buildHandlers(quizPin, history, roundNumber, questionNumber),
         initializationMessage(Number(quizPin))

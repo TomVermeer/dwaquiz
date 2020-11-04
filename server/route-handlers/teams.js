@@ -4,7 +4,9 @@ const {getTeam, getScoreBoards} = require("../setupWebSockets");
 
 const notifyClientsOfNewTeam = (quizPin, teamName) => {
     const team = getTeam(quizPin, teamName);
-    team.sendJson({type: WsEvents.ON_TEAM_APPROVAL, payload: teamName});
+    if (team) {
+        team.sendJson({type: WsEvents.ON_TEAM_APPROVAL, payload: teamName});
+    }
     const scoreboards = getScoreBoards(quizPin);
     scoreboards.forEach(scoreboard => scoreboard.sendJson({
         type: WsEvents.ON_TEAM_APPROVAL,

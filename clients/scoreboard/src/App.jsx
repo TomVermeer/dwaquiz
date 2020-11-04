@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Switch, Route, BrowserRouter, useHistory} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import { RouterUrls } from './pages/routerUrls'
 
 import './App.scss';

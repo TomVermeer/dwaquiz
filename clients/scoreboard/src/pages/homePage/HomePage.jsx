@@ -9,7 +9,6 @@ import "../homePage/homepage.scss";
 import {useHistory} from "react-router";
 import {MINIMUM_NUMBER_OF_DIGITS_IN_QUIZ_PIN} from "shared/constants";
 import {Pages} from "../routerUrls";
-import {checkPin} from "../../reducers/mainActionCreators"
 
 const HomePage = () => {
     const [validated, setValidated] = useState(false);

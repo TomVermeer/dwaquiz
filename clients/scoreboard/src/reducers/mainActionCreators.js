@@ -4,7 +4,6 @@ import { SharedActions } from "shared/actions";
 import { startWebsocket } from "../webSocketHandlers";
 import { Actions } from "../actions";
 import { setQuizPin } from "shared/reducers/sharedActionCreators";
-import { Pages } from "../pages/routerUrls";
 
 export const openQuizNight = (quizpin, history) => (dispatch) => {
   dispatch(setQuizPin(quizpin));

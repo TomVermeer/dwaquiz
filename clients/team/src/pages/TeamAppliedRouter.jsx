@@ -8,7 +8,7 @@ import {setQuizPin} from "shared/reducers/sharedActionCreators";
 import {useFromUrl} from "../effects/useFromUrl";
 import {setTeamName} from "../reducers/rootActionCreators";
 import {NightEnd} from "./nightEnd/NightEnd";
-import { QuestionRouter } from "../pages/Question/QuestionRouter"
+import { QuestionRouter } from "./question/QuestionRouter"
 
 export const TeamAppliedRouter = (props) => {
 

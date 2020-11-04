@@ -146,10 +146,10 @@ quizNightSchema.methods.saveScoresOfRoundToTeams = function (teamScores) {
     return this.save();
 };
 
-const QuizNight = mongoose.model('QuizNight', quizNightSchema);
+quizNightSchema.methods.doesRoundExist = function (roundNumber) {
+    return this.rounds.length >= roundNumber;
+};
 
-quizNight.methods.findRound = function (roundNumber) {
-    return this.rounds[roundNumber]
-}
+const QuizNight = mongoose.model('QuizNight', quizNightSchema);
 
 module.exports = {quizNightSchema, QuizNight};

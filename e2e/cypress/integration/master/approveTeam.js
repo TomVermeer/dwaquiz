@@ -1,4 +1,4 @@
-import {API_BASE_URL, MASTER_URL} from "../../constants";
+import {MASTER_URL} from "../../constants";
 
 describe('approve team', () => {
 
@@ -7,16 +7,13 @@ describe('approve team', () => {
     });
 
     beforeEach(() => {
-        cy.request('POST', `${API_BASE_URL}/quiz-nights`)
-            .its('body.quizPin')
-            .as('currentQuizPin');
-
+        cy.createQuizNight();
     });
 
     describe('with quizpin', () => {
         beforeEach(function () {
             cy.visit(`${MASTER_URL}/${this.currentQuizPin}/teams`);
-            cy.request('POST', `${API_BASE_URL}/quiz-nights/${this.currentQuizPin}/team-applications`, {teamName: 'Erik'});
+            cy.applyTeam('Erik');
         });
 
         it('should receive team applications', function () {
@@ -62,7 +59,7 @@ describe('approve team', () => {
             it('should navigate to choose categories after starting a quiz night', function () {
                 cy.contains('Toevoegen').click();
 
-                cy.request('POST', `${API_BASE_URL}/quiz-nights/${this.currentQuizPin}/team-applications`, {teamName: 'Tom'});
+                cy.applyTeam('Tom');
                 cy.contains('Tom').click();
                 cy.contains('Toevoegen').click();
 

@@ -17,11 +17,13 @@ describe('approve team', () => {
         });
 
         it('should receive team applications', function () {
-            cy.contains('Erik');
+            cy.get('.space-around .panel:first-child')
+                .should('contain', 'Erik');
         });
 
         describe('with selected team', () => {
-            beforeEach(() => {
+            beforeEach(function () {
+                cy.visit(`${MASTER_URL}/${this.currentQuizPin}/teams`);
                 cy.get('.space-around .panel:first-child')
                     .contains('Erik')
                     .click();

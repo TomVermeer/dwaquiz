@@ -13,6 +13,50 @@ Middleware will be defined in a seperate folder 'middleware'. Custom middleware 
 
 Middleware from external modules will get a shared file with a install function for each middleware. This install function sets any necessary options for the middleware.
 
+### ErrorHandling middleWare
+Error handling is also done trough middleware, trought the use of several "guard" middlewares the server makes sure the relevant values are filled before proceeding with requests.
+
+#### GuardQuizPinExists
+Middleware used to check if quizPin given in route exists.
+If fails, throws error
+body:
+```js
+{
+    statusCode: 404,
+    messageNL: "De quiz night ${quizPin} kan niet worden gevonden."
+}
+```
+
+#### GuardRoundNumber
+Middleware used to check if a round number is supplied.
+If fails, throws error
+```js
+{
+    statusCode: 400,
+    messageNL: "Geen rondenummer gevonden."
+}
+```
+
+#### GuardTeamName
+Middleware used to check if a teamName is supplied and if supplied teamname is not duplicate.
+
+If no teamName supplied throws error:
+```js
+{
+    statusCode: 400,
+    messageNL: 'Geen team naam ingestuurd.'
+}
+```
+
+If supplied teamName is a duplicate:
+
+```js
+{
+    statusCode: 400,
+    messageNL: 'Team naam is al in gebruik.'
+}
+```
+
 ### Cors
 
 Because the 3 SPA's will run on a seperate server during development, CORS has to be enabled for those domains.

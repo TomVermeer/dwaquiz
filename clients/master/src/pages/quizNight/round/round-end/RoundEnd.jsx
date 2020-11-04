@@ -25,7 +25,7 @@ export const RoundEnd = (props) => {
 
     return (
         <div className="round-end">
-            <Button variant="danger" size="huge" onClick={onClickEndNight}>Beëiding quiznight</Button>
+            <Button variant="danger" size="huge" onClick={onClickEndNight}>Beëindig quiznight</Button>
             <Button variant="primary" size="huge" onClick={onClickNextRound}>Volgende ronde</Button>
         </div>
     );

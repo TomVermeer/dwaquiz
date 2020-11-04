@@ -1,8 +1,8 @@
 const API_PORT = '3000';
 const WS_PORT = '3000';
-const MASTER_PORT = '3000';
-const TEAM_PORT = '3000';
-const SCOREBOARD_PORT = '3000';
+const MASTER_PORT = '3001';
+const TEAM_PORT = '3002';
+const SCOREBOARD_PORT = '3003';
 
 export const SERVER_URL = 'http://localhost';
 export const API_BASE_URL = `${SERVER_URL}:${API_PORT}/api/v1`;

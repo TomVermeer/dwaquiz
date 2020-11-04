@@ -110,6 +110,10 @@ quizNightSchema.methods.getCurrentQuestionNumber = function (roundNumber) {
     return this.rounds[roundNumber - 1].questionings.length / this.teams.length;
 };
 
+quizNightSchema.methods.findQuestion = async function(questionId) {
+    return await mongoose.model('Question').findById(questionId)
+}
+
 quizNightSchema.methods.askQuestion = async function (roundNumber, questionId) {
     const questionPromise = mongoose.model('Question').findById(questionId);
     const teams = this.getParticipatingTeamNames();

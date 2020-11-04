@@ -22,9 +22,6 @@ The following diagram shows all available routes with their supported methods.
 ```puml
 @startmindmap
 * /
- * /quiz-pins
-  * /:quizPin
-   *_ GET
  * /categories
   *_ GET
  * /questions
@@ -68,26 +65,6 @@ The following diagram shows all available routes with their supported methods.
 ```
 
 ## Route descriptions
-
-### /quiz-pins/:quizPin
-
-#### GET
-
-_Description:_
-Can be used to check whether or not a quizpin exists
-
-##### Responses
-
-###### 200
-
-when the quizpin exists
-**Body:** _none_
-###### 404
-
-when the quizpin does not exist
-**Body:** _none_
-
-___
 
 ### /categories
 
@@ -274,7 +251,7 @@ Adds a team to the team applications and notifies the quizmaster there has been 
 
 ###### 200
 
-###### 4040
+###### 404
 
 When the quizpin does not exist
 ___

@@ -28,7 +28,7 @@ const HomePage = () => {
             setValidated(true);
         } else {
          dispatch(openQuizNight(quizPin, history));
-         history.push(Pages(quizPin).WAITINGROOM);
+         history.push(Pages(quizPin).WAITING_ROOM);
         }
     };
 

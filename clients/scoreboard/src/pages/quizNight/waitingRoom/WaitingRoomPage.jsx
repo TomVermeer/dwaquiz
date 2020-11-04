@@ -6,20 +6,22 @@ import {ApprovedTeams} from "../../../components/TeamsDisplay/ApprovedTeams/Appr
 
 const WaitingRoomHomepage = () => {
 
-  const urlQuizPin = useSelector(state => state.shared.quizProgress.quizPin);
-  const dispatch = useDispatch();
-  const teams = useSelector(state => state.root.participatingTeams);
- 
-  useEffect(() => {
-    dispatch(fetchParticipatingTeams(urlQuizPin));
-  },[urlQuizPin, dispatch]);
+    const urlQuizPin = useSelector(state => state.shared.quizProgress.quizPin);
+    const dispatch = useDispatch();
+    const teams = useSelector(state => state.root.participatingTeams);
 
-  return (
-    <>
-      <WaitingRoomHeader quizpin={urlQuizPin} />
-        <ApprovedTeams title="Deelnemers" teams={teams}/>
-      <Footer />
-    </>
-  );
+    useEffect(() => {
+        if (urlQuizPin) {
+            dispatch(fetchParticipatingTeams(urlQuizPin));
+        }
+    }, [urlQuizPin, dispatch]);
+
+    return (
+        <>
+            <WaitingRoomHeader quizpin={urlQuizPin}/>
+            <ApprovedTeams title="Deelnemers" teams={teams}/>
+            <Footer/>
+        </>
+    );
 };
 export default WaitingRoomHomepage;

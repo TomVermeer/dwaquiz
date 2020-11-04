@@ -4,17 +4,20 @@ const HttpErrors = require('../httpErrors');
 const guardRoundNumberExists = async (req, res, next) => {
     try {
         req.round = Number(req.params.round);
-        
-        currentQuizNight = await QuizNight.findById(req.params.quizPin)
-        dbRound = await currentQuizNight.findRound(req.params.round)
+        if(!req.round) {
+            res.sendError(HttpErrors.NO_ROUND_NUMBER_FOUND);
+        }
 
-        if(!req.round || !dbRound) {
+        const currentQuizNight = await QuizNight.findById(req.quizPin);
+        const doesRoundExist = await currentQuizNight.doesRoundExist(req.round);
+
+        if(!doesRoundExist) {
             res.sendError(HttpErrors.NO_ROUND_NUMBER_FOUND);
         } else {
             next();
         }
     } catch(e) {
-        throw e;
+        next(e);
     }
 };
 

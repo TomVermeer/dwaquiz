@@ -3,7 +3,11 @@ import {MASTER_URL} from "../../constants";
 describe('Start quiznight application period', () => {
 
     before(() => {
-       cy.seedDb();
+        cy.seedDb();
+    });
+
+    beforeEach(() => {
+        cy.createQuizNight();
     });
 
     it('navigates to team applications page and has a quizpin', () => {

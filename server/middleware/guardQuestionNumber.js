@@ -1,15 +1,17 @@
-const { Mongoose } = require("mongoose");
+const { Questioning } = require('../persistence/models');
 const HttpErrors = require("../httpErrors");
 
-const doesQuestionExist = async (questionNum) => {
-    return questionNum != null && await Mongoose.model('question').findById(questionNum);
+
+
+const doesQuestionExist = async (req)  => {
+    const question = await Questioning.findQuestion(req.quizPin, req.round, Number(req.params.questionNumber))
+    return question !== null;
 };
 
 const guardQuestionNumber = async (req, res, next) => {
     try {
-        questionNum = Number(req.params.questionNumber);
-        if(!await doesQuestionExist(questionNum)) {
-            res.sendError(HttpErrors.QUESTION_NOT_FOUND(questionNum));
+        if(!await doesQuestionExist(req)) {
+            res.sendError(HttpErrors.QUESTION_NOT_FOUND(req.params.questionNumber));
         } else {
             next();
         }
